@@ -53,6 +53,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rubocop', require: false
 end
 
 group :test do
