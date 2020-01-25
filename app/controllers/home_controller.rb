@@ -1,10 +1,10 @@
 class HomeController < ApplicationController
 
   def top
-  
+
   end
 
-  def check 
+  def check
 
   end
 end
