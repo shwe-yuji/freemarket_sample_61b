@@ -48,3 +48,36 @@
 
 - belongs_to :user
 - belongs_to :area
+
+## productsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false ,foreign_key: true|
+|name|string|null: false ,index: true|
+|description|text|null: false|
+|category_name|string|null: false ,foreign_key: true|
+|subcategory_name|string|null: false ,foreign_key: true|
+|subsubcategory_name|string|null: false ,foreign_key: true|
+|size_size|string|null: false ,foreign_key: true|
+|brand_name|string||
+|condition_name|string|null: false ,foreign_key: true|
+|shippingexpense_bearer|string|null: false ,foreign_key: true|
+|shippingmethod_method|string|null: false ,foreign_key: true|
+|area_name|string|null: false ,foreign_key: true|
+|shipdate_date|string|null: false ,foreign_key: true|
+|price|integer|null: false|
+
+### Association
+
+- belongs_to :user
+- belongs_to :category
+- belongs_to :subcategory
+- belongs_to :subsubcategory
+- belongs_to :size
+- belongs_to :condition
+- belongs_to :shippingexpense
+- belongs_to :shippingmethod
+- belongs_to :area
+- belongs_to :shipdate
+- has_many :photos
