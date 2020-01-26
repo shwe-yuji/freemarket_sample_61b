@@ -247,3 +247,16 @@
 
 - has_many :products
 - belongs_to :subcategory
+
+## transactionsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|product_id|integer|null: false ,foreign_key: true|
+|user_id|integer|foreign_key: true|
+|done|boolean||
+
+### Association
+
+- belongs_to :product
+- belongs_to :user
