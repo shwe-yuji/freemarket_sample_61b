@@ -3,5 +3,4 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: "home#top"
-  get 'home/check', to: 'home#check'
 end
