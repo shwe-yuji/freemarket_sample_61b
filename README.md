@@ -81,3 +81,169 @@
 - belongs_to :area
 - belongs_to :shipdate
 - has_many :photos
+
+## areasテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false ,unique: true ,index: true|
+
+### Association
+
+- has_many: users
+- has_many: destinations
+- has_many: products
+
+## deliveryexpensesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|bearer|string|null: false ,unique: true ,index: true|
+
+### Association
+
+- has_many: products
+- has_many: deliveryexpenses_shippingmethods
+- has_many: shippingmethods ,through: :deliveryexpenses_shippingmethods
+
+## shippingmethodsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|method|string|null: false ,unique: true ,index: true|
+
+### Association
+
+- has_many: products
+- has_many: deliveryexpenses_shippingmethods
+- has_many: deliveryexpenses ,through: :deliveryexpenses_shippingmethods
+
+## deliveryexpenses_shippingmethodsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|deliveryexpense_id|integer|null: false ,foreign_key: true|
+|shippingmethod_id|integer|null: false ,foreign_key: true|
+
+### Association
+
+- belongs_to :deliveryexpense
+- belongs_to :shippingmethod
+
+## shipdatesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|date|string|null: false ,unique: true ,index: true|
+
+### Association
+
+ - has_many: products
+
+## photosテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false ,foreign_key: true|
+|photo|string|null: false|
+
+### Association
+
+- belongs_to :product
+
+## conditionsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false ,unique: true ,index: true|
+
+### Association
+
+- has_many :products
+
+## categoriesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false ,unique: true ,index: true|
+
+### Association
+
+- has_many :subcategories
+- has_many :products
+- has_many :categories_brands
+- has_many :brands ,through: :categories_brands
+
+## brandsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false,unique:true|
+
+### Association
+
+- has_many :products
+- has_many :categories_brands
+- has_many :categories ,through: :categories_brands
+
+## categories_brandsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|category_id|integer|null: false ,foreign_key: true|
+|brand_id|integer|null: false ,foreign_key: true|
+
+### Association
+
+- belongs_to :category
+- belongs_to :brand
+
+## subcategoriesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|category_id|integer|null: false ,foreign_key: true|
+|name|string|null: false ,unique: true ,index: true|
+
+### Association
+
+- belongs_to :category
+- has_many :products
+- has_many :subcategories_sizes
+- has_many  :sizes ,through:  :subcategories_sizes
+
+## sizesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|size|string|null: false ,unique: true ,index: true|
+
+### Association
+
+- has_many :products
+- has_many :subcategories_sizes
+- has_many  :subcategories ,through:  :subcategories_sizes
+
+## subcategories_sizesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|subcategory_id|integer|null: false ,foreign_key: true|
+|size_id|integer|null: false ,foreign_key: true|
+
+### Association
+
+- belongs_to :subcategory
+- belongs_to :size
+
+## subsubcategoriesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|subcategory_id|integer|null: false ,foreign_key: true|
+|name|string|null: false ,unique: true ,index: true|
+
+### Association
+
+- has_many :products
+- belongs_to :subcategory
