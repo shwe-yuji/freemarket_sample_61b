@@ -103,32 +103,19 @@
 ### Association
 
 - has_many: products
-- has_many: deliveryexpenses_shippingmethods
-- has_many: shippingmethods ,through: :deliveryexpenses_shippingmethods
+- has_many: shippingmethods
 
 ## shippingmethodsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
+|deliveryexpenses_id|integer|null: false ,foreign_key: true|
 |method|string|null: false ,unique: true ,index: true|
 
 ### Association
 
 - has_many: products
-- has_many: deliveryexpenses_shippingmethods
-- has_many: deliveryexpenses ,through: :deliveryexpenses_shippingmethods
-
-## deliveryexpenses_shippingmethodsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|deliveryexpense_id|integer|null: false ,foreign_key: true|
-|shippingmethod_id|integer|null: false ,foreign_key: true|
-
-### Association
-
-- belongs_to :deliveryexpense
-- belongs_to :shippingmethod
+- belongs_to: deliveryexpense
 
 ## shipdatesテーブル
 
