@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_01_20_134006) do
     t.string "lastname_kana", null: false
     t.date "birthdate", null: false
     t.string "postal_code", limit: 7
-    t.integer "prefectures_id"
+    t.integer "area_name"
     t.string "city"
     t.string "street_address"
     t.string "building_name"
