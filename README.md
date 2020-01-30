@@ -195,9 +195,10 @@
 ### Association
 
 - belongs_to :category
+- has_many :subsubcategories
 - has_many :products
 - has_many :subcategories_sizes
-- has_many  :sizes ,through:  :subcategories_sizes
+- has_many  :sizes ,through: :subcategories_sizes
 
 ## sizesテーブル
 
