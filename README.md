@@ -32,7 +32,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|unique: true ,null: false ,foreign_key: true|
+|user_id|reference|unique: true ,null: false ,foreign_key: true|
 |firstname|string|null: false|
 |lastname|string|null: false|
 |firstname_kana|string|null: false|
@@ -53,7 +53,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false ,foreign_key: true|
+|user_id|reference|null: false ,foreign_key: true|
 |name|string|null: false ,index: true|
 |description|text|null: false|
 |category_name|string|null: false ,foreign_key: true|
@@ -109,7 +109,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|deliveryexpenses_id|integer|null: false ,foreign_key: true|
+|deliveryexpenses_id|reference|null: false ,foreign_key: true|
 |method|string|null: false ,unique: true ,index: true|
 
 ### Association
@@ -131,7 +131,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false ,foreign_key: true|
+|user_id|reference|null: false ,foreign_key: true|
 |photo|string|null: false|
 
 ### Association
@@ -177,8 +177,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|category_id|integer|null: false ,foreign_key: true|
-|brand_id|integer|null: false ,foreign_key: true|
+|category_id|reference|null: false ,foreign_key: true|
+|brand_id|reference|null: false ,foreign_key: true|
 
 ### Association
 
@@ -189,7 +189,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|category_id|integer|null: false ,foreign_key: true|
+|category_id|reference|null: false ,foreign_key: true|
 |name|string|null: false ,unique: true ,index: true|
 
 ### Association
@@ -216,8 +216,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|subcategory_id|integer|null: false ,foreign_key: true|
-|size_id|integer|null: false ,foreign_key: true|
+|subcategory_id|reference|null: false ,foreign_key: true|
+|size_id|reference|null: false ,foreign_key: true|
 
 ### Association
 
@@ -228,7 +228,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|subcategory_id|integer|null: false ,foreign_key: true|
+|subcategory_id|reference|null: false ,foreign_key: true|
 |name|string|null: false ,unique: true ,index: true|
 
 ### Association
@@ -240,8 +240,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|product_id|integer|null: false ,foreign_key: true|
-|user_id|integer|foreign_key: true|
+|product_id|reference|null: false ,foreign_key: true|
+|user_id|reference|foreign_key: true|
 |done|boolean||
 
 ### Association
