@@ -5,9 +5,14 @@
 
   .logo-title {
     height: 128px;
-    text-align: center;
     line-height: 128px;
+    text-align: center;
     color: #333;
+
+    &__svg-image {
+      height: 60px;
+      margin-top: 35px;
+    }
   }
 
   .signup-area {
@@ -24,51 +29,80 @@
     }
     
     &__link-box {
-      padding: 24px 16px 40px;
-      max-width: 343px;
-      margin: 0 auto;
+      padding: 40px 180px 70px;
 
-      &--email {
+      &__email {
         border-radius: 4px;
         background-color: #ea352d;
         color: #fff;
         line-height: 48px;
+        font-size: 14px;
+        position: relative;
+        width: 343px;
+
+        &--icon {
+          position: absolute;
+          left: 17px;
+          top: 15px;
+        }
       }
 
-      &--facebook {
+      &__facebook {
         border-radius: 4px;
         background: #385185;
         color: #fff;
-        margin-top: 16px;
         line-height: 48px;
+        font-size: 14px;
+        position: relative;
+        width: 343px;
+        margin-top: 16px;
+
+        &--icon {
+          position: absolute;
+          left: 15px;
+          top: 12px;
+        }
       }
 
-      &--google {
+      &__google {
         border: #979797 solid 1px;
         border-radius: 4px;
         background-color: #fff;
         color: #333;
-        margin-top: 16px;
         line-height: 48px;
+        font-size: 14px;
+        position: relative;
+        width: 343px;
+        margin-top: 16px;
+
+        &--icon {
+          position: absolute;
+          left: 18px;
+          top: 15px;
+        }
       }
     }
   }
+  
   .regulations {
-    padding-top: 30px;
     width: 456px;
-    height: 220px;
     text-align: center;
     margin: 0 auto;
     display: flex;
     justify-content: space-evenly;
+    padding: 30px;
   
     &__regulation {
       font-size: 12px;
+      display: block;
+      color: #333;
     }
   }
 
   .link-logo {
     text-align: center;
+    padding-top: 10px;
+
   }
 
   .mercari {
