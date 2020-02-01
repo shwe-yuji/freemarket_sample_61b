@@ -1,0 +1,78 @@
+.wrapper {
+  background-color: rgb(245, 245, 245);
+  height: 100%;
+  width: 100%;
+
+  .logo-title {
+    height: 128px;
+    text-align: center;
+    line-height: 128px;
+    color: #333;
+  }
+
+  .signup-area {
+    background-color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    width: 700px;
+
+    &__title {
+      font-size: 22px;
+      padding: 32px;
+      border-bottom: 1px solid rgb(245, 245, 245);
+      font-weight: bold;
+    }
+    
+    &__link-box {
+      padding: 24px 16px 40px;
+      max-width: 343px;
+      margin: 0 auto;
+
+      &--email {
+        border-radius: 4px;
+        background-color: #ea352d;
+        color: #fff;
+        line-height: 48px;
+      }
+
+      &--facebook {
+        border-radius: 4px;
+        background: #385185;
+        color: #fff;
+        margin-top: 16px;
+        line-height: 48px;
+      }
+
+      &--google {
+        border: #979797 solid 1px;
+        border-radius: 4px;
+        background-color: #fff;
+        color: #333;
+        margin-top: 16px;
+        line-height: 48px;
+      }
+    }
+  }
+  .regulations {
+    padding-top: 30px;
+    width: 456px;
+    height: 220px;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+  
+    &__regulation {
+      font-size: 12px;
+    }
+  }
+
+  .link-logo {
+    text-align: center;
+  }
+
+  .mercari {
+    text-align: center;
+    font-size: 13px;
+  }
+}
