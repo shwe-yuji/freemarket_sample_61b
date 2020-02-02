@@ -74,7 +74,7 @@
 |shippingexpense_bearer|string|null: false ,foreign_key: true|
 |shippingmethod_method|string|null: false ,foreign_key: true|
 |area_name|string|null: false ,foreign_key: true|
-|shipdate_date|string|null: false ,foreign_key: true|
+|shipdate|integer|null: false|
 |price|integer|null: false|
 
 ### Association
@@ -86,7 +86,6 @@
 - belongs_to :shippingexpense
 - belongs_to :shippingmethod
 - belongs_to :area
-- belongs_to :shipdate
 - has_many :photos
 
 ## areasテーブル
@@ -123,16 +122,6 @@
 
 - has_many: products
 - belongs_to: deliveryexpense
-
-## shipdatesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|date|string|null: false ,unique: true ,index: true|
-
-### Association
-
- - has_many: products
 
 ## photosテーブル
 
