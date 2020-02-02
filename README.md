@@ -72,7 +72,7 @@
 |category_name|string|null: false ,foreign_key: true|
 |size_size|string|null: false ,foreign_key: true|
 |brand_name|string||
-|condition_name|string|null: false ,foreign_key: true|
+|condition|integer|null: false|
 |shippingexpense_bearer|string|null: false ,foreign_key: true|
 |shippingmethod_method|string|null: false ,foreign_key: true|
 |area_name|string|null: false ,foreign_key: true|
@@ -84,7 +84,6 @@
 - belongs_to :user
 - belongs_to :category
 - belongs_to :size
-- belongs_to :condition
 - belongs_to :shippingexpense
 - belongs_to :shippingmethod
 - belongs_to :area
@@ -146,17 +145,6 @@
 ### Association
 
 - belongs_to :product
-
-## conditionsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false ,unique: true ,index: true|
-
-### Association
-
-- has_many :products
-
 
 ## categoriesテーブル
 
