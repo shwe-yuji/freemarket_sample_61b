@@ -27,12 +27,12 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|unique: true ,null: false ,aforeign_key: true|
-|postal_code|string|null: false|
-|area_name|string|null: false ,foreign_key: true|
-|city|string|null: false|
-|street_address|string|null: false|
-|building_name|string|null: false|
+|user|reference|unique: true ,null: false ,foreign_key: true|
+|postal_code|string||
+|area|reference|foreign_key: true|
+|city|string||
+|street_address|string||
+|building_name|string||
 
 ### Association
 
