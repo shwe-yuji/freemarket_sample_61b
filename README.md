@@ -69,7 +69,7 @@
 |description|text|null: false|
 |category_name|string|null: false ,foreign_key: true|
 |size_size|string|null: false ,foreign_key: true|
-|brand_name|string||
+|brand_name|string|foreign_key: true|
 |condition|integer|null: false|
 |shippingexpense_bearer|string|null: false ,foreign_key: true|
 |shippingmethod_method|string|null: false ,foreign_key: true|
@@ -82,6 +82,7 @@
 - belongs_to :user
 - belongs_to :category
 - belongs_to :size
+- belongs_to :brand
 - belongs_to :shippingexpense
 - belongs_to :shippingmethod
 - belongs_to :area
