@@ -137,7 +137,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false ,foreign_key: true|
+|product_id|reference|null: false ,foreign_key: true|
 |photo|string|null: false|
 
 ### Association
