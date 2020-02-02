@@ -28,13 +28,11 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|reference|unique: true ,null: false ,aforeign_key: true|
-|postal_code|string||
-|area_name|integer|foreign_key: true|
-|city|string||
-|street_address|string||
-|building_name|string||
-|profile|text||
-|image|string||
+|postal_code|string|null: false|
+|area_name|string|null: false ,foreign_key: true|
+|city|string|null: false|
+|street_address|string|null: false|
+|building_name|string|null: false|
 
 ### Association
 
@@ -51,7 +49,7 @@
 |firstname_kana|string|null: false|
 |lastname_kana|string|null: false|
 |postal_code|varchar(8)|null: false|
-|area_name|integer|null: false ,foreign_key: true|
+|area_name|string|null: false ,foreign_key: true|
 |city|string|null: false|
 |street_address|string|null: false|
 |building_name|string||
