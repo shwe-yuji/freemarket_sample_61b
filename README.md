@@ -43,7 +43,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|unique: true ,null: false ,foreign_key: true|
+|user|reference|unique: true ,null: false ,foreign_key: true|
 |firstname|string|null: false|
 |lastname|string|null: false|
 |firstname_kana|string|null: false|
@@ -64,16 +64,16 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false ,foreign_key: true|
+|user|reference|null: false ,foreign_key: true|
 |name|string|null: false ,index: true|
 |description|text|null: false|
-|category_name|reference|null: false ,foreign_key: true|
-|size_size|reference|null: false ,foreign_key: true|
-|brand_name|reference|foreign_key: true|
+|category|reference|null: false ,foreign_key: true|
+|size|reference|null: false ,foreign_key: true|
+|brand|reference|foreign_key: true|
 |condition|integer|null: false|
-|shippingexpense_bearer|reference|null: false ,foreign_key: true|
-|shippingmethod_method|reference|null: false ,foreign_key: true|
-|area_name|reference|null: false ,foreign_key: true|
+|shippingexpense|reference|null: false ,foreign_key: true|
+|shippingmethod|reference|null: false ,foreign_key: true|
+|area|reference|null: false ,foreign_key: true|
 |shipdate|integer|null: false|
 |price|integer|null: false|
 
@@ -115,7 +115,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|deliveryexpenses_id|reference|null: false ,foreign_key: true|
+|deliveryexpenses|reference|null: false ,foreign_key: true|
 |method|string|null: false ,unique: true ,index: true|
 
 ### Association
@@ -127,7 +127,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|product_id|reference|null: false ,foreign_key: true|
+|product|reference|null: false ,foreign_key: true|
 |photo|string|null: false|
 
 ### Association
@@ -166,8 +166,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|category_id|reference|null: false ,foreign_key: true|
-|brand_id|reference|null: false ,foreign_key: true|
+|category|reference|null: false ,foreign_key: true|
+|brand|reference|null: false ,foreign_key: true|
 
 ### Association
 
@@ -190,9 +190,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|product_id|reference|null: false ,foreign_key: true|
-|user_id|reference|foreign_key: true|
 |done|boolean||
+|product|reference|null: false ,foreign_key: true|
+|user|reference|null: false ,foreign_key: true|
 
 ### Association
 
