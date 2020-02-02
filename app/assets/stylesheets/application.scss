@@ -1,4 +1,7 @@
-@import "header";
-@import "home";
+@import './reset';
+@import "./header";
+
+@import "./home";
+@import 'users';
 // @import "font-awesome-sprockets";
 // @import "font-awesome";
