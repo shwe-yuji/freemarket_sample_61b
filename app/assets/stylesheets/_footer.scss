@@ -1,0 +1,159 @@
+.main-footer{
+  bottom:0px;
+
+  .main-footer_contents{
+    height:200px;
+    font-size:22px;
+    color:white;
+    width:100vw;
+    background-image: url("urimono.jpeg");
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    .text{
+      margin-top: -30px;
+      padding:0 0 0 430px;
+      content: '\A';
+      white-space: pre;
+      .footer_logo{
+        margin-top:-25px;
+        display: flex;
+        .fmarket_logo{
+          img {
+            height:60px;
+            padding:0 20px 0 0;
+          }
+          }
+        .apple{
+          img {
+            height:40px;
+            margin-top:9px;
+            padding:0 20px 0 0;
+          }
+        }
+        .google{
+          img{
+            height:40px;
+            margin-top:9px;
+          }
+        }
+    }
+  }
+    .smapho{
+      img{
+        height:200px;
+      }
+    }
+}
+  .main-footer_contents:before{
+    content: "";
+    display: block;
+    position: absolute;
+    background: inherit;
+    filter: blur(5px);
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+    z-index: -1;  
+  }
+  
+
+
+  .under-footer_contents{
+    color:white;
+    bottom:0px;
+    height:250px;
+    background-color: black;
+    .under_contents{
+      display: flex;
+      .first{   
+        padding:20px 0 0 300px;
+        .first_contents{
+          a {
+            color:white;
+            text-decoration:none;
+            }
+        }
+        .first_item{
+          font-size: 12px;
+          a {
+            color:gray;
+            text-decoration:none;
+            }
+        }
+        .sns{
+          display: flex;
+          img {
+            height:20px;
+          }
+        }
+        .white_fmarket_logo{
+          img {
+            margin:10px 0 0 0;
+            height:40px;
+          }
+        }
+      }
+
+      .second{
+        padding:20px 0 0 80px;
+        .second_contents{   
+          a {
+            color:white;
+            text-decoration:none;
+            }
+        }
+        .second_item{
+          font-size: 12px;
+          a {
+            color:gray;
+            text-decoration:none;
+            }
+        }
+      }
+
+      .third{
+        padding:20px 0 0 80px;
+        .third_contents{   
+          a {
+            color:white;
+            text-decoration:none;
+            }
+        }
+        .third_item{
+          font-size: 12px;
+          a {
+            color:gray;
+            text-decoration:none;
+            }
+        }
+      }
+
+      .forth{
+        padding:20px 0 0 80px;
+        .forth_contents{   
+          a {
+            color:white;
+            text-decoration:none;
+            }
+        }
+        .forth_item{
+          font-size: 12px;
+          a {
+            color:gray;
+            text-decoration:none;
+            }
+        }
+      }
+
+    }
+  .corporate_contents{
+    margin:10px 0 0 670px;
+    position: center;
+    bottom: 0px;
+    font-size:10px;
+  }
+}
+}
