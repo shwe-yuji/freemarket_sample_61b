@@ -48,12 +48,12 @@
 |lastname|string|null: false|
 |firstname_kana|string|null: false|
 |lastname_kana|string|null: false|
-|postal_code|varchar(8)|null: false|
+|postal_code|string|null: false|
 |area_name|string|null: false ,foreign_key: true|
 |city|string|null: false|
 |street_address|string|null: false|
 |building_name|string||
-|phone_number|varchar(15)||
+|phone_number|string||
 
 ### Association
 
