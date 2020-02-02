@@ -76,6 +76,7 @@
 |area|reference|null: false ,foreign_key: true|
 |shipdate|integer|null: false|
 |price|integer|null: false|
+|status|integer|null: false|
 
 ### Association
 
@@ -86,6 +87,7 @@
 - belongs_to :shippingexpense
 - belongs_to :shippingmethod
 - belongs_to :area
+- has_one :transaction
 - has_many :photos
 
 ## areasテーブル
@@ -190,7 +192,6 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|done|boolean||
 |product|reference|null: false ,foreign_key: true|
 |user|reference|null: false ,foreign_key: true|
 
