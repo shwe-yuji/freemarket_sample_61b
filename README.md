@@ -67,13 +67,13 @@
 |user_id|reference|null: false ,foreign_key: true|
 |name|string|null: false ,index: true|
 |description|text|null: false|
-|category_name|string|null: false ,foreign_key: true|
-|size_size|string|null: false ,foreign_key: true|
-|brand_name|string|foreign_key: true|
+|category_name|reference|null: false ,foreign_key: true|
+|size_size|reference|null: false ,foreign_key: true|
+|brand_name|reference|foreign_key: true|
 |condition|integer|null: false|
-|shippingexpense_bearer|string|null: false ,foreign_key: true|
-|shippingmethod_method|string|null: false ,foreign_key: true|
-|area_name|string|null: false ,foreign_key: true|
+|shippingexpense_bearer|reference|null: false ,foreign_key: true|
+|shippingmethod_method|reference|null: false ,foreign_key: true|
+|area_name|reference|null: false ,foreign_key: true|
 |shipdate|integer|null: false|
 |price|integer|null: false|
 
