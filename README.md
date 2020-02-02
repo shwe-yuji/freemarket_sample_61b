@@ -70,8 +70,6 @@
 |name|string|null: false ,index: true|
 |description|text|null: false|
 |category_name|string|null: false ,foreign_key: true|
-|subcategory_name|string|null: false ,foreign_key: true|
-|subsubcategory_name|string|null: false ,foreign_key: true|
 |size_size|string|null: false ,foreign_key: true|
 |brand_name|string||
 |condition_name|string|null: false ,foreign_key: true|
@@ -85,8 +83,6 @@
 
 - belongs_to :user
 - belongs_to :category
-- belongs_to :subcategory
-- belongs_to :subsubcategory
 - belongs_to :size
 - belongs_to :condition
 - belongs_to :shippingexpense
@@ -167,13 +163,16 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false ,unique: true ,index: true|
+|ancestry|string|index: true|
 
 ### Association
 
-- has_many :subcategories
+- has_ancestry
 - has_many :products
 - has_many :categories_brands
 - has_many :brands ,through: :categories_brands
+- has_many :categories_sizes
+- has_many  :sizes ,through: :categories_sizes
 
 ## brandsテーブル
 
@@ -199,21 +198,6 @@
 - belongs_to :category
 - belongs_to :brand
 
-## subcategoriesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|category_id|reference|null: false ,foreign_key: true|
-|name|string|null: false ,unique: true ,index: true|
-
-### Association
-
-- belongs_to :category
-- has_many :subsubcategories
-- has_many :products
-- has_many :subcategories_sizes
-- has_many  :sizes ,through: :subcategories_sizes
-
 ## sizesテーブル
 
 |Column|Type|Options|
@@ -223,32 +207,8 @@
 ### Association
 
 - has_many :products
-- has_many :subcategories_sizes
-- has_many  :subcategories ,through:  :subcategories_sizes
-
-## subcategories_sizesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|subcategory_id|reference|null: false ,foreign_key: true|
-|size_id|reference|null: false ,foreign_key: true|
-
-### Association
-
-- belongs_to :subcategory
-- belongs_to :size
-
-## subsubcategoriesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|subcategory_id|reference|null: false ,foreign_key: true|
-|name|string|null: false ,unique: true ,index: true|
-
-### Association
-
-- has_many :products
-- belongs_to :subcategory
+- has_many :categories_sizes
+- has_many  :categories ,through:  :categories_sizes
 
 ## transactionsテーブル
 
