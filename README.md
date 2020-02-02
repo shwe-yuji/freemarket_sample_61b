@@ -12,7 +12,23 @@
 |firstname_kana|string|null: false|
 |lastname_kana|string|null: false|
 |birthdate|date|null: false|
-|postal_code|varchar(7)||
+|profile|text||
+|image|string||
+
+### Association
+
+- has_one :address
+- has_one :destination
+- has_many :transactions
+- has_many :products
+- has_many :comments
+
+## addressesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|reference|unique: true ,null: false ,aforeign_key: true|
+|postal_code|string||
 |area_name|integer|foreign_key: true|
 |city|string||
 |street_address|string||
@@ -22,11 +38,8 @@
 
 ### Association
 
+- belongs_to :user
 - belongs_to :area
-- has_one :destination
-- has_many :transactions
-- has_many :products
-- has_many :comments
 
 ## destinationsテーブル
 
@@ -90,7 +103,7 @@
 
 ### Association
 
-- has_many: users
+- has_many: addresses
 - has_many: destinations
 - has_many: products
 
@@ -147,6 +160,7 @@
 ### Association
 
 - has_many :products
+
 
 ## categoriesテーブル
 
