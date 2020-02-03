@@ -12,12 +12,15 @@
     width: 280px;
     height: 100%;
     margin: 0 40px 0 0;
-    border: solid 1px blueviolet
+    border: solid 1px blueviolet;
+    display: flex;
+    flex-direction: column;
 
-    &__ {
-      
+    &__trade {
+      height: 40px;
+      border: solid 1px blueviolet;
+
     }
-   
   }
 
   .main-area {
