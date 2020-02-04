@@ -17,10 +17,10 @@
 
 ### Association
 
-- has_one :address
-- has_one :destination
-- has_many :transactions
-- has_many :products
+- has_one :address dependent: :delete
+- has_one :destination dependent: :delete
+- has_many :transactions dependent: :nullify
+- has_many :products dependent: :destroy
 
 ## addressesテーブル
 
@@ -86,8 +86,8 @@
 - belongs_to :shippingexpense
 - belongs_to :shippingmethod
 - belongs_to :area
-- has_one :transaction
-- has_many :photos
+- has_one :transaction dependent: :nullify
+- has_many :photos dependent: :delete_all
 
 ## areasテーブル
 
@@ -191,8 +191,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|product|reference|null: false ,foreign_key: true|
-|user|reference|null: false ,foreign_key: true|
+|product|reference|foreign_key: true|
+|user|reference|foreign_key: true|
 
 ### Association
 
