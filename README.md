@@ -21,7 +21,6 @@
 - has_one :destination
 - has_many :transactions
 - has_many :products
-- has_many :comments
 
 ## addressesテーブル
 
