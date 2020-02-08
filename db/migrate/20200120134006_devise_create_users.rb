@@ -12,12 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :firstname_kana, null: false
       t.string :lastname_kana, null: false
       t.date   :birthdate, null: false
-      t.string :postal_code, limit: 7
-      t.integer :area_name
-      t.string :city
-      t.string :street_address
-      t.string :building_name
-      t.text :profile
+      t.text   :profile
       t.string :image
       t.datetime :remember_created_at
       t.timestamps null: false

@@ -4,24 +4,50 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  def new
+  def step1
     @user = User.new
   end
 
   def create
+    # @user = User.new(user_params)
     @user = User.new(sign_up_params)
+
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
-      render :new and return
+      render :step1 and return
     end
+
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    
+    @user.save
+    sign_in(:user, @user)
+    render :step2
   end
 
-  protected
+  private
 
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  end
+
+  def user_params
+    params.require(:user).permit(:birthdate)
+  end
+
+  # def address_params
+  #   params.require(:address).permit(:zipcode, :address)
+  # end
+  private
+  def sign_up_params
+    params.require(:user).permit(:nickname,
+                                 :email, 
+                                 :firstname, 
+                                 :lastname, 
+                                 :firstname_kana, 
+                                 :lastname_kana, 
+                                 :birthdate , 
+                                 :password)
   end
 
   # GET /resource/edit
