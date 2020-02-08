@@ -1,0 +1,18 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+@mixin form-require {
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  background-color: red;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+  font-weight: bold;
+}
