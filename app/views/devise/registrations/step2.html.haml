@@ -1,2 +1,7 @@
-%h2 電話番号認証画面
-
+.wrapper
+  %h2 電話番号認証画面
+  %form{:action => "users/registrations/step2_regist", :method => "post"}
+    電話番号
+    %input{type: "tel", name: "tel_no", size: "11"}
+    %input{type: "submit", value: "次へ進む"}
+    .submit

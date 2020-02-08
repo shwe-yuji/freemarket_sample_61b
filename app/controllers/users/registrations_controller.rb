@@ -9,21 +9,33 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    # @user = User.new(user_params)
     @user = User.new(sign_up_params)
-
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
       render :step1 and return
     end
-
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    
-    @user.save
-    sign_in(:user, @user)
-    render :step2
+    render "step2"
   end
+
+  def step2
+    #電話番号認証の実装
+  end
+
+  def step2_regist
+    render "step3"
+  end
+
+  def step3
+    #住所登録
+    
+  end
+
+  def step3_regist
+
+  end
+
 
   private
 
