@@ -1,2 +1,18 @@
-%h1 Products#new
-%p Find me in app/views/products/new.html.haml
+- content_for(:title, '商品の情報を入力 メルカリ スマホでかんたん フリマアプリ')
+.wrapper
+  .logo-title (仮）メルカリのロゴ　mercari
+  .sell-area
+    .sell-area__title 
+      商品の情報を入力
+    %form.sell-area__form
+      .sell-area__upload
+        %h3.sell-area__header
+          出品画像
+          %span.sell-area__require 必須
+        %p.sell-area__text
+          最大10枚までアップロードできます
+        .sell-area__dropbox
+          %label.sell-area__dropbox__img
+            %input{type: "file"}
+            %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+    .sell-area__content

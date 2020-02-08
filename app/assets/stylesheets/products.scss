@@ -1,3 +1,77 @@
-// Place all the styles related to the products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.wrapper {
+  background-color: rgb(245, 245, 245);
+  height: 100%;
+  width: 100%;
+
+  .logo-title {
+    height: 128px;
+    text-align: center;
+    line-height: 128px;
+    color: #333;
+  }
+
+  .sell-area {
+    background-color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    width: 700px;
+
+    &__title {
+      font-size: 22px;
+      padding: 32px 16px;
+      border-bottom: 1px solid rgb(245, 245, 245);
+      font-weight: bold;
+    }
+
+    &__form {
+      border-bottom: 1px solid #eee;
+    }
+
+      &__upload {
+      width: 620px;
+      padding: 40px;
+      }
+
+        &__header {
+          text-align: left;
+          font-weight: bold;
+        }
+
+          &__require {
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            background-color: red;
+            color: #fff;
+            font-size: 12px;
+            vertical-align: top;
+            font-weight: bold;
+          }
+
+        &__text {
+          text-align: left;
+          margin: 8px 0px 0px ;
+          font-size: 14px;
+        }
+
+        &__dropbox {
+          &__img {
+            display: block;
+            text-align: center;
+            border: 1px dashed lightgray;
+            min-width: 115px;
+            height: 160px;
+            background: #f5f5f5;
+            margin-top: 16px;
+            cursor: pointer;
+            input[type="file"] {
+              display: none;
+            }
+            p {
+              font-size: 13px;
+              margin-top: 55px;
+        }
+      }
+    }
+  }
+}
