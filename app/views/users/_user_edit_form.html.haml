@@ -1,0 +1,54 @@
+.main-area
+  %h1.main-area__top 本人情報の登録
+  .main-area__form
+    .main-area__form__message
+      = "お客さまの本人情報をご登録ください。"
+      %br/
+      = "登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。"
+    .main-area__form__user-confirm-document-link
+      = link_to '#' do 
+        = "本人確認書類のアップロードについて"
+        = fa_icon 'chevron-right'
+    .main-area__form__user-info
+      .main-area__form__user-info--title 名前
+      .main-area__form__user-info--value フリマ太郎
+    .main-area__form__user-info
+      .main-area__form__user-info--title お名前カナ
+      .main-area__form__user-info--value フリマタロウ
+    .main-area__form__user-info
+      .main-area__form__user-info--title 生年月日
+      .main-area__form__user-info--value 1997/09/10
+    
+    .main-area__form__input-info
+      .main-area__form__input-info--title 郵便番号
+      .main-area__form__input-info--icon 任意
+    %input.main-area__form__input-area{type: 'text', placeholder: '0000000'}
+
+    .main-area__form__input-info
+      .main-area__form__input-info--title 都道府県
+      .main-area__form__input-info--icon 任意
+    %input.main-area__form__input-area{type: 'text', placeholder: '0000000'}
+      = fa_icon 'chevron-right', class: 'main-area__form__input-area--icon'
+
+    .main-area__form__input-info
+      .main-area__form__input-info--title 市区町村
+      .main-area__form__input-info--icon 任意
+    %input.main-area__form__input-area{placeholder: '0000000'}
+    
+    .main-area__form__input-info
+      .main-area__form__input-info--title 番地
+      .main-area__form__input-info--icon 任意
+    %input.main-area__form__input-area{placeholder: '0000000'}
+
+    .main-area__form__input-info
+      .main-area__form__input-info--title 建物名
+      .main-area__form__input-info--icon 任意
+    %input.main-area__form__input-area{placeholder: '0000000'}
+
+    = link_to '#' do
+      .main-area__form__confirm-btn 登録する
+    
+    .main-area__form__user-info-guide-link
+      = link_to '#' do
+        = "本人情報の登録について"
+        = fa_icon 'chevron-right'
