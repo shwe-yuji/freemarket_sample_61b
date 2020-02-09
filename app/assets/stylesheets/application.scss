@@ -1,8 +1,11 @@
-@import "header";
-@import "home";
-@import "footer";
+@import './reset';
+@import "./header";
+
+@import "./home";
+@import 'mypage';
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "reset";
-@import "cameraicon";
 
+@import "home";
+@import "footer";
+@import "cameraicon";
