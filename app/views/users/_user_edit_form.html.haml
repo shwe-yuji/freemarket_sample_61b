@@ -1,5 +1,6 @@
 .main-area
   %h1.main-area__top 本人情報の登録
+  - form_with(url: '#')
   .main-area__form
     .main-area__form__message
       = "お客さまの本人情報をご登録ください。"
@@ -22,23 +23,23 @@
     .main-area__form__input-info
       .main-area__form__input-info--title 郵便番号
       .main-area__form__input-info--icon 任意
-    %input.main-area__form__input-area{type: 'text', placeholder: '0000000'}
+    %input.main-area__form__input-area{type: 'text', placeholder: '例）0000000'}
 
     .main-area__form__input-info
       .main-area__form__input-info--title 都道府県
       .main-area__form__input-info--icon 任意
-    %input.main-area__form__input-area{type: 'text', placeholder: '東京都'}
+    %select.main-area__form__input-area{value: '東京都'}
       = fa_icon 'chevron-right', class: 'main-area__form__input-area--icon'
 
     .main-area__form__input-info
       .main-area__form__input-info--title 市区町村
       .main-area__form__input-info--icon 任意
-    %input.main-area__form__input-area{placeholder: '渋谷区'}
+    %input.main-area__form__input-area{placeholder: '例）渋谷区'}
     
     .main-area__form__input-info
       .main-area__form__input-info--title 番地
       .main-area__form__input-info--icon 任意
-    %input.main-area__form__input-area{placeholder: '90番地'}
+    %input.main-area__form__input-area{placeholder: '例）90番地'}
 
     .main-area__form__input-info
       .main-area__form__input-info--title 建物名
