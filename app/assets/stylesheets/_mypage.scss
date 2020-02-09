@@ -98,10 +98,11 @@
     &__mypage {
       
       &__user-icon {
+        background-image: image-url("mypage-background.png");
         height: 200px;
-        padding-top: 20px;
 
         &__detail {
+          padding-top: 20px;
           text-align: center;
 
           &--picture {
@@ -112,7 +113,6 @@
           &--name {
             font-weight: bold;
             color: rgb(51, 51, 51);
-
           }
 
           &--numbers {
