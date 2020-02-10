@@ -15,11 +15,15 @@ $color: #fff;
 
   &__form {
     position: relative;
+    height: 100%;
+    background-color: $color;
+    padding: 65px;
 
     select#jusho {
       width: 582px;
       height: 50px;
       background-color: $color;
+      border: solid 1px #ccc;
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
@@ -32,11 +36,6 @@ $color: #fff;
       top: 535px;
       right: 70px;
     }
-
-    height: 100%;
-    background-color: $color;
-    padding: 65px;
-
 
     &__message {
       font-size: 14px;
