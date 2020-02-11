@@ -58,9 +58,9 @@
     }
 
     &__input-info {
-      padding-top: 20px;
       font-size: 13px;
       display: flex;
+      padding-top: 20px;
 
       &--title {
         font-weight: bold;
@@ -85,24 +85,22 @@
       border-radius: 4px;
     }
 
+    &__user-info-guide-link {
+      float: right;
+      font-size: 14px;
+      margin-top: 40px;
+      color: $link_color;
+    }
+
     &__confirm-btn {
       width: 100%;
       margin-top: 40px;
       height: 50px;
       line-height: 50px;
-    }
-
-    &__user-info-guide-link {
-      float: right;
-      font-size: 14px;
-      padding-top: 40px;
-      color: $link_color;
-    }
-
-    &__confirm-btn {
       background-color: red;
       color: $color;
       text-align: center;
+      cursor: pointer;
     }
   }
 }
