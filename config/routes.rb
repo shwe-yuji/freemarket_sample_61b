@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
   get 'home/top'
-  get 'users/show'
-  # resources :users, only: [:show]
+  resources :users, only: [:show, :edit]
 end
