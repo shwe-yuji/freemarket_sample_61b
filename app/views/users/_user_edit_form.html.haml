@@ -6,8 +6,8 @@
       = "お客さまの本人情報をご登録ください。"
       %br/
       = "登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。"
-    .main-area__form__user-confirm-document-link
-      = link_to '#' do 
+    = link_to '#' do
+      .main-area__form__user-confirm-document-link
         = "本人確認書類のアップロードについて"
         = fa_icon 'chevron-right'
     .main-area__form__user-info
@@ -29,26 +29,26 @@
       .main-area__form__input-info
         .main-area__form__input-info--title 都道府県
         .main-area__form__input-info--icon 任意
-      = f.collection_select :jusho, array, :id, :name # arrayは仮置きの配列です
+      = f.collection_select :area_name, array, :id, :name # arrayは仮置きの配列です
       = fa_icon 'chevron-right', class: 'select-icon'
       .main-area__form__input-info
         .main-area__form__input-info--title 市区町村
         .main-area__form__input-info--icon 任意
-      = f.text_field :jusho, class: 'main-area__form__input-area', placeholder: '例）渋谷区'
+      = f.text_field :city, class: 'main-area__form__input-area', placeholder: '例）渋谷区'
       
       .main-area__form__input-info
         .main-area__form__input-info--title 番地
         .main-area__form__input-info--icon 任意
-      = f.text_field :jusho, class: 'main-area__form__input-area', placeholder: '例）90番地'
+      = f.text_field :street_address, class: 'main-area__form__input-area', placeholder: '例）90番地'
 
       .main-area__form__input-info
         .main-area__form__input-info--title 建物名
         .main-area__form__input-info--icon 任意
-      = f.text_field :jusho, class: 'main-area__form__input-area', placeholder: '例）アジアビル9F'
+      = f.text_field :building_name, class: 'main-area__form__input-area', placeholder: '例）アジアビル9F'
 
       = f.submit value: '登録する',class: 'main-area__form__confirm-btn'
       
-      .main-area__form__user-info-guide-link
-        = link_to '#' do
+      = link_to '#' do
+        .main-area__form__user-info-guide-link
           = "本人情報の登録について"
           = fa_icon 'chevron-right'
