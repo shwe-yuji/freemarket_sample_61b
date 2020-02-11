@@ -39,16 +39,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @destination = Destination.new(destination_params)
     unless @destination.valid?
       flash.now[:alert] = @destination.errors.full_messages
-      binding.pry
       render :step3 and return
     end
-    binding.pry
     session["devise.regist_data"] = {destination: @destination.attributes}
     @destination[:user_id]=@user[:id]
-    binding.pry
     @user.build_destination(@destination.attributes)
     @user.save
-    # @destination.save
     sign_in(:user, @user)
     
     redirect_to creditcard_regist_path,method: :get
@@ -60,8 +56,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def step4_regist
-    # @destination=Destination.new(session["devise.regist_data"]["destination"])
-    binding.pry
+    #クレカ情報登録して登録完了のviewにいく
     render :create
   end
 
