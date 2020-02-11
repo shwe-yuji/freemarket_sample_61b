@@ -6,13 +6,73 @@
   }
 }
 
+// 商品出品ページ
 @mixin form-require {
   margin: 0 0 0 8px;
-  padding: 2px 4px;
+  padding: 4px 4px;
   border-radius: 2px;
   background-color: red;
   color: #fff;
   font-size: 12px;
   vertical-align: top;
   font-weight: bold;
+}
+
+@mixin products-detalis {
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+@mixin sub-head {
+  float: left;
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+  color: #888888;
+}
+
+@mixin  default {
+  height: 48px;
+  width: 400px;
+  padding: 0 16px;
+  margin-top: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  line-height: 1.5;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+@mixin list {
+  float: right;
+  height: 70px;
+  width: 400px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+@mixin  form-question {
+  display: block;
+  float: left;
+  height: 14px;
+  width: 14px;
+  margin-top: 3px;
+  border-radius: 50%;
+  background: #0099e8;
+  color: #fff;
+  line-height: 14px;
+  font-size: 12px;
+}
+
+@mixin form-group {
+  display: inline-block;
+  float: right;
+  line-height: 48px;
+  width: 400px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left
 }
