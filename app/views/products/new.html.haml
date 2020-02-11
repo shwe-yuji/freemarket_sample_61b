@@ -1,6 +1,7 @@
-- content_for(:title, '商品の情報を入力 メルカリ スマホでかんたん フリマアプリ')
+- content_for(:title, '商品の情報を入力 - メルカリ スマホでかんたん フリマアプリ')
 .wrapper
-  .logo-title (仮）メルカリのロゴ　mercari
+  = render "products/logo-header"
+
   .sell-area
     .sell-area__title 
       商品の情報を入力
@@ -24,3 +25,111 @@
         商品の説明
         %span.form-require  必須
       %textarea.sell-area__description__textarea{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
+    .sell-area__details
+      %h3.sell-area__details__name
+        商品の詳細
+      .sell-area__details__category
+        カテゴリー
+        %span.form-require 必須
+        .sell-area__details__category__select
+          %select.sell-area__details__category__default
+            %option{value: ""} ---
+            %option{value: "1"} レディース
+            %option{value: "2"} メンズ
+            %option{value: "3"} ベビー・キッズ
+            %option{value: "4"} インテリア・住まい・小物
+            %option{value: "5"} 本・音楽・ゲーム
+            %option{value: "1328"} おもちゃ・ホビー・グッズ
+            %option{value: "6"} コスメ・香水・美容
+            %option{value: "7"} 家電・スマホ・カメラ
+            %option{value: "8"} スポーツ・レジャー
+            %option{value: "9"} ハンドメイド
+            %option{value: "1027"} チケット
+            %option{value: "1318"} 自動車・オートバイ
+            %option{value: "10"} その他
+      .sell-area__details__status
+        商品の状態
+        %span.form-require 必須
+        .sell-area__details__status__select
+          %select.sell-area__details__status__default
+            %option{value: ""} ---
+            %option{value: "30"} トップス
+            %option{value: "31"} ジャケット/アウター
+            %option{value: "32"} パンツ
+            %option{value: "33"} 靴
+            %option{value: "34"} バッグ
+            %option{value: "35"} スーツ
+            %option{value: "36"} 帽子
+            %option{value: "37"} アクセサリー
+            %option{value: "38"} 小物
+            %option{value: "39"} 時計
+            %option{value: "40"} 水着
+            %option{value: "41"} レッグウェア
+            %option{value: "42"} アンダーウェア
+            %option{value: "43"} その他
+    .sell-area__delivery
+      %h3.sell-area__delivery__method
+        配送について
+      %a.form-question{href: "/", target: "_blank"} ?
+      .sell-area__delivery__burden
+        配送料の負担
+        %span.form-require 必須
+        .sell-area__delivery__burden__select
+          %select.sell-area__delivery__burden__default
+            %option{value: ""} ---
+            %option{value: "2"} 送料込み(出品者負担)
+            %option{value: "1"} 着払い(購入者負担)
+      .sell-area__delivery__origin
+        発送元の地域
+        %span.form-require 必須
+        .sell-area__delivery__origin__select
+          %select.sell-area__delivery__origin__default
+      .sell-area__delivery__days
+        発送までの日数
+        %span.form-require 必須
+        .sell-area__delivery__days__select
+          %select.sell-area__delivery__days__default
+    .sell-area__selling
+      %h3.sell-area__selling__price
+        販売価格(300〜9,999,999)
+      %a.form-question{href: "/", target: "_blank"} ?
+      .sell-area__selling__form-group--top
+        .sell-area__selling--left
+          価格
+          %span.form-require 必須
+        .sell-area__selling--right
+          ¥
+          %input.sell-area__selling__box{placeholder: "例) 300円"}
+      .sell-area__selling__form-group--center
+        .sell-area__selling__commission--left
+          販売手数料 (10%)
+          .sell-area__selling__commission--right
+            .code -
+      .sell-area__selling__form-group--bottom
+        .sell-area__selling__profit--left
+          販売利益
+          .sell-area__selling__profit--right
+            .code -
+    .sell-area__box
+      %p
+        = link_to '#' do
+          禁止されている出品
+        、
+        = link_to '#' do
+          行為
+        を必ずご確認ください。
+      %p
+        またブランド品でシリアルナンバー等がある場合はご記載ください。
+        = link_to '#' do
+          偽ブランド
+        の販売は犯罪であり処罰される可能性があります。
+      %p
+        また、出品をもちまして
+        = link_to '#' do
+          加盟店規約
+        .sell-area__box__button--red
+          出品する
+        .sell-area__box__button--gray
+          もどる
+
+    = render "products/logo-footer"
