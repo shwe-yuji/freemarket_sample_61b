@@ -1,4 +1,12 @@
-@import "header";
-@import "home";
-// @import "font-awesome-sprockets";
-// @import "font-awesome";
+@import './reset';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import 'color_config';
+@import './header';
+@import 'footer';
+@import 'cameraicon';
+
+@import './home';
+@import 'mypage';
+@import 'user_edit';
+

@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_02_09_133254) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
-
   add_foreign_key "destinations", "areas"
   add_foreign_key "destinations", "users"
+
 end

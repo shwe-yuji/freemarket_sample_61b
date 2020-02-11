@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   end
 
   root to: "home#top"
+  get 'home/top'
+  resources :users, only: [:show, :edit]
 end

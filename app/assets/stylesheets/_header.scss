@@ -1,18 +1,83 @@
-*{
+* {
   margin: 0;
   padding: 0;
   text-decoration: none;
 }
 
-.main-header__contents {
-    height: 100px;
-    width: 100vw;
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-    position: relative;
-    z-index: 3;
+.main-header {
+  height: 150px;
+  width: 100vw;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  position: relative;
+  z-index: 3;
+  display: grid;
+
 }
 
-  // &__contents {
-  //   color: blue;
-  // }
+
+.main-header__contents {
+    display: flex;
+}
+
+    .logo {
+      height: auto;
+      margin:0 0 0 140px;
+
+    }
+    input.search {
+      height:40px;
+      width:800px;
+      margin: 25px 90px 0 40px;
+    }
+
+  .menu {
+    bottom: 0;
+    display: flex;
+  }
+
+  .category_icon {
+    margin:10px 10px 0 180px;
+  }
+  .category {
+    margin:10px 25px 0 0;
+    
+  }
+
+  .brand_icon {
+    margin: 10px 10px 0 0;
+  }
+  .brand {
+    margin: 10px 20px 0 0;
+  }
+
+  .nice_icon {
+    margin: 10px 0 0 150px;
+  }
+  .nice {
+    margin: 10px 0 0 5px;
+  }
+
+  .info_icon {
+    margin: 10px 5px 0 45px;
+  }
+  .information {
+    margin: 10px 0 0 0;
+  }
+
+  .todo_icon {
+    margin: 10px 0 0 45px;
+  }
+
+  .todo {
+    margin: 10px 0 0 0;
+  }
+
+  .mypage_icon {
+    margin: 10px 0 0 45px;
+  }
+  .mypage {
+    margin: 10px 0 0 0;
+  }
+
+
