@@ -9,45 +9,60 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def step1_regist
-    @user = User.new(sign_up_params)
+    @user = User.new(user_params)
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
       render :step1 and return
     end
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
-
+    @destination = @user.build_destination
     redirect_to phone_regist_path,method: :get
   end
 
-  def step2
-    #電話番号認証の実装
-    
-  end
+  # def step2
+  #   #電話番号認証の実装
+  # end
 
   def step2_regist
-    #特に何もしない
-    phone = params[:tel_no] 
-    render "step3"
+    #特に何もしていない
+    redirect_to destination_regist_path,method: :get
   end
 
   def step3
     #住所登録
-    @address=Address.new
-    
+    @destination = Destination.new
   end
 
   def step3_regist
-
-  end
-
-  def step4
-    #お支払い情報
+    @user = User.new(session["devise.regist_data"]["user"])
+    @destination = Destination.new(destination_params)
+    unless @destination.valid?
+      flash.now[:alert] = @destination.errors.full_messages
+      binding.pry
+      render :step3 and return
+    end
+    binding.pry
+    session["devise.regist_data"] = {destination: @destination.attributes}
+    @destination[:user_id]=@user[:id]
+    binding.pry
+    @user.build_destination(@destination.attributes)
+    @user.save
+    # @destination.save
+    sign_in(:user, @user)
     
+    redirect_to creditcard_regist_path,method: :get
+
   end
+
+  # def step4
+  #   #お支払い情報
+  # end
 
   def step4_regist
-
+    # @destination=Destination.new(session["devise.regist_data"]["destination"])
+    binding.pry
+    render :create
   end
 
 
@@ -59,7 +74,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   
   private
-  def sign_up_params
+  def user_params
     params.require(:user).permit(:nickname,
                                  :password,
                                  :email, 
@@ -71,8 +86,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
                                  )
   end
 
-  def address_params
-    params.require(:address).permit(:zipcode, :address)
+  def destination_params
+    params.require(:destination).permit(:firstname,
+                                    :firstname_kana,
+                                    :lastname,
+                                    :lastname_kana,
+                                    :postal_code,
+                                    :area_id,
+                                    :city,
+                                    :street_address,
+                                    :building_name,
+                                    :phone_number
+    )
   end
   # GET /resource/edit
   # def edit

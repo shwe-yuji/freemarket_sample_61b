@@ -10,25 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_114305) do
-
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "postal_code"
-    t.bigint "area_id"
-    t.string "city"
-    t.string "street_address"
-    t.string "building_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["area_id"], name: "index_addresses_on_area_id"
-    t.index ["user_id"], name: "index_addresses_on_user_id", unique: true
-  end
+ActiveRecord::Schema.define(version: 2020_02_09_133254) do
 
   create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "firstname", null: false
+    t.string "lastname", null: false
+    t.string "firstname_kana", null: false
+    t.string "lastname_kana", null: false
+    t.string "postal_code", null: false
+    t.bigint "area_id", null: false
+    t.string "city", null: false
+    t.string "street_address", null: false
+    t.string "building_name"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_destinations_on_area_id"
+    t.index ["user_id"], name: "index_destinations_on_user_id", unique: true
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -48,6 +53,6 @@ ActiveRecord::Schema.define(version: 2020_02_08_114305) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "addresses", "areas"
-  add_foreign_key "addresses", "users"
+  add_foreign_key "destinations", "areas"
+  add_foreign_key "destinations", "users"
 end

@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     post 'user_regist', to: 'users/registrations#step1_regist'
     get 'phone_regist', to: 'users/registrations#step2'
     post 'phone_regist', to: 'users/registrations#step2_regist'
-    get 'address_regist', to: 'users/registrations#step3'
-    post 'address_regist', to: 'users/registrations#step3_regist'
-    get 'creditcard_regist', to: 'users/registrations#step3'
-    post 'creditcard_regist', to: 'users/registrations#step3_regist'
+    get 'destination_regist', to: 'users/registrations#step3'
+    post 'destination_regist', to: 'users/registrations#step3_regist'
+    get 'creditcard_regist', to: 'users/registrations#step4'
+    post 'creditcard_regist', to: 'users/registrations#step4_regist'
   end
 
   root to: "home#top"

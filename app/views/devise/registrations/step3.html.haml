@@ -1,1 +1,45 @@
 住所登録
+.notifications
+=form_with(model: @destination,url:'destination_regist') do |f|
+  .field
+    = f.label :firstname
+    %br/
+    = f.text_field :firstname
+  .field
+    = f.label :lastname
+    %br/
+    = f.text_field :lastname
+  .field
+    = f.label :firstname_kana
+    %br/
+    = f.text_field :firstname_kana
+  .field
+    = f.label :lastname_kana
+    %br/
+    = f.text_field :lastname_kana
+  .field
+    = f.label :postal_code
+    %br/
+    = f.text_field :postal_code
+  .field
+    = f.label :area_id
+    %br/
+    = f.text_field :area_id
+  .field
+    = f.label :city
+    %br/
+    = f.text_field :city
+  .field
+    = f.label :street_address
+    %br/
+    = f.text_field :street_address
+  .field
+    = f.label :building_name
+    %br/
+    =  f.text_field :building_name
+    .field
+    = f.label :phone_number
+    %br/
+    =  f.text_field :phone_number
+  .actions
+    = f.submit "次へ進む"
