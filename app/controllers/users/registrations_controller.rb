@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
 
   def step1
     @user = User.new
@@ -17,16 +17,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @destination = @user.build_destination
-    redirect_to phone_regist_path,method: :get
+    redirect_to phone_regist_path, method: :get
   end
 
-  # def step2
-  #   #電話番号認証の実装
-  # end
+  def step2
+    # @user = User.new(phone_num_params) 仮に置くとこんな感じ？
+    #電話番号認証の実装
+  end
 
   def step2_regist
     #特に何もしていない
-    redirect_to destination_regist_path,method: :get
+    # @user = User.new(user_params)
+    # unless @user.valid?
+    #   flash.now[:alert] = @user.errors.full_messages
+    #   render :step1 and return
+    # end
+    # session["devise.regist_data"] = {user: @user.attributes}
+    # session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    # @destination = @user.build_destination
+
+
+    redirect_to destination_regist_path, method: :get
   end
 
   def step3
