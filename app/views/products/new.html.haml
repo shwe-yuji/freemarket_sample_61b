@@ -1,7 +1,6 @@
 - content_for(:title, '商品の情報を入力 - メルカリ スマホでかんたん フリマアプリ')
 .wrapper
   = render "products/logo-header"
-
   .sell-area
     .sell-area__title 
       商品の情報を入力
@@ -83,12 +82,17 @@
         発送元の地域
         %span.form-require 必須
         .sell-area__delivery__origin__select
-          %select.sell-area__delivery__origin__default
+          = form_with model: @prefecture, local: true do |f|
+            = f.collection_select :prefecture, Prefecture.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default"
       .sell-area__delivery__days
         発送までの日数
         %span.form-require 必須
         .sell-area__delivery__days__select
           %select.sell-area__delivery__days__default
+            %option{value: ""} ---
+            %option{value: ""} 1~2日で発送
+            %option{value: ""} 2~3日で発送
+            %option{value: ""} 4~7日で発送
     .sell-area__selling
       %h3.sell-area__selling__price
         販売価格(300〜9,999,999)
