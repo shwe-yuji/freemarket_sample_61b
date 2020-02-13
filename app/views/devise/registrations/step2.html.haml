@@ -4,8 +4,9 @@
     .field
       = f.label '電話番号'
       %br/
-      = f.phone_field :phone_number, placeholder: 'phone_number'
-    
+      = f.phone_field :phone_number, placeholder: '携帯電話の番号を入力'
+      
+      = f.submit value: '次へ' 
     
   -# %form{action:"phone_regist", method: :post}
   -# 電話番号
