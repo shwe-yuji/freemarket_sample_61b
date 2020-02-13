@@ -259,9 +259,9 @@
     }
 
     &__button--gray {
+      display: inherit;
       line-height: 48px;
       width: 45%;
-      text-align: center;
       margin: 24px auto 0px;
       color: white;
       background-color:#AAAAAA;
