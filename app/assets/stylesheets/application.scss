@@ -1,12 +1,17 @@
-@import './reset';
-@import 'font-awesome-sprockets';
-@import 'font-awesome';
-@import 'color_config';
-@import './header';
-@import 'footer';
-@import 'cameraicon';
+@import "reset";
+@import "mixin/mixin";
+@import "cameraicon";
+@import "color_config";
+@import "footer";
+@import "./header";
+@import "./home";
+@import "logo-footer";
+@import "logo-header";
+@import "mypage";
+@import "user_edit";
+@import "products";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
-@import './home';
-@import 'mypage';
-@import 'user_edit';
+
 
