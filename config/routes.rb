@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'products/new'
+  resources :products
   get 'home/top'
   resources :users, only: [:show, :edit]
 end
