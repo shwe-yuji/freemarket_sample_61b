@@ -63,7 +63,8 @@
     .sell-area__delivery
       %h3.sell-area__delivery__method
         配送について
-      %a.form-question{href: "/", target: "_blank"} ?
+      =link_to "#", class: "form-question" do
+        ?
       .sell-area__delivery__burden
         配送料の負担
         %span.form-require 必須
@@ -90,7 +91,8 @@
     .sell-area__selling
       %h3.sell-area__selling__price
         販売価格(300〜9,999,999)
-      %a.form-question{href: "/", target: "_blank"} ?
+      =link_to "#", class: "form-question" do
+        ?
       .sell-area__selling__form-group--top
         .sell-area__selling--left
           価格
