@@ -13,4 +13,8 @@
         .submit
           .submit__btn
             = link_to "marpacriをはじめる", "/"
+  .banner
+    -# 仮置のバナーです。現在トップページにあるバナーと置き換え予定
+    %p
+      = image_tag 'logo_white.svg', width: '340px', class: 'img'
   = render 'devise/shared/footer'
