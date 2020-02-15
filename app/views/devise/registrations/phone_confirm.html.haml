@@ -1,0 +1,6 @@
+%h 電話番号認証 sms入力
+= session[:sms_num]
+
+= form_with(url: '#') do |f|
+  = f.number_field :input_sms_number, placeholder: 'SMSで送られた番号を入力してきださい'
+  = f.submit value: '送信'

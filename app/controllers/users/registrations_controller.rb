@@ -16,30 +16,45 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    binding.pry
     @destination = @user.build_destination
+    # binding.pry
     redirect_to phone_regist_path, method: :get
   end
 
   def step2
-    # @user = User.new(phone_num_params) 仮に置くとこんな感じ？
-    #電話番号認証の実装
   end
 
   def step2_regist
-    #特に何もしていない
-    # @user = User.new(user_params)
-    # unless @user.valid?
-    #   flash.now[:alert] = @user.errors.full_messages
-    #   render :step1 and return
-    # end
-    # session["devise.regist_data"] = {user: @user.attributes}
-    # session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    # @destination = @user.build_destination
-
-
-    redirect_to destination_regist_path, method: :get
+    input_phone_number = params[:input_phone_number]
+    sms_num = rand(10000..99999)
+    session[:sms_num] = sms_num
+    # binding.pry
+    if input_phone_number.present?
+      redirect_to phone_confirm_path, method: :get
+    else
+      render phone_regist_path
+    end
   end
 
+
+  def phone_confirm
+  end
+
+  def phone_confirm_input
+    input_sms_number = params[:input_sms_number].to_i
+    binding.pry
+    if session[:sms_num] == input_sms_number
+      redirect_to destination_regist_path, method: :get
+    else
+      render phone_regist_path
+      flash.now[:alert] = '最初からやり直してください'
+    end
+  end
+
+
+
+  
   def step3
     #住所登録
     @destination = Destination.new

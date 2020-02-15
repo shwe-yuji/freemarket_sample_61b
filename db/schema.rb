@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2020_02_09_133254) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_areas_on_name", unique: true
   end
 
   create_table "destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -52,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_02_09_133254) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
+
   add_foreign_key "destinations", "areas"
   add_foreign_key "destinations", "users"
-
 end
