@@ -7,7 +7,7 @@ class CreateDestinations < ActiveRecord::Migration[5.2]
       t.string :firstname_kana ,null: false
       t.string :lastname_kana,null: false
       t.string :postal_code ,null: false
-      t.references :area ,foreign_key: true , null: false
+      t.integer :area_id , null: false
       t.string  :city,null: false
       t.string  :street_address,null: false
       t.string  :building_name

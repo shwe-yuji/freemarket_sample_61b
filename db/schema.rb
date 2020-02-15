@@ -12,12 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_02_09_133254) do
 
-  create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "firstname", null: false
@@ -25,24 +19,15 @@ ActiveRecord::Schema.define(version: 2020_02_09_133254) do
     t.string "firstname_kana", null: false
     t.string "lastname_kana", null: false
     t.string "postal_code", null: false
-    t.bigint "area_id", null: false
+    t.integer "area_id", null: false
     t.string "city", null: false
     t.string "street_address", null: false
     t.string "building_name"
     t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["area_id"], name: "index_destinations_on_area_id"
     t.index ["user_id"], name: "index_destinations_on_user_id", unique: true
   end
-
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "prefecture_id"
-    t.string "city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
@@ -60,7 +45,6 @@ ActiveRecord::Schema.define(version: 2020_02_09_133254) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
-  add_foreign_key "destinations", "areas"
-  add_foreign_key "destinations", "users"
 
+  add_foreign_key "destinations", "users"
 end
