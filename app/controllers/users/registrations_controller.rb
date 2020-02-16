@@ -14,7 +14,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    binding.pry
     @destination = @user.build_destination
     redirect_to phone_regist_path
   end
