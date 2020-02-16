@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  before_action :delete_sms_num, only: [:step3]
 
   def step1
     @user = User.new
@@ -50,9 +51,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   
   def step3
-    if session[:sms_num].nil?
-      redirect_to phone_regist_path, method: :get
-    end
     @destination = Destination.new
   end
 
@@ -115,6 +113,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
                                     :building_name,
                                     :phone_number
     )
+  end
+
+  def delete_sms_num
+    session.delete(:sms_num)
   end
   # GET /resource/edit
   # def edit
