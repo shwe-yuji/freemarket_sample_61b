@@ -24,7 +24,7 @@
   .field
     = f.label :area_id
     %br/
-    = f.text_field :area_id
+    = f.collection_select :area_id, Area.all, :id, :name
   .field
     = f.label :city
     %br/
