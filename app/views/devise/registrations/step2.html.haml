@@ -1,7 +1,9 @@
 .wrapper
   %h2 電話番号認証画面
-  %form{action:"phone_regist", method: :post}
-    電話番号
-    %input{type: "tel", name: "tel_no", size: "11"}
-    %input{type: "submit", value: "次へ進む"}
-    .submit
+  = form_with(url: phone_regist_path, mehotd: :post) do |f|
+    .field
+      = f.label '電話番号'
+      %br/
+      = f.text_field :input_phone_number, placeholder: '携帯電話の番号を入力', required: true
+      
+      = f.submit value: '次へ' 

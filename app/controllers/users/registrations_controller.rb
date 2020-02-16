@@ -1,8 +1,7 @@
-# frozen_string_literal: true
-
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
+  before_action :delete_sms_num, only: [:step3]
 
   def step1
     @user = User.new
@@ -17,20 +16,41 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @destination = @user.build_destination
-    redirect_to phone_regist_path,method: :get
+    redirect_to phone_regist_path
   end
 
-  # def step2
-  #   #電話番号認証の実装
-  # end
+  def step2
+  end
 
   def step2_regist
-    #特に何もしていない
-    redirect_to destination_regist_path,method: :get
+    input_phone_number = params[:input_phone_number].sub(/\A./,'+81').gsub(/-/,"").to_i
+    sms_num = rand(10000..99999)
+    session[:sms_num] = sms_num
+    client = Twilio::REST::Client.new(config.account_sid, config.auth_token)
+    begin
+      client.messages.create(
+        from: Rails.application.credentials[:TWILIO_NUMBER],
+        to: input_phone_number,
+        body: "#{sms_num}を入力してください"
+      )
+    rescue Twilio::REST::RestError => e
+    end
+    redirect_to phone_confirm_path
   end
 
+  def phone_confirm
+  end
+
+  def phone_confirm_input
+    input_sms_number = params[:input_sms_number].to_i
+    if session[:sms_num] === input_sms_number
+      redirect_to destination_regist_path
+    else
+      redirect_to phone_regist_path
+    end
+  end
+  
   def step3
-    #住所登録
     @destination = Destination.new
   end
 
@@ -93,6 +113,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
                                     :building_name,
                                     :phone_number
     )
+  end
+
+  def delete_sms_num
+    session.delete(:sms_num)
   end
   # GET /resource/edit
   # def edit
