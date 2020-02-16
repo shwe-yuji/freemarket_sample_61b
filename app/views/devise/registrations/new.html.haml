@@ -18,14 +18,4 @@
         .signup-area__link-box__google
           = image_tag "svg/iconfinder_Google_1298745.svg", size: "18x18", class: 'signup-area__link-box__google--icon'
           Googleで登録する
-  .regulations
-    = link_to '#' do
-      .regulations__regulation プライバシーポリシー
-    = link_to '#' do
-      .regulations__regulation メルカリ利用規約
-    = link_to '#' do
-      .regulations__regulation 特定商取引に関する表記
-  .link-logo
-    = link_to '#' do
-      = image_tag "svg/logo_gray.svg", size: "100x100", class: 'link-logo__svg-image'
-  .mercari © Mercari, Inc.
+  = render "devise/shared/footer"

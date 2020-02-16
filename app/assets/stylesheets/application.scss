@@ -1,6 +1,11 @@
-@import "font-awesome-sprockets";
-@import "font-awesome";
-
+@import "mixin.scss";
 @import "header";
 @import "home";
-@import "new_registration"
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "reset";
+@import "structure_tag";
+
+@import "new_registration";
+@import "modules/progress_bar";
+@import "registration_wizard";
