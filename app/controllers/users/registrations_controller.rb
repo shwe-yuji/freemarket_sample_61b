@@ -23,7 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def step2_regist
-    input_phone_number = params[:input_phone_number].sub(/\A./,'+81').to_i
+    input_phone_number = params[:input_phone_number].sub(/\A./,'+81').gsub(/-/,"").to_i
     sms_num = rand(10000..99999)
     session[:sms_num] = sms_num
     client = Twilio::REST::Client.new(config.account_sid, config.auth_token)
