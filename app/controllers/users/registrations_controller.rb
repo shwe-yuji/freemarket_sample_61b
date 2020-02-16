@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
@@ -18,45 +16,44 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     binding.pry
     @destination = @user.build_destination
-    # binding.pry
-    redirect_to phone_regist_path, method: :get
+    redirect_to phone_regist_path
   end
 
   def step2
   end
 
   def step2_regist
-    input_phone_number = params[:input_phone_number]
+    input_phone_number = params[:input_phone_number].sub(/\A./,'+81').to_i
     sms_num = rand(10000..99999)
     session[:sms_num] = sms_num
-    # binding.pry
-    if input_phone_number.present?
-      redirect_to phone_confirm_path, method: :get
-    else
-      render phone_regist_path
+    client = Twilio::REST::Client.new(config.account_sid, config.auth_token)
+    begin
+      client.messages.create(
+        from: Rails.application.credentials[:TWILIO_NUMBER],
+        to: input_phone_number,
+        body: "#{sms_num}を入力してください"
+      )
+    rescue Twilio::REST::RestError => e
     end
+    redirect_to phone_confirm_path
   end
-
 
   def phone_confirm
   end
 
   def phone_confirm_input
     input_sms_number = params[:input_sms_number].to_i
-    binding.pry
-    if session[:sms_num] == input_sms_number
-      redirect_to destination_regist_path, method: :get
+    if session[:sms_num] === input_sms_number
+      redirect_to destination_regist_path
     else
-      render phone_regist_path
-      flash.now[:alert] = '最初からやり直してください'
+      redirect_to phone_regist_path
     end
   end
-
-
-
   
   def step3
-    #住所登録
+    if session[:sms_num].nil?
+      redirect_to phone_regist_path, method: :get
+    end
     @destination = Destination.new
   end
 
