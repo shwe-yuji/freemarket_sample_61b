@@ -1,19 +1,66 @@
+
+-#.wrapper
+-#  %h2 クレジットカード情報登録
+-#  %form{action:"creditcard_regist", method: :post}
+-#    カード番号
+-#    %input{type: "number", name: "card_no", size: "16"}
+-#    %br
+-#    有効期間
+-#    %br/
+-#   月
+-#    %input{type: "number", name: "month", size: "2",maximum: "12",minimum: "1"}
+-#    年
+-#    %input{type: "number", name: "year", size: "2"}
+-#    %br/
+-#    %br/
+-#    セキュリティコード
+-#    %input{type: "number", name: "seq_code", size: "4"}
+-#    %br/
+-#    %input{type: "submit", value: "次へ進む"}
+-#    .submit
+
+- @p_bar = 4
 .wrapper
-  %h2 クレジットカード情報登録
-  %form{action:"creditcard_regist", method: :post}
-    カード番号
-    %input{type: "number", name: "card_no", size: "16"}
-    %br
-    有効期間
-    %br/
-    月
-    %input{type: "number", name: "month", size: "2",maximum: "12",minimum: "1"}
-    年
-    %input{type: "number", name: "year", size: "2"}
-    %br/
-    %br/
-    セキュリティコード
-    %input{type: "number", name: "seq_code", size: "4"}
-    %br/
-    %input{type: "submit", value: "次へ進む"}
-    .submit
+  = render 'devise/shared/header', p_bar: @p_bar
+
+  .container
+    %h2.title 支払い方法
+    .form
+      = form_with(url: creditcard_regist, class: 'form__fields') do |f|
+        -# = render 'devise/shared/error_messages', resource: @address
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"カード番号"
+            %span.form__fields__field__label--icon 必須
+          = f.text_field :card_number, class: 'form__fields__field--input',placeholder: "半角数字のみ", required: true, maxlength: '16'
+          .form__fields__field__card-logo
+            = image_tag 'png/card_visa.png', height: '23', class: 'logo'
+            = image_tag 'png/card_mastercard.png', height: '23', class: 'logo'
+            = image_tag 'png/card_saison.png', height: '23', class: 'logo'
+            = image_tag 'png/card_jcb.png', height: '23', class: 'logo'
+            = image_tag 'png/card_amex.png', height: '23', class: 'logo'
+            = image_tag 'png/card_diners.png', height: '23', class: 'logo'
+            = image_tag 'png/card_discover.png', height: '23', class: 'logo'
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"有効期限"
+            %span.form__fields__field__label--icon 必須
+          .form__fields__field--select
+            = f.select :month, ['--'], {},{class: 'card'}
+            %label.card 月
+            = f.select :year,['--'], {},{class: 'card'}
+            %label.card 年
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"セキュリティコード"
+            %span.form__fields__field__label--icon 必須
+          = f.text_field :securitycord, class: 'form__fields__field--input',placeholder: "カード背面4桁もしくは3桁の番号", required: true, maxlength: '4'
+          .form__fields__field--info
+            = link_to '#' do
+              = fa_icon 'question-circle'
+              = "カード裏面の番号とは？"
+
+        .submit
+          = f.submit "次へ進む", class: 'submit__btn'
+
+  = render 'devise/shared/footer'
