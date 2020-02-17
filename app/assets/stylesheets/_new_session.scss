@@ -68,6 +68,9 @@ $form_background_color: rgb(245,245,245);
         width: 290px;
         margin-top: 18px;
       }
+      .g-recaptcha {
+        margin: 16px 0 10px;
+      }
       .submit {
         @include buttonStyle;
       }
