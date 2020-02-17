@@ -55,4 +55,5 @@ ActiveRecord::Schema.define(version: 2020_02_09_133254) do
 
   add_foreign_key "destinations", "areas"
   add_foreign_key "destinations", "users"
+
 end
