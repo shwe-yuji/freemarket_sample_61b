@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  require "payjp"
+  before_action :set_card, only: [:step4_regist]
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -46,20 +48,38 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.build_destination(@destination.attributes)
     @user.save
     sign_in(:user, @user)
-    
     redirect_to creditcard_regist_path,method: :get
 
   end
 
-  # def step4
-  #   #お支払い情報
-  # end
 
-  def step4_regist
-    #クレカ情報登録して登録完了のviewにいく
-    render :create
+  def step4 # カードの登録画面。送信ボタンを押すとcreateアクションへ。
+    card = Card.where(user_id: current_user.id).first
+    redirect_to :root if card.present?
+    render "/devise/registrations/step4"
   end
 
+  def step4_regist #PayjpとCardのデータベースを作成
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+
+    if params['payjp-token'].blank?
+      redirect_to creditcard_regist_path,method: :get
+    else
+      # トークンが正常に発行されていたら、顧客情報をPAY.JPに登録します。
+      customer = Payjp::Customer.create(
+        description: 'test', # 無くてもOK。PAY.JPの顧客情報に表示する概要です。
+        email: current_user.email,
+        card: params['payjp-token'], # 直前のnewアクションで発行され、送られてくるトークンをここで顧客に紐付けて永久保存します。
+        metadata: {user_id: current_user.id} # 無くてもOK。
+      )
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @card.save
+        render :registed
+      else
+        redirect_to creditcard_regist_path,method: :get
+      end
+    end
+  end
 
   private
 
@@ -67,6 +87,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   end
 
+  def set_card
+    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  end
   
   private
   def user_params

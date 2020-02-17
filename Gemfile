@@ -83,3 +83,6 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'font-awesome-rails'
 gem 'active_hash'
+gem 'payjp'
+gem 'dotenv-rails'
+gem "jquery-rails"
