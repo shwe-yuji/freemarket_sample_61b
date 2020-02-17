@@ -19,6 +19,7 @@
     = form_with(url: user_session_path, class: 'signin-area__input') do |f|
       = f.email_field :email, placeholder: 'メールアドレス', class: 'signin-area__input--email', required: true
       = f.password_field :password, placeholder: 'パスワード', class: 'signin-area__input--pw', required: true
+      .g-recaptcha{ 'data-callback': 'clearcall' ,'data-sitekey': '6LeEetkUAAAAAFzCTSZlSRClftFxVZ5c1BkZLVHX'}
       = f.submit 'ログイン', class: 'submit'
       .signin-area__input--info
         = link_to 'パスワードをお忘れの方', '#'
