@@ -73,13 +73,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
 
-  def step4 
+  def step4
     card = Card.where(user_id: current_user.id).first
     redirect_to :root if card.present?
     render "/devise/registrations/step4"
   end
 
-  def step4_regist 
+  def step4_regist
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
 
     if params['payjp-token'].blank?
