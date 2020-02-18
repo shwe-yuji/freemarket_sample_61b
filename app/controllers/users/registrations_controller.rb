@@ -53,24 +53,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
 
-  def step4 # カードの登録画面。送信ボタンを押すとcreateアクションへ。
+  def step4 
     card = Card.where(user_id: current_user.id).first
     redirect_to :root if card.present?
     render "/devise/registrations/step4"
   end
 
-  def step4_regist #PayjpとCardのデータベースを作成
+  def step4_regist 
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
 
     if params['payjp-token'].blank?
       redirect_to creditcard_regist_path,method: :get
     else
-      # トークンが正常に発行されていたら、顧客情報をPAY.JPに登録します。
+      
       customer = Payjp::Customer.create(
-        description: 'test', # 無くてもOK。PAY.JPの顧客情報に表示する概要です。
+        description: 'test', 
         email: current_user.email,
-        card: params['payjp-token'], # 直前のnewアクションで発行され、送られてくるトークンをここで顧客に紐付けて永久保存します。
-        metadata: {user_id: current_user.id} # 無くてもOK。
+        card: params['payjp-token'],
+        metadata: {user_id: current_user.id} 
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
