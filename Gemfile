@@ -77,8 +77,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'carrierwave'
 gem 'fog-aws'
-gem 'haml-rails'
 gem 'active_hash'
+gem 'haml-rails'
 gem 'font-awesome-sass'
 gem 'devise-i18n'
 gem 'devise-i18n-views'

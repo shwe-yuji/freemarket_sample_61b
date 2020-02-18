@@ -96,7 +96,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if @card.save
         render :registed
       else
-        redirect_to creditcard_regist_path,method: :get
+        redirect_to creditcard_regist_path, method: :get
       end
     end
   end
