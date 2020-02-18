@@ -28,4 +28,3 @@
 /config/secrets.yml
 /config/credentials.yml.enc
 .env
-app/.DS_Store

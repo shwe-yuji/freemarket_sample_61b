@@ -1,21 +1,11 @@
-- content_for(:title, '会員情報入力 - メルカリ スマホでかんたん フリマアプリ')
-.wrapper
-  .logo-title
-    = link_to '#' do
-      = image_tag "svg/fmarket_logo_red.svg", size: "150x100", class: 'logo-title__svg-image'
-  .signup-area
-    .signup-area__title 新規会員登録
-    .signup-area__link-box
-      = link_to 'user_regist_path' do
-        .signup-area__link-box__email
-          = image_tag "svg/iconfinder_message_214645.svg", size: "20x20", class: 'signup-area__link-box__email--icon'
-          メールアドレスで登録する
-      = link_to '#' do
-        .signup-area__link-box__facebook
-          = image_tag "svg/iconfinder_facebook_1807546.svg", size: "25x25", class: 'signup-area__link-box__facebook--icon'
-          Facebookで登録
-      = link_to '#' do
-        .signup-area__link-box__google
-          = image_tag "svg/iconfinder_Google_1298745.svg", size: "18x18", class: 'signup-area__link-box__google--icon'
-          Googleで登録する
-  = render "devise/shared/footer"
+%h2 サインアップ画面
+
+%br/
+%h3
+  = link_to "メールアドレス", user_regist_path 
+
+%br/
+%h3 facebook
+
+%br/
+%h3 Gmail
