@@ -1,40 +1,40 @@
-%h2 新規ユーザ登録
-= form_with(model: @user,url: user_regist_path, id:'new_user', class: 'new_user', local:true) do |f|
-  .field
-    = f.label :nickname
-    %br/
-    = f.text_field :nickname
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :firstname
-    %br/
-    = f.text_field :firstname
-  .field
-    = f.label :lastname
-    %br/
-    = f.text_field :lastname
-  .field
-    = f.label :firstname_kana
-    %br/
-    = f.text_field :firstname_kana
-  .field
-    = f.label :lastname_kana
-    %br/
-    = f.text_field :lastname_kana
-  .field
-    = f.label :birthdate
-    %br/
-    = f.text_field :birthdate
-  .actions
-    = f.submit "次へ進む"
-= render "devise/shared/links"
+-# %h2 新規ユーザ登録
+-# = form_with(model: @user,url: user_regist_path, id:'new_user', class: 'new_user', local:true) do |f|
+-#   .field
+-#     = f.label :nickname
+-#     %br/
+-#     = f.text_field :nickname
+-#   .field
+-#     = f.label :password
+-#     - if @minimum_password_length
+-#       %em
+-#         (#{@minimum_password_length} characters minimum)
+-#     %br/
+-#     = f.password_field :password, autocomplete: "new-password"
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :firstname
+-#     %br/
+-#     = f.text_field :firstname
+-#   .field
+-#     = f.label :lastname
+-#     %br/
+-#     = f.text_field :lastname
+-#   .field
+-#     = f.label :firstname_kana
+-#     %br/
+-#     = f.text_field :firstname_kana
+-#   .field
+-#     = f.label :lastname_kana
+-#     %br/
+-#     = f.text_field :lastname_kana
+-#   .field
+-#     = f.label :birthdate
+-#     %br/
+-#     = f.text_field :birthdate
+-#   .actions
+-#     = f.submit "次へ進む"
+-# = render "devise/shared/links"
