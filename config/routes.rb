@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     post 'destination_regist', to: 'users/registrations#step3_regist'
     get 'creditcard_regist', to: 'users/registrations#step4'
     post 'creditcard_regist', to: 'users/registrations#step4_regist'
-    get 'registed',to: 'users/registrations#registed'
+    get 'registed', to: 'users/registrations#registed'
   end
 
   root to: "home#top"
