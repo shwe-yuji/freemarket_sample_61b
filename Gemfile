@@ -86,3 +86,5 @@ gem 'active_hash'
 gem 'payjp'
 gem 'dotenv-rails'
 gem "jquery-rails"
+gem 'twilio-ruby'
+gem 'active_hash'
