@@ -10,13 +10,15 @@
   position: fixed;
   right: 20px;
   bottom: 20px;
-
+  z-index: 1;
+  
   &--text {
     padding-top: 30px;
     margin-bottom: 8px;
     font-size: 22px;
   }
-  &--camera {
-    font-size: 55px;
+  
+  .camera {
+    font-size: 50px;
   }
 }
