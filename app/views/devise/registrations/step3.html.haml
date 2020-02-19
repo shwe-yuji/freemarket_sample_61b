@@ -43,3 +43,67 @@
 -#     =  f.text_field :phone_number
 -#   .actions
 -#     = f.submit "次へ進む"
+
+- @p_bar = 3
+- area = ['北海道','東京都','京都府','沖縄県']
+
+.wrapper
+  = render 'devise/shared/header', p_bar: @p_bar
+
+  .container
+    %h2.title 住所入力
+    .form
+      = form_with(model: @destination,url: destination_regist, class: 'form__fields') do |f|
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"お名前(全角)"
+            %span.form__fields__field__label--icon 必須
+          = f.text_field :firstname, class: 'form__fields__field--input', placeholder: "例)織田", required: true
+          = f.text_field :lastname, class: 'form__fields__field--input', placeholder: "例)信長", required: true
+
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"お名前カナ(全角)"
+            %span.form__fields__field__label--icon 必須
+          = f.text_field :firstname_kana, class: 'form__fields__field--input', placeholder: "例)オダ", required: true
+          = f.text_field :lastname_kana, class: 'form__fields__field--input', placeholder: "例)ノブナガ", required: true
+
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"郵便番号"
+            %span.form__fields__field__label--icon 必須
+          = f.text_field :postal_code, class: 'form__fields__field--input', placeholder: "例)123-4567", required: true
+
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"都道府県"
+            %span.form__fields__field__label--icon 必須
+          .form__fields__field--select
+            = f.select :area_id, area, {}, class: 'area', required: true
+
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"市区町村"
+            %span.form__fields__field__label--icon 必須
+          = f.text_field :city, class: 'form__fields__field--input', placeholder: "例)京都市中京区", required: true
+
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"番地"
+            %span.form__fields__field__label--icon 必須
+          = f.text_field :street_address, class: 'form__fields__field--input', placeholder: "例)寺町通御池通下ル下本能寺前町522", required: true
+
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"建物名"
+          = f.text_field :building_name, class: 'form__fields__field--input', placeholder: "例)本能寺"
+
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"携帯電話の番号"
+          = f.telephone_field :phone_number, class: 'form__fields__field--input', placeholder: "例)09012345678"
+
+        .submit
+          = f.submit '次へ進む', class: 'submit__btn'
+
+  = render 'devise/shared/footer'
