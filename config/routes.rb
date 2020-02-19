@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit] do
     resources :credit_cards, only: [:show]
   end
+  resources :home, only: [:show]
 end
