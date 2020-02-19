@@ -90,6 +90,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   private
   def user_params
+
+    ="#{params[:birth_year]+params[:birth_month]+params[:birth_day]}"
+
     params.require(:user).permit(:nickname,
                                  :password,
                                  :email, 
@@ -97,7 +100,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
                                  :lastname, 
                                  :firstname_kana, 
                                  :lastname_kana, 
-                                 :birthdate
+                                 :birth_year,
+                                 :birth_month,
+                                 :birth_day
                                  )
   end
 
