@@ -1,4 +1,9 @@
-= render 'home/header'
-= render 'users/mypage_links'
-= render 'home/cameraicon'
-= render 'home/footer'
+.header
+  = render 'home/header'
+.mypage-wrapper
+  = render 'users/mypage_links'
+  = render 'non_credit_cards_form' #クレジットカード登録前
+  -# = render 'credit_cards_form' #クレジットカード登録後
+.footer
+  = render 'home/cameraicon'
+  = render 'home/footer'
