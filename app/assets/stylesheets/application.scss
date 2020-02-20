@@ -12,7 +12,16 @@
 @import "products";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
 @import "reset";
 @import "cameraicon";
-@import "show"
+@import "show";
+@import "mixin.scss";
+@import "header";
+@import "home";
+@import "structure_tag";
 
+@import "new_registration";
+@import "new_session";
+@import "modules/progress_bar";
+@import "registration_wizard";

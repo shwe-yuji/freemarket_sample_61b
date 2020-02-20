@@ -1,9 +1,34 @@
--# .wrapper
--#   %h2 電話番号認証画面
--#   = form_with(url: phone_regist_path, mehotd: :post) do |f|
--#     .field
--#       = f.label '電話番号'
--#       %br/
--#       = f.text_field :input_phone_number, placeholder: '携帯電話の番号を入力', required: true
-      
--#       = f.submit value: '次へ' 
+-#.wrapper
+-#  %h2 電話番号認証画面
+-#  = form_with(url: phone_regist_path, mehotd: :post) do |f|
+-#    .field
+-#      = f.label '電話番号'
+-#      %br/
+-#      = f.text_field :input_phone_number, placeholder: '携帯電話の番号を入力', required: true
+-#
+-#      = f.submit value: '次へ'
+-#
+- @p_bar = 2
+.wrapper
+  = render "devise/shared/header", p_bar: @p_bar
+
+  .container
+    %h2.title 電話番号の確認
+    .form
+      = form_with(url: phone_regist_path, class: "form__fields") do |f|
+        -# = render "devise/shared/error_messages", resource: @user
+        .form__fields__field
+          = f.label :"携帯電話の番号", class: 'form__fields__field--label'
+          = f.telephone_field :telephone, class: 'form__fields__field--input', placeholder: "携帯電話の番号を入力", required: true
+          .form__fields__field--guide
+            本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+        .submit
+          = f.submit "SMSを送信する", class: 'submit__btn'
+          .submit--attention
+            ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+        .link
+          = link_to '#' do
+            = "電話番号の確認が必要な理由"
+            = fa_icon 'chevron-right'
+
+  = render "devise/shared/footer"
