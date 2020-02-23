@@ -70,7 +70,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.build_destination(@destination.attributes)
     @user.save
     sign_in(:user, @user)
-    redirect_to creditcard_regist_path , method: :get
+    redirect_to creditcard_regist_path, method: :get
 
   end
 
@@ -83,7 +83,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def step4_regist
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     if params['payjp-token'].blank?
-      redirect_to creditcard_regist_path , method: :get
+      redirect_to creditcard_regist_path, method: :get
     else
 
       customer = Payjp::Customer.create(
@@ -94,7 +94,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to registed_path , method: :post
+        redirect_to registed_path, method: :post
 
       else
         redirect_to creditcard_regist_path, method: :get
