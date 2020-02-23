@@ -1,0 +1,20 @@
+-# 商品出品が機能してるかのテスト用のビュー
+= link_to '出品', new_product_path
+- @products.each do |product|
+  
+  %h3.sell-area__name
+    商品名
+  %p= product.name # 商品名
+  %h3.sell-area__name
+    商品の状態
+  %p= product.condition.value # 商品の状態
+  %h3.sell-area__name
+    地域名
+  %p= product.area.name # 地域名
+  %h3.sell-area__name
+    配送までの日数
+  %p= product.shipdate.value # 
+  %h3.sell-area__name
+    画像
+
+
