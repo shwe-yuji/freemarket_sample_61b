@@ -1,270 +1,294 @@
-.sell-area {
-  background-color: #fff;
-  text-align: center;
-  margin: 0 auto;
-  width: 700px;
+.sell-area__container {
+  background-color: rgb(245, 245, 245);
+}
 
-  &__title {
-    font-size: 22px;
-    font-weight: bold;
-    padding: 32px 16px;
-    border-bottom: 1px solid rgb(245, 245, 245);
-  }
+  .sell-area {
+    background-color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    width: 700px;
 
-  &__form {
-    border-bottom: 1px solid #eee;
-  }
-
-    &__upload {
-    width: 620px;
-    padding: 40px;
+    &__title {
+      font-size: 22px;
+      font-weight: bold;
+      padding: 32px 16px;
+      border-bottom: 1px solid rgb(245, 245, 245);
     }
 
-      &__header {
-        text-align: left;
-        font-weight: bold;
+    &__form {
+      border-bottom: 1px solid #eee;
+    }
+
+      &__upload {
+      width: 620px;
+      padding: 40px;
       }
+
+        &__header {
+          text-align: left;
+          font-weight: bold;
+        }
+
+          .form-require  {
+            @include form-require;
+          }
+
+        &__text {
+          text-align: left;
+          margin: 8px 0px 0px ;
+          font-size: 14px;
+        }
+
+        &__dropbox {
+          &__img {
+            display: block;
+            text-align: center;
+            border: 1px dashed lightgray;
+            min-width: 115px;
+            height: 160px;
+            background: #f5f5f5;
+            margin-top: 16px;
+            cursor: pointer;
+            p {
+              font-size: 13px;
+              margin-top: 55px;
+            }
+            input[type="file"] {
+              display: none;
+            }
+          }
+        }
+
+    &__content {
+      padding: 40px;
+      border-bottom: 1px solid rgb(245, 245, 245);
+    }
+      &__name {
+        @include products-detalis;
+      }
+        &__name__form {
+          width: 586px;
+          padding: 12px 16px 10px;
+          margin: 8px 0px 0px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+        }
+
+      &__description {
+        @include products-detalis;
+        margin: 40px 0 0;
+      }
+
+      &__description__textarea {
+        width: 586px;
+        min-height: 118px;
+        padding: 12px 16px 10px;
+        margin: 8px 0px 0px;
+        border: 1px solid #ccc;
+        background: #fff;
+        font-size: 16px;
+    }
+  // 商品の詳細
+    &__details {
+      height: 281px;
+      padding: 40px;
+      border-bottom: 1px solid rgb(245, 245, 245);
+
+      &__name {
+        @include sub-head;
+      }
+
+      &__category {
+        @include list;
 
         .form-require  {
           @include form-require;
         }
 
-      &__text {
-        text-align: left;
-        margin: 8px 0px 0px ;
-        font-size: 14px;
-      }
-
-      &__dropbox {
-        &__img {
-          display: block;
-          text-align: center;
-          border: 1px dashed lightgray;
-          min-width: 115px;
-          height: 160px;
-          background: #f5f5f5;
-          margin-top: 16px;
-          cursor: pointer;
-          input[type="file"] {
-            display: none;
-          }
-          p {
-            font-size: 13px;
-            margin-top: 55px;
+          &__default {
+            @include default;
           }
         }
-      }
 
-  &__content {
-    padding: 40px;
-    border-bottom: 1px solid rgb(245, 245, 245);
-  }
-    &__name {
-      @include products-detalis;
-    }
-      &__name__form {
-        width: 586px;
-        padding: 12px 16px 10px;
-        margin: 8px 0px 0px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        background: #fff;
-        line-height: 1.5;
-        font-size: 16px;
-      }
+      &__brand {
+        @include list;
+        margin: 32px 0px 0px;
 
-    &__description {
-      @include products-detalis;
-      margin: 40px 0 0;
-    }
+        .form-any  {
+          margin: 0 0 0 8px;
+          padding: 4px 4px;
+          border-radius: 2px;
+          background-color: lightgray;
+          color: #fff;
+          font-size: 12px;
+          vertical-align: top;
+          font-weight: bold;
+        }
 
-    &__description__textarea {
-      width: 586px;
-      min-height: 118px;
-      padding: 12px 16px 10px;
-      margin: 8px 0px 0px;
-      border: 1px solid #ccc;
-      background: #fff;
-      font-size: 16px;
-  }
-// 商品の詳細
-  &__details {
-    height: 180px;
-    padding: 40px;
-    border-bottom: 1px solid rgb(245, 245, 245);
+          &__default {
+            @include default;
+          }
+        }
 
-    &__name {
-      @include sub-head;
-    }
+      &__status {
+        @include list;
+        margin: 32px 0px 0px;
 
-    &__category {
-      @include list;
+        .form-require  {
+          @include form-require;
+        }
 
-      .form-require  {
-        @include form-require;
-      }
-
-        &__default {
-          @include default;
+          &__default {
+            @include default;
+          }
         }
       }
+  // 配送について
+    &__delivery {
+      height: 281px;
+      padding: 40px;
+      border-bottom: 1px solid rgb(245, 245, 245);
 
-    &__status {
-      @include list;
-      margin: 32px 0px 0px;
-
-      .form-require  {
-        @include form-require;
+      &__method {
+        @include sub-head;
       }
 
-        &__default {
-          @include default;
+      .form-question {
+        @include form-question;
+      }
+
+      &__burden {
+        @include list;
+
+        .form-require  {
+          @include form-require;
         }
-      }
-    }
-// 配送について
-  &__delivery {
-    height: 281px;
-    padding: 40px;
-    border-bottom: 1px solid rgb(245, 245, 245);
 
-    &__method {
-      @include sub-head;
-    }
-
-    .form-question {
-      @include form-question;
-    }
-
-    &__burden {
-      @include list;
-
-      .form-require  {
-        @include form-require;
+          &__default {
+            @include default;
+          }
       }
 
-        &__default {
-          @include default;
+      &__origin {
+        @include list;
+        margin: 32px 0px 0px;
+
+        .form-require  {
+          @include form-require;
         }
-    }
 
-    &__origin {
-      @include list;
-      margin: 32px 0px 0px;
-
-      .form-require  {
-        @include form-require;
+          &__default {
+            @include default;
+          }
       }
 
-        &__default {
-          @include default;
+      &__days {
+        @include list;
+        margin: 32px 0px 0px;
+
+        .form-require  {
+          @include form-require;
         }
+
+          &__default {
+            @include default;
+          }
+      }
     }
-
-    &__days {
-      @include list;
-      margin: 32px 0px 0px;
-
-      .form-require  {
-        @include form-require;
+  // 販売価格について
+    &__selling {
+      height: 218px;
+      padding: 40px;
+      border-bottom: 1px solid rgb(245, 245, 245);
+      
+      &__price {
+        @include sub-head;
       }
 
-        &__default {
-          @include default;
+      .form-question {
+        @include form-question;
+      }
+
+      &__form-group--top {
+        @include form-group;
+        padding: 0px 0px 24px;
+      }
+
+        &--left {
+          display: inline-block;
         }
-    }
-  }
-// 販売価格について
-  &__selling {
-    height: 218px;
-    padding: 40px;
-    border-bottom: 1px solid rgb(245, 245, 245);
-    
-    &__price {
-      @include sub-head;
-    }
 
-    .form-question {
-      @include form-question;
-    }
-
-    &__form-group--top {
-      @include form-group;
-      padding: 0px 0px 24px;
-    }
-
-      &--left {
-        display: inline-block;
-      }
-
-      &--right{
-        float: right;
-      }
-      &__box {
-        height: 28px;
-        width: 126px;
-        padding: 10px 16px 8px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        text-align: right;
-    }
-
-    &__form-group--center {
-      @include form-group;
-    }
-
-      &__commission--left {
-        line-height: 15px;
-        padding: 24px 0px;
-        border-top: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
-        font-weight: lighter;
-      }
-
-        &__commission--right {
+        &--right{
           float: right;
         }
-
-    &__form-group--bottom {
-      @include form-group;
-    }
-      &__profit--left  {
-        height: 35px;
-        padding: 24px 0px;
-        font-size: 16px;
+        &__box {
+          height: 28px;
+          width: 126px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          text-align: right;
       }
 
-      &__profit--right {
-        float: right;
+      &__form-group--center {
+        @include form-group;
       }
-    }
-// 規約、出品するボタン及びもどるボタン
-  &__box {
-    height: 248px;
-    padding: 40px;
-    text-align: left;
-    font-size: 14px;
-    border-bottom: 1px solid rgb(245, 245, 245);
 
-    &__button--red  {
-      display: block;
-      width: 100%;
-      line-height: 48px;
-      margin: 40px 0 0;
-      background: #ea352d;
-      border: 1px solid #ea352d;
-      color: #fff;
+        &__commission--left {
+          line-height: 15px;
+          padding: 24px 0px;
+          border-top: 1px solid #ccc;
+          border-bottom: 1px solid #ccc;
+          font-weight: lighter;
+        }
+
+          &__commission--right {
+            float: right;
+          }
+
+      &__form-group--bottom {
+        @include form-group;
+      }
+        &__profit--left  {
+          height: 35px;
+          padding: 24px 0px;
+          font-size: 16px;
+        }
+
+        &__profit--right {
+          float: right;
+        }
+      }
+  // 規約、出品するボタン及びもどるボタン
+    &__box {
+      height: 248px;
+      padding: 40px;
+      text-align: left;
       font-size: 14px;
-      text-align: center;
-    }
+      border-bottom: 1px solid rgb(245, 245, 245);
 
-    &__button--gray {
-      display: inherit;
-      line-height: 48px;
-      width: 45%;
-      margin: 24px auto 0px;
-      color: white;
-      background-color:#AAAAAA;
+      &__button--red  {
+        display: block;
+        width: 100%;
+        line-height: 48px;
+        margin: 40px 0 0;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      &__button--gray {
+        display: inherit;
+        line-height: 48px;
+        width: 45%;
+        margin: 24px auto 0px;
+        color: white;
+        background-color:#AAAAAA;
+      }
     }
   }
-}
