@@ -13,19 +13,14 @@ Rails.application.routes.draw do
     post 'destination_regist', to: 'users/registrations#step3_regist'
     get 'creditcard_regist', to: 'users/registrations#step4'
     post 'creditcard_regist', to: 'users/registrations#step4_regist'
-    get 'registed', to: 'users/registrations#registed'
+    get 'registed', to: 'users/registrations#finish_regist'
   end
-  # ビューの動作テスト用の仮のルーティング
-  #  get 'registrations/1', to: 'users/registrations#step1'
-  #  get 'registrations/2', to: 'users/registrations#step2'
-  #  get 'registrations/3', to: 'users/registrations#step3'
-  #  get 'registrations/4', to: 'users/registrations#step4'
-  #  post 'registrations/5', to: 'users/registrations#create'
-  # end
+
   root to: "home#top"
   resources :products, only: :new
   get 'home/top'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users, only: [:show, :edit] do
+    resources :credit_cards, only: [:show]
+  end
   resources :home, only: [:show]
-  resources :users, only: [:show, :edit]
 end

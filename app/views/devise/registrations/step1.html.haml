@@ -1,50 +1,10 @@
--# %h2 新規ユーザ登録
--# = form_with(model: @user,url: user_regist_path, id:'new_user', class: 'new_user', local:true) do |f|
--#   .field
--#     = f.label :nickname
--#     %br/
--#     = f.text_field :nickname
--#   .field
--#     = f.label :password
--#     - if @minimum_password_length
--#       %em
--#         (#{@minimum_password_length} characters minimum)
--#     %br/
--#     = f.password_field :password, autocomplete: "new-password"
--#   .field
--#     = f.label :email
--#     %br/
--#     = f.email_field :email, autofocus: true, autocomplete: "email"
--#   .field
--#     = f.label :firstname
--#     %br/
--#     = f.text_field :firstname
--#   .field
--#     = f.label :lastname
--#     %br/
--#     = f.text_field :lastname
--#   .field
--#     = f.label :firstname_kana
--#     %br/
--#     = f.text_field :firstname_kana
--#   .field
--#     = f.label :lastname_kana
--#     %br/
--#     = f.text_field :lastname_kana
--#   .field
--#     = f.label :birthdate
--#     %br/
--#     = f.text_field :birthdate
--#   .actions
--#     = f.submit "次へ進む"
--# = render "devise/shared/links"
 -@p_bar = 1
 .wrapper
   = render 'devise/shared/header', p_bar: @p_bar
   .container
     %h2.title 会員情報入力
     .form
-      = form_with(url: user_regist_path, class: 'form__fields') do |f|
+      = form_with(model: @user,url: user_regist_path,method: :post, class: 'form__fields') do |f|
         .form__fields__field
           .form__fields__field__label
             = f.label :"ニックネーム"
@@ -90,12 +50,14 @@
             = f.label :"生年月日"
             %span.form__fields__field__label--icon 必須
           .form__fields__field--select
-            = f.select :birth_year,["--","1534"], {},{class: "year", id:"js-birth_year"}
-            %label 年
-            = f.select :birth_month, ["--","6"], {},{class: "month", id:"js-birth_month"}
-            %label 月
-            = f.select :birth_day, ["--","23"], {},{class: "day", id:"js-birth_day"}
-            %label 日
+            -# != sprintf(f.date_select(:birthdate, prefix:'birthdate',with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+            != sprintf(f.date_select(:birthdate, use_month_numbers: true,start_year: 1500, end_year: (Time.now.year - 10), default: Date.new(1534, 6, 23),date_separator:'%s'),'年','月')+'日'
+            -# = f.select :birth_year,["--","1534"], {},{class: "year", id:"js-birth_year"}
+            -# %label 年
+            -# = f.select :birth_month, ["--","06"], {},{class: "month", id:"js-birth_month"}
+            -# %label 月
+            -# = f.select :birth_day, ["--","23"], {},{class: "day", id:"js-birth_day"}
+            -# %label 日
             %p.form__fields__field__select--info
             %p.form__fields__field__select--attention
               ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。

@@ -1,59 +1,11 @@
--# 住所登録
--# .notifications
--# =form_with(model: @destination,url:'destination_regist') do |f|
--#   .field
--#     = f.label :firstname
--#     %br/
--#     = f.text_field :firstname
--#   .field
--#     = f.label :lastname
--#     %br/
--#     = f.text_field :lastname
--#   .field
--#     = f.label :firstname_kana
--#     %br/
--#     = f.text_field :firstname_kana
--#   .field
--#     = f.label :lastname_kana
--#     %br/
--#     = f.text_field :lastname_kana
--#   .field
--#     = f.label :postal_code
--#     %br/
--#     = f.text_field :postal_code
--#   .field
--#     = f.label :area_id
--#     %br/
--#     = f.collection_select :area_id, Area.all, :id, :name
--#   .field
--#     = f.label :city
--#     %br/
--#     = f.text_field :city
--#   .field
--#     = f.label :street_address
--#     %br/
--#     = f.text_field :street_address
--#   .field
--#     = f.label :building_name
--#     %br/
--#     =  f.text_field :building_name
--#     .field
--#     = f.label :phone_number
--#     %br/
--#     =  f.text_field :phone_number
--#   .actions
--#     = f.submit "次へ進む"
-
 - @p_bar = 3
-- area = ['北海道','東京都','京都府','沖縄県']
-
 .wrapper
   = render 'devise/shared/header', p_bar: @p_bar
 
   .container
     %h2.title 住所入力
     .form
-      = form_with(model: @destination,url: destination_regist_path, class: 'form__fields') do |f|
+      = form_with(model: @destination,url: destination_regist_path,method: :post,class: 'form__fields') do |f|
         .form__fields__field
           .form__fields__field__label
             = f.label :"お名前(全角)"
@@ -79,8 +31,8 @@
             = f.label :"都道府県"
             %span.form__fields__field__label--icon 必須
           .form__fields__field--select
-            = f.select :area_id, area, {}, class: 'area', required: true
-
+            -# = f.select :area_id, area, {}, class: 'area', required: true
+            = f.collection_select :area_id, Area.all, :id, :name, class: 'area', required: true
         .form__fields__field
           .form__fields__field__label
             = f.label :"市区町村"
