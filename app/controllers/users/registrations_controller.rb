@@ -77,12 +77,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def step4
     card = Card.where(user_id: current_user.id).first
     redirect_to :root if card.present?
-    redirect_to registed_path ,method: :post
+    # redirect_to creditcard_regist_path, method: :post
   end
 
   def step4_regist
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-
+    binding.pry
     if params['payjp-token'].blank?
       redirect_to creditcard_regist_path,method: :get
     else
@@ -95,7 +95,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        render :registed
+        redirect_to registed_path ,method: :post
+
       else
         redirect_to creditcard_regist_path, method: :get
       end
@@ -104,9 +105,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
 
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  end
 
   def set_card
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
@@ -122,7 +123,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
                                  :firstname_kana,
                                  :lastname_kana,
                                  :birthdate
-
     )
   end
 
