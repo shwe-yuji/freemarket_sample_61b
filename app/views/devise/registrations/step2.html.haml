@@ -1,13 +1,3 @@
--#.wrapper
--#  %h2 電話番号認証画面
--#  = form_with(url: phone_regist_path, mehotd: :post) do |f|
--#    .field
--#      = f.label '電話番号'
--#      %br/
--#      = f.text_field :input_phone_number, placeholder: '携帯電話の番号を入力', required: true
--#
--#      = f.submit value: '次へ'
--#
 - @p_bar = 2
 .wrapper
   = render "devise/shared/header", p_bar: @p_bar

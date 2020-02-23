@@ -1,15 +1,17 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  before_action :delete_sms_num, only: [:step3]
+  # before_action :delete_sms_num, only: [:step3]
 
   def step1
     @user = User.new
   end
 
   def step1_regist
+    binding.pry
     params[:user][:birthdate] = join_birthdate
     @user = User.new(user_params)
+    binding.pry
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
       render :step1 and return
@@ -59,6 +61,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def step3_regist
     @user = User.new(session["devise.regist_data"]["user"])
     @destination = Destination.new(destination_params)
+    binding.pry
     unless @destination.valid?
       flash.now[:alert] = @destination.errors.full_messages
       render :step3 and return
@@ -79,7 +82,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def step4_regist
     #クレカ情報登録して登録完了のviewにいく
-    render :create
+    redirect_to registed_path ,method: :post
   end
 
 
@@ -105,7 +108,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def join_birthdate
-    Date.new params[:user]["birthdate(1i)"].to_i,params[:user]["birthdate(2i)"].to_i,params[:user]["birthdate(3i)"].to_i
+    return Date.new params[:user]["birthdate(1i)"].to_i,params[:user]["birthdate(2i)"].to_i,params[:user]["birthdate(3i)"].to_i
   end
 
   def destination_params
