@@ -8,10 +8,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def step1_regist
-    binding.pry
     params[:user][:birthdate] = join_birthdate
     @user = User.new(user_params)
-    binding.pry
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
       render :step1 and return
@@ -61,7 +59,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def step3_regist
     @user = User.new(session["devise.regist_data"]["user"])
     @destination = Destination.new(destination_params)
-    binding.pry
     unless @destination.valid?
       flash.now[:alert] = @destination.errors.full_messages
       render :step3 and return
