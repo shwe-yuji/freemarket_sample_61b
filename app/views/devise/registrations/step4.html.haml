@@ -1,11 +1,11 @@
+-# -Rails.application.config.assets.precompile += %w( credit.js )
 - @p_bar = 4
 .wrapper
   = render 'devise/shared/header', p_bar: @p_bar
-
   .container
     %h2.title 支払い方法
     .form
-      = form_with(url: creditcard_regist_path, class: 'form__fields') do |f|
+      = form_with(url: creditcard_regist_path,method: :post, class: 'form__fields', html: { name: "inputForm" }) do |f|
         -# = render 'devise/shared/error_messages', resource: @address
         .form__fields__field
           .form__fields__field__label
@@ -25,21 +25,20 @@
             = f.label :"有効期限"
             %span.form__fields__field__label--icon 必須
           .form__fields__field--select
-            = f.select :month, ['--'], {},{class: 'card'}
+            = f.select :exp_month, ['--',['12',12]], {},{class: 'card'}
             %label.card 月
-            = f.select :year,['--'], {},{class: 'card'}
+            = f.select :exp_year,['--',['20',2020]], {},{class: 'card'}
             %label.card 年
         .form__fields__field
           .form__fields__field__label
             = f.label :"セキュリティコード"
             %span.form__fields__field__label--icon 必須
-          = f.text_field :securitycord, class: 'form__fields__field--input',placeholder: "カード背面4桁もしくは3桁の番号", required: true, maxlength: '4'
+          = f.text_field :cvc, class: 'form__fields__field--input', placeholder: "カード背面4桁もしくは3桁の番号", required: true, maxlength: '4'
           .form__fields__field--info
             = link_to '#' do
               = fa_icon 'question-circle'
               = "カード裏面の番号とは？"
-
-        .submit
-          = f.submit "次へ進む", class: 'submit__btn'
+        .submit#card_token
+          = f.submit "次へ進む", class: 'submit__btn', id: 'token_submit'
 
   = render 'devise/shared/footer'

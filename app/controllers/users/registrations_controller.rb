@@ -1,4 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  require "payjp"
+  before_action :set_card, only: [:step4_regist]
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
   # before_action :delete_sms_num, only: [:step3]
@@ -51,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       # redirect_to phone_regist_path
     # end
   end
-  
+
   def step3
     @destination = Destination.new
   end
@@ -68,39 +70,58 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.build_destination(@destination.attributes)
     @user.save
     sign_in(:user, @user)
-    
-    redirect_to creditcard_regist_path,method: :get
+    redirect_to creditcard_regist_path, method: :get
 
   end
 
-  # def step4
-  #   #お支払い情報
-  # end
+  def step4
+    card = Card.where(user_id: current_user.id).first
+    redirect_to :root if card.present?
+    # redirect_to creditcard_regist_path, method: :post
+  end
 
   def step4_regist
-    #クレカ情報登録して登録完了のviewにいく
-    redirect_to registed_path ,method: :post
-  end
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    if params['payjp-token'].blank?
+      redirect_to creditcard_regist_path, method: :get
+    else
 
+      customer = Payjp::Customer.create(
+        description: 'test',
+        email: current_user.email,
+        card: params['payjp-token'],
+        metadata: { user_id: current_user.id }
+      )
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @card.save
+        redirect_to registed_path, method: :post
+
+      else
+        redirect_to creditcard_regist_path, method: :get
+      end
+    end
+  end
 
   private
 
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  end
 
-  
+  def set_card
+    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  end
+
   private
   def user_params
     params.require(:user).permit(:nickname,
                                  :password,
-                                 :email, 
-                                 :firstname, 
-                                 :lastname, 
-                                 :firstname_kana, 
+                                 :email,
+                                 :firstname,
+                                 :lastname,
+                                 :firstname_kana,
                                  :lastname_kana,
                                  :birthdate
-
     )
   end
 
