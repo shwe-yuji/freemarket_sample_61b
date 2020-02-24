@@ -31,7 +31,6 @@
             = f.label :"都道府県"
             %span.form__fields__field__label--icon 必須
           .form__fields__field--select
-            -# = f.select :area_id, {}, class: 'area', required: true
             = f.collection_select :area_id, Area.all, :id, :name,{prompt: true}, class: "area", required: true
         .form__fields__field
           .form__fields__field__label
