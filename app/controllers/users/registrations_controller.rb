@@ -66,13 +66,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.now[:alert] = @destination.errors.full_messages
       render :step3 && return
     end
-    session["devise.regist_data"] = {destination: @destination.attributes}
+    session["devise.regist_data"] = { destination: @destination.attributes }
     @destination[:user_id] = @user[:id]
     @user.build_destination(@destination.attributes)
     @user.save
     sign_in(:user, @user)
     redirect_to creditcard_regist_path, method: :get
-
   end
 
   def step4
@@ -128,7 +127,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def join_birthdate
-    return Date.new params[:user]["birthdate(1i)"].to_i,params[:user]["birthdate(2i)"].to_i,params[:user]["birthdate(3i)"].to_i
+    return Date.new params[:user]["birthdate(1i)"].to_i, params[:user]["birthdate(2i)"].to_i, params[:user]["birthdate(3i)"].to_i
   end
 
   def destination_params
