@@ -1,5 +1,9 @@
-document.addEventListener("DOMContentLoaded", (e) => {
-  Payjp.setPublicKey("pk_test_98ab1743ba3dd92e8304a1c3");
+document.addEventListener(
+  
+  "DOMContentLoaded", (e) => {
+
+    if(document.getElementById('token_submit') != null){
+    Payjp.setPublicKey("pk_test_98ab1743ba3dd92e8304a1c3");
   const btn = document.getElementById('token_submit');
   btn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -26,4 +30,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
       }
     });
   });
+}
+
 },false);
