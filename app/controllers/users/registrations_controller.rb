@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.now[:alert] = @user.errors.full_messages
       render :step1 and return
     end
-    session["devise.regist_data"] = {user: @user.attributes}
+    session["devise.regist_data"] = { user: @user.attributes }
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @destination = @user.build_destination
     redirect_to phone_regist_path

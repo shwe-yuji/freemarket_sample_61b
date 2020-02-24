@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :null_session 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:step1, keys: [:nickname,:firstname,:lastname,:firstname_kana,:lastname_kana,:birthdate])
-
+    devise_parameter_sanitizer.permit(:step1, keys: [:nickname, :firstname, :lastname, :firstname_kana, :lastname_kana, :birthdate])
   end
   
   private
