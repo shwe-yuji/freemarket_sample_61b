@@ -6,8 +6,8 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.photos.new
+
   end
-  
 
   def create
     @product = Product.new(product_params)
@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
       flash.now[:alert] = "商品の出品に失敗しました"
       render :new
     end
-    binding.pry
+    # binding.pry
   end
 
   def edit
@@ -34,7 +34,21 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :condition_id, :area_id, :shipdate_id, :price, photos_attributes: [:photo])
+    params.require(:product).permit(:name, :description,  :category_id, :size_id, :brand_id, :condition_id, 
+                                    :delivery_expense_id, :shipping_method_id, :area_id, 
+                                    :shipdate_id, :price, :status_id, photos_attributes: [:photo])
   end
 
 end
+
+
+
+# t.string :size, null: false, foreign_key: true
+# t.text :brand
+# t.integer :condition_id, null: false
+# t.string :delivery_expense_id, null: false
+# t.string :shipping_method_id, null: false
+# t.string :area_id, null: false
+# t.integer :shipdate_id, null: false
+# t.integer :price, null: false
+# t.integer :status, null: false
