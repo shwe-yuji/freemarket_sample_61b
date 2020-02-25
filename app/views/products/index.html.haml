@@ -1,20 +1,49 @@
--# 商品出品が機能してるかのテスト用のビュー
+商品出品が機能してるかのテスト用のビュー
 = link_to '出品', new_product_path
 - @products.each do |product|
-  
   %h3.sell-area__name
     商品名
-  %p= product.name # 商品名
+  %p= product.name 
+
+  %h3.sell-area__name
+    商品の説明
+  %p= product.description
+
+  %h3.sell-area__name
+    カテゴリー
+  %p= product.category.value
+
+  %h3.sell-area__name
+    サイズ
+  %p= product.size.value
+
+  %h3.sell-area__name
+    ブランド
+  -# %p= product.brand.id
+
   %h3.sell-area__name
     商品の状態
-  %p= product.condition.value # 商品の状態
+  %p= product.condition.value
+
   %h3.sell-area__name
-    地域名
-  %p= product.area.name # 地域名
+    配送料の負担
+  %p= product.delivery_expense.value
+
+  %h3.sell-area__name
+    配送の方法
+  %p= product.shipping_method.value
+
+  %h3.sell-area__name
+    発送元の地域
+  %p= product.area.name
+
   %h3.sell-area__name
     配送までの日数
-  %p= product.shipdate.value # 
+  %p= product.shipdate.value
+
   %h3.sell-area__name
     画像
 
+  = product.status.value
 
+  

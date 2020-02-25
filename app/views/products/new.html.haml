@@ -29,30 +29,28 @@
     .sell-area__details
       %h3.sell-area__details__name
         商品の詳細
-      .sell-area__details__category
+      .sell-area__details__main-category
         カテゴリー
         %span.form-require 必須
-        .sell-area__details__category__select
-          %select.sell-area__details__category__default
-            %option{value: ""} ---
-            %option{value: "1"} レディース
-            %option{value: "2"} メンズ
-            %option{value: "3"} ベビー・キッズ
-            %option{value: "4"} インテリア・住まい・小物
-            %option{value: "5"} 本・音楽・ゲーム
-            %option{value: "6"} おもちゃ・ホビー・グッズ
-            %option{value: "7"} コスメ・香水・美容
-            %option{value: "8"} 家電・スマホ・カメラ
-            %option{value: "9"} スポーツ・レジャー
-            %option{value: "10"} ハンドメイド
-            %option{value: "11"} チケット
-            %option{value: "12"} 自動車・オートバイ
-            %option{value: "13"} その他
+        .sell-area__details__main-category__select
+          = f.collection_select :category_id, Category.all, :id, :value, {prompt: "---"}, class: "sell-area__details__main-category__default"
+      -# 後々JSにて実装
+      .sell-area__details__sub-category
+        .sell-area__details__sub-category__select
+          %select.sell-area__details__sub-category__default
+      .sell-area__details__subsub-category
+        .sell-area__details__subsub-category__select
+          %select.sell-area__details__subsub-category__default
+      .sell-area__details__size
+        サイズ
+        %span.form-require 必須
+        .sell-area__details__size__select
+          = f.collection_select :size_id, Size.all, :id, :value, {prompt: "---"}, class: "sell-area__details__status__default"
       .sell-area__details__brand
-        ブランド
+        ブランド  
         %span.form-any 任意
         .sell-area__details__status__select
-          = f.collection_select :condition_id, Condition.all, :id, :value, {prompt: "---"}, class: "sell-area__details__brand__default"
+          = f.text_field :brand_id, class: "sell-area__details__brand__default"
       .sell-area__details__status
         商品の状態
         %span.form-require 必須
@@ -67,10 +65,13 @@
         配送料の負担
         %span.form-require 必須
         .sell-area__delivery__burden__select
-          %select.sell-area__delivery__burden__default
-            %option{value: ""} ---
-            %option{value: "2"} 送料込み(出品者負担)
-            %option{value: "1"} 着払い(購入者負担)
+          = f.collection_select :delivery_expense_id, DeliveryExpense.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__burden__default"
+      -# 後々JSにて実装
+      .sell-area__delivery__way
+        配送の方法
+        %span.form-require 必須
+        .sell-area__delivery__way__select
+          = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__way__default"
       .sell-area__delivery__origin
         発送元の地域
         %span.form-require 必須
@@ -120,7 +121,6 @@
         また、出品をもちまして
         = link_to '#' do
           加盟店規約
-      = form_for @product do |f|
         = f.submit "出品する",class:"sell-area__box__button--red"
         %button.sell-area__box__button--gray{type: "button"}
           もどる
