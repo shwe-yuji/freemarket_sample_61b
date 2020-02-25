@@ -5,7 +5,7 @@
   .container
     %h2.title 支払い方法
     .form
-      = form_with(url: creditcard_regist_path,method: :post, class: 'form__fields', html: { name: "inputForm" }) do |f|
+      = form_with(url: creditcard_regist_path,method: :post, class: 'form__fields', html: { name: "inputForm" },local: true) do |f|
         -# = render 'devise/shared/error_messages', resource: @address
         .form__fields__field
           .form__fields__field__label

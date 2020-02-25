@@ -5,7 +5,7 @@
   .container
     %h2.title 住所入力
     .form
-      = form_with(model: @destination,url: destination_regist_path,method: :post,class: 'form__fields') do |f|
+      = form_with(model: @destination,url: destination_regist_path,method: :post,class: 'form__fields',local: true) do |f|
         .form__fields__field
           .form__fields__field__label
             = f.label :"お名前(全角)"
