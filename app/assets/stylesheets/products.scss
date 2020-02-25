@@ -93,7 +93,7 @@
     }
   // 商品の詳細
     &__details {
-      height: 281px;
+      height: 491px;
       padding: 40px;
       border-bottom: 1px solid rgb(245, 245, 245);
 
@@ -101,8 +101,9 @@
         @include sub-head;
       }
 
-      &__category {
+      &__main-category {
         @include list;
+        
 
         .form-require  {
           @include form-require;
@@ -110,8 +111,40 @@
 
           &__default {
             @include default;
+            width: 400px;
+            margin-top: 8px;
           }
         }
+
+      &__sub-category {
+        @include list;
+
+        &__default {
+          @include default;
+          width: 400px;
+          margin-top: 18px;
+        }
+      }
+
+      &__subsub-category {
+        @include list;
+
+        &__default {
+          @include default;
+          width: 400px;
+          margin-top: 8px;
+        }
+      }
+
+      &__size {
+        @include list;
+
+        &__default {
+          @include default;
+          width: 400px;
+          margin-top: 8px;
+        }
+      }
 
       &__brand {
         @include list;
@@ -127,9 +160,10 @@
           vertical-align: top;
           font-weight: bold;
         }
-
           &__default {
             @include default;
+            width: 366px;
+            margin-top: 8px;
           }
         }
 
@@ -143,12 +177,14 @@
 
           &__default {
             @include default;
+            width: 400px;
+            margin-top: 8px;
           }
         }
       }
   // 配送について
     &__delivery {
-      height: 281px;
+      height: 383px;
       padding: 40px;
       border-bottom: 1px solid rgb(245, 245, 245);
 
@@ -169,6 +205,23 @@
 
           &__default {
             @include default;
+            width: 400px;
+            margin-top: 8px;
+          }
+      }
+      
+      &__way {
+        @include list;
+        margin: 32px 0px 0px;
+
+        .form-require  {
+          @include form-require;
+        }
+
+          &__default {
+            @include default;
+            width: 400px;
+            margin-top: 8px;
           }
       }
 
@@ -182,6 +235,7 @@
 
           &__default {
             @include default;
+            width: 400px;
           }
       }
 
@@ -195,6 +249,8 @@
 
           &__default {
             @include default;
+            width: 400px;
+            margin-top: 8px;
           }
       }
     }
