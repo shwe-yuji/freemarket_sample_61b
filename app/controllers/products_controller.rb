@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
       flash.now[:alert] = "商品の出品に失敗しました"
       render :new
     end
-    binding.pry
+    # binding.pry
   end
 
   def edit
