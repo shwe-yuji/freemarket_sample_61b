@@ -36,7 +36,6 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :area
 
 ## destinationsテーブル
 
@@ -57,7 +56,6 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :area
 
 ## productsテーブル
 
@@ -81,48 +79,8 @@
 
 - belongs_to :user
 - belongs_to :category
-- belongs_to :size
-- belongs_to :brand
-- belongs_to :shippingexpense
-- belongs_to :shippingmethod
-- belongs_to :area
 - has_one :transaction dependent: :nullify
 - has_many :photos dependent: :delete_all
-
-## areasテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false ,unique: true ,index: true|
-
-### Association
-
-- has_many: addresses
-- has_many: destinations
-- has_many: products
-
-## deliveryexpensesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|bearer|string|null: false ,unique: true ,index: true|
-
-### Association
-
-- has_many: products
-- has_many: shippingmethods
-
-## shippingmethodsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|deliveryexpenses|reference|null: false ,foreign_key: true|
-|method|string|null: false ,unique: true ,index: true|
-
-### Association
-
-- has_many: products
-- belongs_to: deliveryexpense
 
 ## photosテーブル
 
@@ -146,46 +104,6 @@
 
 - has_ancestry
 - has_many :products
-- has_many :categories_brands
-- has_many :brands ,through: :categories_brands
-- has_many :categories_sizes
-- has_many  :sizes ,through: :categories_sizes
-
-## brandsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false,unique:true|
-
-### Association
-
-- has_many :products
-- has_many :categories_brands
-- has_many :categories ,through: :categories_brands
-
-## categories_brandsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|category|reference|null: false ,foreign_key: true|
-|brand|reference|null: false ,foreign_key: true|
-
-### Association
-
-- belongs_to :category
-- belongs_to :brand
-
-## sizesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|size|string|null: false ,unique: true ,index: true|
-
-### Association
-
-- has_many :products
-- has_many :categories_sizes
-- has_many  :categories ,through:  :categories_sizes
 
 ## transactionsテーブル
 
