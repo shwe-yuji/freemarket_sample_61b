@@ -5,7 +5,7 @@
   .container
     %h2.title 電話番号の確認
     .form
-      = form_with(url: phone_regist_path, class: "form__fields",local: true) do |f|
+      = form_with(url: phone_regist_path, class: "form__fields", local: true) do |f|
         -# = render "devise/shared/error_messages", resource: @user
         .form__fields__field
           = f.label :"携帯電話の番号", class: 'form__fields__field--label'
