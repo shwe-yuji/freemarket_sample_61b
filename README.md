@@ -27,10 +27,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |user|reference|unique: true ,null: false ,foreign_key: true|
-|firstname|string|null: false|
-|lastname|string|null: false|
-|firstname_kana|string|null: false|
-|lastname_kana|string|null: false|
 |postal_code|string||
 |area|reference|foreign_key: true|
 |city|string||
