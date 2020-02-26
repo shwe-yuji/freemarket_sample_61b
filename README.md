@@ -28,7 +28,7 @@
 |------|----|-------|
 |user|reference|unique: true ,null: false ,foreign_key: true|
 |postal_code|string||
-|area|reference|foreign_key: true|
+|area_id|integer||
 |city|string||
 |street_address|string||
 |building_name|string||
@@ -47,7 +47,7 @@
 |firstname_kana|string|null: false|
 |lastname_kana|string|null: false|
 |postal_code|string|null: false|
-|area_name|string|null: false ,foreign_key: true|
+|area_id|integer|null: false|
 |city|string|null: false|
 |street_address|string|null: false|
 |building_name|string||
@@ -65,20 +65,21 @@
 |name|string|null: false ,index: true|
 |description|text|null: false|
 |category|reference|null: false ,foreign_key: true|
-|size|reference|null: false ,foreign_key: true|
+|size_id|integer|null: false|
 |brand|reference|foreign_key: true|
-|condition|integer|null: false|
-|shippingexpense|reference|null: false ,foreign_key: true|
-|shippingmethod|reference|null: false ,foreign_key: true|
-|area|reference|null: false ,foreign_key: true|
-|shipdate|integer|null: false|
+|condition_id|integer|null: false|
+|delivery_expense_id|integer|null: false|
+|delivery_method_id|integer|null: false|
+|area_id|integer|null: false|
+|shipdate_id|integer|null: false|
 |price|integer|null: false|
-|status|integer|null: false|
+|status_id|integer|null: false|
 
 ### Association
 
 - belongs_to :user
 - belongs_to :category
+- belongs_to :brand
 - has_one :transaction dependent: :nullify
 - has_many :photos dependent: :delete_all
 
