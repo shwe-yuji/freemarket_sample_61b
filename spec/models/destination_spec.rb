@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Destination, type: :model do
   require 'rails_helper'
   describe '#create' do
-    it "全項目有りの登録可能" do
+    it "全必須項目有りの時登録可能" do
       user = create(:user)
       destination = build(:destination)
       expect(destination).to be_valid
