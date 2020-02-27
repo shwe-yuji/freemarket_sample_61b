@@ -40,6 +40,18 @@
         }
 
         &__dropbox {
+
+          .preview {
+            float: left;
+            width: 20%;
+
+            &__link {
+              display: flex;
+              flex-direction: column;
+              text-align: center;
+            }
+          }
+
           &__img {
             display: block;
             text-align: center;
@@ -49,7 +61,9 @@
             background: #f5f5f5;
             margin-top: 16px;
             cursor: pointer;
+
             i {
+              font-size: 25px;
               margin-top: 55px;
             }
             p {
@@ -57,6 +71,30 @@
             }
             input[type="file"] {
               display: none;
+            }
+          }
+          &__another {
+
+            &__img {
+              display: block;
+              text-align: center;
+              border: 1px dashed lightgray;
+              min-width: 115px;
+              height: 160px;
+              background: #f5f5f5;
+              margin-top: 16px;
+              cursor: pointer;
+          
+            i {
+              font-size: 25px;
+              margin-top: 55px;
+              }
+            p {
+              font-size: 13px;
+              }
+            input[type="file"] {
+              display: none;
+              }
             }
           }
         }
