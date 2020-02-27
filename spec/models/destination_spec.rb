@@ -3,23 +3,9 @@ require 'rails_helper'
 RSpec.describe Destination, type: :model do
   require 'rails_helper'
   describe '#create' do
-    before do
-      @area = FactoryBot.create(:area,name:"福岡県")
-    end
-
     it "全項目有りの登録" do
-      area = @area
-      destination = area.destinations.build(
-        user_id:               1,
-        lastname:              "技術",
-        lastname_kana:         "てっく",
-        firstname:             "玄人",
-        firstname_kana:        "えきすぱーと",
-        postal_code:           "0000000",
-        area_id:               1,
-        city:                  "渋谷区",
-        street_address:        "道玄坂"
-  )
+      user = create(:user)
+      destination = build(:destination)
       expect(destination).to be_valid
     end
     it "ユーザ情報なしの登録" do
