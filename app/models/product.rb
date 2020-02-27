@@ -12,11 +12,11 @@ class Product < ApplicationRecord
   belongs_to_active_hash :status
   has_many :photos
   accepts_nested_attributes_for :photos, allow_destroy: true
+  accepts_nested_attributes_for :brand, allow_destroy: true
 
   validates :name, presence: true, length: { maximum: 40 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :category_id, presence: true
-  # validates :brand_id, presence: true
   validates :size_id, presence: true
   validates :condition_id, presence: true
   validates :delivery_expense_id, presence: true
