@@ -1,4 +1,4 @@
-%h 電話番号認証 sms入力
+%h3 電話番号認証 sms入力
 = form_with(url: phone_confirm_path, method: :post, local: true) do |f|
   = f.text_field  :input_sms_number, placeholder: 'SMSで送られた番号を入力してください'
   = f.submit value: '送信'
