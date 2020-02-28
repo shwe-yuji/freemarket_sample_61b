@@ -19,6 +19,7 @@
 
 - has_one :address dependent: :delete
 - has_one :destination dependent: :delete
+- has_one :cards dependent: :delete
 - has_many :transactions dependent: :nullify
 - has_many :products dependent: :destroy
 
