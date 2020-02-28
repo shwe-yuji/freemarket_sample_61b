@@ -87,13 +87,13 @@
 |area_id|integer|null: false|
 |shipdate_id|integer|null: false|
 |price|integer|null: false|
-|status_id|integer|null: false|
+|status_id|integer|null: false ,default: 1|
 
 ### Association
 
 - belongs_to :user
 - belongs_to :category
-- belongs_to :brand
+- belongs_to :brand optional: true
 - belongs_to_active_hash :size
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :delivery_expense
