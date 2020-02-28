@@ -72,7 +72,7 @@
         配送の方法
         %span.form-require 必須
         .sell-area__delivery__way__select
-          = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__way__default"
+          = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__way__default"
       .sell-area__delivery__origin
         発送元の地域
         %span.form-require 必須

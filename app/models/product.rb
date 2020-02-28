@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   belongs_to :brand, optional: true
   belongs_to_active_hash :category
   belongs_to_active_hash :delivery_expense
-  belongs_to_active_hash :shipping_method
+  belongs_to_active_hash :delivery_method
   belongs_to_active_hash :size
   belongs_to_active_hash :condition
   belongs_to_active_hash :area
@@ -20,7 +20,7 @@ class Product < ApplicationRecord
   validates :size_id, presence: true
   validates :condition_id, presence: true
   validates :delivery_expense_id, presence: true
-  validates :shipping_method_id, presence: true
+  validates :delivery_method_id, presence: true
   validates :area_id, presence: true
   validates :shipdate_id, presence: true
   validates :price, presence: true, inclusion: 300..9999999
