@@ -26,7 +26,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user|reference|unique: true ,null: false ,foreign_key: true|
+|user|references|unique: true ,null: false ,foreign_key: true|
 |postal_code|string||
 |area_id|integer||
 |city|string||
@@ -36,12 +36,13 @@
 ### Association
 
 - belongs_to :user
+- belongs_to_active_hash :area
 
 ## destinationsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user|reference|unique: true ,null: false ,foreign_key: true|
+|user|references|unique: true ,null: false ,foreign_key: true|
 |firstname|string|null: false|
 |lastname|string|null: false|
 |firstname_kana|string|null: false|
@@ -56,17 +57,18 @@
 ### Association
 
 - belongs_to :user
+- belongs_to_active_hash :area
 
 ## productsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user|reference|null: false ,foreign_key: true|
+|user|references|null: false ,foreign_key: true|
 |name|string|null: false ,index: true|
 |description|text|null: false|
-|category|reference|null: false ,foreign_key: true|
+|category|references|null: false ,foreign_key: true|
 |size_id|integer|null: false|
-|brand|reference|foreign_key: true|
+|brand|references|foreign_key: true|
 |condition_id|integer|null: false|
 |delivery_expense_id|integer|null: false|
 |delivery_method_id|integer|null: false|
@@ -80,6 +82,13 @@
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand
+- belongs_to_active_hash :size
+- belongs_to_active_hash :condition
+- belongs_to_active_hash :delivery_expense
+- belongs_to_active_hash :delivery_method
+- belongs_to_active_hash :area
+- belongs_to_active_hash :shipdate
+- belongs_to_active_hash :status
 - has_one :transaction dependent: :nullify
 - has_many :photos dependent: :delete_all
 
@@ -87,7 +96,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|product|reference|null: false ,foreign_key: true|
+|product|references|null: false ,foreign_key: true|
 |photo|string|null: false|
 
 ### Association
@@ -120,8 +129,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|product|reference|foreign_key: true|
-|user|reference|foreign_key: true|
+|product|references|foreign_key: true|
+|user|references|foreign_key: true|
 
 ### Association
 
