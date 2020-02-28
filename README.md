@@ -22,6 +22,18 @@
 - has_many :transactions dependent: :nullify
 - has_many :products dependent: :destroy
 
+## cardsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user|references|unique: true ,null: false ,foreign_key: true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
+
+### Association
+
+- belongs_to :user
+
 ## addressesテーブル
 
 |Column|Type|Options|
