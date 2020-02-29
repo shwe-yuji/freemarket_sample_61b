@@ -12,7 +12,6 @@
     .category
       = link_to '#' do
         カテゴリーから探す
-
     .brand_icon
       = fa_icon 'tag', class: 'icon'
 
@@ -20,31 +19,41 @@
       = link_to '#' do
         ブランドから探す
 
-    .nice_icon
-      = fa_icon 'heart', class: 'icon'
     
-    .nice
-      = link_to '#' do
-        いいね！一覧
+    - if user_signed_in?
+      .nice_icon
+        = fa_icon 'heart', class: 'icon'
 
-    .info_icon
-      = fa_icon 'bell', class: 'icon'
+      .nice
+        = link_to '#' do
+          いいね！一覧
 
-    .information
-      = link_to '#' do
-        お知らせ
+      .info_icon
+        = fa_icon 'bell', class: 'icon'
 
-    .todo_icon
-      = fa_icon 'check', class: 'icon'
+      .information
+        = link_to '#' do
+          お知らせ
 
-    .todo
-      = link_to '#' do
-        やることリスト
+      .todo_icon
+        = fa_icon 'check', class: 'icon'
 
-    .mypage_icon
-      = fa_icon 'user', class: 'icon'
+      .todo
+        = link_to '#' do
+          やることリスト
 
-    .mypage
-      = link_to '#' do
-        マイページ
+      .mypage_icon
+        = fa_icon 'user', class: 'icon'
+
+      .mypage
+        = link_to  user_path(current_user), method: :get do
+          マイページ
+
+      .login
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
+
+    - else
+      .login
+      = link_to "新規登録", new_user_registration_path
+      = link_to "ログイン", user_session_path
 
