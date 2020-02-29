@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   belongs_to_active_hash :area
   belongs_to_active_hash :condition
   belongs_to_active_hash :shipdate
-  has_many :photos
+  has_many :photos, dependent: :destroy
   accepts_nested_attributes_for :photos, allow_destroy: true
 
   validates :name, presence: true, length: { maximum: 40 }
