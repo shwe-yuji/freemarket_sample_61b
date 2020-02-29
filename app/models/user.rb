@@ -11,6 +11,6 @@ class User < ApplicationRecord
     has_one :destination, dependent: :delete
 #   has_many :transactions, dependent: :nullify
 #   has_many :products dependent: :destroy
-    has_many :cards
+    has_one :card, dependent: :delete
 
   end

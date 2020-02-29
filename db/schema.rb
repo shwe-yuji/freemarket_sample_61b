@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_02_16_060913) do
     t.string "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_cards_on_user_id"
+    t.index ["user_id"], name: "index_cards_on_user_id", unique: true
   end
 
   create_table "destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
