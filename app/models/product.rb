@@ -1,16 +1,17 @@
 class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   # belongs_to :user
+  belongs_to :category
   belongs_to :brand, optional: true
-  belongs_to_active_hash :category
-  belongs_to_active_hash :delivery_expense
-  belongs_to_active_hash :delivery_method
   belongs_to_active_hash :size
   belongs_to_active_hash :condition
+  belongs_to_active_hash :delivery_expense
+  belongs_to_active_hash :delivery_method
   belongs_to_active_hash :area
   belongs_to_active_hash :shipdate
   belongs_to_active_hash :status
-  has_many :photos
+  has_many :photos, dependent: :delete_all
+  accepts_nested_attributes_for :category, allow_destroy: true
   accepts_nested_attributes_for :photos, allow_destroy: true
   accepts_nested_attributes_for :brand, allow_destroy: true
 
