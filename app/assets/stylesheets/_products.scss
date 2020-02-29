@@ -75,6 +75,9 @@
               font-size: 13px;
             }
 
+            input[type="file"] {
+              display: none;
+            }
           }
           
           &__another__img {

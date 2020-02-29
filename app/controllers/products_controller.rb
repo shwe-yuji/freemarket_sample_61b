@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all.includes(:photos).order('created_at DESC').limit(10)
-    binding.pry
   end
 
   def new
