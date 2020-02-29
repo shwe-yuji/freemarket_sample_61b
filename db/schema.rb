@@ -10,13 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_11_124436) do
+ActiveRecord::Schema.define(version: 2020_02_16_060913) do
 
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "prefecture_id"
-    t.string "city"
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
+  create_table "destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "firstname", null: false
+    t.string "lastname", null: false
+    t.string "firstname_kana", null: false
+    t.string "lastname_kana", null: false
+    t.string "postal_code", null: false
+    t.integer "area_id", null: false
+    t.string "city", null: false
+    t.string "street_address", null: false
+    t.string "building_name"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_destinations_on_user_id", unique: true
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nickname", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
+    t.string "firstname", null: false
+    t.string "lastname", null: false
+    t.string "firstname_kana", null: false
+    t.string "lastname_kana", null: false
+    t.date "birthdate", null: false
+    t.text "profile"
+    t.string "image"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  add_foreign_key "cards", "users"
+  add_foreign_key "destinations", "users"
 end
