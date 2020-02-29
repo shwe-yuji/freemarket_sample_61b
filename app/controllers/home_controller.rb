@@ -4,4 +4,7 @@ class HomeController < ApplicationController
 
   def show
   end
+
+  def done
+  end
 end

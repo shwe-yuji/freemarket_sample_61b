@@ -1,0 +1,102 @@
+.top_icon{
+  background-color:#e8e8e8;
+  padding:3% 25% 3% 25%;
+  margin: 0 auto;
+  max-width: 100%;
+  img{
+
+    height:110px;
+    text-align: center;
+  }
+}
+.transact-attention{
+  background-color:#FAFAD2;
+  padding:5% 25% 5% 25%;
+  text-align: center;
+  span{
+    font-size:23px;
+    font-weight: bold;
+    color: #CC3300;
+  }
+  .far.fa-clock{
+    font-size:22px;
+    color:#CC3300 ;
+  }
+
+}
+.l-single-head{
+  text-align: center;
+  margin: 20px 0;
+  font-weight: bold;
+  font-size:30px;
+}
+
+.buy-content.buy-item{
+  text-align: center;
+}
+
+
+.done-user-ratings{
+  text-align: center;
+  margin-top: 2%;
+  .buy-contet__text{
+    font-size:20px;
+    font-weight: bold;
+    }
+  .itembuy-user-face{
+    display: inline-block;
+    margin: 8px 0 0 5px;
+    font-size: 45px;
+    .fas.fa-smile{
+      margin-right: 15px;
+      vertical-align: middle;
+      color: #ef5185;
+    }
+    .fas.fa-meh{
+      margin-right: 15px;
+      vertical-align: middle;
+      color: #fba933;
+    }
+    .fas.fa-frown{
+
+      vertical-align: middle;
+      color: #6ab5d8;
+      }
+    }
+    .comment_field{
+      margin: 2% 13%;
+      input.text{
+        width:60%;
+        height:15em;
+      }
+      button{
+        background-color: #DD0000;
+        color:white;
+        width:60%;
+        height:3em;
+        margin-top: 1em;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+}
+
+.itembuy-done{
+  margin-top: 10%;
+  text-align: center;
+  font-size:20px;
+  font-weight: bold;
+  .back_mypage{
+    background-color:#b9b9b9;
+    height:50px;
+    width:44%;
+    margin:1% 0 1% 28%;
+    a{
+      display: block;
+      font-size: 20px;
+      color:white;
+      text-decoration:none;
+      line-height:50px;
+    }
+  }
+}
