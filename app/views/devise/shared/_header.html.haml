@@ -1,0 +1,73 @@
+.header
+  = image_tag 'svg/fmarket_logo_red.svg', size: '150x100', class: 'header__logo'
+  %nav.progress
+    %ol.progress-bar
+      - if p_bar == 1
+        %li.active#step1
+          会員情報
+          .progress-status-active
+          .progress-status_bar
+      - else
+        %li.inactive#step1
+          会員情報
+          .progress-status-active
+          .progress-status_bar-active
+
+      - if p_bar == 2
+        %li.active#step2
+          電話番号認証
+          .progress-status-active
+          .progress-status_bar
+      - elsif p_bar >= 3
+        %li.inactive#step2
+          電話番号認証
+          .progress-status-active
+          .progress-status_bar-active
+      - else
+        %li.inactive#step2
+          電話番号認証
+          .progress-status
+          .progress-status_bar
+
+      - if p_bar == 3
+        %li.active#step3
+          お届け先住所入力
+          .progress-status-active
+          .progress-status_bar
+      - elsif p_bar >= 4
+        %li.address#step3
+          お届け先住所入力
+          .progress-status-active
+          .progress-status_bar-active
+      - else
+        %li.address#step3
+          お届け先住所入力
+          .progress-status
+          .progress-status_bar
+
+      - if p_bar == 4
+        %li.active#step4
+          支払い方法
+          .progress-status-active
+          .progress-status_bar
+      - elsif p_bar >= 5
+        %li.payment#step4
+          支払い方法
+          .progress-status-active
+          .progress-status_bar-active
+      - else
+        %li.payment#step4
+          支払い方法
+          .progress-status
+          .progress-status_bar
+        
+      - if p_bar == 5
+        %li.active#create
+          完了
+          .progress-status-active
+          .progress-status_bar-active
+      - else
+        %li.end#create
+          完了
+          .progress-status
+          .progress-status_bar

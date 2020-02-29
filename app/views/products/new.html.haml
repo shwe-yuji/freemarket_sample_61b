@@ -78,6 +78,9 @@
         %span.form-require 必須
         .sell-area__delivery__origin__select
           = f.collection_select :area_id, Area.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default"
+          -# 書き方変える場合あるためコメントアウトで残しておきます
+          -# = form_with model: @area, local: true do |f|
+            -# = f.collection_select :area, Area.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default"
       .sell-area__delivery__days
         発送までの日数
         %span.form-require 必須

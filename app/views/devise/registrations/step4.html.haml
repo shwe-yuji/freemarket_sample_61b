@@ -1,0 +1,44 @@
+-# -Rails.application.config.assets.precompile += %w( credit.js )
+- @p_bar = 4
+.wrapper
+  = render 'devise/shared/header', p_bar: @p_bar
+  .container
+    %h2.title 支払い方法
+    .form
+      = form_with(url: creditcard_regist_path, method: :post, class: 'form__fields', html: { name: "inputForm" }, local: true) do |f|
+        -# = render 'devise/shared/error_messages', resource: @address
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"カード番号"
+            %span.form__fields__field__label--icon 必須
+          = f.text_field :card_number, class: 'form__fields__field--input',placeholder: "半角数字のみ", required: true, maxlength: '16'
+          .form__fields__field__card-logo
+            = image_tag 'png/card_visa.png', height: '23'
+            = image_tag 'png/card_mastercard.png', height: '23'
+            = image_tag 'png/card_saison.png', height: '23'
+            = image_tag 'png/card_jcb.png', height: '23'
+            = image_tag 'png/card_amex.png', height: '23'
+            = image_tag 'png/card_diners.png', height: '23'
+            = image_tag 'png/card_discover.png', height: '23'
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"有効期限"
+            %span.form__fields__field__label--icon 必須
+          .form__fields__field--select
+            = f.select :exp_month, ['--',['01',1],['02',2],['03',3],['04',4],['05',5],['06',6],['07',7],['08',8],['09',9],['10',10],['11',11],['12',12]], {},{class: 'card'}
+            %label.card 月
+            = f.select :exp_year,['--',['20',2020],['21',2021],['22',2022],['23',2023],['24',2024],['25',2025],['26',2026],['27',2027],['28',2028],['29',2029],['30',2030]], {},{class: 'card'}
+            %label.card 年
+        .form__fields__field
+          .form__fields__field__label
+            = f.label :"セキュリティコード"
+            %span.form__fields__field__label--icon 必須
+          = f.text_field :cvc, class: 'form__fields__field--input', placeholder: "カード背面4桁もしくは3桁の番号", required: true, maxlength: '4'
+          .form__fields__field--info
+            = link_to '#' do
+              = fa_icon 'question-circle'
+              = "カード裏面の番号とは？"
+        .submit#card_token
+          = f.submit "次へ進む", class: 'submit__btn', id: 'token_submit'
+
+  = render 'devise/shared/footer'

@@ -1,6 +1,16 @@
 .wrapper
   .main-contents
     = render "home/header"
+    %h1 登録 or ログイン<仮置き>
+    - if user_signed_in?
+      %h2 ログインしています
+      = link_to "ログアウト", destroy_user_session_path, method: :delete
+    - else
+      %h2 ログインしていません
+      = link_to "新規登録", new_user_registration_path
+      = link_to "ログイン", new_user_session_path
+      = link_to "トップページ", "/"
+
     .slide
       .slide__image
         .slide__text
@@ -42,7 +52,7 @@
             %figure
               = image_tag("test.png", class: "products")
               %figcaption.products__text
-                テスト テスト 
+                テスト テスト
                 %br
                 テスト テスト
               .products__price
@@ -184,4 +194,3 @@
 
     = render "home/cameraicon"
     = render "home/footer"
- 
