@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     get 'registed', to: 'users/registrations#finish_regist'
   end
   
-  root 'products#index'
   resources :products
   root to: "home#top"
   get 'home/top'
