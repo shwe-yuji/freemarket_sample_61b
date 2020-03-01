@@ -32,7 +32,7 @@
         height:40px;
         width:800px;
         margin: 25px 0 0 40px;
-       
+
       }
       .search_image{
         display: inline-block;
@@ -53,7 +53,7 @@
   }
   .category {
     margin:10px 25px 0 0;
-    
+
   }
 
   .fas.fa-tag {
@@ -83,7 +83,7 @@
 
   .todo {
     margin: 10px 0 0 0;
-  }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+  }
 
   .fas.fa-user {
     margin: 10px 0 0 45px;
@@ -91,5 +91,10 @@
   .mypage {
     margin: 10px 0 0 0;
   }
-}
 
+  .login{
+    position: absolute;
+    right:0px;
+    margin: 10px 30px 0 0px;
+  }
+}
