@@ -3,8 +3,9 @@
   padding: 0;
   text-decoration: none;
 }
-
-.main-header {
+@media screen and (min-width: 1068px) {
+.main-headerand  {
+  max-width: 767px;
   height: 150px;
   width: 100vw;
   background-color: rgb(255, 255, 255);
@@ -12,72 +13,83 @@
   position: relative;
   z-index: 3;
   display: grid;
-
 }
-
 
 .main-header__contents {
     display: flex;
-}
+  }
 
     .logo {
       height: auto;
       margin:0 0 0 140px;
-
-    }
-    input.search {
-      height:40px;
-      width:800px;
-      margin: 25px 90px 0 40px;
     }
 
+    .search{
+      position: relative;
+      .box {
+        display: flex;
+        position: relative;
+        height:40px;
+        width:800px;
+        margin: 25px 0 0 40px;
+       
+      }
+      .search_image{
+        display: inline-block;
+        position: absolute;
+        top: 34px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+      }
+    }
   .menu {
     bottom: 0;
     display: flex;
   }
 
-  .category_icon {
-    margin:10px 10px 0 180px;
+  .fas.fa-mouse-pointer{
+    margin:10px 10px 15px 180px;
   }
   .category {
     margin:10px 25px 0 0;
     
   }
 
-  .brand_icon {
+  .fas.fa-tag {
     margin: 10px 10px 0 0;
   }
   .brand {
     margin: 10px 20px 0 0;
   }
 
-  .nice_icon {
+  .fas.fa-heart {
     margin: 10px 0 0 150px;
   }
   .nice {
     margin: 10px 0 0 5px;
   }
 
-  .info_icon {
+  .fas.fa-bell {
     margin: 10px 5px 0 45px;
   }
   .information {
     margin: 10px 0 0 0;
   }
 
-  .todo_icon {
+  .fas.fa-check {
     margin: 10px 0 0 45px;
   }
 
   .todo {
     margin: 10px 0 0 0;
-  }
+  }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
-  .mypage_icon {
+  .fas.fa-user {
     margin: 10px 0 0 45px;
   }
   .mypage {
     margin: 10px 0 0 0;
   }
-
+}
 

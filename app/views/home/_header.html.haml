@@ -4,47 +4,31 @@
       = link_to home_top_path do
         = image_tag("fmarket_logo_red.png")
     .search
-      %input.search{placeholder: '何かお探しですか？'}
-  .menu
-    .category_icon
-      = icon('fas', 'mouse-pointer', class: 'icon')
+      %input.box{placeholder: '何かお探しですか？'}
+      %label.search_image
+        %i.fas.fa-search
 
-    .category
+  .menu
+    .fas.fa-mouse-pointer
       = link_to '#' do
         カテゴリーから探す
 
-    .brand_icon
-      = icon('fas', 'tag', class: 'icon')
-
-    .brand
+    .fas.fa-tag
       = link_to '#' do
         ブランドから探す
 
-    .nice_icon
-      = icon('fas', 'heart', class: 'icon')
-    
-    .nice
+    .fas.fa-heart
       = link_to '#' do
         いいね！一覧
 
-    .info_icon
-      = icon('fas', 'bell', class: 'icon')
-
-    .information
+    .fas.fa-bell
       = link_to '#' do
         お知らせ
 
-    .todo_icon
-      = icon('fas', 'check', class: 'icon')
-
-    .todo
+    .fas.fa-check
       = link_to '#' do
         やることリスト
 
-    .mypage_icon
-      = icon('fas', 'user', class: 'icon')
-
-    .mypage
+    .fas.fa-user
       = link_to '#' do
         マイページ
-
