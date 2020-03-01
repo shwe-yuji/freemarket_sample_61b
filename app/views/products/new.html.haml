@@ -77,8 +77,8 @@
         発送元の地域
         %span.form-require 必須
         .sell-area__delivery__origin__select
-          = form_with model: @prefecture, local: true do |f|
-            = f.collection_select :prefecture, Prefecture.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default"
+          = form_with model: @area, local: true do |f|
+            = f.collection_select :area, Area.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default"
       .sell-area__delivery__days
         発送までの日数
         %span.form-require 必須

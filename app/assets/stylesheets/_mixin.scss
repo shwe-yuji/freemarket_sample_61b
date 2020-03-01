@@ -1,0 +1,31 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+@mixin formStyle {
+  margin-bottom: 6px;
+  padding: 10px 16px 8px;
+  width: 310px;
+  height: 28px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+@mixin buttonStyle {
+  margin-top: 15px;
+  border: 1px solid #ea352d;
+  background-color: #ea352d;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  line-height: 48px;
+  position: relative;
+  width: 100%;
+  cursor: pointer;  
+}
