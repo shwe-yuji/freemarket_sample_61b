@@ -17,21 +17,21 @@
         ブランドから探す
 
     - if user_signed_in?
-    .fas.fa-heart
-      = link_to '#' do
-        いいね！一覧
+      .fas.fa-heart
+        = link_to '#' do
+          いいね！一覧
 
-    .fas.fa-bell
-      = link_to '#' do
-        お知らせ
+      .fas.fa-bell
+        = link_to '#' do
+          お知らせ
 
-    .fas.fa-check
-      = link_to '#' do
-        やることリスト
+      .fas.fa-check
+        = link_to '#' do
+          やることリスト
 
-    .fas.fa-user
-      = link_to  user_path(current_user), method: :get do
-        マイページ
+      .fas.fa-user
+        = link_to  user_path(current_user), method: :get do
+          マイページ
 
       .login
         = link_to "ログアウト", destroy_user_session_path, method: :delete
@@ -39,23 +39,3 @@
       .login
         = link_to "新規登録", new_user_registration_path
         = link_to "ログイン", user_session_path
-
-    .fas.fa-tag
-      = link_to '#' do
-        ブランドから探す
-
-    .fas.fa-heart
-      = link_to '#' do
-        いいね！一覧
-
-    .fas.fa-bell
-      = link_to '#' do
-        お知らせ
-
-    .fas.fa-check
-      = link_to '#' do
-        やることリスト
-
-    .fas.fa-user
-      = link_to  user_path(current_user), method: :get do
-        マイページ
