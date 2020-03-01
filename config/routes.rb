@@ -17,9 +17,8 @@ Rails.application.routes.draw do
   end
   
   root 'products#index'
-  resources :products, except: :show
+  resources :products
   root to: "home#top"
-  resources :products, only: :new
   get 'home/top'
   get 'home/done'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
