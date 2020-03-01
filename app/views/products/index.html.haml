@@ -2,6 +2,10 @@
 = link_to '出品', new_product_path
 - @products.each do |product|
   %h3.sell-area__name
+    ユーザー名
+  %p= product.user.nickname
+
+  %h3.sell-area__name
     商品名
   %p= product.name 
 
@@ -11,7 +15,7 @@
 
   %h3.sell-area__name
     カテゴリー
-  %p= product.category.value
+  %p= product.category.name
 
   %h3.sell-area__name
     サイズ
@@ -31,7 +35,7 @@
 
   %h3.sell-area__name
     配送の方法
-  %p= product.shipping_method.value
+  %p= product.delivery_method.value
 
   %h3.sell-area__name
     発送元の地域

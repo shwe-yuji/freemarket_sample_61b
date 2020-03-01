@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  # belongs_to :user
+  belongs_to :user
   belongs_to :category
   belongs_to :brand, optional: true
   belongs_to_active_hash :size
