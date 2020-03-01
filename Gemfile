@@ -81,9 +81,10 @@ gem 'fog-aws'
 gem 'haml-rails'
 gem 'devise-i18n'
 gem 'font-awesome-sass'
+
 gem 'devise-i18n-views'
 gem 'dotenv-rails'
-gem 'font-awesome-rails'
 gem "jquery-rails"
 gem 'payjp'
 gem 'twilio-ruby'
+
