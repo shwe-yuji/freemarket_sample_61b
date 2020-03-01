@@ -15,9 +15,10 @@ Rails.application.routes.draw do
     post 'creditcard_regist', to: 'users/registrations#step4_regist'
     get 'registed', to: 'users/registrations#finish_regist'
   end
-
+  
+  root 'products#index'
+  resources :products
   root to: "home#top"
-  resources :products, only: :new
   get 'home/top'
   get 'home/done'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

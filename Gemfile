@@ -44,6 +44,8 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+gem 'rspec-rails'
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -77,6 +79,7 @@ end
 gem 'active_hash'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'fog-aws'
 gem 'haml-rails'
 gem 'devise-i18n'
@@ -84,7 +87,7 @@ gem 'font-awesome-sass'
 
 gem 'devise-i18n-views'
 gem 'dotenv-rails'
+gem 'ancestry'
 gem "jquery-rails"
 gem 'payjp'
 gem 'twilio-ruby'
-
