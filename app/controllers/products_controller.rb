@@ -7,8 +7,8 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.photos.new
+    @product.build_brand
   end
-  
 
   def create
     @product = Product.new(product_params)
@@ -34,7 +34,9 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :condition_id, :area_id, :shipdate_id, :price, photos_attributes: [:photo])
+    params.require(:product).permit(:name, :description, :category_id, :size_id, :condition_id, 
+                                    :delivery_expense_id, :delivery_method_id, :area_id, 
+                                    :shipdate_id, :price, :status_id, photos_attributes: [:photo],
+                                    brand_attributes: [:name]).merge(user_id: current_user.id)
   end
- 
 end
