@@ -6,13 +6,13 @@
   .signin-area
     .signin-area__new
       %p アカウントをお持ちでない方はこちら
-      = link_to '新規会員登録', registrations_1_path
+      = link_to '新規会員登録', new_user_registration_path
     .signin-area__link-box
-      = link_to '#' do
+      = link_to user_facebook_omniauth_authorize_path, method: :post do
         %button.signin-area__link-box__facebook{ type: 'button' }
           = image_tag "svg/iconfinder_facebook_1807546.svg", size: "25x25", class: 'signin-area__link-box__facebook--icon'
           Facebookでログイン
-      = link_to '#' do
+      = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
         %button.signin-area__link-box__google{ type: 'button' }
           = image_tag "svg/iconfinder_Google_1298745.svg", size: "18x18", class: 'signin-area__link-box__google--icon'
           Googleでログイン
