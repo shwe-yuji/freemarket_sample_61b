@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2020_02_28_142642) do
     t.index ["name"], name: "index_categories_on_name"
   end
 
-  create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   create_table "destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "firstname", null: false
@@ -104,10 +103,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_142642) do
   add_foreign_key "cards", "users"
   add_foreign_key "destinations", "users"
   add_foreign_key "photos", "products"
-<<<<<<< HEAD
-=======
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
->>>>>>> 0b62745606cd55f2219ce26813bc48f14a2b5b79
 end
