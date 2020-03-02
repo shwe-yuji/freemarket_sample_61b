@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all.includes(:photos).order('created_at DESC').limit(10)
+    @photos = Photo.all
   end
 
   def new
@@ -12,7 +13,6 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      # binding.pry
       redirect_to root_path, notice: "商品を出品しました"
     else
       flash.now[:alert] = "商品の出品に失敗しました"
@@ -36,5 +36,5 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :description, :condition_id, :area_id, :shipdate_id, :price, photos_attributes: [:photo])
   end
-
+ 
 end
