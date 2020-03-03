@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   require "payjp"
   # before_action :set_card, only: [:step4_regist]
-  before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
   # before_action :delete_sms_num, only: [:step3]
 
@@ -113,7 +113,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
   end
 
-  private
   def user_params
     params.require(:user).permit(:nickname,
                                  :password,
