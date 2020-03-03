@@ -3,6 +3,9 @@ class ProductsController < ApplicationController
     @products = Product.includes(:photos).order('created_at DESC')
   end
 
+  def show
+  end
+
   def new
     @product = Product.new
     @product.photos.new
@@ -26,6 +29,9 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def done
   end
 
 
