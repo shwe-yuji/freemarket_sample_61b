@@ -22,6 +22,19 @@
 - has_one :card dependent: :delete
 - has_many :transactions dependent: :nullify
 - has_many :products dependent: :destroy
+- has_many :sns_credentials dependent: :delete_all
+
+## sns_credentialsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user|references|foreign_key: true|
+|uid|string||
+|provider|string||
+
+### Association
+
+- belongs_to :user optional: true
 
 ## cardsテーブル
 
