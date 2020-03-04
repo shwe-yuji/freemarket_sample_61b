@@ -77,13 +77,15 @@ end
 gem 'active_hash'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'fog-aws'
 gem 'haml-rails'
 gem 'devise-i18n'
 gem 'font-awesome-sass'
+
 gem 'devise-i18n-views'
 gem 'dotenv-rails'
-gem 'font-awesome-rails'
+gem 'ancestry'
 gem "jquery-rails"
 gem 'payjp'
 gem 'twilio-ruby'

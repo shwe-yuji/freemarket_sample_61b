@@ -4,47 +4,38 @@
       = link_to home_top_path do
         = image_tag("fmarket_logo_red.png")
     .search
-      %input.search{placeholder: '何かお探しですか？'}
+      %input.box{placeholder: '何かお探しですか？'}
+      %label.search_image
+        %i.fas.fa-search
   .menu
-    .category_icon
-      = fa_icon 'mouse-pointer', class: 'icon'
-
-    .category
+    .fas.fa-mouse-pointer
       = link_to '#' do
         カテゴリーから探す
 
-    .brand_icon
-      = fa_icon 'tag', class: 'icon'
-
-    .brand
+    .fas.fa-tag
       = link_to '#' do
         ブランドから探す
 
-    .nice_icon
-      = fa_icon 'heart', class: 'icon'
-    
-    .nice
-      = link_to '#' do
-        いいね！一覧
+    - if user_signed_in?
+      .fas.fa-heart
+        = link_to '#' do
+          いいね！一覧
 
-    .info_icon
-      = fa_icon 'bell', class: 'icon'
+      .fas.fa-bell
+        = link_to '#' do
+          お知らせ
+          
+      .fas.fa-check
+        = link_to '#' do
+          やることリスト
 
-    .information
-      = link_to '#' do
-        お知らせ
+      .fas.fa-user
+        = link_to  user_path(current_user), method: :get do
+          マイページ
 
-    .todo_icon
-      = fa_icon 'check', class: 'icon'
-
-    .todo
-      = link_to '#' do
-        やることリスト
-
-    .mypage_icon
-      = fa_icon 'user', class: 'icon'
-
-    .mypage
-      = link_to '#' do
-        マイページ
-
+      .login
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
+    - else
+      .login
+        = link_to "新規登録", new_user_registration_path
+        = link_to "ログイン", user_session_path

@@ -29,3 +29,6 @@
 .env
 app/.DS_Store
 /config/master.key
+/config/secrets.yml
+/config/credentials.yml.enc
+public/uploads/*

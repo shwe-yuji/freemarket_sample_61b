@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 2020_02_29_093824) do
     t.index ["user_id"], name: "index_cards_on_user_id", unique: true
   end
 
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+    t.index ["name"], name: "index_categories_on_name"
+  end
+
   create_table "destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "firstname", null: false
@@ -53,15 +62,15 @@ ActiveRecord::Schema.define(version: 2020_02_29_093824) do
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "name", null: false
     t.text "description", null: false
-    t.string "category_id", null: false
-    t.string "size_id", null: false
+    t.integer "size_id", null: false
     t.integer "status_id", default: 1, null: false
     t.integer "condition_id", null: false
-    t.string "delivery_expense_id", null: false
-    t.string "shipping_method_id", null: false
-    t.string "area_id", null: false
+    t.integer "delivery_expense_id", null: false
+    t.integer "delivery_method_id", null: false
+    t.integer "area_id", null: false
     t.integer "shipdate_id", null: false
     t.integer "price", null: false
     t.datetime "created_at", null: false
@@ -78,6 +87,11 @@ ActiveRecord::Schema.define(version: 2020_02_29_093824) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+    t.bigint "category_id", null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["name"], name: "index_products_on_name"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -107,4 +121,6 @@ ActiveRecord::Schema.define(version: 2020_02_29_093824) do
   add_foreign_key "photos", "products"
   add_foreign_key "products", "brands"
   add_foreign_key "sns_credentials", "users"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "users"
 end
