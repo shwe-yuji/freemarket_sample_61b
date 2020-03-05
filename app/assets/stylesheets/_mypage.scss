@@ -1,4 +1,4 @@
-.mypage-wrapper {
+ .mypage-wrapper {
   min-height: 100%;
   width: 100%;
   background: rgb(245, 245, 245);
@@ -202,6 +202,12 @@
           }
         }
       }
+    &__user-logout{
+      width:calc(300vw/5);
+      height:25vh;
+      background-color: orangered;
+    }
+
     }
     &__trade-detail {
       margin-top: 40px;
