@@ -16,14 +16,13 @@ Rails.application.routes.draw do
     get 'registed', to: 'users/registrations#finish_regist'
   end
   
+  get 'products/done'
   resources :products
   root to: "products#index"
-  get 'products/done'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :users, only: [:show, :edit] do
     resources :credit_cards, only: [:show]
   end
 
-  resources :home, only: [:show]
 end
