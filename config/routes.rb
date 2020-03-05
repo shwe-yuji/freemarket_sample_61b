@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
   }
   devise_scope :user do
@@ -16,17 +17,14 @@ Rails.application.routes.draw do
     get 'registed', to: 'users/registrations#finish_regist'
   end
   
-
+  get 'products/done'
   resources :products
-  root to: "home#top"
-  get 'home/top'
-  get 'home/done'
-  # post "products/:id/destroy" => "products#destroy"
+  root to: "products#index"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :users, only: [:show, :edit] do
     resources :credit_cards, only: [:show]
   end
 
-  resources :home, only: [:show]
 end

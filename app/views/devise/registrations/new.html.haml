@@ -10,11 +10,11 @@
         .signup-area__link-box__email
           = image_tag "svg/iconfinder_message_214645.svg", size: "20x20", class: 'signup-area__link-box__email--icon'
           メールアドレスで登録する
-      = link_to '#' do
+      = link_to user_facebook_omniauth_authorize_path, method: :post do
         .signup-area__link-box__facebook
           = image_tag "svg/iconfinder_facebook_1807546.svg", size: "25x25", class: 'signup-area__link-box__facebook--icon'
           Facebookで登録
-      = link_to '#' do
+      = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
         .signup-area__link-box__google
           = image_tag "svg/iconfinder_Google_1298745.svg", size: "18x18", class: 'signup-area__link-box__google--icon'
           Googleで登録する
