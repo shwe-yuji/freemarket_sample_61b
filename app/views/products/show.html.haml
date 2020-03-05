@@ -1,5 +1,5 @@
 .top
-  = render "home/header"
+  = render "products/header"
 .shop_background
   .all_contents
     .shop_contents
@@ -163,7 +163,7 @@
     .under_item_title
       fmarket > @item_name
 .footer
-  = render "home/footer"
+  = render "products/footer"
 
 商品削除が機能してるかのテスト用のビュー(後々削除)
 = link_to '出品', new_product_path
@@ -217,5 +217,3 @@
   %p= product.status.value
 
   = link_to '削除', "/products/#{product.id}", method: :delete
-
-  
