@@ -64,14 +64,17 @@ $(document).on('turbolinks:load', function(){
           $('.sell-area__dropbox').append(buildInputArea);
           $('i.fas.fa-camera.camera-icon-1').remove();
         }
-      } else if (image_ctn > 4) {
+      } else if (image_ctn > 4 && image_ctn <= 9) {
         $('.sell-area__dropbox__another__img').prepend(preview);
         $('.sell-area__dropbox__img--text').remove();
         $('.photo-input-another').attr('name', `product[photos_attributes][${image_ctn}][photo]`);
         $('.photo-input-another').attr('id', `product_photos_attributes_${image_ctn}_photo`);
         if (image_ctn == 9) {
           $('i.fas.fa-camera.camera-icon-2').remove();
-        }
+        } 
+      } else if (image_ctn >= 10) {
+        alert("これ以上、画像を投稿できません。");
+        return false;
       }
       image_ctn += 1; 
       var input = $('input[type="file"]');
