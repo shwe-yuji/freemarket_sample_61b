@@ -9,7 +9,7 @@
     = link_to '#' do
       .main-area__form__user-confirm-document-link
         = "本人確認書類のアップロードについて"
-        = fa_icon 'chevron-right'
+        =icon("fas", "chevron-right")
     .main-area__form__user-info
       .main-area__form__user-info--title 名前
       .main-area__form__user-info--value フリマ太郎
@@ -30,7 +30,7 @@
         .main-area__form__input-info--title 都道府県
         .main-area__form__input-info--icon 任意
       = f.collection_select :area_name, array, :id, :name # arrayは仮置きの配列です
-      = fa_icon 'chevron-right', class: 'select-icon'
+      =icon("fas", "chevron-right"), class: 'select-icon'
       .main-area__form__input-info
         .main-area__form__input-info--title 市区町村
         .main-area__form__input-info--icon 任意
@@ -51,4 +51,4 @@
       = link_to '#' do
         .main-area__form__user-info-guide-link
           = "本人情報の登録について"
-          = fa_icon 'chevron-right'
+          =icon("fas", "chevron-right")

@@ -1,65 +1,62 @@
 - content_for(:title, '商品の情報を入力 - メルカリ スマホでかんたん フリマアプリ')
 .wrapper
   = render "products/logo-header"
+= form_with model: @product, local: true, class: "sell-area__container" do |f|
   .sell-area
     .sell-area__title 
       商品の情報を入力
-    %form.sell-area__form
-      .sell-area__upload
-        %h3.sell-area__header
-          出品画像
-          %span.form-require 必須
-        %p.sell-area__text
-          最大10枚までアップロードできます
-        .sell-area__dropbox
-          %label.sell-area__dropbox__img
-            %input{type: "file"}
-            %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+    .sell-area__upload
+      %h3.sell-area__header
+        出品画像
+        %span.form-require 必須
+      %p.sell-area__text
+        最大10枚までアップロードできます
+      .sell-area__dropbox
+        %label.sell-area__dropbox__img
+          %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+          = f.fields_for :photos do |i|
+            = i.file_field :photo
+
     .sell-area__content
       %h3.sell-area__name
         商品名
         %span.form-require  必須
-      %input.sell-area__name__form{placeholder: "商品名（必須 40文字まで)"}
+        = f.text_field :name, placeholder: "商品名（必須 40文字まで)", class: "sell-area__name__form"
       %h3.sell-area__description
         商品の説明
         %span.form-require  必須
-      %textarea.sell-area__description__textarea{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
+        = f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "sell-area__description__textarea"
     .sell-area__details
       %h3.sell-area__details__name
         商品の詳細
-      .sell-area__details__category
+      .sell-area__details__main-category
         カテゴリー
         %span.form-require 必須
-        .sell-area__details__category__select
-          %select.sell-area__details__category__default
-            %option{value: ""} ---
-            %option{value: "1"} レディース
-            %option{value: "2"} メンズ
-            %option{value: "3"} ベビー・キッズ
-            %option{value: "4"} インテリア・住まい・小物
-            %option{value: "5"} 本・音楽・ゲーム
-            %option{value: "6"} おもちゃ・ホビー・グッズ
-            %option{value: "7"} コスメ・香水・美容
-            %option{value: "8"} 家電・スマホ・カメラ
-            %option{value: "9"} スポーツ・レジャー
-            %option{value: "10"} ハンドメイド
-            %option{value: "11"} チケット
-            %option{value: "12"} 自動車・オートバイ
-            %option{value: "13"} その他
+        .sell-area__details__main-category__select
+          = f.collection_select :category_id, Category.all.limit(13), :id, :name, {prompt: "---"}, class: "sell-area__details__main-category__default"
+      -# 後々JSにて実装
+      .sell-area__details__sub-category
+        .sell-area__details__sub-category__select
+          %select.sell-area__details__sub-category__default
+      .sell-area__details__subsub-category
+        .sell-area__details__subsub-category__select
+          %select.sell-area__details__subsub-category__default
+      .sell-area__details__size
+        サイズ
+        %span.form-require 必須
+        .sell-area__details__size__select
+          = f.collection_select :size_id, Size.all, :id, :value, {prompt: "---"}, class: "sell-area__details__status__default"
+      .sell-area__details__brand
+        ブランド  
+        %span.form-any 任意
+        .sell-area__details__status__select
+        = f.fields_for :brand do |i|
+          = i.text_field :name , class: "sell-area__details__brand__default"
       .sell-area__details__status
         商品の状態
         %span.form-require 必須
         .sell-area__details__status__select
-          %select.sell-area__details__status__default
-            %option{value: ""} ---
-
-            %option{value: "30"} 新品、未使用
-            %option{value: "31"} 未使用に近い
-            %option{value: "32"} 目立った傷や汚れなし
-            %option{value: "33"} やや傷や汚れあり
-            %option{value: "34"} 傷や汚れあり
-            %option{value: "35"} 全体的に状態が悪い
-
+          = f.collection_select :condition_id, Condition.all, :id, :value, {prompt: "---"}, class: "sell-area__details__status__default"
     .sell-area__delivery
       %h3.sell-area__delivery__method
         配送について
@@ -69,25 +66,26 @@
         配送料の負担
         %span.form-require 必須
         .sell-area__delivery__burden__select
-          %select.sell-area__delivery__burden__default
-            %option{value: ""} ---
-            %option{value: "2"} 送料込み(出品者負担)
-            %option{value: "1"} 着払い(購入者負担)
+          = f.collection_select :delivery_expense_id, DeliveryExpense.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__burden__default"
+      -# 後々JSにて実装
+      .sell-area__delivery__way
+        配送の方法
+        %span.form-require 必須
+        .sell-area__delivery__way__select
+          = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__way__default"
       .sell-area__delivery__origin
         発送元の地域
         %span.form-require 必須
         .sell-area__delivery__origin__select
-          = form_with model: @prefecture, local: true do |f|
-            = f.collection_select :prefecture, Prefecture.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default"
+          = f.collection_select :area_id, Area.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default"
+          -# 書き方変える場合あるためコメントアウトで残しておきます
+          -# = form_with model: @area, local: true do |f|
+            -# = f.collection_select :area, Area.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default"
       .sell-area__delivery__days
         発送までの日数
         %span.form-require 必須
         .sell-area__delivery__days__select
-          %select.sell-area__delivery__days__default
-            %option{value: ""} ---
-            %option{value: ""} 1~2日で発送
-            %option{value: ""} 2~3日で発送
-            %option{value: ""} 4~7日で発送
+          = f.collection_select :shipdate_id, Shipdate.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__days__default"
     .sell-area__selling
       %h3.sell-area__selling__price
         販売価格(300〜9,999,999)
@@ -99,7 +97,7 @@
           %span.form-require 必須
         .sell-area__selling--right
           ¥
-          %input.sell-area__selling__box{placeholder: "例) 300円"}
+          = f.number_field :price, placeholder: "例) 300円", class: "sell-area__selling__box"
       .sell-area__selling__form-group--center
         .sell-area__selling__commission--left
           販売手数料 (10%)
@@ -127,8 +125,7 @@
         また、出品をもちまして
         = link_to '#' do
           加盟店規約
-        %button.sell-area__box__button--red{type: "button"}
-          出品する
+        = f.submit "出品する",class:"sell-area__box__button--red"
         %button.sell-area__box__button--gray{type: "button"}
           もどる
 
