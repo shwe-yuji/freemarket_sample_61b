@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  
   def index
     @products = Product.includes(:photos).order('created_at DESC')
   end
@@ -19,6 +20,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show
+    #  出品削除テストの記述(後々変更)
+    @products = Product.includes(:photos).order('created_at DESC')
+  end
+
   def edit
   end
 
@@ -26,6 +32,14 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find_by(id: params[:id])
+    if if @product.user_id == current_user.id
+      @product.destroy
+      redirect_to root_path, notice: "商品を削除しました"
+    else
+      flash.now[:alert] = "商品の削除に失敗しました"
+      render :show
+    end
   end
 
 

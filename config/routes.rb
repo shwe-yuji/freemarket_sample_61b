@@ -16,10 +16,12 @@ Rails.application.routes.draw do
     get 'registed', to: 'users/registrations#finish_regist'
   end
   
+
   resources :products
   root to: "home#top"
   get 'home/top'
   get 'home/done'
+  # post "products/:id/destroy" => "products#destroy"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :users, only: [:show, :edit] do
