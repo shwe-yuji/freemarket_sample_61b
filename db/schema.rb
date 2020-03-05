@@ -76,8 +76,11 @@ ActiveRecord::Schema.define(version: 2020_02_29_093824) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "brand_id"
+    t.bigint "category_id", null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["name"], name: "index_products_on_name"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -87,11 +90,6 @@ ActiveRecord::Schema.define(version: 2020_02_29_093824) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sns_credentials_on_user_id"
-    t.bigint "category_id", null: false
-    t.index ["brand_id"], name: "index_products_on_brand_id"
-    t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["name"], name: "index_products_on_name"
-    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -103,11 +101,6 @@ ActiveRecord::Schema.define(version: 2020_02_29_093824) do
     t.string "firstname_kana", null: false
     t.string "lastname_kana", null: false
     t.date "birthdate", null: false
-    t.string "postal_code", limit: 7
-    t.integer "prefectures_id"
-    t.string "city"
-    t.string "street_address"
-    t.string "building_name"
     t.text "profile"
     t.string "image"
     t.datetime "remember_created_at"
@@ -120,7 +113,7 @@ ActiveRecord::Schema.define(version: 2020_02_29_093824) do
   add_foreign_key "destinations", "users"
   add_foreign_key "photos", "products"
   add_foreign_key "products", "brands"
-  add_foreign_key "sns_credentials", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
+  add_foreign_key "sns_credentials", "users"
 end
