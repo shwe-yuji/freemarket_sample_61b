@@ -36,7 +36,7 @@
           = f.text_field :cvc, class: 'form__fields__field--input', placeholder: "カード背面4桁もしくは3桁の番号", required: true, maxlength: '4'
           .form__fields__field--info
             = link_to '#' do
-              = fa_icon 'question-circle'
+              = icon("fas", "question-circle")
               = "カード裏面の番号とは？"
         .submit#card_token
           = f.submit "次へ進む", class: 'submit__btn', id: 'token_submit'
