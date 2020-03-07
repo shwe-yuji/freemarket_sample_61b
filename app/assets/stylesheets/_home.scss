@@ -1,6 +1,8 @@
+
 .main-contents {
   background-color: rgb(245, 245, 245);
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
 
   min-height: 100vh;
@@ -34,6 +36,7 @@
       margin: 0px auto;
       width: 780px;
       display: flex;
+      flex-wrap: wrap;
 
       &--left #appstore {
         height: 50px;
@@ -63,6 +66,7 @@
 
       &--category {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
       }
   
@@ -79,7 +83,7 @@
     }
       
   .products__main {
-    width: 1020px;
+    width: 80%;
     padding: 42px 0px 18px;
     margin: 0px auto;
     
@@ -102,7 +106,6 @@
 
     &--list {
       margin: 0px auto;
-      width: 1020px;
       display: flex;
       flex-wrap: wrap;
     }
@@ -110,6 +113,7 @@
       figure {
         margin: 0;
         display: flex;
+        flex-wrap: wrap;
         flex-flow: column;
 
         .products {
@@ -149,4 +153,3 @@
     }
   }
 }
-
