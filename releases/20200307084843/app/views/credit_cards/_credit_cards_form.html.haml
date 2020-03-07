@@ -1,0 +1,23 @@
+.main-area
+  %h1.main-area__top 支払い方法
+  .main-area__form
+    .main-area__form__card-info
+      .main-area__form__card-info__title クレジットカード一覧
+      .main-area__form__card-info__brands-icon
+        = image_tag 'png/card_mastercard.png', height: '23'
+        -# 以下に各カード会社のブランドロゴを記述
+        -# = image_tag 'png/card_amex.png', height: '23'
+        -# = image_tag 'png/card_diners.png', height: '23'
+        -# = image_tag 'png/card_discover.png', height: '23'
+        -# = image_tag 'png/card_jcb.png', height: '23'
+        -# = image_tag 'png/card_saison.png', height: '23'
+        -# = image_tag 'png/card_visa.png', height: '23'
+      .main-area__form__card-info__card-number ************2222
+      .main-area__form__card-info__expire-day 05/21
+    = link_to '#' do  
+      .main-area__form__card-info__delete_btn
+        = "削除する"
+    = link_to '#' do
+      .main-area__form__link 
+        = '支払い方法について'
+        = fa_icon 'chevron-right'

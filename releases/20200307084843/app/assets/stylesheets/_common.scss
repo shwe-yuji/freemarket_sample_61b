@@ -1,0 +1,197 @@
+
+.wrapper {
+background-color: $form_background_color;
+color: #333;
+height: 100%;
+width: 100%;
+
+.logo-title {
+  height: 128px;
+  line-height: 128px;
+  text-align: center;
+  color: #333;
+
+  &__svg-image {
+    height: 60px;
+    margin-top: 35px;
+  }
+}
+
+.signup-area {
+  background-color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  width: 700px;
+
+  &__title {
+    font-size: 22px;
+    padding: 32px;
+    border-bottom: 1px solid $form_background_color;
+    font-weight: bold;
+  }
+  
+  &__link-box {
+    padding: 40px 180px 70px;
+
+    &__email {
+      border-radius: 4px;
+      background-color: #ea352d;
+      color: #fff;
+      line-height: 48px;
+      font-size: 14px;
+      position: relative;
+      width: 343px;
+
+      &--icon {
+        position: absolute;
+        left: 17px;
+        top: 15px;
+      }
+    }
+
+    &__facebook {
+      border-radius: 4px;
+      background: #385185;
+      color: #fff;
+      line-height: 48px;
+      font-size: 14px;
+      position: relative;
+      width: 343px;
+      margin-top: 16px;
+
+      &--icon {
+        position: absolute;
+        left: 15px;
+        top: 12px;
+      }
+    }
+
+    &__google {
+      border: #979797 solid 1px;
+      border-radius: 4px;
+      background-color: #fff;
+      color: #333;
+      line-height: 48px;
+      font-size: 14px;
+      position: relative;
+      width: 343px;
+      margin-top: 16px;
+
+      &--icon {
+        position: absolute;
+        left: 18px;
+        top: 15px;
+      }
+    }
+  }
+}
+
+.regulations {
+  width: 456px;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 30px;
+
+  &__regulation {
+    font-size: 12px;
+    display: block;
+    color: #333;
+  }
+}
+
+.link-logo {
+  text-align: center;
+  padding-top: 10px;
+
+}
+
+.mercari {
+  text-align: center;
+  font-size: 13px;
+}
+}
+.signin-area {
+  background-color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  width: 450px;
+  &__new {
+    font-size: 14px;
+    padding: 40px 64px;
+    border-bottom: 1px solid #eee;
+    a {
+      margin-top: 6px;
+      display: block;
+      background-color: #0099e8;
+      color: $form_background_color;
+      line-height: 40px;
+    }
+  }
+  
+  &__link-box {
+    padding: 16px 64px 32px;
+    &__facebook {
+      background: #385185;
+      color: #fff;
+      line-height: 48px;
+      font-size: 14px;
+      position: relative;
+      width: 100%;
+      margin-top: 16px;
+      &--icon {
+        position: absolute;
+        left: 15px;
+        top: 12px;
+      }
+    }
+
+    &__google {
+      border: #979797 solid 1px;
+      background-color: #fff;
+      color: #333;
+      line-height: 48px;
+      font-size: 14px;
+      position: relative;
+      width: 100%;
+      margin-top: 16px;
+      &--icon {
+        position: absolute;
+        left: 18px;
+        top: 15px;
+      }
+    }
+  }
+  &__input {
+    padding: 24px 64px 32px;
+    &--email {
+      @include formStyle;
+      width: 290px;
+      margin-top: 0;
+    }
+    &--pw {
+      @include formStyle;
+      width: 290px;
+      margin-top: 18px;
+    }
+    .g-recaptcha {
+      margin: 16px 0 10px;
+    }
+    .submit {
+      @include buttonStyle;
+    }
+    &--info {
+      text-align: left;
+      margin-top: 30px;
+      a {
+        color: #0099e8;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+#new_user{
+  color:$color;
+}

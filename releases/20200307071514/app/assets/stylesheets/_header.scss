@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+@media screen and (min-width: 1068px) {
+.main-headerand  {
+  max-width: 767px;
+  height: 150px;
+  width: 100vw;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  position: relative;
+  z-index: 3;
+  display: grid;
+}
+
+.main-header__contents {
+    display: flex;
+  }
+
+    .logo {
+      height: auto;
+      margin:0 0 0 140px;
+    }
+
+    .search{
+      position: relative;
+      .box {
+        display: flex;
+        position: relative;
+        height:40px;
+        width:800px;
+        margin: 25px 0 0 40px;
+
+      }
+      .search_image{
+        display: inline-block;
+        position: absolute;
+        top: 34px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+  .menu {
+    bottom: 0;
+    display: flex;
+  }
+
+  .fas.fa-mouse-pointer{
+    margin:10px 10px 15px 180px;
+  }
+  .category {
+    margin:10px 25px 0 0;
+
+  }
+
+  .fas.fa-tag {
+    margin: 10px 10px 0 0;
+  }
+  .brand {
+    margin: 10px 20px 0 0;
+  }
+
+  .fas.fa-heart {
+    margin: 10px 0 0 150px;
+  }
+  .nice {
+    margin: 10px 0 0 5px;
+  }
+
+  .fas.fa-bell {
+    margin: 10px 5px 0 45px;
+  }
+  .information {
+    margin: 10px 0 0 0;
+  }
+
+  .fas.fa-check {
+    margin: 10px 0 0 45px;
+  }
+
+  .todo {
+    margin: 10px 0 0 0;
+  }
+
+  .fas.fa-user {
+    margin: 10px 0 0 45px;
+  }
+  .mypage {
+    margin: 10px 0 0 0;
+  }
+
+  .login{
+    position: absolute;
+    right:0px;
+    margin: 10px 30px 0 0px;
+  }
+}

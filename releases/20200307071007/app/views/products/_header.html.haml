@@ -1,0 +1,41 @@
+.main-header
+  .main-header__contents
+    .logo
+      = link_to products_path do
+        = image_tag("fmarket_logo_red.png")
+    .search
+      %input.box{placeholder: '何かお探しですか？'}
+      %label.search_image
+        %i.fas.fa-search
+  .menu
+    .fas.fa-mouse-pointer
+      = link_to '#' do
+        カテゴリーから探す
+
+    .fas.fa-tag
+      = link_to '#' do
+        ブランドから探す
+
+    - if user_signed_in?
+      .fas.fa-heart
+        = link_to '#' do
+          いいね！一覧
+
+      .fas.fa-bell
+        = link_to '#' do
+          お知らせ
+          
+      .fas.fa-check
+        = link_to '#' do
+          やることリスト
+
+      .fas.fa-user
+        = link_to  user_path(current_user), method: :get do
+          マイページ
+
+      .login
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
+    - else
+      .login
+        = link_to "新規登録", new_user_registration_path
+        = link_to "ログイン", user_session_path

@@ -1,0 +1,54 @@
+- array = [] #仮置きの配列
+.main-area
+  %h1.main-area__top 本人情報の登録
+  .main-area__form
+    .main-area__form__message
+      = "お客さまの本人情報をご登録ください。"
+      %br/
+      = "登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。"
+    = link_to '#' do
+      .main-area__form__user-confirm-document-link
+        = "本人確認書類のアップロードについて"
+        =icon("fas", "chevron-right")
+    .main-area__form__user-info
+      .main-area__form__user-info--title 名前
+      .main-area__form__user-info--value フリマ太郎
+    .main-area__form__user-info
+      .main-area__form__user-info--title お名前カナ
+      .main-area__form__user-info--value フリマタロウ
+    .main-area__form__user-info
+      .main-area__form__user-info--title 生年月日
+      .main-area__form__user-info--value 1997/09/10
+
+    = form_with(url: '#') do |f|
+      .main-area__form__input-info
+        .main-area__form__input-info--title 郵便番号
+        .main-area__form__input-info--icon 任意
+      = f.text_field :postal_cord, class: 'main-area__form__input-area', placeholder: '例）0000000'
+
+      .main-area__form__input-info
+        .main-area__form__input-info--title 都道府県
+        .main-area__form__input-info--icon 任意
+      = f.collection_select :area_name, array, :id, :name # arrayは仮置きの配列です
+      =icon("fas", "chevron-right"), class: 'select-icon'
+      .main-area__form__input-info
+        .main-area__form__input-info--title 市区町村
+        .main-area__form__input-info--icon 任意
+      = f.text_field :city, class: 'main-area__form__input-area', placeholder: '例）渋谷区'
+      
+      .main-area__form__input-info
+        .main-area__form__input-info--title 番地
+        .main-area__form__input-info--icon 任意
+      = f.text_field :street_address, class: 'main-area__form__input-area', placeholder: '例）90番地'
+
+      .main-area__form__input-info
+        .main-area__form__input-info--title 建物名
+        .main-area__form__input-info--icon 任意
+      = f.text_field :building_name, class: 'main-area__form__input-area', placeholder: '例）アジアビル9F'
+
+      = f.submit value: '登録する',class: 'main-area__form__confirm-btn'
+      
+      = link_to '#' do
+        .main-area__form__user-info-guide-link
+          = "本人情報の登録について"
+          =icon("fas", "chevron-right")
