@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find_by(id: params[:id])
+    @product = Product.find(params[:id])
     if @product.destroy
       redirect_to root_path, notice: "商品を削除しました"
     else
