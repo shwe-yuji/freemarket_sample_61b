@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  
   def index
     @products = Product.includes(:photos).order('created_at DESC')
   end
@@ -24,7 +23,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    #  出品削除テストの記述(後々変更)
+    #  出品削除テストビューの記述(後々変更予定)
     @products = Product.includes(:photos).order('created_at DESC')
   end
 

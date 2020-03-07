@@ -14,8 +14,8 @@ FactoryBot.define do
     price                 { "1000" }
     brand_id              { "2" }
     category_id           { "60" }
-    association :user, factory: :user
-    association :category, factory: :category
-    association :brand, factory: :brand
+    association :user
+    association :category
+    association :brand
   end
 end
