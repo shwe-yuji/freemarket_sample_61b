@@ -1,9 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   require "payjp"
   # before_action :set_card, only: [:step4_regist]
-  before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  # before_action :delete_sms_num, only: [:step3]
+  before_action :delete_sms_num, only: [:step3]
 
   def step1
     @user = User.new
@@ -27,18 +27,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def step2_regist
     # 秘密鍵を共有していないためコメントアウト
-    # input_phone_number = params[:telephone].sub(/\A./,'+81').gsub(/-/,"").to_i
-    # sms_num = rand(10000..99999)
-    # session[:sms_num] = sms_num
-    # client = Twilio::REST::Client.new(config.account_sid, config.auth_token)
-    # begin
-    #   client.messages.create(
-    #     from: Rails.application.credentials[:TWILIO_NUMBER],
-    #     to: input_phone_number,
-    #     body: "#{sms_num}を入力してください"
-    #   )
-    # rescue Twilio::REST::RestError => e
-    # end
+    input_phone_number = params[:telephone].sub(/\A./,'+81').gsub(/-/,"")
+    sms_num = rand(10000..99999)
+    session[:sms_num] = sms_num
+    client = Twilio::REST::Client.new(config.account_sid, config.auth_token)
+    begin
+      client.messages.create(
+        from: Rails.application.credentials[:TWILIO_NUMBER],
+        to: input_phone_number,
+        body: "#{sms_num}を入力してください"
+      )
+    rescue Twilio::REST::RestError => e
+    end
     redirect_to phone_confirm_path
   end
 
@@ -47,12 +47,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def phone_confirm_input
     # 秘密鍵を共有していないためコメントアウト
-    # input_sms_number = params[:input_sms_number].to_i
-    # if session[:sms_num] === input_sms_number
+    input_sms_number = params[:input_sms_number].to_i
+    if session[:sms_num] === input_sms_number
       redirect_to destination_regist_path
-    # else
-      # redirect_to phone_regist_path
-    # end
+    else
+      redirect_to phone_regist_path
+    end
   end
 
   def step3
@@ -113,7 +113,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
   end
 
-  private
   def user_params
     params.require(:user).permit(:nickname,
                                  :password,
