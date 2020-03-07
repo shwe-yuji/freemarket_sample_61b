@@ -170,50 +170,50 @@
 - @products.each do |product|
   %h3.sell-area__name
     ユーザー名
-  %p= product.user.nickname
+  = product.user.nickname
 
   %h3.sell-area__name
     商品名
-  %p= product.name 
+  = product.name 
 
   %h3.sell-area__name
     商品の説明
-  %p= product.description
+  = product.description
 
   %h3.sell-area__name
     カテゴリー
-  %p= product.category.name
+  = product.category.name
 
   %h3.sell-area__name
     サイズ
-  %p= product.size.value
+  = product.size.value
 
   %h3.sell-area__name
     ブランド
-  %p= product.brand.name
+  = product.brand.name
 
   %h3.sell-area__name
     商品の状態
-  %p= product.condition.value
+  = product.condition.value
 
   %h3.sell-area__name
     配送料の負担
-  %p= product.delivery_expense.value
+  = product.delivery_expense.value
 
   %h3.sell-area__name
     配送の方法
-  %p= product.delivery_method.value
+  = product.delivery_method.value
 
   %h3.sell-area__name
     発送元の地域
-  %p= product.area.name
+  = product.area.name
 
   %h3.sell-area__name
     配送までの日数
-  %p= product.shipdate.value
+  = product.shipdate.value
 
   %h3.sell-area__name
     取引状況
-  %p= product.status.value
+  = product.status.value
 
-  = link_to '削除', "/products/#{product.id}", method: :delete
+  = link_to '削除', product_path(product.id), method: :delete
