@@ -29,3 +29,5 @@
 app/.DS_Store
 /config/master.key
 public/uploads/*
+app/views/home/.DS_Store
+app/assets/stylesheets/.DS_Store
