@@ -36,8 +36,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find_by(id: params[:id])
-    if if @product.user_id == current_user.id
-      @product.destroy
+    if @product.destroy
       redirect_to root_path, notice: "商品を削除しました"
     else
       flash.now[:alert] = "商品の削除に失敗しました"
