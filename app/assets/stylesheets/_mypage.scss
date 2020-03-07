@@ -1,11 +1,11 @@
- .mypage-wrapper {
+.mypage-wrapper {
   min-height: 100%;
   width: 100%;
   background: rgb(245, 245, 245);
   padding: 40px 0 40px 0;
   display: flex;
   justify-content: center;
-  
+
   .side-area {
     float: left;
     width: 280px;
@@ -15,7 +15,7 @@
 
     &__trade {
       background-color: #fff;
-      
+
       &__list {
         text-align: center;
 
@@ -38,7 +38,7 @@
         }
       }
     }
-  
+
     &__merpay {
       color: rgb(51, 51, 51);
       font-weight: bold;
@@ -91,7 +91,7 @@
             font-size: 13px;
             font-weight: lighter;
           }
-          
+
           &--icon {
             color: #ccc;
           }
@@ -108,7 +108,6 @@
     margin-bottom: 40px;
 
     &__mypage {
-      
       &__user-icon {
         background-image: image-url("mypage-background.png");
         height: 200px;
@@ -146,18 +145,16 @@
         &__active-tab {
           width: 50%;
           background-color: #fff;
-          border-top: solid 2px red
+          border-top: solid 2px red;
         }
 
         &__tab {
           background: #eee;
           width: 50%;
         }
-
       }
 
       &__contents {
-        
         &__content {
           height: 70px;
           padding: 16px 16px 0 16px;
@@ -171,7 +168,6 @@
             height: 48px;
             background: rgb(245, 245, 245);
             text-align: center;
-            
           }
 
           &--sentence {
@@ -185,7 +181,6 @@
             padding: 5px 0 0 20px;
             color: rgb(51, 51, 51);
             font-size: 14px;
-
           }
 
           &--chevron-right {
@@ -202,12 +197,28 @@
           }
         }
       }
-    &__user-logout{
-      width:calc(300vw/5);
-      height:25vh;
-      background-color: orangered;
-    }
+      &__logout {
+        width: 700px;
+        height: 150px;
+        background-color: white;
+        margin: 0 auto;
 
+        &-button {
+          width: 320px;
+          height: 50px;
+          position: relative;
+          top: 50px;
+          margin: 0 auto;
+          background-color: $button_background;
+          line-height: 50px;
+          text-align: center;
+          a {
+            font-size: 14px;
+            color: white;
+            display: block;
+          }
+        }
+      }
     }
     &__trade-detail {
       margin-top: 40px;
@@ -234,7 +245,7 @@
         &__active-tab {
           width: 50%;
           background-color: #fff;
-          border-top: solid 2px red
+          border-top: solid 2px red;
         }
 
         &__tab {
@@ -246,7 +257,7 @@
       &__contents {
         background-color: #fff;
         height: 100%;
-        
+
         &__null {
           color: #ccc;
           text-align: center;

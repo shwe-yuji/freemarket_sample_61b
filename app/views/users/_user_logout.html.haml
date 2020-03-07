@@ -1,4 +1,5 @@
 .main-area
   .main-area__mypage
-    .main-area__mypage__user-logout 
-      = link_to destroy_user_session_path(current_user), method: :delete
+    .main-area__mypage__logout
+      .main-area__mypage__logout-button
+        = link_to "ログアウト",destroy_user_session_path , method: :delete
