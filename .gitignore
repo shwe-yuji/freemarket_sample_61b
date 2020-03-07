@@ -25,10 +25,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-.DS_Store
 .env
 app/.DS_Store
-/config/master.key
-/config/secrets.yml
-/config/credentials.yml.enc
 public/uploads/*
+app/views/home/.DS_Store
+app/assets/stylesheets/.DS_Store
