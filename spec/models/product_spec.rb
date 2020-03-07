@@ -1,5 +1,3 @@
-# require 'rails_helper'
-
 require 'rails_helper'
 describe Product do
   describe '#create' do
@@ -55,9 +53,4 @@ describe Product do
       expect(product.errors[:price]).to include("を入力してください")
     end
   end
-
-  describe 'DELETE #destroy' do
-    it "商品の削除" do
-      produv
-    end
 end
