@@ -79,10 +79,9 @@
     .under_contents {
       display: flex;
       flex: wrap;
-      
       .first{   
         position: absolute;
-        left:200px;
+        left:280px;
         top:20px;
         .first_contents {
           a {
@@ -113,7 +112,7 @@
 
       .second {
         position: absolute;
-        left:350px;
+        left:480px;
         top:20px;
         .second_contents {
           a {
@@ -133,6 +132,7 @@
       .third {
         position: absolute;
         top:20px;
+        left:700px;
         .third_contents {
           a {
             color:white;
@@ -151,6 +151,7 @@
       .forth{
         position: absolute;
         top:20px;
+        left:1020px;
         .forth_contents {   
           a {
             color:white;
@@ -165,14 +166,14 @@
             }
         }
       }
-
     }
-  .corporate_contents {
-    margin:10px 0 0 670px;
-    position: center;
-    bottom: 0px;
-    font-size:10px;
-    }
+    .corporate_contents {
+      position: absolute;
+      top:220px;
+      left:47%;
+      bottom: 0px;
+      font-size:10px;
+      }
   }
  }
 }
@@ -255,99 +256,111 @@
   z-index: -1;  
 }
 
-.under_contents {
-  display: flex;
-  flex: wrap;
-  .first{   
-    
-    position: absolute;
-    left:200px;
-    top:20px;
-    .first_contents {
-      a {
-        color:white;
-        text-decoration:none;
+
+.under-footer_contents {
+  color:white;
+  bottom:0px;
+  height:250px;
+  background-color: black;
+  position: relative;
+
+  .under_contents {
+    display: flex;
+    flex: wrap;
+    .first{   
+      position: absolute;
+      left:80px;
+      top:20px;
+      .first_contents {
+        a {
+          color:white;
+          text-decoration:none;
+          }
+      }
+      .first_item {
+        font-size: 12px;
+        a {
+          color:gray;
+          text-decoration:none;
+          }
+      }
+      .sns {
+        display: flex;
+        img {
+          height:20px;
         }
-    }
-    .first_item {
-      font-size: 12px;
-      a {
-        color:gray;
-        text-decoration:none;
+      }
+      .white_fmarket_logo {
+        img {
+          margin:10px 0 0 0;
+          height:40px;
         }
-    }
-    .sns {
-      display: flex;
-      img {
-        height:20px;
       }
     }
-    .white_fmarket_logo {
-      img {
-        margin:10px 0 0 0;
-        height:40px;
+
+    .second {
+      position: absolute;
+      left:250px;
+      top:20px;
+      .second_contents {
+        a {
+          color:white;
+          text-decoration:none;
+          }
+      }
+      .second_item {
+        font-size: 12px;
+        a {
+          color:gray;
+          text-decoration:none;
+          }
+      }
+    }
+
+    .third {
+      position: absolute;
+      top:20px;
+      left:415px;
+      .third_contents {
+        a {
+          color:white;
+          text-decoration:none;
+          }
+      }
+      .third_item {
+        font-size: 12px;
+        a {
+          color:gray;
+          text-decoration:none;
+          }
+      }
+    }
+
+    .forth{
+      position: absolute;
+      top:20px;
+      left:690px;
+      .forth_contents {   
+        a {
+          color:white;
+          text-decoration:none;
+          }
+      }
+      .forth_item {
+        font-size: 12px;
+        a {
+          color:gray;
+          text-decoration:none;
+          }
       }
     }
   }
-
-  .second {
+  .corporate_contents {
     position: absolute;
-    left:300px;
-    top:20px;
-    .second_contents {
-      a {
-        color:white;
-        text-decoration:none;
-        }
-    }
-    .second_item {
-      font-size: 12px;
-      a {
-        color:gray;
-        text-decoration:none;
-        }
+    top:220px;
+    left:40%;
+    bottom: 0px;
+    font-size:10px;
     }
   }
-
-  .third {
-    padding:20px 0 0 80px;
-    .third_contents {
-      a {
-        color:white;
-        text-decoration:none;
-        }
-    }
-    .third_item {
-      font-size: 12px;
-      a {
-        color:gray;
-        text-decoration:none;
-        }
-    }
-  }
-
-  .forth{
-    padding:20px 0 0 80px;
-    .forth_contents {   
-      a {
-        color:white;
-        text-decoration:none;
-        }
-    }
-    .forth_item {
-      font-size: 12px;
-      a {
-        color:gray;
-        text-decoration:none;
-        }
-    }
-  }
-
-}
-.corporate_contents {
-margin:10px 0 0 670px;
-position: center;
-bottom: 0px;
-font-size:10px;
-}
 }

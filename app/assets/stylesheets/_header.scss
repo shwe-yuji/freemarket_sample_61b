@@ -5,13 +5,9 @@
 }
 
 // pc
-
 @media screen and (min-width: 1068px) {
-
   .main-header  {
-    // max-width: 767px;
     height: 150px;
-    // width: 100%;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
     position: relative;
@@ -53,6 +49,7 @@
             display: inline-block;
           }
         }
+
       }
     }
     .menu {
@@ -115,7 +112,7 @@
 
 
 
-
+// 1068px以下
 .logo {
   height: auto;
   margin-left: 40px;
@@ -194,109 +191,3 @@ label{
     margin:7px 15px 0 40px;
   }
 }
-// // iphone
-// @media screen and (min-width: 500px) {
-//   .main-headerand  {
-//     max-width: 767px;
-//     height: 150px;
-//     width: 100%;
-//     background-color: rgb(255, 255, 255);
-//     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-//     position: relative;
-//     z-index: 3;
-//     display: grid;
-//   }
-  
-//   .main-header__contents {
-//       display: flex;
-//       .logo {
-//         height: auto;
-//         margin-left: 13%;
-//       }
-  
-//       .search{
-//         width: 100%;
-//         .box{
-//           width:250px;
-//           position: relative;
-//           height:40px;
-//         }
-//         input {
-//           height:40px;
-//           margin: 25px 0 0 40px;
-//           line-height: 1.4em;
-//           width:250px;
-//           border-width: 1px;
-//           border-style: solid;
-//           border-color: rgb(204, 204, 204);
-//           padding-right:50px; 
-//           border-radius: 4px;
-//           outline: none;
-//         }
-//         label{
-//           position: absolute;
-//           top:33px;
-//           left:590px;
-//           i{
-//             font-size: inherit;
-//             display: inline-block;
-//           }
-//         }
-//       }
-//     }
-  
-//     .menu {
-//       bottom: 0;
-//       display: flex;
-//     }
-  
-//     .fas.fa-mouse-pointer{
-//       margin:10px 10px 15px 180px;
-//     }
-//     .category {
-//       margin:10px 25px 0 0;
-  
-//     }
-  
-//     .fas.fa-tag {
-//       margin: 10px 10px 0 0;
-//     }
-//     .brand {
-//       margin: 10px 20px 0 0;
-//     }
-  
-//     .fas.fa-heart {
-//       margin: 10px 0 0 150px;
-//     }
-//     .nice {
-//       margin: 10px 0 0 5px;
-//     }
-  
-//     .fas.fa-bell {
-//       margin: 10px 5px 0 45px;
-//     }
-//     .information {
-//       margin: 10px 0 0 0;
-//     }
-  
-//     .fas.fa-check {
-//       margin: 10px 0 0 45px;
-//     }
-  
-//     .todo {
-//       margin: 10px 0 0 0;
-//     }
-  
-//     .fas.fa-user {
-//       margin: 10px 0 0 45px;
-//     }
-//     .mypage {
-//       margin: 10px 0 0 0;
-//     }
-  
-//     .login{
-//       position: absolute;
-//       right:0px;
-//       margin: 10px 30px 0 0px;
-//     }
-//   }
