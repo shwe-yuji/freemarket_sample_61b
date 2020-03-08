@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+
   def index
     @products = Product.all.includes(:photos).order('created_at DESC').limit(10)
     @photos = Photo.all
@@ -44,7 +45,11 @@ class ProductsController < ApplicationController
     end
   end
 
-
+  def search
+    @search_word = params[:search_word]
+    @prodcts_result = Product.all
+    # @products = Product.where().limit(132)
+  end
 
   private
 
@@ -53,5 +58,9 @@ class ProductsController < ApplicationController
                                     :delivery_expense_id, :delivery_method_id, :area_id, 
                                     :shipdate_id, :price, :status_id, photos_attributes: [:photo],
                                     brand_attributes: [:name]).merge(user_id: current_user.id)
+  end
+
+  def search_params
+    params.require(:product).permit(:name)
   end
 end

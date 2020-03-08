@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   
   get 'products/done'
+  get 'products/search'
   resources :products
   root to: "products#index"
   get 'users/logout'
@@ -25,5 +26,4 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit] do
     resources :credit_cards, only: [:show]
   end
-
 end
