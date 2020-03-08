@@ -147,9 +147,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session.delete(:sms_num)
   end
 
-  def edit
-    super
-  end
+  # def edit
+  #   super
+  # end
 
   # PUT /resource
   # def update
