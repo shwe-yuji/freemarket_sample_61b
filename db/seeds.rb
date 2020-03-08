@@ -98,3 +98,6 @@ products.each do |record|
   Product.create!(record) unless Product.find_by(name: record[:name])
 end
 
+# photos
+Photo.create!(product_id: 1, photo: open("#{Rails.root}/db/fixtures/img1.png"))
+Photo.create!(product_id: 2, photo: open("#{Rails.root}/db/fixtures/img2.png"))
