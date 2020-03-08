@@ -26,7 +26,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def step2_regist
-    # 秘密鍵を共有していないためコメントアウト
     input_phone_number = params[:telephone].sub(/\A./,'+81').gsub(/-/,"")
     sms_num = rand(10000..99999)
     session[:sms_num] = sms_num
@@ -46,7 +45,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def phone_confirm_input
-    # 秘密鍵を共有していないためコメントアウト
     input_sms_number = params[:input_sms_number].to_i
     if session[:sms_num] === input_sms_number
       redirect_to destination_regist_path
