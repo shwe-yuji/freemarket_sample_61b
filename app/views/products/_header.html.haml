@@ -17,6 +17,7 @@
         ブランドから探す
 
     - if user_signed_in?
+      .sign_box
       .fas.fa-heart
         = link_to '#' do
           いいね！一覧
@@ -33,7 +34,7 @@
         = link_to  user_path(current_user), method: :get do
           マイページ
 
-      .login
+      .logout
         = link_to "ログアウト", destroy_user_session_path, method: :delete
     - else
       .login
