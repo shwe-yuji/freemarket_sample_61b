@@ -9,7 +9,7 @@
         .edit-area__mypage__user-icon__detail
           = link_to "#" do
             = image_tag "test.png", size: "70x70", class: "main-area__mypage__user-icon__detail--picture"
-            %input.edit-area__mypage__user-icon__detail--name 
+            %input.edit-area__mypage__user-icon__detail--name{placeholder: '例）AYA#セール中'} 
     
       .edit-area__mypage__tabs
         %textarea.edit-area__mypage__tabsclass{placeholder: '例）こんにちは⭐︎ご覧いただきありがとうございますご覧いただきありがとうございます！可愛いものや綺麗めオフィスカジュアル中心に出品しています。気持ちよく取引できるよう心がけていますので、出品や配送方法など質問がございましたらお気軽にどうぞ♪'}
@@ -19,40 +19,3 @@
 .footer
   = render 'products/cameraicon'
   = render 'products/footer'
-
--# %h2
--#   Edit #{resource_name.to_s.humanize}
--# = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
--#   = render "devise/shared/error_messages", resource: resource
--#   .field
--#     = f.label :email
--#     %br/
--#     = f.email_field :email, autofocus: true, autocomplete: "email"
--#   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
--#     %div
--#       Currently waiting confirmation for: #{resource.unconfirmed_email}
--#   .field
--#     = f.label :password
--#     %i (leave blank if you don't want to change it)
--#     %br/
--#     = f.password_field :password, autocomplete: "new-password"
--#     - if @minimum_password_length
--#       %br/
--#       %em
--#         = @minimum_password_length
--#         characters minimum
--#   .field
--#     = f.label :password_confirmation
--#     %br/
--#     = f.password_field :password_confirmation, autocomplete: "new-password"
--#   .field
--#     = f.label :current_password
--#     %i (we need your current password to confirm your changes)
--#     %br/
--#     = f.password_field :current_password, autocomplete: "current-password"
--#   .actions
--#     = f.submit "Update"
--# %h3 Cancel my account
--# %p
--#   Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
--# = link_to "Back", :back

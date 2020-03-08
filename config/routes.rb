@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get 'creditcard_regist', to: 'users/registrations#step4'
     post 'creditcard_regist', to: 'users/registrations#step4_regist'
     get 'registed', to: 'users/registrations#finish_regist'
+
   end
   
   get 'products/done'
