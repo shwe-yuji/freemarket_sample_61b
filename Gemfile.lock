@@ -132,6 +132,8 @@ GEM
     factory_bot_rails (5.1.1)
       factory_bot (~> 5.1.0)
       railties (>= 4.2.0)
+    faker (2.10.2)
+      i18n (>= 1.6, < 2)
     faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.12.2)
@@ -157,6 +159,8 @@ GEM
     font-awesome-sass (5.12.0)
       sassc (>= 1.11)
     formatador (0.2.5)
+    gimei (0.4.0)
+      romaji
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.1.2)
@@ -338,6 +342,8 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.4)
+    romaji (0.2.4)
+      rake (>= 0.8.0)
     rspec-core (3.9.1)
       rspec-support (~> 3.9.1)
     rspec-expectations (3.9.0)
@@ -474,8 +480,10 @@ DEPENDENCIES
   devise-i18n-views
   dotenv-rails
   factory_bot_rails
+  faker
   fog-aws
   font-awesome-sass
+  gimei
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
