@@ -82,3 +82,10 @@ end
   )
 end
 
+# brands
+30.times do |n|
+  Brand.create(
+    name: Faker::Restaurant.type
+  )
+end
+
