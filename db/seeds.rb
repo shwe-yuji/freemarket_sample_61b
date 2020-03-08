@@ -89,3 +89,12 @@ end
   )
 end
 
+# products
+products = [
+  { user_id: 1, name: "おにぎり", description: "中古美品です。使用済みのためやや食べかけですが、ラップもしてあり賞味期限はまだ２日残っています。中古のためノークレームノーリターンでお願いします。", size_id: Faker::Number.within(range: 1..10), status_id: 1, condition_id: Faker::Number.within(range: 1..6), delivery_expense_id: 1, delivery_method_id: Faker::Number.within(range: 1..9), area_id: Faker::Number.within(range: 1..47), shipdate_id: Faker::Number.within(range: 1..3), price: Faker::Number.within(range: 300..60000), brand_id: Faker::Number.within(range: 1..30), category_id: Faker::Number.within(range: 1..211) },
+  { user_id: 2, name: "手作りカットソー", description: "自分で作ったカットソーです。サイズはフリーサイズになります。", size_id: Faker::Number.within(range: 1..10), status_id: 1, condition_id: Faker::Number.within(range: 1..6), delivery_expense_id: 1, delivery_method_id: Faker::Number.within(range: 1..9), area_id: Faker::Number.within(range: 1..47), shipdate_id: Faker::Number.within(range: 1..3), price: Faker::Number.within(range: 300..60000), brand_id: Faker::Number.within(range: 1..30), category_id: Faker::Number.within(range: 1..211) }
+]
+products.each do |record|
+  Product.create!(record) unless Product.find_by(name: record[:name])
+end
+
