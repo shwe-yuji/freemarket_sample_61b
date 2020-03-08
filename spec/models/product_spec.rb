@@ -1,14 +1,3 @@
-# require 'rails_helper'
-
-# RSpec.describe 'Product',type: :model do
-#   describe '#create' do
-#     it "商品名なしの出品" do
-#        product = build(:product, name: nil)   
-#         product.valid?
-#          expect(product.errors[:name]).to include("を入力してください")
-#     end
-#   end
-# end
 require 'rails_helper'
 describe Product do
   describe '#create' do
