@@ -1,3 +1,4 @@
+# categories
 # 親階層
 lady                         = Category.create(name: "レディース")
 men                          = Category.create(name: "メンズ")
@@ -55,4 +56,12 @@ lady_17.children.create([{name: "スカートスーツ上下"},{name: "パンツ
 lady_18.children.create([{name: "トップス"},{name: "アウター"},{name: "インナー"},{name: "ワンピース"},{name: "パンツ/スパッツ"},{name: "スカート"},{name: "パジャマ"},{name: "授乳服"},{name: "その他"}])
 lady_19.children.create([{name: "コスプレ"},{name: "下着"},{name: "その他"}])
 
+# users
+users = [
+  { nickname: "プロフリマー", email: "test@example.com", password: "12345678", firstname: Gimei.last.kanji, lastname: Gimei.first.kanji, firstname_kana: Gimei.last.katakana, lastname_kana: Gimei.first.katakana, birthdate: Faker::Date.between(from: 40.years.ago, to: Date.today), profile: "お金が大好きです。よろしくおねがいします。", image: "" },
+  { nickname: "会社員", email: "test2@example.com", password: "12345678", firstname: Gimei.last.kanji, lastname: Gimei.first.kanji, firstname_kana: Gimei.last.katakana, lastname_kana: Gimei.first.katakana, birthdate: Faker::Date.between(from: 40.years.ago, to: Date.today), profile: "返品、クレーム受け付けます！", image: "" },
+]
+users.each do |record|
+  User.create!(record) unless User.find_by(email: record[:email])
+end
 
