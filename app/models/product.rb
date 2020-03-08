@@ -11,7 +11,6 @@ class Product < ApplicationRecord
   belongs_to_active_hash :shipdate
   belongs_to_active_hash :status
   has_many :photos, dependent: :delete_all
-  accepts_nested_attributes_for :category, allow_destroy: true
   accepts_nested_attributes_for :photos, allow_destroy: true
   accepts_nested_attributes_for :brand, allow_destroy: true
 
