@@ -47,8 +47,11 @@ class ProductsController < ApplicationController
 
   def search
     @search_word = params[:search_word]
-    @prodcts_result = Product.all
-    # @products = Product.where().limit(132)
+    if @search_word == ""
+      redirect_to root_path
+    else
+      @products_result = Product.where(['name LIKE ?', "%#{@search_word}%"])
+    end
   end
 
   private
@@ -60,7 +63,7 @@ class ProductsController < ApplicationController
                                     brand_attributes: [:name]).merge(user_id: current_user.id)
   end
 
-  def search_params
-    params.require(:product).permit(:name)
-  end
+  # def search_params
+  #   params.require(:product).permit(:name)
+  # end
 end
