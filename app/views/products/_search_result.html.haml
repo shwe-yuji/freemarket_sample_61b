@@ -1,0 +1,11 @@
+- if @search_result.present?
+  .search-result
+    .search-result__title
+      = "#{@search_word}の検索結果"
+    .search-result__products-num
+      = "1-134件表示" #仮置き
+    -#   = "1-#{@search_result.length}件表示"
+- else
+  .products-new
+    .products-new__title 
+      = '新着商品'

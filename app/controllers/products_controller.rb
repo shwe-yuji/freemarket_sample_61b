@@ -47,12 +47,8 @@ class ProductsController < ApplicationController
 
   def search
     @search_word = params[:search_word]
-    if @search_word == ""
-      redirect_to root_path
-    else
-      @products = Product.all.includes(:photos).order('created_at DESC').limit(10) #仮置き
-      @products_result = Product.where(['name LIKE ?', "%#{@search_word}%"])
-    end
+    @products = Product.all.includes(:photos).order('created_at DESC') #仮置き
+    @search_result = @products.search(@search_word)
   end
 
   private

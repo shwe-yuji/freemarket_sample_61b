@@ -3,12 +3,13 @@
   min-height: 100%;
   background-color: rgb(245, 245, 245);
   padding: 40px 0 40px 0;
+  display: flex;
+  justify-content: space-around;
 
   .detail-search {
     //   float: left;
     width: 280px;
     min-height: 100%;
-    padding-left: 40px;
 
     &__list-change {
       height: 80px;
@@ -26,5 +27,8 @@
       flex-direction: column;
       }
     }
+  }
+  .search-result {
+    float: right;
   }
 } 

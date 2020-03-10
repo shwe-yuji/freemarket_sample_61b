@@ -1,5 +1,10 @@
 class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+
+  def self.search(search_word)
+    Product.where(['name LIKE ? ', "%#{search_word}%"])
+  end
+  
   belongs_to :user
   belongs_to :category
   belongs_to :brand, optional: true
