@@ -1,0 +1,46 @@
+.detail-search
+  = form_with(url: '#', class: 'detail-search__list-change') do |f|
+    = f.collection_select :condition_id, Condition.all, :id, :value, {prompt: "並び替え"} #仮置きでコンディションを置いてます
+
+  .detail-search__box
+    .detail-search__box__title 詳細検索
+    = form_with(model: @products, url: products_search_path, method: :get, local: :true, class: 'detail-search__box__form') do |f|
+
+      = f.label :'キーワードを追加する'
+      = f.text_field :nickname, placeholder: @search_word
+
+      = f.label :'カテゴリーを選択する'
+      = f.collection_select :category_id, Category.all, :id, :value, {prompt: "すべて"} #仮置きでコンディションを置いてます
+
+      = f.label :'ブランド名から探す'
+      = f.text_field :nickname, placeholder: '例）シャネル'
+
+      = f.label :'サイズを指定する'
+      = f.collection_select :size_id, Size.all, :id, :value, {prompt: "すべて"} #仮置きでコンディションを置いてます
+
+      = f.label :'価格'
+      = f.collection_select :price, Category.all, :id, :value, {prompt: "選択してください"} #仮置きでコンディションを置いてます
+      = f.number_field :min_price, placeholder: '¥Min'
+      = f.number_field :max_price, placeholder: '¥Max'
+
+      = f.label :'商品の状態'
+      = f.check_box :check1
+      = f.check_box :check1
+      = f.check_box :check1
+      = f.check_box :check1
+      = f.check_box :check1
+      = f.check_box :check1
+      = f.check_box :check1
+
+      = f.label :'配送料の負担'
+      = f.check_box :check1
+      = f.check_box :check1
+      = f.check_box :check1
+
+      = f.label :'販売状況'
+      = f.check_box :check1
+      = f.check_box :check1
+      = f.check_box :check1
+    
+      = f.button :clear, value: 'クリア'
+      = f.submit :ccc, value: '完了'

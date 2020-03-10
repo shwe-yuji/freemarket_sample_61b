@@ -1,0 +1,30 @@
+.search-wrapper {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgb(245, 245, 245);
+  padding: 40px 0 40px 0;
+
+  .detail-search {
+    //   float: left;
+    width: 280px;
+    min-height: 100%;
+    padding-left: 40px;
+
+    &__list-change {
+      height: 80px;
+    }
+
+    &__box {
+      background-color: #ffffff;
+
+      &__title {
+      font-weight: bold;
+        }
+
+      &__form {
+      display: flex;
+      flex-direction: column;
+      }
+    }
+  }
+} 
