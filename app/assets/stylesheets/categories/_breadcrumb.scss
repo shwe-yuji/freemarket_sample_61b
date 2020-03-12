@@ -1,0 +1,21 @@
+.breadcrumb {
+  z-index: 3;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  background-color: white;
+  border-top: 1px solid #eee;
+  height: 49px;
+  width: 1440px;
+
+  &__list {
+    display: inline-block;
+    display: flex;
+    font-size: 14px;
+    text-align: center;
+    margin: 0px 210px;
+    padding: 16px 0px;
+      a {
+          color: black;
+          margin-right: 14px;
+      }
+  }
+}
