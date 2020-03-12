@@ -5,7 +5,8 @@
   margin-left: 40px;
 }
 
-input {
+input.box {
+  overflow-x: scroll;
   height:40px;
   margin: 5px 0 0 40px;
   line-height: 1.4em;
@@ -17,66 +18,18 @@ input {
   border-radius: 4px;
   outline: none;
 }
-label{
+label.search_image{
   position: absolute;
-  top:106px;
-  left:440px;
+  top:127px;
+  left:460px;
   i{
     font-size: inherit;
     display: inline-block;
   }
 }
 .menu{
-  display: flex;
-  flex-wrap: wrap;
-  .fas.fa-mouse-pointer{
-    margin:10px 10px 15px 40px;
-  }
-  .category {
-    margin:10px 25px 0 0;
-
-  }
-
-  .fas.fa-tag {
-    margin: 10px 10px 0 0;
-  }
-  .brand {
-    margin: 10px 20px 0 0;
-  }
-
-  .fas.fa-heart {
-    margin: 10px 0 0 150px;
-  }
-  .nice {
-    margin: 10px 0 0 5px;
-  }
-
-  .fas.fa-bell {
-    margin: 10px 5px 0 45px;
-  }
-  .information {
-    margin: 10px 0 0 0;
-  }
-
-  .fas.fa-check {
-    margin: 10px 0 0 45px;
-  }
-
-  .todo {
-    margin: 10px 0 0 0;
-  }
-
-  .fas.fa-user {
-    margin: 10px 0 0 45px;
-  }
-  .mypage {
-    margin: 10px 0 0 0;
-  }
-
-  .login{
-    width:340px;
-    margin:7px 15px 0 40px;
-  }
+  width: 1000px;
+  margin-left: 40px;
 }
 
 
