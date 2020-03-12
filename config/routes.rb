@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     get 'registed', to: 'users/registrations#finish_regist'
   end
   
+
+  resources :categories, only: [:index, :show]
   get 'products/done'
   resources :products
   root to: "products#index"
