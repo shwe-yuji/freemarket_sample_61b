@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
 
+  before_action :set_price, only: [:search]
+
   def index
     @products = Product.all.includes(:photos).order('created_at DESC').limit(10)
     @photos = Photo.all
@@ -47,8 +49,7 @@ class ProductsController < ApplicationController
 
   def search
     @search_word = params[:search_word]
-    @products = Product.all.includes(:photos).order('created_at DESC') #仮置き
-    @search_result = @products.search(@search_word)
+    @search_result = Product.search(@search_word).limit(132)
   end
 
   private
@@ -60,6 +61,14 @@ class ProductsController < ApplicationController
                                     brand_attributes: [:name]).merge(user_id: current_user.id)
   end
 
+  def set_price
+    @price_list = ["300 ~ 1000", 
+                   "1000 ~ 5000", 
+                   "5000 ~ 10000", 
+                   "10000 ~ 30000", 
+                   "30000 ~ 50000",
+                   "50000 ~ "]
+  end
   # def search_params
   #   params.require(:product).permit(:name)
   # end
