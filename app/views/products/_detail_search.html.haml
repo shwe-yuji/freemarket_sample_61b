@@ -1,6 +1,6 @@
 .detail-search
   = form_with(url: '#', class: 'detail-search__list-change') do |f|
-    = f.collection_select :condition_id, Condition.all, :id, :value, {prompt: "並び替え"} #仮置きでコンディションを置いてます
+    = f.select :condition_id, @list_change, {include_blank: '並び替え'}
 
   .detail-search__box
     .detail-search__box__title 詳細検索

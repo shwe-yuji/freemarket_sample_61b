@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_action :set_price, only: [:search]
+  before_action :set_pulldown, only: [:search]
 
   def index
     @products = Product.all.includes(:photos).order('created_at DESC').limit(10)
@@ -61,13 +61,17 @@ class ProductsController < ApplicationController
                                     brand_attributes: [:name]).merge(user_id: current_user.id)
   end
 
-  def set_price
+  def set_pulldown
     @price_list = ["300 ~ 1000", 
                    "1000 ~ 5000", 
                    "5000 ~ 10000", 
                    "10000 ~ 30000", 
                    "30000 ~ 50000",
                    "50000 ~ "]
+    @list_change = ["価格の安い順",
+                    "価格の高い順",
+                    "出品の新しい順",
+                    "いいね！の多い順"]
   end
   # def search_params
   #   params.require(:product).permit(:name)
