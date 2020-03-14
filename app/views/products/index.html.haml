@@ -25,7 +25,7 @@
         .products__header--title
           人気のカテゴリー
         %ul.products__header--category
-          -# 出品されている商品の中で人気(出品数が多い)のcategoryBest４を表示
+          -# 出品されている商品の中で人気(出品数が多い)のカテゴリーBest４を表示
           - @popular_categories.each do |category|
             %li.products__header--list
               = category.category.name
@@ -38,7 +38,7 @@
           .products__main--more
             = link_to "もっと見る >", "#"
           .products__main--list
-            -# 個別の商品リストに表示される中身はcollectionに渡す引数で制御する
+            -# eachで回して現在のcategory_idの商品を10件商品一覧に表示
             = render partial: "list", collection: @popular_categories_products.where(category_id: category.category_id).limit(10), as: :product
 
     .products
@@ -46,12 +46,12 @@
         .products__header--title
           人気のブランド
         %ul.products__header--category
-          -# 出品されている商品の中で人気(出品数が多い)のcategoryBest４を表示
-          - @popular_brands.limit(4).each do |brand|
+          -# 出品されている商品の中で人気(出品数が多い)のブランドBest４を表示
+          - @popular_brands.each do |brand|
             %li.products__header--list
               = brand.brand.name
 
-      - @popular_brands.limit(4).each do |brand|
+      - @popular_brands.each do |brand|
         .products__main
           .products__main--title
             = brand.brand.name
@@ -59,6 +59,7 @@
           .products__main--more
             = link_to "もっと見る >", "#"
           .products__main--list
+            -# eachで回して現在のbrand_idの商品を10件商品一覧に表示
             = render partial: "list", collection: @popular_brands_products.where(brand_id: brand.brand_id).limit(10), as: :product
 
     = render "products/cameraicon"
