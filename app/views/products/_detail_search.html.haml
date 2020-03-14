@@ -10,7 +10,7 @@
       = f.text_field :name, placeholder: @search_word
 
       = f.label :'カテゴリーを選択する'
-      = f.collection_select :category_id, Category.all, :id, :value, {prompt: "すべて"}
+      = f.collection_select :category_id, Category.all, :id, :name, {prompt: "すべて"}
 
       = f.label :'ブランド名から探す'
       = f.text_field :nickname, placeholder: '例）シャネル'

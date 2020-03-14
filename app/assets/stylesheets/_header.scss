@@ -60,51 +60,43 @@
       bottom: 0;
       display: flex;
       flex-wrap: wrap;
-  
       .fas.fa-mouse-pointer{
         margin:10px 10px 15px 180px;
       }
-      .category {
-        margin:10px 25px 0 0;
-  
-      }
-  
+
       .fas.fa-tag {
         margin: 10px 10px 0 0;
       }
-      .brand {
-        margin: 10px 20px 0 0;
-      }
-  
+
       .fas.fa-heart {
-        margin: 10px 0 0 150px;
-      }
-      .nice {
-        margin: 10px 0 0 5px;
+        margin-top:10px;
+        position: relative;
+        left:150px;
       }
   
       .fas.fa-bell {
-        margin: 10px 5px 0 45px;
-      }
-      .information {
-        margin: 10px 0 0 0;
+        margin-top:10px;
+        position: relative;
+        left:170px;
       }
   
       .fas.fa-check {
-        margin: 10px 0 0 45px;
-      }
-  
-      .todo {
-        margin: 10px 0 0 0;
+        margin-top:10px;
+        position: relative;
+        left:190px;
       }
   
       .fas.fa-user {
-        margin: 10px 0 0 45px;
-      }
-      .mypage {
-        margin: 10px 0 0 0;
+        margin-top:10px;
+        position: relative;
+        left:215px;
       }
   
+      .logout{
+        position: absolute;
+        left:1250px;
+        top:107px;
+      }
       .login{
         position: absolute;
         right:0px;

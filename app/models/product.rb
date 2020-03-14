@@ -17,6 +17,7 @@ class Product < ApplicationRecord
 
   has_many :photos, dependent: :destroy
   belongs_to_active_hash :status
+  has_one :transaction_record
   has_many :photos, dependent: :delete_all
   
   accepts_nested_attributes_for :category, allow_destroy: true

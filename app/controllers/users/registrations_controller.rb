@@ -48,9 +48,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     input_sms_number = params[:input_sms_number].to_i
     if session[:sms_num] === input_sms_number
       redirect_to destination_regist_path
-    else
-      redirect_to phone_regist_path
-    end
+    # else
+    #   redirect_to phone_regist_path
+    # end
   end
 
   def step3
@@ -144,7 +144,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def delete_sms_num
     session.delete(:sms_num)
   end
-  # GET /resource/edit
+
   # def edit
   #   super
   # end
