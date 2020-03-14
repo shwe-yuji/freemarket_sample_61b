@@ -8,9 +8,9 @@
       .item_contents
         .item_photo
           - @product.photos.each_with_index do |photo,i|
-            -if i==0
+            - if i == 0
               = image_tag( photo.photo.url, class: "products" , size: '320x320')
-            -else
+            - else
               .item_otherphoto
                 = image_tag( photo.photo.url, class: "products", size: '100x100' )
         .seller_table
@@ -111,11 +111,13 @@
           %button コメントする
     .pre_next_contents
       .pre
-        = link_to '#' do
-          前へ
+        - if ((@product.id-1) > 0)
+          = link_to product_path(@product.previous) do
+            前へ
       .next
-        = link_to '#' do
-          次へ
+        - if (@product.id != @product_count)
+          = link_to product_path(@product.next) do
+            次へ
     .sns_contents
       .sns
         .facebook
@@ -135,32 +137,30 @@
 
       .itembuy-user-profile__box
         - @products_user.each do |sell_user|
-          %figure
-            = image_tag( sell_user.photos[0].photo.url , class: "products", size: '300x300')
-            %figcaption.products__text
-              = sell_user.name
-              
-            .products__price
-              .products__price--tag
-                ¥
-                = sell_user.price.to_s(:delimited)
-
-    .other_item_species
-      %h2.items_species__head
-        = link_to '/' do
-          = @product.name 
-          に関するその他の出品
-      .itembuy-spieces__box
-        - @products_name.each do |relation_name|
-          %figure
-            = link_to 'products_path(relation_name.id)' do
-              = image_tag( relation_name.photos[0].photo.url, class: "products", size: '300x300')
+        %figure
+          = link_to products_path(sell_user.id)
+            = image_tag( sell_user.photos[0].photo.url , width: '300' , height: '300' )
               %figcaption.products__text
-                = relation_name.name
+                = sell_user.name
               .products__price
                 .products__price--tag
                   ¥
-                  = relation_name.price.to_s(:delimited)
+                  = sell_user.price.to_s(:delimited)
+    -# .other_item_species
+    -#   %h2.items_species__head
+    -#     = link_to '/' do
+    -#       = @product.name 
+    -#       に関するその他の出品
+    -#   .itembuy-spieces__box
+    -#   - @products_name.each do |relation_name|
+    -#     %figure
+    -#       = link_to image_tag(relation_name.photos[0].photo.url, width: '300' , height: '300' , alt: '商品関連'), products_path(relation_name.id)
+    -#         %figcaption.products__text
+    -#           = relation_name.name
+    -#         .products__price
+    -#           .products__price--tag
+    -#             ¥
+    -#             = relation_name.price.to_s(:delimited)
     
     .under_top_line
       .under_item_title
@@ -168,56 +168,3 @@
         = @product.name
 .footer
   = render "products/footer"
-
-商品削除が機能してるかのテスト用のビュー(後々削除)
-= link_to '出品', new_product_path
-- @products.each do |product|
-  %h3.sell-area__name
-    ユーザー名
-  = product.user.nickname
-
-  %h3.sell-area__name
-    商品名
-  = product.name 
-
-  %h3.sell-area__name
-    商品の説明
-  = product.description
-
-  %h3.sell-area__name
-    カテゴリー
-  = product.category.name
-
-  %h3.sell-area__name
-    サイズ
-  = product.size.value
-
-  %h3.sell-area__name
-    ブランド
-  = product.brand.name
-
-  %h3.sell-area__name
-    商品の状態
-  = product.condition.value
-
-  %h3.sell-area__name
-    配送料の負担
-  = product.delivery_expense.value
-
-  %h3.sell-area__name
-    配送の方法
-  = product.delivery_method.value
-
-  %h3.sell-area__name
-    発送元の地域
-  = product.area.name
-
-  %h3.sell-area__name
-    配送までの日数
-  = product.shipdate.value
-
-  %h3.sell-area__name
-    取引状況
-  = product.status.value
-
-  = link_to '削除', product_path(product.id), method: :delete

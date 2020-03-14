@@ -28,4 +28,13 @@ class Product < ApplicationRecord
   validates :area_id, presence: true
   validates :shipdate_id, presence: true
   validates :price, presence: true, inclusion: 300..9999999
+
+
+  def previous
+    user.products.order('created_at desc, id desc').where('created_at <= ? and id < ?', created_at, id).first
+  end
+
+  def next
+    user.products.order('created_at desc, id desc').where('created_at >= ? and id > ?', created_at, id).reverse.first
+  end  
 end

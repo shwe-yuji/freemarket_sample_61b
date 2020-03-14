@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
   end
 
   def show
+    
+    @product_count=Product.count()
     #クリックされた商品情報を取得
     @product = Product.includes(:photos).find(params[:id])
     #出品者の商品から最新6件取得
@@ -12,6 +14,8 @@ class ProductsController < ApplicationController
     #クリックされた商品名と同じものを取得
     @products_name = Product.includes(:photos).where('name like ?',"%#{@product.name}%").limit(6)
   end
+
+  
 
   def new
     @product = Product.new
@@ -27,11 +31,6 @@ class ProductsController < ApplicationController
       flash.now[:alert] = "商品の出品に失敗しました"
       render :new
     end
-  end
-
-  def show
-    #  出品削除テストビューの記述(後々変更予定)
-    @products = Product.includes(:photos).order('created_at DESC')
   end
 
   def edit
@@ -60,4 +59,6 @@ class ProductsController < ApplicationController
                                     :shipdate_id, :price, :status_id, photos_attributes: [:photo],
                                     brand_attributes: [:name]).merge(user_id: current_user.id)
   end
+
+  
 end
