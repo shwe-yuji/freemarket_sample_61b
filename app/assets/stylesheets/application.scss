@@ -3,6 +3,9 @@
 @import "font-awesome";
 @import "mixin/mixin";
 @import "cameraicon";
+@import "categories/breadcrumb";
+@import "categories/index";
+@import "categories/show";
 @import "color_config";
 @import "flash";
 @import "footer";
@@ -27,8 +30,10 @@
 @import "mixin.scss";
 @import "header";
 @import "home";
+@import "mypage_edit";
 @import "structure_tag";
 @import "common";
 @import "modules/progress_bar";
 @import "registration_wizard";
+@import "responsive"
 

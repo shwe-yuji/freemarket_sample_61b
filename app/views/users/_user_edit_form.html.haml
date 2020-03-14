@@ -30,7 +30,7 @@
         .main-area__form__input-info--title 都道府県
         .main-area__form__input-info--icon 任意
       = f.collection_select :area_name, array, :id, :name # arrayは仮置きの配列です
-      =icon("fas", "chevron-right"), class: 'select-icon'
+      =icon("fas", "chevron-right", class: 'select-icon')
       .main-area__form__input-info
         .main-area__form__input-info--title 市区町村
         .main-area__form__input-info--icon 任意

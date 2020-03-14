@@ -42,6 +42,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -81,7 +82,6 @@ gem 'fog-aws'
 gem 'haml-rails'
 gem 'devise-i18n'
 gem 'font-awesome-sass'
-
 gem 'devise-i18n-views'
 # gem 'rails-i18n', '~> 5.1'
 gem 'dotenv-rails'

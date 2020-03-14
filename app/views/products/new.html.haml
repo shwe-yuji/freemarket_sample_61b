@@ -13,9 +13,10 @@
         最大10枚までアップロードできます
       .sell-area__dropbox
         %label.sell-area__dropbox__img
-          %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+          = icon('fas', 'camera', class: 'camera-icon-1')
+          %p.sell-area__dropbox__img--text ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
           = f.fields_for :photos do |i|
-            = i.file_field :photo
+            = i.file_field :photo ,class: 'photo-input'
 
     .sell-area__content
       %h3.sell-area__name

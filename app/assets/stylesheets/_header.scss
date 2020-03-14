@@ -3,98 +3,102 @@
   padding: 0;
   text-decoration: none;
 }
+
+// pc
 @media screen and (min-width: 1068px) {
-.main-headerand  {
-  max-width: 767px;
-  height: 150px;
-  width: 100vw;
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-  position: relative;
-  z-index: 3;
-  display: grid;
-}
-
-.main-header__contents {
-    display: flex;
-  }
-
-    .logo {
-      height: auto;
-      margin:0 0 0 140px;
+  .main-header  {
+    height: 150px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    position: relative;
+    z-index: 3;
+    display: grid;
+    .main-header__contents {
+      display: flex;
+      
+      .logo {
+        height: auto;
+        margin-left: 13%;
+      }
+  
+      .search{
+        width: 100%;
+        .box{
+          width:550px;
+          position: relative;
+          height:40px;
+        }
+        input.box {
+          height:40px;
+          margin: 25px 0 0 40px;
+          line-height: 1.4em;
+          width:550px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(204, 204, 204);
+          padding-right:50px; 
+          border-radius: 4px;
+          outline: none;
+        }
+        label.search_image{
+          position: absolute;
+          top:33px;
+          left:590px;
+          i{
+            font-size: inherit;
+            display: inline-block;
+          }
+        }
+      }
     }
+    .menu {
+      bottom: 0;
+      display: flex;
+      flex-wrap: wrap;
+      .fas.fa-mouse-pointer{
+        margin:10px 10px 15px 180px;
+      }
 
-    .search{
-      position: relative;
-      .box {
-        display: flex;
+      .fas.fa-tag {
+        margin: 10px 10px 0 0;
+      }
+
+      .fas.fa-heart {
+        margin-top:10px;
         position: relative;
-        height:40px;
-        width:800px;
-        margin: 25px 0 0 40px;
-
+        left:150px;
       }
-      .search_image{
-        display: inline-block;
+  
+      .fas.fa-bell {
+        margin-top:10px;
+        position: relative;
+        left:170px;
+      }
+  
+      .fas.fa-check {
+        margin-top:10px;
+        position: relative;
+        left:190px;
+      }
+  
+      .fas.fa-user {
+        margin-top:10px;
+        position: relative;
+        left:215px;
+      }
+  
+      .logout{
         position: absolute;
-        top: 34px;
-        right: 10px;
-        width: 40px;
-        height: 40px;
+        left:1250px;
+        top:107px;
+      }
+      .login{
+        position: absolute;
+        right:0px;
+        margin: 10px 30px 0 0px;
       }
     }
-  .menu {
-    bottom: 0;
-    display: flex;
-  }
-
-  .fas.fa-mouse-pointer{
-    margin:10px 10px 15px 180px;
-  }
-  .category {
-    margin:10px 25px 0 0;
-
-  }
-
-  .fas.fa-tag {
-    margin: 10px 10px 0 0;
-  }
-  .brand {
-    margin: 10px 20px 0 0;
-  }
-
-  .fas.fa-heart {
-    margin: 10px 0 0 150px;
-  }
-  .nice {
-    margin: 10px 0 0 5px;
-  }
-
-  .fas.fa-bell {
-    margin: 10px 5px 0 45px;
-  }
-  .information {
-    margin: 10px 0 0 0;
-  }
-
-  .fas.fa-check {
-    margin: 10px 0 0 45px;
-  }
-
-  .todo {
-    margin: 10px 0 0 0;
-  }
-
-  .fas.fa-user {
-    margin: 10px 0 0 45px;
-  }
-  .mypage {
-    margin: 10px 0 0 0;
-  }
-
-  .login{
-    position: absolute;
-    right:0px;
-    margin: 10px 30px 0 0px;
   }
 }
+
+

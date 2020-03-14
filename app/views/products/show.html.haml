@@ -86,7 +86,6 @@
         .buy_button
           = link_to '#' do
             購入画面に進む
-
       .item_discription
         %p.itembuy-detail__inner
           [商品]Diagram グレースコンチネンタルショートブーツ未使用品
@@ -165,3 +164,56 @@
       fmarket > @item_name
 .footer
   = render "products/footer"
+
+商品削除が機能してるかのテスト用のビュー(後々削除)
+= link_to '出品', new_product_path
+- @products.each do |product|
+  %h3.sell-area__name
+    ユーザー名
+  = product.user.nickname
+
+  %h3.sell-area__name
+    商品名
+  = product.name 
+
+  %h3.sell-area__name
+    商品の説明
+  = product.description
+
+  %h3.sell-area__name
+    カテゴリー
+  = product.category.name
+
+  %h3.sell-area__name
+    サイズ
+  = product.size.value
+
+  %h3.sell-area__name
+    ブランド
+  = product.brand.name
+
+  %h3.sell-area__name
+    商品の状態
+  = product.condition.value
+
+  %h3.sell-area__name
+    配送料の負担
+  = product.delivery_expense.value
+
+  %h3.sell-area__name
+    配送の方法
+  = product.delivery_method.value
+
+  %h3.sell-area__name
+    発送元の地域
+  = product.area.name
+
+  %h3.sell-area__name
+    配送までの日数
+  = product.shipdate.value
+
+  %h3.sell-area__name
+    取引状況
+  = product.status.value
+
+  = link_to '削除', product_path(product.id), method: :delete
