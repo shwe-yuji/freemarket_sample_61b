@@ -73,7 +73,4 @@ class ProductsController < ApplicationController
                     "出品の新しい順",
                     "いいね！の多い順"]
   end
-  # def search_params
-  #   params.require(:product).permit(:name)
-  # end
 end
