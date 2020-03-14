@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
 #   has_one :address dependent: :delete
     has_one :destination, dependent: :delete
-    has_many :transactions, dependent: :nullify
+    has_many :transaction_records, dependent: :nullify
     has_many :products, dependent: :destroy
     has_one :card, dependent: :delete
     has_many :sns_credentials, dependent: :delete_all
