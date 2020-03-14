@@ -8,7 +8,7 @@
       %th
         -# 親カテゴリ
         - @category_parent.each do |parent|  
-          = link_to category_path(parent.id), class: "category__list" do
+          = link_to "#", class: "category__list" do
             %p 
               = parent.name
       .category__box
