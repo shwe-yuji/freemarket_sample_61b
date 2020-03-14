@@ -109,5 +109,17 @@ end
 end
 
 # photos
-Photo.create!(product_id: 1, photo: open("#{Rails.root}/db/fixtures/img1.png"))
-Photo.create!(product_id: 2, photo: open("#{Rails.root}/db/fixtures/img2.png"))
+100.times do |n|
+  Photo.create(
+    product_id: Faker::Number.unique.within(range: 1..100),
+    photo: open("#{Rails.root}/db/fixtures/img#{Faker::Number.within(range: 1..2)}.png")
+  )
+end
+
+# transaction_records
+60.times do |n|
+  TransactionRecord.create(
+    user_id: Faker::Number.within(range: 1..2),
+    product_id: Faker::Number.unique.within(range: 1..60)
+  )
+end
