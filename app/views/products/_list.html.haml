@@ -1,0 +1,8 @@
+%figure
+  = link_to product_path(product.id) do
+    = image_tag(product.photos.first.photo.url, class: "products")
+  %figcaption.products__text
+    = product.name
+  .products__price
+    .products__price--tag
+      = number_to_currency(product.price, format: "%u%n", unit: "¥") 
