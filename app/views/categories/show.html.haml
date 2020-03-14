@@ -4,23 +4,14 @@
     = render "categories/breacrumb"
     .category
       .category__header
-        %ul.category__header--category
-          %li.category__header--list
-            = link_to '#' do
-              メルカリ
-            = link_to '#' do
-              カテゴリー一覧
-            = link_to '#' do
-              レディース
-            = link_to '#' do
-              トップス
-            = link_to '#' do
-              Tシャツ/カットソー(半袖/袖なし)
-        
-
+        - @category.children.each do |children|
+          .category__header--list
+            = link_to category_path(children.id) do
+              %p 
+                = children.name
       .products__main
         .products__main--title
-          Tシャツ/カットソー(半袖/袖なし)の商品一覧
+          = @category.name + 'の商品一覧'
         .products__main--list
           - for i in 1..10
             %figure
