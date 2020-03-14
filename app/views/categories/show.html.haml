@@ -1,0 +1,37 @@
+.wrapper
+  .main-contents
+    = render "products/header"
+    = render "categories/breacrumb"
+    .category
+      .category__header
+        %ul.category__header--category
+          %li.category__header--list
+            = link_to '#' do
+              メルカリ
+            = link_to '#' do
+              カテゴリー一覧
+            = link_to '#' do
+              レディース
+            = link_to '#' do
+              トップス
+            = link_to '#' do
+              Tシャツ/カットソー(半袖/袖なし)
+        
+
+      .products__main
+        .products__main--title
+          Tシャツ/カットソー(半袖/袖なし)の商品一覧
+        .products__main--list
+          - for i in 1..10
+            %figure
+              = image_tag("test.png", class: "products")
+              %figcaption.products__text
+                テスト テスト
+                %br
+                テスト テスト
+              .products__price
+                .products__price--tag
+                  ¥10,000
+    = render "products/cameraicon"
+    = render "products/footer"
+
