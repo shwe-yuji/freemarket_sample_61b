@@ -1,3 +1,5 @@
+require './db/seeds/category.rb'
+
 # users
 users = [
   { nickname: "プロフリマー", email: "test@example.com", password: "12345678", firstname: Gimei.last.kanji, lastname: Gimei.first.kanji, firstname_kana: Gimei.last.katakana, lastname_kana: Gimei.first.katakana, birthdate: Faker::Date.between(from: 40.years.ago, to: Date.today), profile: "お金が大好きです。よろしくおねがいします。", image: "" },
@@ -65,5 +67,3 @@ end
     product_id: Faker::Number.unique.within(range: 1..60)
   )
 end
-
-require './db/seeds/category.rb'
