@@ -1,12 +1,4 @@
+- breadcrumb :categories, @category_parent
 .breadcrumb
   .breadcrumb__list
-    = link_to '#' do
-      メルカリ >
-    = link_to '#' do
-      カテゴリー一覧 >
-    = link_to '#' do
-      レディース >
-    = link_to '#' do
-      トップス >
-    = link_to '#' do
-      Tシャツ/カットソー(半袖/袖なし)
+    = breadcrumbs separator: "&rsaquo;"

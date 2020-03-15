@@ -1,10 +1,15 @@
 crumb :root do
-  link "Home", root_path
+  link "メルカリ", root_path
 end
 
-# crumb :projects do
-#   link "Projects", projects_path
-# end
+crumb :categories do
+  link "カテゴリー一覧", categories_path
+end
+
+crumb :category do |category|
+  link category.name, category_path
+  parent :categories
+end
 
 # crumb :project do |project|
 #   link project.name, project_path(project)
