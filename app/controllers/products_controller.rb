@@ -18,11 +18,11 @@ class ProductsController < ApplicationController
   def show
     # 商品数カウント
     @product_count=Product.count()
-    #クリックされた商品情報を取得
+    # クリックされた商品情報を取得
     @product = Product.includes(:photos).find(params[:id])
-    #出品者の商品から最新6件取得
+    # 出品者の商品から最新6件取得
     @products_user = Product.includes(:photos).where(user_id: @product.user_id).order('created_at DESC').limit(6)
-    #クリックされた商品名と同じものを取得
+    # クリックされた商品名と同じものを取得
     @products_name = Product.includes(:photos).where('name like ?',"%#{@product.name}%").limit(6)
   end
 
