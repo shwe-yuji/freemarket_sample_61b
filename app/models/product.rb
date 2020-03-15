@@ -5,11 +5,6 @@ class Product < ApplicationRecord
     Product.where(['name LIKE ? OR description LIKE ?', "%#{search_word}%", "%#{search_word}%"])
   end
   
-  # def self.serach_word_devide(search_words)
-  #   search_words.each do |search_word|
-  #     search_word.search
-  #   end
-  # end
   belongs_to :user
   belongs_to :category
   belongs_to :brand, optional: true

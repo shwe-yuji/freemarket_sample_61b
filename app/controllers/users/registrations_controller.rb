@@ -45,6 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def phone_confirm_input
+    #  秘密鍵共有していないためコメントアウト
     # input_sms_number = params[:input_sms_number].to_i
     # if session[:sms_num] === input_sms_number
       redirect_to destination_regist_path
