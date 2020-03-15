@@ -7,7 +7,7 @@
     = form_with(model: @products, url: products_search_path, method: :get, local: :true, class: 'detail-search__box__form') do |f|
 
       = f.label :'キーワードを追加する'
-      = f.text_field :name, placeholder: @search_word
+      = f.text_field :name, placeholder: params[:search_word]
 
       = f.label :'カテゴリーを選択する'
       = f.collection_select :category_id, Category.all, :id, :name, {prompt: "すべて"}

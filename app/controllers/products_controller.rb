@@ -59,8 +59,13 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @search_word = params[:search_word]
-    @search_result = Product.search(@search_word).limit(132)
+    #検索ワード入力時、スペースを半角スペースに変換して、splitメソッドで検索ワードを配列に格納
+    @search_words = params[:search_word].gsub(/[[:blank:]]/, " ").split(" ")
+    @search_words.each do |search_word|
+      @search_result = Product.search(search_word).limit(132)
+    end
+    #検索ワードが空の場合、新着商品のデータを取得
+    @products_new = Product.includes(:photos).order('created_at DESC')
   end
 
   private
