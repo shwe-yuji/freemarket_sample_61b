@@ -25,19 +25,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def step2_regist
-  #   # 秘密鍵を共有していないためコメントアウト
-  #   input_phone_number = params[:telephone].sub(/\A./,'+81').gsub(/-/,"").to_i
-  #   sms_num = rand(10000..99999)
-  #   session[:sms_num] = sms_num
-  #   client = Twilio::REST::Client.new(config.account_sid, config.auth_token)
-  #   begin
-  #     client.messages.create(
-  #       from: Rails.application.credentials[:TWILIO_NUMBER],
-  #       to: input_phone_number,
-  #       body: "#{sms_num}を入力してください"
-  #     )
-  #   rescue Twilio::REST::RestError => e
-  #   end
+    # input_phone_number = params[:telephone].sub(/\A./,'+81').gsub(/-/,"")
+    # sms_num = rand(10000..99999)
+    # session[:sms_num] = sms_num
+    # client = Twilio::REST::Client.new(config.account_sid, config.auth_token)
+    # begin
+    #   client.messages.create(
+    #     from: Rails.application.credentials[:TWILIO_NUMBER],
+    #     to: input_phone_number,
+    #     body: "#{sms_num}を入力してください"
+    #   )
+    # rescue Twilio::REST::RestError => e
+    # end
     redirect_to phone_confirm_path
   end
 
@@ -45,7 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def phone_confirm_input
-    # # 秘密鍵を共有していないためコメントアウト
+    #  秘密鍵共有していないためコメントアウト
     # input_sms_number = params[:input_sms_number].to_i
     # if session[:sms_num] === input_sms_number
       redirect_to destination_regist_path

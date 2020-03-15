@@ -34,7 +34,7 @@
         カテゴリー
         %span.form-require 必須
         .sell-area__details__main-category__select
-          = f.collection_select :category_id, Category.all.limit(13), :id, :name, {prompt: "---"}, class: "sell-area__details__main-category__default"
+          = f.collection_select :category_id, Category.all.limit(13), :id, :value, {prompt: "---"}, class: "sell-area__details__main-category__default"
       -# 後々JSにて実装
       .sell-area__details__sub-category
         .sell-area__details__sub-category__select

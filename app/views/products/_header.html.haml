@@ -5,9 +5,12 @@
         = image_tag("fmarket_logo_red.png")
     .search
       .box
-        %input.box{placeholder: '何かお探しですか？'}
-        %label.search_image
-          %i.fas.fa-search
+        = form_with(model: @product, url: products_search_path, method: :get, local: :true) do |f|
+          = f.text_field :search_word, class: 'header-search-form', placeholder: '何かお探しですか？'
+          .search-form-button
+            = f.button type: 'submit', class: 'search-form-button__submit' do
+              = icon('fas', 'search')
+          = f.submit class: 'search-form-submit'
   .menu
     .fas.fa-mouse-pointer
       = link_to categories_path do
