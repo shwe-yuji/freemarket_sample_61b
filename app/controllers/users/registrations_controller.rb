@@ -79,26 +79,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def step4_regist
-    #秘密鍵共有していないためコメントアウト
-    # Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-    # if params['payjp-token'].blank?
-    #   redirect_to creditcard_regist_path, method: :get
-    # else
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    if params['payjp-token'].blank?
+      redirect_to creditcard_regist_path, method: :get
+    else
 
-    #   customer = Payjp::Customer.create(
-    #     description: 'test',
-    #     email: current_user.email,
-    #     card: params['payjp-token'],
-    #     metadata: { user_id: current_user.id }
-    #   )
-    #   @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-    #   if @card.save
+      customer = Payjp::Customer.create(
+        description: 'test',
+        email: current_user.email,
+        card: params['payjp-token'],
+        metadata: { user_id: current_user.id }
+      )
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @card.save
         redirect_to registed_path, method: :post
 
-      # else
-      #   redirect_to creditcard_regist_path, method: :get
-      # end
-    # end
+      else
+        redirect_to creditcard_regist_path, method: :get
+      end
+    end
   end
 
   private
