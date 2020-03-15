@@ -27,19 +27,22 @@ display: none !important;
           img{
             margin:20px 0 0 140px;
           }
-          .item_otherphoto{
+          .other_photo{
+            display:block;
+            width:500px;
             img{
-              margin:10px 0 0 140px;
+              height:80px;
+              width:80px;
+              margin-left:10px;
+              
+            }
+            img.product2{
+              height:80px;
+              width:80px;
+              margin-left:10px;
             }
           }
         }
-          .item_otherphoto{
-            img{
-              height:80px;
-              margin-left:50px;
-            }
-          }
-
         .seller_table{
           border-collapse: collapse;
           border: 1px solid #f5f5f5;

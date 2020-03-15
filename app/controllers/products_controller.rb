@@ -16,7 +16,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    
     @product_count=Product.count()
     #クリックされた商品情報を取得
     @product = Product.includes(:photos).find(params[:id])

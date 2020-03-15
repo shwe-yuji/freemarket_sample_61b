@@ -1,8 +1,6 @@
 .wrapper
   .main-contents
     = render "products/header"
-    
-
     .slide
       .slide__image
         .slide__text
@@ -21,9 +19,7 @@
             = image_tag "google-play-badge.svg", id: "googleplay"
 
     .products
-      //商品一覧を取得（仮の実装）
-      - @products
-      = link_to '商品詳細表示', product_path(1), method: :get 
+      //商品一覧を取得 
       .products__header
         .products__header--title
           人気のカテゴリー

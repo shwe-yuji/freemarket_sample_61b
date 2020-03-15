@@ -7,12 +7,10 @@
         = @product.name
       .item_contents
         .item_photo
-          - @product.photos.each_with_index do |photo,i|
-            - if i == 0
-              = image_tag( photo.photo.url, class: "products" , size: '320x320')
-            - else
-              .item_otherphoto
-                = image_tag( photo.photo.url, class: "products", size: '100x100' )
+          = image_tag( @product.photos[0].photo.url, class: "products" , size: '320x320')
+          .other_photo 
+            - @product.photos.each_with_index do |photo,i|
+              = image_tag( photo.photo.url, class: "products", size: '100x100' )
         .seller_table
           %table.itembuy-content__table
             %tbody
@@ -34,9 +32,11 @@
               %tr
               %th カテゴリー
               %td
-                = link_to  '/' do
-                  = @product.category.parent.parent.name
                 - if @product.category.present?
+                  = link_to '/' do
+                    .itembuy-table-sub
+                      %i.fas.fa-chevron-right
+                      = @product.category.parent.parent.name
                   = link_to '/' do
                     .itembuy-table-sub
                       %i.fas.fa-chevron-right
@@ -70,7 +70,6 @@
                 %th 発送日の目安
                 %td
                   = @product.shipdate.value
-
       .item_price
         .price
           .price_jpy
@@ -90,7 +89,6 @@
       .item_discription
         %p.itembuy-detail__inner
           = @product.description
-
       .itembuy-review
         .itembuy-button__left
           %button{ type: 'button', name: 'like!', class: 'i far fa-heart' }
@@ -134,34 +132,15 @@
         = link_to '/' do
           = @product.user.nickname
           さんのその他の出品
-
       .itembuy-user-profile__box
-        - @products_user.each do |sell_user|
-        %figure
-          = link_to products_path(sell_user.id)
-            = image_tag( sell_user.photos[0].photo.url , width: '300' , height: '300' )
-              %figcaption.products__text
-                = sell_user.name
-              .products__price
-                .products__price--tag
-                  ¥
-                  = sell_user.price.to_s(:delimited)
-    -# .other_item_species
-    -#   %h2.items_species__head
-    -#     = link_to '/' do
-    -#       = @product.name 
-    -#       に関するその他の出品
-    -#   .itembuy-spieces__box
-    -#   - @products_name.each do |relation_name|
-    -#     %figure
-    -#       = link_to image_tag(relation_name.photos[0].photo.url, width: '300' , height: '300' , alt: '商品関連'), products_path(relation_name.id)
-    -#         %figcaption.products__text
-    -#           = relation_name.name
-    -#         .products__price
-    -#           .products__price--tag
-    -#             ¥
-    -#             = relation_name.price.to_s(:delimited)
-    
+        = render partial: "list", collection: @products_user , as: :product
+    .other_item_species
+      %h2.items_species__head
+        = link_to '/' do
+          = @product.name 
+          に関するその他の出品
+      .itembuy-spieces__box
+        = render partial: "list", collection: @products_name , as: :product
     .under_top_line
       .under_item_title
         fmarket >  
