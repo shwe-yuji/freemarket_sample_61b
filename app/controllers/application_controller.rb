@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   
   protected	
+  
   def configure_permitted_parameters	
-    binding.pry
     devise_parameter_sanitizer.permit(:step1, keys: [:nickname, :firstname, :lastname, :firstname_kana, :lastname_kana, :birthdate])	
   end
 
