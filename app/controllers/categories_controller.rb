@@ -5,12 +5,12 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    # @categoryが子カテゴリの場合,@productsは子カテゴリが入る
-    if @category.has_children?
-      @products = Product.where(category_id: @category.children).order('created_at DESC')
-    # @categoryが子カテゴリではない場合(孫カテゴリの場合),@productsは孫カテゴリが入る
-    else @category.childless?
+    if @category.is_root?
+      @products = Product.where(category_id: @category.descendant_ids).order('created_at DESC')
+    elsif @category.childless?
       @products = Product.where(category_id: @category.path_ids).order('created_at DESC')
+    else
+      @products = Product.where(category_id: @category.subtree_ids).order('created_at DESC')
     end
   end
 end
