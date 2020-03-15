@@ -13,16 +13,7 @@
         .products__main--title
           = @category.name + 'の商品一覧'
         .products__main--list
-          - for i in 1..10
-            %figure
-              = image_tag("test.png", class: "products")
-              %figcaption.products__text
-                テスト テスト
-                %br
-                テスト テスト
-              .products__price
-                .products__price--tag
-                  ¥10,000
+          = render partial: "products/list", collection: @products, as: :product
     = render "products/cameraicon"
     = render "products/footer"
 
