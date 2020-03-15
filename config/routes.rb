@@ -19,14 +19,10 @@ Rails.application.routes.draw do
 
 
   resources :categories, only: [:index, :show]
-  
   get 'products/done'
   resources :products
-  
   root to: "products#index"
-
   get 'users/logout'
-
   resources :users, only: [:show, :edit] do
     resources :credit_cards, only: [:show]
   end
