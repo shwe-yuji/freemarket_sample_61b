@@ -1,7 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   require "payjp"
   # before_action :set_card, only: [:step4_regist]
-  # before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
   before_action :delete_sms_num, only: [:step3]
 
