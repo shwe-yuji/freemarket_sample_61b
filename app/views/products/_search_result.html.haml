@@ -1,15 +1,27 @@
 - if @search_result.present?
   .search-result
     .search-result__title
-      = "#{params[:search_word]}の検索結果"
-      = "1-#{@search_result.length}件表示"
+      %p.search-result__title__topic
+        = "#{params[:search_word]}の検索結果"
+      %p.search-result__title__num
+        = "1-#{@search_result.length}件表示"
+    .search-result__products
       - @search_result.each do |result|
-        = image_tag(result.photos.first.photo.url, class: "products")
-        = result.name
+        .search-result__products__product
+          = link_to product_path(@search_result.ids) do
+            = image_tag(result.photos.first.photo.url, class: 'search-result__products__product__image', size: '150x180')
+            %p.search-result__products__product__name 
+              = result.name
+
 - else
-  .products-new
-    .products-new__title 
-      = '新着商品'
+  .search-result
+    .search-result__title
+      %p.search-result__title__topic
+        = '新着商品'
+    .search-result__products
       - @products_new.each do |result|
-        = image_tag(result.photos.first.photo.url)
-        = result.name
+        .search-result__products__product
+          = link_to product_path(@products_new.ids) do
+            = image_tag(result.photos.first.photo.url, class: 'search-result__products__product__image', size: '150x180')
+            %p.search-result__products__product__name 
+              = result.name
