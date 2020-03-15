@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+
+  before_action :set_pulldown, only: [:search]
+
   def index
     sold_product_ids = TransactionRecord.pluck(:product_id)
     # 取引先済みの商品中のカテゴリ・ブランド数上位４つのレコードをインスタンス変数に代入
@@ -55,7 +58,15 @@ class ProductsController < ApplicationController
     end
   end
 
-
+  def search
+    #検索ワード入力時、スペースを半角スペースに変換して、splitメソッドで検索ワードを配列に格納
+    @search_words = params[:search_word].gsub(/[[:blank:]]/, " ").split(" ")
+    @search_words.each do |search_word|
+      @search_result = Product.search(search_word).limit(132)
+    end
+    #検索ワードが空の場合、新着商品のデータを取得
+    @products_new = Product.includes(:photos).order('created_at DESC')
+  end
 
   private
 
@@ -64,5 +75,18 @@ class ProductsController < ApplicationController
                                     :delivery_expense_id, :delivery_method_id, :area_id, 
                                     :shipdate_id, :price, :status_id, photos_attributes: [:photo],
                                     brand_attributes: [:name]).merge(user_id: current_user.id)
+  end
+
+  def set_pulldown
+    @price_list = ["300 ~ 1000", 
+                   "1000 ~ 5000", 
+                   "5000 ~ 10000", 
+                   "10000 ~ 30000", 
+                   "30000 ~ 50000",
+                   "50000 ~ "]
+    @list_change = ["価格の安い順",
+                    "価格の高い順",
+                    "出品の新しい順",
+                    "いいね！の多い順"]
   end
 end

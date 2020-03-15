@@ -1,8 +1,6 @@
 .wrapper
   .main-contents
     = render "products/header"
-    
-
     .slide
       .slide__image
         .slide__text
@@ -61,6 +59,5 @@
           .products__main--list
             -# eachで回して現在のbrand_idの商品を10件商品一覧に表示
             = render partial: "list", collection: @popular_brands_products.where(brand_id: brand.brand_id).limit(10), as: :product
-
     = render "products/cameraicon"
     = render "products/footer"
