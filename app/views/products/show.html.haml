@@ -133,14 +133,14 @@
           = @product.user.nickname
           さんのその他の出品
       .itembuy-user-profile__box
-        = render partial: "list", collection: @products_user , as: :product
+        = render partial: "list", collection: @user_products , as: :product
     .other_item_species
       %h2.items_species__head
         = link_to '/' do
           = @product.name 
           に関するその他の出品
       .itembuy-spieces__box
-        = render partial: "list", collection: @products_name , as: :product
+        = render partial: "list", collection: @same_name_products , as: :product
     .under_top_line
       .under_item_title
         fmarket >  

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+  before_action :set_product, only: [:show,:destroy]
   before_action :set_pulldown, only: [:search]
 
   def index
@@ -21,12 +21,10 @@ class ProductsController < ApplicationController
   def show
     # 商品数カウント
     @product_count=Product.count()
-    # クリックされた商品情報を取得
-    @product = Product.includes(:photos).find(params[:id])
     # 出品者の商品から最新6件取得
-    @products_user = Product.includes(:photos).where(user_id: @product.user_id).order('created_at DESC').limit(6)
+    @user_products = Product.includes(:photos).where(user_id: @product.user_id).order('created_at DESC').limit(6)
     # クリックされた商品名と同じものを取得
-    @products_name = Product.includes(:photos).where('name like ?',"%#{@product.name}%").limit(6)
+    @same_name_products = Product.includes(:photos).where('name like ?',"%#{@product.name}%").limit(6)
   end
 
 
@@ -54,7 +52,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     if @product.destroy
       redirect_to root_path, notice: "商品を削除しました"
     else
@@ -94,4 +91,8 @@ class ProductsController < ApplicationController
                     "出品の新しい順",
                     "いいね！の多い順"]
   end
+
+  def set_product
+    @product = Product.includes(:photos).find(params[:id])
+  end 
 end
