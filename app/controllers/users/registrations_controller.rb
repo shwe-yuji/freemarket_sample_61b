@@ -78,7 +78,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def step4_regist
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp.api_key = Rails.application.credentials[:PAYJP_SECRET_KEY]
+    binding.pry
     if params['payjp-token'].blank?
       redirect_to creditcard_regist_path, method: :get
     else
