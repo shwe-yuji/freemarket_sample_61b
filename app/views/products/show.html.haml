@@ -4,14 +4,13 @@
   .all_contents
     .shop_contents
       .item_name
-        @item_name
-
+        = @product.name
       .item_contents
         .item_photo
-          = image_tag("test.png", class: "products")
-          .item_otherphoto
-            = image_tag("test.png", class: "products")
-
+          = image_tag( @product.photos[0].photo.url, class: "products" , size: '320x320')
+          .other_photo 
+            - @product.photos.each_with_index do |photo,i|
+              = image_tag( photo.photo.url, class: "products", size: '100x100' )
         .seller_table
           %table.itembuy-content__table
             %tbody
@@ -19,7 +18,7 @@
                 %th 出品者
                 %td
                   = link_to '/' do
-                    @user.nickname
+                    = @product.user.nickname
                   %div
                     .itembuy-user-ratings{ id: 'itembuy-icon-good' }
                       %i.fas.fa-smile
@@ -33,53 +32,54 @@
               %tr
               %th カテゴリー
               %td
-                = link_to  '/' do
-                  @bigcategory.name
-                - if @category.present?
+                - if @product.category.present?
                   = link_to '/' do
                     .itembuy-table-sub
                       %i.fas.fa-chevron-right
-                      = @category.name
-                = link_to '/' do
-                  .itembuy-table-sub
-                    %i.fas.fa-chevron-right
-                      @smallcategory.name
+                      = @product.category.parent.parent.name
+                  = link_to '/' do
+                    .itembuy-table-sub
+                      %i.fas.fa-chevron-right
+                      = @product.category.parent.name
+                  = link_to '/' do
+                    .itembuy-table-sub
+                      %i.fas.fa-chevron-right
+                      = @product.category.name
             %tr
               %th  ブランド
               %td
                 = link_to '/' do
-                  @product.brand
+                  = @product.brand.name
               %tr
                 %th 商品の状態
                 %td
-                  @condition.value
+                  = @product.condition.value
               %tr
                 %th 配送料の負担
                 %td
-                  @delivery_charge.value
+                  = @product.delivery_expense.value
               %tr
                 %th 配送の方法
                 %td
-                  @delivery_way.value
+                  = @product.delivery_method.value
               %tr
                 %th 配送元地域
                 %td
-                  = link_to '/' do
-                    @prefecture.name
+                  = @product.area.name
               %tr
                 %th 発送日の目安
                 %td
-                  @delivery_days.value
-
+                  = @product.shipdate.value
       .item_price
         .price
           .price_jpy
-            ¥10,000
+            ¥
+            = @product.price.to_s(:delimited)
           .price_tax
             .price
             %span.itembuy-content__tax (税込)
             %span.itembuy-content__fee
-            - if '#'
+            - if @product.delivery_expense.id == 1
               送料込み
             - else
               着払い
@@ -88,8 +88,7 @@
             購入画面に進む
       .item_discription
         %p.itembuy-detail__inner
-          [商品]Diagram グレースコンチネンタルショートブーツ未使用品
-
+          = @product.description
       .itembuy-review
         .itembuy-button__left
           %button{ type: 'button', name: 'like!', class: 'i far fa-heart' }
@@ -110,11 +109,13 @@
           %button コメントする
     .pre_next_contents
       .pre
-        = link_to '#' do
-          前へ
+        - if ((@product.id-1) > 0)
+          = link_to product_path(@product.previous) do
+            前へ
       .next
-        = link_to '#' do
-          次へ
+        - if (@product.id != @product_count)
+          = link_to product_path(@product.next) do
+            次へ
     .sns_contents
       .sns
         .facebook
@@ -129,91 +130,20 @@
     .other_user_item
       %h2.itembuy-user-profile__head
         = link_to '/' do
-          @user.nicknameさんのその他の出品
-
+          = @product.user.nickname
+          さんのその他の出品
       .itembuy-user-profile__box
-        - for i in 1..10
-          %figure
-            = image_tag("test.png", class: "products")
-            %figcaption.products__text
-              テスト テスト 
-              %br
-              テスト テスト
-            .products__price
-              .products__price--tag
-                ¥10,000
-
+        = render partial: "list", collection: @user_products , as: :product
     .other_item_species
       %h2.items_species__head
         = link_to '/' do
-          @item_name その他の出品
+          = @product.name 
+          に関するその他の出品
       .itembuy-spieces__box
-        - for i in 1..10
-          %figure
-            = image_tag("test.png", class: "products")
-            %figcaption.products__text
-              テスト テスト 
-              %br
-              テスト テスト
-            .products__price
-              .products__price--tag
-                ¥10,000
-    
+        = render partial: "list", collection: @same_name_products , as: :product
     .under_top_line
-    .under_item_title
-      fmarket > @item_name
+      .under_item_title
+        fmarket >  
+        = @product.name
 .footer
   = render "products/footer"
-
-商品削除が機能してるかのテスト用のビュー(後々削除)
-= link_to '出品', new_product_path
-- @products.each do |product|
-  %h3.sell-area__name
-    ユーザー名
-  = product.user.nickname
-
-  %h3.sell-area__name
-    商品名
-  = product.name 
-
-  %h3.sell-area__name
-    商品の説明
-  = product.description
-
-  %h3.sell-area__name
-    カテゴリー
-  = product.category.name
-
-  %h3.sell-area__name
-    サイズ
-  = product.size.value
-
-  %h3.sell-area__name
-    ブランド
-  = product.brand.name
-
-  %h3.sell-area__name
-    商品の状態
-  = product.condition.value
-
-  %h3.sell-area__name
-    配送料の負担
-  = product.delivery_expense.value
-
-  %h3.sell-area__name
-    配送の方法
-  = product.delivery_method.value
-
-  %h3.sell-area__name
-    発送元の地域
-  = product.area.name
-
-  %h3.sell-area__name
-    配送までの日数
-  = product.shipdate.value
-
-  %h3.sell-area__name
-    取引状況
-  = product.status.value
-
-  = link_to '削除', product_path(product.id), method: :delete

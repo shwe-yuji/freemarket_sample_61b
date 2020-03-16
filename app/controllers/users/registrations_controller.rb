@@ -1,7 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   require "payjp"
-  # before_action :set_card, only: [:step4_regist]
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :set_card, only: [:step4_regist]
   before_action :configure_account_update_params, only: [:update]
   before_action :delete_sms_num, only: [:step3]
 
@@ -76,30 +75,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def step4
     card = Card.where(user_id: current_user.id).first
     redirect_to :root if card.present?
-    # redirect_to creditcard_regist_path, method: :post
   end
 
   def step4_regist
-    #秘密鍵共有していないためコメントアウト
-    # Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-    # if params['payjp-token'].blank?
-    #   redirect_to creditcard_regist_path, method: :get
-    # else
+    Payjp.api_key = Rails.application.credentials[:PAYJP_SECRET_KEY]
+    if params['payjp-token'].blank?
+      redirect_to creditcard_regist_path, method: :get
+    else
 
-    #   customer = Payjp::Customer.create(
-    #     description: 'test',
-    #     email: current_user.email,
-    #     card: params['payjp-token'],
-    #     metadata: { user_id: current_user.id }
-    #   )
-    #   @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-    #   if @card.save
+      customer = Payjp::Customer.create(
+        description: 'test',
+        email: current_user.email,
+        card: params['payjp-token'],
+        metadata: { user_id: current_user.id }
+      )
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @card.save
         redirect_to registed_path, method: :post
 
-      # else
-      #   redirect_to creditcard_regist_path, method: :get
-      # end
-    # end
+      else
+        redirect_to creditcard_regist_path, method: :get
+      end
+    end
   end
 
   private

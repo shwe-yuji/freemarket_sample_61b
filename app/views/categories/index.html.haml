@@ -5,19 +5,17 @@
     .category-index
       .category__title
         %h2 カテゴリ一覧
-      %th
-        -# 親カテゴリ
-        - @category_parent.each do |parent|  
-          = link_to "#", class: "category__list" do
-            %p 
-              = parent.name
+      - @category_parent.each do |parent|  
+        = link_to "#", class: "category__list" do
+          %p 
+            = parent.name
       .category__box
         - @category_parent.each do |parent| 
           .category__box--red
             = parent.name
           .category__box--white
             .category__box__all
-              = link_to "#" do
+              = link_to category_path(parent.id) do
                 %p すべて
               -# 親カテゴリに属する子カテゴリを取り出す
               - parent.children.each do |children|
@@ -25,12 +23,12 @@
                 %p 
                   = children.name
                 .category__box__grandchildren
-                  = link_to "#" do
+                  = link_to category_path(children.id) do
                     %p すべて
                   -# 子カテゴリに属する孫カテゴリを取り出す
                   - children.children.each do |grandchildren|
                     .category__box__grandchildren__all
-                      = link_to "#" do
+                      = link_to category_path(grandchildren.id) do
                         %p 
                           = grandchildren.name
 
