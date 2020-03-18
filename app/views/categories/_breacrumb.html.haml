@@ -1,4 +1,27 @@
-- breadcrumb :category_all, @category_parent
-.breadcrumb
-  .breadcrumb__list
-    = breadcrumbs separator: "&rsaquo;"
+- if @category_parent.present?
+  - breadcrumb :category_all, @category_parent
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
+
+  -# 親カテゴリーが選択された場合
+- elsif @category.ancestry.nil?
+  - breadcrumb :parent_categories, @category.name
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
+
+  -# 子カテゴリーが選択された場合
+- elsif @category.ancestry.exclude?("/")
+  - breadcrumb :child_categories, @category
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
+
+  -# 子カテゴリーが選択された場合
+- elsif @category.ancestry.include?("/")
+  - breadcrumb :grand_child_categories, @category
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
+      = '孫'
