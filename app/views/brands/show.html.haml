@@ -1,0 +1,18 @@
+.wrapper
+  .main-contents
+    = render "products/header"
+    = render "categories/breacrumb"
+    .category
+      .category__header
+        - @categories_in_brand.each do |category|
+          .category__header--list
+            = link_to category_path(category.id) do
+              %p 
+                = category.name
+      .products__main
+        .products__main--title
+          = @current_brand.name + 'の商品一覧'
+        .products__main--list
+          = render partial: "products/list", collection: @current_brand_products, as: :product
+    = render "products/cameraicon"
+    = render "products/footer"
