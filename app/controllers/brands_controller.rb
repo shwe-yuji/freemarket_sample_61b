@@ -1,4 +1,5 @@
 class BrandsController < ApplicationController
+  
   def group_show
     @category_root = Category.where(ancestry: nil)
     @current_category = Category.find(params[:id])
@@ -12,4 +13,5 @@ class BrandsController < ApplicationController
     categories_in_brand_ids = @current_brand_products.pluck(:category_id)
     @categories_in_brand = Category.find(categories_in_brand_ids)
   end
+
 end

@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :brands, only: [:show]
   get 'brands/group/:id', to: 'brands#group_show', as: :brand_group
-  
   get 'products/done'
   resources :products
   root to: "products#index"
