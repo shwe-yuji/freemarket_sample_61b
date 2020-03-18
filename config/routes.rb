@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit] do
     resources :credit_cards, only: [:show]
     resources :products,only: [:edit, :update]
-    get'listeing', to: 'users#listing'
+    get'listing', to: 'users#listing'
   end
 
 end
