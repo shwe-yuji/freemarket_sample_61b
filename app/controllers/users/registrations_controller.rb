@@ -1,7 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   require "payjp"
-  # before_action :set_card, only: [:step4_regist]
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :set_card, only: [:step4_regist]
   before_action :configure_account_update_params, only: [:update]
   before_action :delete_sms_num, only: [:step3]
 
@@ -26,19 +25,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def step2_regist
-  #   # 秘密鍵を共有していないためコメントアウト
-  #   input_phone_number = params[:telephone].sub(/\A./,'+81').gsub(/-/,"").to_i
-  #   sms_num = rand(10000..99999)
-  #   session[:sms_num] = sms_num
-  #   client = Twilio::REST::Client.new(config.account_sid, config.auth_token)
-  #   begin
-  #     client.messages.create(
-  #       from: Rails.application.credentials[:TWILIO_NUMBER],
-  #       to: input_phone_number,
-  #       body: "#{sms_num}を入力してください"
-  #     )
-  #   rescue Twilio::REST::RestError => e
-  #   end
+    # input_phone_number = params[:telephone].sub(/\A./,'+81').gsub(/-/,"")
+    # sms_num = rand(10000..99999)
+    # session[:sms_num] = sms_num
+    # client = Twilio::REST::Client.new(config.account_sid, config.auth_token)
+    # begin
+    #   client.messages.create(
+    #     from: Rails.application.credentials[:TWILIO_NUMBER],
+    #     to: input_phone_number,
+    #     body: "#{sms_num}を入力してください"
+    #   )
+    # rescue Twilio::REST::RestError => e
+    # end
     redirect_to phone_confirm_path
   end
 
@@ -46,7 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def phone_confirm_input
-    # # 秘密鍵を共有していないためコメントアウト
+    #  秘密鍵共有していないためコメントアウト
     # input_sms_number = params[:input_sms_number].to_i
     # if session[:sms_num] === input_sms_number
       redirect_to destination_regist_path
@@ -77,30 +75,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def step4
     card = Card.where(user_id: current_user.id).first
     redirect_to :root if card.present?
-    # redirect_to creditcard_regist_path, method: :post
   end
 
   def step4_regist
-    #秘密鍵共有していないためコメントアウト
-    # Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-    # if params['payjp-token'].blank?
-    #   redirect_to creditcard_regist_path, method: :get
-    # else
+    Payjp.api_key = Rails.application.credentials[:PAYJP_SECRET_KEY]
+    if params['payjp-token'].blank?
+      redirect_to creditcard_regist_path, method: :get
+    else
 
-    #   customer = Payjp::Customer.create(
-    #     description: 'test',
-    #     email: current_user.email,
-    #     card: params['payjp-token'],
-    #     metadata: { user_id: current_user.id }
-    #   )
-    #   @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-    #   if @card.save
+      customer = Payjp::Customer.create(
+        description: 'test',
+        email: current_user.email,
+        card: params['payjp-token'],
+        metadata: { user_id: current_user.id }
+      )
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @card.save
         redirect_to registed_path, method: :post
 
-      # else
-      #   redirect_to creditcard_regist_path, method: :get
-      # end
-    # end
+      else
+        redirect_to creditcard_regist_path, method: :get
+      end
+    end
   end
 
   private

@@ -58,6 +58,11 @@ end
     product_id: Faker::Number.unique.within(range: 1..100),
     photo: open("#{Rails.root}/db/fixtures/img#{Faker::Number.within(range: 1..2)}.png")
   )
+  Photo.create(
+    product_id: Faker::Number.within(range: 1..30),
+    photo: open("#{Rails.root}/db/fixtures/img#{Faker::Number.within(range: 1..2)}.png")
+  )
+
 end
 
 # transaction_records
