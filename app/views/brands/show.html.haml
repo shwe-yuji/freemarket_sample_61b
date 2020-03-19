@@ -13,6 +13,6 @@
         .products__main--title
           = @current_brand.name + 'の商品一覧'
         .products__main--list
-          = render partial: "products/list", collection: @categories_in_brand_products, as: :product
+          = render partial: "products/list", collection: @current_brand_products, as: :product
     = render "products/cameraicon"
     = render "products/footer"
