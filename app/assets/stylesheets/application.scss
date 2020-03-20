@@ -1,4 +1,5 @@
 @import "reset";
+@import "color_config";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "mixin/mixin";
@@ -7,7 +8,6 @@
 @import "categories/index";
 @import "brands/group_show";
 @import "category_brand/show";
-@import "color_config";
 @import "flash";
 @import "footer";
 @import "./header";
@@ -35,5 +35,6 @@
 @import "structure_tag";
 @import "common";
 @import "modules/progress_bar";
+@import "modules/pagination";
 @import "registration_wizard";
 // @import "responsive";

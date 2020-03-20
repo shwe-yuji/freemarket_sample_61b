@@ -1,0 +1,40 @@
+// ページネーション機能に対してのCSS
+@mixin prev_next {
+  position: relative;
+  top: -10px;
+}
+.pagination {
+  margin: 40px 0;
+  .pagy-nav {
+    text-align: center;
+    span {
+      margin: -2.5px;
+      padding: 14px 17px;
+      border: 1px solid #c0c0c0;
+      border-radius: 4px;
+      background-color: $color_white;
+      font-size: 13px;
+      a {
+        color: black;
+      }
+    }
+    .prev {
+      @include prev_next;
+      float: left;
+    }
+    .next {
+      @include prev_next;
+      float: right;
+    }
+    .active {
+      background-color: $btn_color;
+      color: $color_white;
+    }
+    span:hover {
+      background-color: #EEEEEE;
+    }
+    .active:hover {
+      background-color: $btn_color;
+    }
+  }
+}
