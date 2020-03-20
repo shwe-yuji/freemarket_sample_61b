@@ -18,7 +18,7 @@ class BrandsController < ApplicationController
   def category
     current_brand = Brand.find(params[:brand_id])
     @pagy, @products_in_brand_category = pagy(Product.where(brand_id: current_brand, category_id: @current_category))
-    @brand_category_name = @current_brand.name + " " + @current_category.name
+    @brand_category_name = current_brand.name + " " + @current_category.name
   end
 
   private
