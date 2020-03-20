@@ -1,0 +1,4 @@
+.pagination
+  -# １ページで表示しきれる商品数の場合はページネーションボタンは表示させない
+  - if pagy.vars[:count] >= 2
+    = pagy_nav(pagy).html_safe

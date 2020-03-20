@@ -14,5 +14,6 @@
           = @current_brand.name + 'の商品一覧'
         .products__main--list
           = render partial: "products/list", collection: @current_brand_products, as: :product
+        = render "pagination", pagy: @pagy
     = render "products/cameraicon"
     = render "products/footer"
