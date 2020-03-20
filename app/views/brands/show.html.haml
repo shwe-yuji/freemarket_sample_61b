@@ -15,5 +15,7 @@
         .products__main--list
           = render partial: "products/list", collection: @current_brand_products, as: :product
         = render "pagination", pagy: @pagy
+        = render "page-description", page_name: @current_brand.name, products: @current_brand_products
+
     = render "products/cameraicon"
     = render "products/footer"

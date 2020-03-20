@@ -1,0 +1,7 @@
+.page-description
+  .page-description__title-box
+    = page_name
+  .page-description__contents-box
+    %p
+      -# いいね！機能を実装していないため、人気ではなく当該する商品を１つ紹介しています
+      #{page_name} の商品は#{products.count}点以上あります。人気のある商品は「#{products.first.name}」があります。これまでに #{page_name} で出品された商品は#{products.count}点以上あります。
