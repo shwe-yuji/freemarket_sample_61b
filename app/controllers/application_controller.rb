@@ -1,12 +1,13 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :basic_auth, if: :production?
-
-  protected
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:step1, keys: [:nickname, :firstname, :lastname, :firstname_kana, :lastname_kana, :birthdate])
-  end
   
+  protected	
+  
+  def configure_permitted_parameters	
+    devise_parameter_sanitizer.permit(:step1, keys: [:nickname, :firstname, :lastname, :firstname_kana, :lastname_kana, :birthdate])	
+  end
+
   private
 
   def production?

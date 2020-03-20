@@ -1,4 +1,16 @@
-%h3 電話番号認証 sms入力
-= form_with(url: phone_confirm_path, method: :post, local: true) do |f|
-  = f.text_field  :input_sms_number, placeholder: 'SMSで送られた番号を入力してください'
-  = f.submit value: '送信'
+-@p_bar = 2
+.wrapper
+  = render "devise/shared/header", p_bar: @p_bar
+
+  .container
+    %h2.title 電話番号の確認
+    .form
+      = form_with(url: phone_confirm_path, class: "form__fields", local: true) do |f|
+        .form__fields__field
+          = f.label :"認証番号", class: 'form__fields__field--label'
+          = f.telephone_field :telephone, class: 'form__fields__field--input', placeholder: "携帯電話の番号を入力", required: true
+          .form__fields__field--guide
+            SMSで届いた認証番号を入力してください
+        .submit
+          = f.submit "認証して次の入力フォームへ", class: 'submit__btn'
+  = render "devise/shared/footer"

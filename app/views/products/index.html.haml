@@ -1,63 +1,6 @@
-商品出品が機能してるかのテスト用のビュー
-= link_to '出品', new_product_path
-- @products.each do |product|
-  %h3.sell-area__name
-    ユーザー名
-  %p= product.user.nickname
-
-  %h3.sell-area__name
-    商品名
-  %p= product.name 
-
-  %h3.sell-area__name
-    商品の説明
-  %p= product.description
-
-  %h3.sell-area__name
-    カテゴリー
-  %p= product.category.name
-
-  %h3.sell-area__name
-    サイズ
-  %p= product.size.value
-
-  %h3.sell-area__name
-    ブランド
-  %p= product.brand.name
-
-  %h3.sell-area__name
-    商品の状態
-  %p= product.condition.value
-
-  %h3.sell-area__name
-    配送料の負担
-  %p= product.delivery_expense.value
-
-  %h3.sell-area__name
-    配送の方法
-  %p= product.delivery_method.value
-
-  %h3.sell-area__name
-    画像
-  -# %p= @poduct.photos
-    発送元の地域
-  %p= product.area.name
-
-  %h3.sell-area__name
-    配送までの日数
-  %p= product.shipdate.value
-
-  %h3.sell-area__name
-    取引状況
-  %p= product.status.value
-
-  
-=======
 .wrapper
   .main-contents
     = render "products/header"
-    
-
     .slide
       .slide__image
         .slide__text
@@ -76,168 +19,46 @@
             = image_tag "google-play-badge.svg", id: "googleplay"
 
     .products
+      //商品一覧を取得 
       .products__header
         .products__header--title
           人気のカテゴリー
         %ul.products__header--category
-          %li.products__header--list
-            レディース
-          %li.products__header--list
-            メンズ
-          %li.products__header--list
-            家電・スマホ・カメラ
-          %li.products__header--list
-            おもちゃ・ホビー・グッズ
+          -# 出品されている商品の中で人気(出品数が多い)のカテゴリーBest４を表示
+          - @popular_categories.each do |category|
+            %li.products__header--list
+              = category.category.name
 
-      .products__main
-        .products__main--title
-          レディース新着アイテム
-        .products__main--more
-          もっと見る >
-        .products__main--list
-          - for i in 1..10
-            %figure
-              = image_tag("test.png", class: "products")
-              %figcaption.products__text
-                テスト テスト
-                %br
-                テスト テスト
-              .products__price
-                .products__price--tag
-                  ¥10,000
-
-      .products__main
-        .products__main--title
-          メンズ新着アイテム
-        .products__main--more
-          もっと見る >
-        .products__main--list
-          - for i in 1..10
-            %figure
-              = image_tag("test.png", class: "products")
-              %figcaption.products__text
-                テスト テスト
-                %br
-                テスト テスト
-              .products__price
-                .products__price--tag
-                  ¥10,000
-
-      .products__main
-        .products__main--title
-          家電・スマホ・カメラ新着アイテム
-        .products__main--more
-          もっと見る >
-        .products__main--list
-          - for i in 1..10
-            %figure
-              = image_tag("test.png", class: "products")
-              %figcaption.products__text
-                テスト テスト
-                %br
-                テスト テスト
-              .products__price
-                .products__price--tag
-                  ¥10,000
-
-      .products__main
-        .products__main--title
-          おもちゃ・ホビー・グッズ新着アイテム
-        .products__main--more
-          もっと見る >
-        .products__main--list
-          - for i in 1..10
-            %figure
-              = image_tag("test.png", class: "products")
-              %figcaption.products__text
-                テスト テスト
-                %br
-                テスト テスト
-              .products__price
-                .products__price--tag
-                  ¥10,000
+      - @popular_categories.each do |category|
+        .products__main
+          .products__main--title
+            = category.category.name
+            新着アイテム
+          .products__main--more
+            = link_to "もっと見る >", "#"
+          .products__main--list
+            -# eachで回して現在のcategory_idの商品を10件商品一覧に表示
+            = render partial: "list", collection: @popular_categories_products.where(category_id: category.category_id).limit(10), as: :product
 
     .products
       .products__header
         .products__header--title
           人気のブランド
         %ul.products__header--category
-          %li.products__header--list
-            シャネル
-          %li.products__header--list
-            ルイヴィトン
-          %li.products__header--list
-            シュプリーム
-          %li.products__header--list
-            ナイキ
+          -# 出品されている商品の中で人気(出品数が多い)のブランドBest４を表示
+          - @popular_brands.each do |brand|
+            %li.products__header--list
+              = brand.brand.name
 
-      .products__main
-        .products__main--title
-          シャネル新着アイテム
-        .products__main--more
-          もっと見る >
-        .products__main--list
-          - for i in 1..10
-            %figure
-              = image_tag("test.png", class: "products")
-              %figcaption.products__text
-                テスト テスト
-                %br
-                テスト テスト
-              .products__price
-                .products__price--tag
-                  ¥10,000
-
-      .products__main
-        .products__main--title
-          ルイヴィトン新着アイテム
-        .products__main--more
-          もっと見る >
-        .products__main--list
-          - for i in 1..10
-            %figure
-              = image_tag("test.png", class: "products")
-              %figcaption.products__text
-                テスト テスト
-                %br
-                テスト テスト
-              .products__price
-                .products__price--tag
-                  ¥10,000
-
-      .products__main
-        .products__main--title
-          シュプリーム新着アイテム
-        .products__main--more
-          もっと見る >
-        .products__main--list
-          - for i in 1..10
-            %figure
-              = image_tag("test.png", class: "products")
-              %figcaption.products__text
-                テスト テスト
-                %br
-                テスト テスト
-              .products__price
-                .products__price--tag
-                  ¥10,000
-
-      .products__main
-        .products__main--title
-          ナイキ新着アイテム
-        .products__main--more
-          もっと見る >
-        .products__main--list
-          - for i in 1..10
-            %figure
-              = image_tag("test.png", class: "products")
-              %figcaption.products__text
-                テスト テスト
-                %br
-                テスト テスト
-              .products__price
-                .products__price--tag
-                  ¥10,000
-
+      - @popular_brands.each do |brand|
+        .products__main
+          .products__main--title
+            = brand.brand.name
+            新着アイテム
+          .products__main--more
+            = link_to "もっと見る >", "#"
+          .products__main--list
+            -# eachで回して現在のbrand_idの商品を10件商品一覧に表示
+            = render partial: "list", collection: @popular_brands_products.where(brand_id: brand.brand_id).limit(10), as: :product
     = render "products/cameraicon"
     = render "products/footer"

@@ -2,7 +2,7 @@
   = render 'products/header'
 
 .mypage-wrapper
-  = render 'users/mypage__links'
+  = render 'users/mypage_links'
 
   .mypage-content-edit
     .main-area__products
@@ -13,7 +13,7 @@
         %li.main-area__products__tabs__sell 売却済み
 
       %ul.main-area__products__detail
-        = link_to '#' do
+        = link_to edit_product_path(1) do
           %li.main-area__mypage__products__content
             .main-area__mypage__products__content--icon
               = image_tag "test.png", size: "40x40"
@@ -30,61 +30,61 @@
             .main-area__mypage__contents__products--chevron-right
               =icon("fas", "chevron-right")
 
-      %ul.main-area__products__detail
-      - @products.each do |product|
-        = link_to edit_product_path(params[:id]) do
-          %li.main-area__mypage__products__content
-            .main-area__mypage__products__content--icon
-              = image_tag "test.png", size: "40x40"
-            .main-area__mypage__contents__product__name test
+      -# %ul.main-area__products__detail
+      -# - @products.each do |product|
+      -#   = link_to edit_product_path(params[:id]) do
+      -#     %li.main-area__mypage__products__content
+      -#       .main-area__mypage__products__content--icon
+      -#         = image_tag "test.png", size: "40x40"
+      -#       .main-area__mypage__contents__product__name test
 
-            .main-area__mypage__products__icon
-              .main-area__mypage__contents__content--heart
-                %span.listing-item-count
-                  = icon 'far', 'heart'
-                  %span 5
-              .main-area__mypage__contents__product-comment
-                = icon 'far', 'comment-alt'
-                %span 6
-            .main-area__mypage__contents__products--chevron-right
-              =icon("fas", "chevron-right")
+      -#       .main-area__mypage__products__icon
+      -#         .main-area__mypage__contents__content--heart
+      -#           %span.listing-item-count
+      -#             = icon 'far', 'heart'
+      -#             %span 5
+      -#         .main-area__mypage__contents__product-comment
+      -#           = icon 'far', 'comment-alt'
+      -#           %span 6
+      -#       .main-area__mypage__contents__products--chevron-right
+      -#         =icon("fas", "chevron-right")
 
-          %li.main-area__mypage__contents__content
-            .main-area__mypage__contents__content--icon
-              = image_tag "svg/logo_red.svg", size: "40x40"
-            .main-area__mypage__contents__content--sentence 事務局から個別メッセージ
-            .main-area__mypage__contents__content--time-date
-              = image_tag "svg/clock-regular.svg", size: "15x15"
-              = '2日前'
-            .main-area__mypage__contents__content--chevron-right
-              =icon("fas", "chevron-right")
-          %li.main-area__mypage__contents__content
-            .main-area__mypage__contents__content--icon
-              = image_tag "svg/logo_red.svg", size: "40x40"
-            .main-area__mypage__contents__content--sentence 事務局から個別メッセージ
-            .main-area__mypage__contents__content--time-date
-              = image_tag "svg/clock-regular.svg", size: "15x15"
-              = '2日前'
-            .main-area__mypage__contents__content--chevron-right
-              =icon("fas", "chevron-right")
-          %li.main-area__mypage__contents__content
-            .main-area__mypage__contents__content--icon
-              = image_tag "svg/logo_red.svg", size: "40x40"
-            .main-area__mypage__contents__content--sentence 事務局から個別メッセージ
-            .main-area__mypage__contents__content--time-date
-              = image_tag "svg/clock-regular.svg", size: "15x15"
-              = '2日前'
-            .main-area__mypage__contents__content--chevron-right
-              =icon("fas", "chevron-right")
-          %li.main-area__mypage__contents__content
-            .main-area__mypage__contents__content--icon
-              = image_tag "svg/logo_red.svg", size: "40x40"
-            .main-area__mypage__contents__content--sentence 事務局から個別メッセージ
-            .main-area__mypage__contents__content--time-date
-              = image_tag "svg/clock-regular.svg", size: "15x15"
-              = '2日前'
-            .main-area__mypage__contents__content--chevron-right
-              =icon("fas", "chevron-right")
+      -#     %li.main-area__mypage__contents__content
+      -#       .main-area__mypage__contents__content--icon
+      -#         = image_tag "svg/logo_red.svg", size: "40x40"
+      -#       .main-area__mypage__contents__content--sentence 事務局から個別メッセージ
+      -#       .main-area__mypage__contents__content--time-date
+      -#         = image_tag "svg/clock-regular.svg", size: "15x15"
+      -#         = '2日前'
+      -#       .main-area__mypage__contents__content--chevron-right
+      -#         =icon("fas", "chevron-right")
+      -#     %li.main-area__mypage__contents__content
+      -#       .main-area__mypage__contents__content--icon
+      -#         = image_tag "svg/logo_red.svg", size: "40x40"
+      -#       .main-area__mypage__contents__content--sentence 事務局から個別メッセージ
+      -#       .main-area__mypage__contents__content--time-date
+      -#         = image_tag "svg/clock-regular.svg", size: "15x15"
+      -#         = '2日前'
+      -#       .main-area__mypage__contents__content--chevron-right
+      -#         =icon("fas", "chevron-right")
+      -#     %li.main-area__mypage__contents__content
+      -#       .main-area__mypage__contents__content--icon
+      -#         = image_tag "svg/logo_red.svg", size: "40x40"
+      -#       .main-area__mypage__contents__content--sentence 事務局から個別メッセージ
+      -#       .main-area__mypage__contents__content--time-date
+      -#         = image_tag "svg/clock-regular.svg", size: "15x15"
+      -#         = '2日前'
+      -#       .main-area__mypage__contents__content--chevron-right
+      -#         =icon("fas", "chevron-right")
+      -#     %li.main-area__mypage__contents__content
+      -#       .main-area__mypage__contents__content--icon
+      -#         = image_tag "svg/logo_red.svg", size: "40x40"
+      -#       .main-area__mypage__contents__content--sentence 事務局から個別メッセージ
+      -#       .main-area__mypage__contents__content--time-date
+      -#         = image_tag "svg/clock-regular.svg", size: "15x15"
+      -#         = '2日前'
+      -#       .main-area__mypage__contents__content--chevron-right
+      -#         =icon("fas", "chevron-right")
 
           
       .mypage-history

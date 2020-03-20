@@ -16,16 +16,17 @@ Rails.application.routes.draw do
     post 'creditcard_regist', to: 'users/registrations#step4_regist'
     get 'registed', to: 'users/registrations#finish_regist'
   end
-  
+
+
+  resources :categories, only: [:index, :show]
   get 'products/done'
+  get 'products/search'
   resources :products
   root to: "products#index"
   get 'users/logout'
-
   resources :users, only: [:show, :edit] do
     resources :credit_cards, only: [:show]
     resources :products,only: [:edit, :update]
     get'listing', to: 'users#listing'
   end
-
 end
