@@ -1,3 +1,8 @@
+@mixin active_btn {
+  background-color: red;
+  color: white;
+}
+
 .width-container {
   width: 700px;
   margin: 40px auto;
@@ -13,7 +18,7 @@
   .category-list {
     // floatしているボタンの高さを認識させるためにoverflowを使用しています
     overflow: hidden;
-    .category-list__button {
+    &__button {
       background-color: #fff;
       min-width: 80px;
       text-align: center;
@@ -30,9 +35,11 @@
         font-size: 16px;
       }
       &:hover {
-        background-color: red;
-        color: white;
+        @include active_btn;
       }
+    }
+    .active {
+      @include active_btn;
     }
   }
   .brand-initial {
@@ -82,10 +89,12 @@
           display: inline-block;
           width: 295px;
         }
-
         &__inner {
           display: inline-block;
           width: 49%;
+          a:hover {
+            color: #00CCFF;
+          }
         }
       }
     }

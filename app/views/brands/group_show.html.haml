@@ -11,9 +11,14 @@
       .category-list
         -# ルートカテゴリ(ancestryがnullのカテゴリ)一覧
         - @category_root.each do |parent|
-          = link_to brand_group_path(parent.id), class: "category-list__button" do
-            %p 
-              = parent.name
+          - if params[:id].to_i == parent.id
+            = link_to brand_group_path(parent.id), class: "category-list__button active" do
+              %p 
+                = parent.name
+          - else
+            = link_to brand_group_path(parent.id), class: "category-list__button" do
+              %p 
+                = parent.name
 
       -# ブランドの頭文字一覧
       .brand-initial
