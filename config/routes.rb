@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
   }
+
   devise_scope :user do
     get 'user_regist', to: 'users/registrations#step1'
     post 'user_regist', to: 'users/registrations#step1_regist'
@@ -17,14 +18,24 @@ Rails.application.routes.draw do
     get 'registed', to: 'users/registrations#finish_regist'
   end
 
-
   resources :categories, only: [:index, :show]
-  get 'products/done'
-  get 'products/search'
-  resources :products
+  
   root to: "products#index"
   get 'users/logout'
+
   resources :users, only: [:show, :edit] do
-    resources :credit_cards, only: [:show]
+    resources :credit_cards, only: [:new, :create, :show, :destroy]
   end
+
+  get 'products/search'
+
+  resources :products do
+    member do
+      post 'purchase', to: 'credit_cards#purchase'
+      get 'done'
+      get 'buy'
+      post 'buy', to: 'credit_cards#buy'
+    end
+  end
+
 end
