@@ -17,15 +17,15 @@ end
 
 #子カテゴリーが選択された場合
 crumb :child_categories do |category|
-  link category.parent.name, category_path(category.parent.id)
-  link category.name, category_path(category.id)
+  link category.parent.value, category_path(category.parent.id)
+  link category.value, category_path(category.id)
   parent :category_all
 end
 
 #孫カテゴリーが選択された場合 
 crumb :grand_child_categories do |category|
-  link category.parent.parent.name, category_path(category.parent.parent.id)
-  link category.parent.name, category_path(category.parent.id)
-  link category.name, category_path(category.id)
+  link category.parent.parent.value, category_path(category.parent.parent.id)
+  link category.parent.value, category_path(category.parent.id)
+  link category.value, category_path(category.id)
   parent :category_all
 end
