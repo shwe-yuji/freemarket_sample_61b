@@ -1,13 +1,26 @@
-.breadcrumb
-  -# パンくず実装時に変更予定
-  .breadcrumb__list
-    = link_to '#' do
-      メルカリ >
-    = link_to '#' do
-      カテゴリー一覧 >
-    = link_to '#' do
-      レディース >
-    = link_to '#' do
-      トップス >
-    = link_to '#' do
-      Tシャツ/カットソー(半袖/袖なし)
+- if @category_parent.present?
+  - breadcrumb :category_all, @category_parent
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
+
+  -# 親カテゴリーが選択された場合
+- elsif @category.ancestry.nil?
+  - breadcrumb :parent_categories, @category.value
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
+
+  -# 子カテゴリーが選択された場合
+- elsif @category.ancestry.exclude?("/")
+  - breadcrumb :child_categories, @category
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
+
+  -# 孫カテゴリーが選択された場合
+- elsif @category.ancestry.include?("/")
+  - breadcrumb :grand_child_categories, @category
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
