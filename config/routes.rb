@@ -33,7 +33,6 @@ Rails.application.routes.draw do
     member do
       post 'purchase', to: 'credit_cards#purchase'
       get 'done'
-      get 'buy'
       post 'buy', to: 'credit_cards#buy'
     end
   end
