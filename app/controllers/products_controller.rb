@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
     # クリックされた商品名と同じものを取得
     @same_name_products = Product.includes(:photos).where('name like ?',"%#{@product.name}%").limit(6)
     # 販売中か購入済かを調べる
-    @sell_or_buy =judge_sale_or_soldout 
+    @sell_or_buy =judge_sale_or_soldout
   end
 
   def new
@@ -100,6 +100,7 @@ class ProductsController < ApplicationController
 
 
   def judge_sale_or_soldout
+    #存在すればtrue：購入済
     @sale_or_soldout = TransactionRecord.where(product_id:params[:id]).present?
   end
 end

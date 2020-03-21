@@ -31,9 +31,8 @@ Rails.application.routes.draw do
 
   resources :products do
     member do
-      post 'purchase', to: 'credit_cards#purchase'
-      get 'done'
       post 'buy', to: 'credit_cards#buy'
+      get 'done'
     end
   end
 
