@@ -27,12 +27,12 @@
           -# 出品されている商品の中で人気(出品数が多い)のカテゴリーBest４を表示
           - @popular_categories.each do |category|
             %li.products__header--list
-              = category.category.name
+              = category.category.value
 
       - @popular_categories.each do |category|
         .products__main
           .products__main--title
-            = category.category.name
+            = category.category.value
             新着アイテム
           .products__main--more
             = link_to "もっと見る >", "#"
