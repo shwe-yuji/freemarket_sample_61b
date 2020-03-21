@@ -32,14 +32,19 @@
         flex-direction: column;
 
         &__icon-label {
-          padding-top: 30px;
+          padding: 30px 0 0 20px;
 
           &--icon {
-            padding-left: 10px;
+            color: $gray_text;
           }
           &--label {
             @include search-form-label
           }
+        }
+        
+        &__checkbox-label {
+          padding: 5px 0 0 20px;
+
         }
 
         .input-field {
@@ -48,7 +53,35 @@
         .pull-down {
           @include pull-down;
         }
+        
+        &__price-area {
+          display: flex;
+          margin-top: 5px;
 
+          .price-input {
+            width: 30%;
+            height: 40px;
+            margin: 0 auto;
+            border-radius: 2px;
+            border: 1px  solid $gray_text
+          }
+        }
+
+        &__submit-area {
+          display: flex;
+          justify-content: space-evenly;
+          padding: 20px 0 10px 0;
+
+          &--reset {
+            @include search-btn;
+            background-color: $gray_text;
+          }
+
+          &--submit {
+            @include search-btn;
+            background-color: $btn-color;
+          }
+        }
       }
     }
   }
