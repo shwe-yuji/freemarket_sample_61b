@@ -17,8 +17,13 @@ Rails.application.routes.draw do
     get 'registed', to: 'users/registrations#finish_regist'
   end
 
-
   resources :categories, only: [:index, :show]
+  get 'brands/group/:id', to: 'brands#group_show', as: :brand_group
+
+  resources :brands, only: [:show] do
+    get ':id', to: 'brands#category'
+  end
+
   get 'products/done'
   get 'products/search'
   resources :products
