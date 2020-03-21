@@ -13,18 +13,42 @@
 
     &__list-change {
       height: 80px;
+      
+      .pull-down {
+        @include pull-down-list-change;
+      }
     }
 
     &__box {
       background-color: #ffffff;
 
       &__title {
-      font-weight: bold;
+        font-weight: bold;
+        padding: 10px 0 0 10px; 
       }
 
       &__form {
-      display: flex;
-      flex-direction: column;
+        display: flex;
+        flex-direction: column;
+
+        &__icon-label {
+          padding-top: 30px;
+
+          &--icon {
+            padding-left: 10px;
+          }
+          &--label {
+            @include search-form-label
+          }
+        }
+
+        .input-field {
+          @include input-field;
+        }
+        .pull-down {
+          @include pull-down;
+        }
+
       }
     }
   }
