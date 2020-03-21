@@ -8,7 +8,7 @@
       .detail-search__box__form__icon-label
         = icon('fas', 'plus', class: 'detail-search__box__form__icon-label--icon')
         = f.label :'キーワードを追加する', class: 'detail-search__box__form__icon-label--label'
-      = f.text_field :name, placeholder: params[:search_word], class: 'input-field'
+      = f.text_field :name, value: params[:search_word], class: 'input-field'
 
       .detail-search__box__form__icon-label
         = icon('fas', 'list', class: 'detail-search__box__form__icon-label--icon')
@@ -45,12 +45,11 @@
           = b.check_box
           = b.label
 
-
       .detail-search__box__form__icon-label
         = icon('fas', 'truck', class: 'detail-search__box__form__icon-label--icon')
         = f.label :'配送料の負担', class: 'detail-search__box__form__icon-label--label'
       .detail-search__box__form__checkbox-label
-        = check_box_tag :condition_all
+        = check_box_tag :delivery_expence_all
         = label_tag :'すべて'
         = f.collection_check_boxes :delivery_expence_id, DeliveryExpense.all, :id, :value do |b|
           .select_boxes
@@ -61,7 +60,7 @@
         = icon('fas', 'shopping-cart', class: 'detail-search__box__form__icon-label--icon')
         = f.label :'販売状況', class: 'detail-search__box__form__icon-label--label'
       .detail-search__box__form__checkbox-label
-        = check_box_tag :condition_all
+        = check_box_tag :status_all
         = label_tag :'すべて'
         = f.collection_check_boxes :status_id, Status.all, :id, :value do |b|
           .select_boxes
