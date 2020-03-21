@@ -26,5 +26,7 @@ Rails.application.routes.draw do
   get 'users/logout'
   resources :users, only: [:show, :edit] do
     resources :credit_cards, only: [:show]
+    resources :products,only: [:edit, :update]
+    get'listing', to: 'users#listing'
   end
 end

@@ -1,0 +1,125 @@
+.mypage-content-edit {
+  float: right;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  .main-area__products__title{
+    background-color: white;
+    font-weight: bold;
+    height:80px;
+    padding: 0 16px;
+    font-size: 16px;
+    line-height: 72px;
+  }
+  .main-area__mypage__tabs {
+    font-size: 15px;
+    font-weight: bold;
+    height: 50px;
+    text-align: center;
+    background-color: $color;
+    color: rgb(51, 51, 51);
+    line-height: 50px;
+    border-bottom: solid 1px rgb(245, 245, 245);
+  }
+
+  .main-area__products__tabs {
+    height: 74px;
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+    line-height: 74px;
+    display: flex;
+    justify-content: row;
+    text-align: center;
+    cursor: pointer;
+
+    &__active {
+      width: 33.3%;
+      background-color: #fff;
+      border-top: solid 2px red;
+    }
+
+    &__trade {
+      background: #eee;
+      width: 33.33%;
+    }
+
+    &__sell{
+      background: #eee;
+      width: 33.33%;
+    }
+  }
+
+  .main-area__products__detail{
+    .main-area__mypage__products__content{
+      height: 70px;
+      padding: 16px 16px 0 16px;
+      background-color: #fff;
+      border-bottom: solid 1px rgb(245, 245, 245);
+      cursor: pointer;
+
+      .main-area__mypage__products__content--icon {
+        float: left;
+        width: 48px;
+        height: 48px;
+        text-align: center;
+      }
+      .main-area__mypage__contents__content--sentence{
+        font-size: 16px;
+      }
+      .main-area__mypage__contents__product__name {
+        padding-left: 70px;
+        font-size: 14px;
+        color: rgb(51, 51, 51);
+      }
+      .main-area__mypage__products__icon{
+        display: flex;
+        float: left;
+        font-size: 14px;
+        .main-area__mypage__contents__content--heart {
+          padding: 5px 0 0 20px;
+          color: rgb(51, 51, 51);
+        }
+        .main-area__mypage__contents__product-comment{
+          color: rgb(51, 51, 51);
+          padding: 5px 0 0 10px;
+      }
+    }
+    .main-area__mypage__contents__products--chevron-right {
+      float: right;
+      color: rgb(51, 51, 51);
+    }
+    }
+  }
+
+.icon_arrow{
+  color:#333;
+  margin: 40px 0 0;
+  display: flex;
+  
+  .icon-arrow-left{
+    text-align: center;
+    left: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    line-height: 42px;
+  }
+  
+  .icon-arrow-right{
+    text-align: center;
+    margin-left: 610px;
+    right:0;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    line-height: 42px;
+  }
+}
+}

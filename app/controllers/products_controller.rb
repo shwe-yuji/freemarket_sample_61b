@@ -46,9 +46,14 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    # 出品済みの商品を選んだら、その商品の情報を全て取得する
+    # @products = Product.includes.find(params[:id])
   end
 
   def update
+    # 更新した内容をsaveさせる
+    # editアクションで全て上書きされるように
+    # redirect to listing
   end
 
   def destroy
