@@ -8,7 +8,7 @@
           .category__header--list
             = link_to "#{params[:id]}/#{category.id}" do
               %p 
-                = category.name
+                = category.value
       .products__main
         .products__main--title
           = @current_brand.name + 'の商品一覧'
