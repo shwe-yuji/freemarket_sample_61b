@@ -7,6 +7,9 @@
         = @product.name
       .item_contents
         .item_photo
+          - if @sale_or_soldout
+            %span.soldout
+              売り切れ
           = image_tag( @product.photos[0].photo.url, class: "products" , size: '320x320')
           .other_photo 
             - @product.photos.each_with_index do |photo,i|
@@ -84,7 +87,7 @@
               着払い
         - if @sale_or_soldout
           .buy_button-soldout  
-            = link_to "販売済" , root_path 
+            = link_to "購入済" , root_path 
         - else
           .buy_button
             = link_to "購入画面に進む", buy_product_path(@product.id), method: :post
