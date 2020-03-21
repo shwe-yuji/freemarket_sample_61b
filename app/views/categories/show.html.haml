@@ -8,10 +8,10 @@
           .category__header--list
             = link_to category_path(children.id) do
               %p 
-                = children.name
+                = children.value
       .products__main
         .products__main--title
-          = @category.name + 'の商品一覧'
+          = @category.value + 'の商品一覧'
         .products__main--list
           = render partial: "products/list", collection: @products, as: :product
     = render "products/cameraicon"

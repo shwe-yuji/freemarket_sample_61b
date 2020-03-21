@@ -8,11 +8,11 @@
       - @category_parent.each do |parent|  
         = link_to "#", class: "category__list" do
           %p 
-            = parent.name
+            = parent.value
       .category__box
         - @category_parent.each do |parent| 
           .category__box--red
-            = parent.name
+            = parent.value
           .category__box--white
             .category__box__all
               = link_to category_path(parent.id) do
@@ -21,7 +21,7 @@
               - parent.children.each do |children|
                 .category__box__children
                 %p 
-                  = children.name
+                  = children.value
                 .category__box__grandchildren
                   = link_to category_path(children.id) do
                     %p すべて
@@ -30,7 +30,7 @@
                     .category__box__grandchildren__all
                       = link_to category_path(grandchildren.id) do
                         %p 
-                          = grandchildren.name
+                          = grandchildren.value
 
     = render "products/cameraicon"
     = render "products/footer"
