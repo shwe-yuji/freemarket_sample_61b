@@ -127,7 +127,8 @@
         = link_to '#' do
           加盟店規約
         = f.submit "出品する",class:"sell-area__box__button--red"
-        %button.sell-area__box__button--gray{type: "button"}
-          もどる
+        = link_to product_path(1), class: "product-show" do
+          %button.sell-area__box__button--gray{type: "button"}
+            もどる
 
     = render "products/logo-footer"

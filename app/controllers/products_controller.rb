@@ -51,6 +51,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    # 更新した内容をsaveさせる
     # editアクションで全て上書きされるように
     # redirect to listing
   end
