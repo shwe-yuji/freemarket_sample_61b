@@ -74,3 +74,9 @@
   font-weight: bold;
   text-align: left
 }
+
+// ボタンが現在アクティブになっているということを示すボタン色(group_showで使用)
+@mixin active_btn {
+  background-color: red;
+  color: white;
+}

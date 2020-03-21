@@ -26,7 +26,7 @@
 
   .products__main {
     width: 80%;
-    padding: 42px 0px 18px;
+    padding: 42px 0px 40px;
     margin: 0px auto;
     
     &--title {
@@ -42,6 +42,29 @@
       margin: 0px auto;
       display: flex;
       flex-wrap: wrap;
+    }
+
+    .page-description {
+      &__title-box {
+        border-radius: 4px 4px 0 0;
+        padding: 5px 30px;
+        height: 45px;
+        line-height: 45px;
+        color: $color_white;
+        text-align: center;
+        background-color: red;
+        font: {
+          size: 22px;
+          weight: bold;
+        }
+      }
+      &__contents-box {
+        padding: 30px;
+        background-color: $color_white;
+        p {
+          font-size: 14px;
+        }
+      }  
     }
 
       figure {
