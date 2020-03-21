@@ -6,7 +6,6 @@ class CreditCardsController < ApplicationController
   def index
   end
   def buy #クレジット購入
-    binding.pry
     if @card.blank?
       redirect_to action: "new"
       flash[:alert] = '購入にはクレジットカード登録が必要です'
@@ -15,6 +14,7 @@ class CreditCardsController < ApplicationController
      # 購入した際の情報を元に引っ張ってくる
       @card = current_user.card
      # テーブル紐付けてるのでログインユーザーのクレジットカードを引っ張ってくる
+     # 本番と記述方式が異なるので注意
       Payjp.api_key = ENV['PAYJP_SECRET_KEY']
      # キーをセットする(環境変数においても良い)
       Payjp::Charge.create(
@@ -23,15 +23,14 @@ class CreditCardsController < ApplicationController
       currency: 'jpy', #日本円
       )
      # 商品の金額をamountへ、cardの顧客idをcustomerへ、currencyをjpyへ入れる
-     @transaction = Transaction.new 
-     if @transaction.create(product_id:params[:id], user_id: current_user.id)
+     @transaction = TransactionRecord.new(product_id: params[:id], user_id: current_user.id) 
+     if @transaction.save
         flash[:notice] = '購入しました。'
-        redirect_to controller: "products", action: 'show'
+        redirect_to done_product_path(@product), method: :get
       else
         flash[:alert] = '購入に失敗しました。'
-        redirect_to controller: "products", action: 'show'
+        redirect_to :root
       end
-     #↑この辺はこちら側のテーブル設計どうりに色々しています
     end
   end
 

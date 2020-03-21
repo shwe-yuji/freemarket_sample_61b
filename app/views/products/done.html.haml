@@ -10,7 +10,7 @@
 %h2.l-single-head 購入が完了しました
 
 .buy-content.buy-item
-  = image_tag("test.png")
+  = image_tag(@product.photos[0].photo.url)
 
 .done-user-ratings
   %p.buy-contet__text
@@ -31,7 +31,7 @@
   %br
   評価後に取引は完了です。
   .back_mypage
-    = link_to '#', class: 'review-content-bold' do
+    = link_to user_path, class: 'review-content-bold' do
       マイページへもどる
 
 .last_done

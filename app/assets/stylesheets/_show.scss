@@ -117,7 +117,21 @@ display: none !important;
               width:680px;
               margin-left: 85px;
               margin-top:10px;
-
+              &-soldout{
+                background-color: gray;
+                height:70px;
+                width:680px;
+                margin-left: 85px;
+                margin-top:10px;
+                a{
+                  display: block;
+                  font-size: 30px;
+                  color:white;
+                  text-decoration:none;
+                  line-height:68px;
+                  font-weight: bold;
+                }
+              }
               a{
                 display: block;
                 font-size: 30px;

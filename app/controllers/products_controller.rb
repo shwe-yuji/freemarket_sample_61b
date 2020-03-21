@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show,:destroy]
+  before_action :set_product, only: [:show,:destroy,:done]
+  before_action :judge_sale_or_soldout, only: [:show]
   before_action :set_pulldown, only: [:search]
 
   def index
@@ -13,7 +14,6 @@ class ProductsController < ApplicationController
     # 人気のカテゴリとブランドの商品を新着順にインスタンス変数に代入(予定。※取引済みの商品も含む)
     # @popular_categories_products = Product.includes(:photos).where(category_id: category_ids).order('created_at DESC')
     @popular_brands_products = Product.includes(:photos).where(brand_id: brand_ids).order('created_at DESC')
-
     # 新着順に商品をインスタンス変数に代入
     @popular_categories_products = Product.includes(:photos).order('created_at DESC')
   end
@@ -25,9 +25,9 @@ class ProductsController < ApplicationController
     @user_products = Product.includes(:photos).where(user_id: @product.user_id).order('created_at DESC').limit(6)
     # クリックされた商品名と同じものを取得
     @same_name_products = Product.includes(:photos).where('name like ?',"%#{@product.name}%").limit(6)
+    # 販売中か購入済かを調べる
+    @sell_or_buy =judge_sale_or_soldout 
   end
-
-
 
   def new
     @product = Product.new
@@ -70,6 +70,8 @@ class ProductsController < ApplicationController
     @products_new = Product.includes(:photos).order('created_at DESC')
   end
 
+  def done
+  end
   private
 
   def product_params
@@ -95,4 +97,9 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.includes(:photos).find(params[:id])
   end 
+
+
+  def judge_sale_or_soldout
+    @sale_or_soldout = TransactionRecord.where(product_id:params[:id]).present?
+  end
 end
