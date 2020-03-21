@@ -48,7 +48,7 @@ end
     shipdate_id: Faker::Number.within(range: 1..3),
     price: Faker::Number.within(range: 300..60000),
     brand_id: Faker::Number.within(range: 1..30),
-    category_id: Faker::Number.within(range: 1..211)
+    category_id: Faker::Number.within(range: 72..300)
   )
 end
 
@@ -59,16 +59,27 @@ end
     photo: open("#{Rails.root}/db/fixtures/img#{Faker::Number.within(range: 1..2)}.png")
   )
   Photo.create(
-    product_id: Faker::Number.within(range: 1..30),
+    product_id: Faker::Number.within(range: 1..100),
     photo: open("#{Rails.root}/db/fixtures/img#{Faker::Number.within(range: 1..2)}.png")
   )
-
+  Photo.create(
+    product_id: Faker::Number.within(range: 1..100),
+    photo: open("#{Rails.root}/db/fixtures/img#{Faker::Number.within(range: 1..2)}.png")
+  )
+  Photo.create(
+    product_id: Faker::Number.within(range: 1..100),
+    photo: open("#{Rails.root}/db/fixtures/img#{Faker::Number.within(range: 1..2)}.png")
+  )
+  Photo.create(
+    product_id: Faker::Number.within(range: 1..100),
+    photo: open("#{Rails.root}/db/fixtures/img#{Faker::Number.within(range: 1..2)}.png")
+  )
 end
 
 # transaction_records
-60.times do |n|
+20.times do |n|
   TransactionRecord.create(
     user_id: Faker::Number.within(range: 1..2),
-    product_id: Faker::Number.unique.within(range: 1..60)
+    product_id: Faker::Number.unique.within(range: 1..20)
   )
 end
