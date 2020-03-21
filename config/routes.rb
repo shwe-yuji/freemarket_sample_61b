@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     post 'creditcard_regist', to: 'users/registrations#step4_regist'
     get 'registed', to: 'users/registrations#finish_regist'
   end
-
   resources :categories, only: [:index, :show]
   get 'brands/group/:id', to: 'brands#group_show', as: :brand_group
 
@@ -38,7 +37,6 @@ Rails.application.routes.draw do
   end
 
   get 'products/search'
-
   resources :products do
     member do
       post 'buy', to: 'credit_cards#buy'
