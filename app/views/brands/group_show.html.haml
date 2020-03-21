@@ -14,11 +14,11 @@
           - if params[:id].to_i == parent.id
             = link_to brand_group_path(parent.id), class: "category-list__button active" do
               %p 
-                = parent.name
+                = parent.value
           - else
             = link_to brand_group_path(parent.id), class: "category-list__button" do
               %p 
-                = parent.name
+                = parent.value
 
       -# ブランドの頭文字一覧
       .brand-initial
@@ -31,7 +31,7 @@
 
       .details
         .category-box
-          = @current_category.name
+          = @current_category.value
         -# 現在のカテゴリ内のブランドを抽出し、ブランド名の頭文字から重複を削除し、eachで回す
         - @current_brands.pluck(:name).map{|s| s[0]}.uniq.each do |brand|
           .brand-box
