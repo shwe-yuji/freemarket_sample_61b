@@ -7,7 +7,7 @@
         = @product.name
       .item_contents
         .item_photo
-          - if @sale_or_soldout
+          - if TransactionRecord.judge_sale_or_soldout(@product)
             %span.soldout
               売り切れ
           = image_tag( @product.photos[0].photo.url, class: "products" , size: '320x320')
@@ -85,7 +85,7 @@
               送料込み
             - else
               着払い
-        - if @sale_or_soldout
+        - if TransactionRecord.judge_sale_or_soldout(@product)
           .buy_button-soldout
             = link_to "購入済" , root_path
         - else

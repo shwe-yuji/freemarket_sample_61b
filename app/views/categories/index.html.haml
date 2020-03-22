@@ -5,6 +5,7 @@
     .category-index
       .category__title
         %h2 カテゴリ一覧
+      -binding.pry
       - @category_parent.each do |parent|  
         = link_to "#", class: "category__list" do
           %p 
