@@ -86,6 +86,10 @@ class ProductsController < ApplicationController
     # brand_ids = Brand.where(['name LIKE ?', "%#{input_brand_name}%"]).ids
     # products = Product.includes(:brand).where(brand_id: brand_ids)
 
+    # サイズで検索
+    # selected_size_id = params[:size_id]
+    # product = Product.where(size_id: selected_size_id)
+    
     # # 価格検索
     # input_min_price = params[:min_price]
     # input_max_price = params[:max_price]
@@ -102,7 +106,7 @@ class ProductsController < ApplicationController
     # 販売状況で検索
     # checked_status_ids = params[:status_id]
     # product = Product.where(status_id: checked_status_ids)
-    
+
     # @search_result = 
    #検索ワードが空の場合、新着商品のデータを取得
     @products_new = Product.includes(:photos).order('created_at DESC')
