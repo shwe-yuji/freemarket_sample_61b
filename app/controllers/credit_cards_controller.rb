@@ -4,7 +4,7 @@ class CreditCardsController < ApplicationController
 
   def buy
     if @card.blank?
-      redirect_to action: "new"
+      redirect_to :root
       flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
       @product = Product.find(params[:id])
