@@ -21,7 +21,7 @@
       .detail-search__box__form__icon-label
         = icon('fas', 'tag', class: 'detail-search__box__form__icon-label--icon')
         = f.label :'ブランド名から探す', class: 'detail-search__box__form__icon-label--label'
-      = f.text_field :nickname, placeholder: '例）シャネル', class: 'input-field'
+      = f.text_field :brand_name, placeholder: '例）シャネル', class: 'input-field'
 
       .detail-search__box__form__icon-label
         = icon('far', 'square', class: 'detail-search__box__form__icon-label--icon')
@@ -40,6 +40,7 @@
       .detail-search__box__form__icon-label
         = icon('fas', 'star', class: 'detail-search__box__form__icon-label--icon')
         = f.label :'商品の状態', class: 'detail-search__box__form__icon-label--label'
+
       .detail-search__box__form__checkbox-label
         = check_box_tag :condition_all
         = label_tag :'すべて'

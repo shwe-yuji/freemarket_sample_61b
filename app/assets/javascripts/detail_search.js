@@ -1,12 +1,23 @@
 // $(document).on('turbolinks:load', function(){ 
+//   var check_condition = []
+//   var check_delivery_expence = []
+//   var check_status = []
 //   $('.detail-search__box').on('click', '#condition_all', function(){
 //     $('#condition_id_1').prop('checked', true);
+//       check_condition.push('1');
 //     $('#condition_id_2').prop('checked', true);
+//       check_condition.push('2');
 //     $('#condition_id_3').prop('checked', true);
+//       check_condition.push('3');
 //     $('#condition_id_4').prop('checked', true);
+//       check_condition.push('4');
 //     $('#condition_id_5').prop('checked', true);
+//       check_condition.push('5');
 //     $('#condition_id_6').prop('checked', true);
+//       check_condition.push('6');
 //     $('#condition_id_7').prop('checked', true);
+//       check_condition.push('7');
+//     console.log(check_condition);
 //   })
 
 //   $('.detail-search__box').on('click', '#delivery_expence_all', function(){

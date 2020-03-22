@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
     # 人気のカテゴリとブランドの商品を新着順にインスタンス変数に代入(予定。※取引済みの商品も含む)
     # @popular_categories_products = Product.includes(:photos).where(category_id: category_ids).order('created_at DESC')
     @popular_brands_products = Product.includes(:photos).where(brand_id: brand_ids).order('created_at DESC')
-
     # 新着順に商品をインスタンス変数に代入
     @popular_categories_products = Product.includes(:photos).order('created_at DESC')
   end
@@ -47,9 +46,14 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    # 出品済みの商品を選んだら、その商品の情報を全て取得する
+    # @products = Product.includes.find(params[:id])
   end
 
   def update
+    # 更新した内容をsaveさせる
+    # editアクションで全て上書きされるように
+    # redirect to listing
   end
 
   def destroy
@@ -73,12 +77,18 @@ class ProductsController < ApplicationController
   end
 
   def detail_search
-    #検索ワード入力時、スペースを半角スペースに変換して、splitメソッドで検索ワードを配列に格納
-    @search_words = params[:detail_search_word].gsub(/[[:blank:]]/, " ").split(" ")
-    @search_words.each do |search_word|
-      @search_result = Product.search(search_word).limit(132)
-    end
-    #検索ワードが空の場合、新着商品のデータを取得
+    # # カテゴリー検索
+    # input_category_id = params[:category_id].to_i
+    # category_ids = Category.find(input_category_id).subtree_ids
+    # products = Product.includes(:category).where(category_id: category_ids)
+
+    #ブランド検索
+    input_brand_name = params[:brand_name]
+    brand_ids = Brand.where(['name LIKE ?', "%#{input_brand_name}%"])
+    products = Product.includes(:brand).where(brand_id: brand_ids)
+    binding.pry
+    # @search_result = 
+   #検索ワードが空の場合、新着商品のデータを取得
     @products_new = Product.includes(:photos).order('created_at DESC')
   end
 
@@ -98,6 +108,7 @@ class ProductsController < ApplicationController
                    "10000 ~ 30000",
                    "30000 ~ 50000",
                    "50000 ~ "]
+
     @list_change = ["価格の安い順",
                     "価格の高い順",
                     "出品の新しい順",

@@ -1,0 +1,48 @@
+.wrapper
+  .main-contents
+    = render "products/header"
+    = render "categories/breacrumb"
+
+    .width-container
+
+      .page-title
+        %h2 ブランド一覧
+
+      .category-list
+        -# ルートカテゴリ(ancestryがnullのカテゴリ)一覧
+        - @category_root.each do |parent|
+          - if params[:id].to_i == parent.id
+            = link_to brand_group_path(parent.id), class: "category-list__button active" do
+              %p 
+                = parent.value
+          - else
+            = link_to brand_group_path(parent.id), class: "category-list__button" do
+              %p 
+                = parent.value
+
+      -# ブランドの頭文字一覧
+      .brand-initial
+        - @current_brands.pluck(:name).map{|s| s[0]}.uniq.each do |brand|
+          .brand-initial--list
+            -# jQueryを使用したページ内ジャンプ機能を実装予定
+            = link_to anchor: "#{brand}", class: "brand-initial--list__link" do
+              = brand
+            .brand-initial--list__line
+
+      .details
+        .category-box
+          = @current_category.value
+        -# 現在のカテゴリ内のブランドを抽出し、ブランド名の頭文字から重複を削除し、eachで回す
+        - @current_brands.pluck(:name).map{|s| s[0]}.uniq.each do |brand|
+          .brand-box
+            .brand-box__brand-initial{id: "#{brand}"}
+              = brand
+            .brand-box__name-list
+              -# 今現在の頭文字から始まるブランドをeachで回す
+              - @current_brands.where("name like ?","#{brand.chr}%").each do |brand_inner|
+                .brand-box__name-list__inner
+                  = link_to brand_path(brand_inner.id) do
+                    = brand_inner.name
+
+    = render "products/cameraicon"
+    = render "products/footer"

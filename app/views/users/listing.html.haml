@@ -1,0 +1,45 @@
+.header 
+  = render 'products/header'
+
+.mypage-wrapper
+  = render 'users/mypage_links'
+
+  .mypage-content-edit
+    .main-area__products
+      .main-area__products__title 出品した商品
+      %ul.main-area__products__tabs
+        %li.main-area__products__tabs__active  出品中
+        %li.main-area__products__tabs__trade 取引中
+        %li.main-area__products__tabs__sell 売却済み
+
+      %ul.main-area__products__detail
+        = link_to edit_product_path(1) do
+          %li.main-area__mypage__products__content
+            .main-area__mypage__products__content--icon
+              = image_tag "test.png", size: "40x40"
+            .main-area__mypage__contents__product__name test
+
+            .main-area__mypage__products__icon
+              .main-area__mypage__contents__content--heart
+                %span.listing-item-count
+                  = icon 'far', 'heart'
+                  %span 5
+              .main-area__mypage__contents__product-comment
+                = icon 'far', 'comment-alt'
+                %span 6
+            .main-area__mypage__contents__products--chevron-right
+              =icon("fas", "chevron-right")
+
+      .mypage-history
+        = link_to '#', class: 'pager-prev&pager-cell' do
+          .icon_arrow
+            .icon-arrow-left
+              =icon("fas", "chevron-left")
+            .icon-arrow-right
+              =icon("fas", "chevron-right")
+.footer
+  = render 'products/cameraicon'
+  =render "products/footer"
+
+
+

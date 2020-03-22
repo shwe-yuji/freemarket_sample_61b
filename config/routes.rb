@@ -17,8 +17,13 @@ Rails.application.routes.draw do
     get 'registed', to: 'users/registrations#finish_regist'
   end
 
-
   resources :categories, only: [:index, :show]
+  get 'brands/group/:id', to: 'brands#group_show', as: :brand_group
+
+  resources :brands, only: [:show] do
+    get ':id', to: 'brands#category'
+  end
+
   get 'products/done'
   get 'products/search'
   get 'products/detail_search'
@@ -27,5 +32,7 @@ Rails.application.routes.draw do
   get 'users/logout'
   resources :users, only: [:show, :edit] do
     resources :credit_cards, only: [:show]
+    resources :products,only: [:edit, :update]
+    get'listing', to: 'users#listing'
   end
 end

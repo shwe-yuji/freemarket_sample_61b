@@ -1,0 +1,15 @@
+.wrapper
+  .main-contents
+    = render "products/header"
+    = render "categories/breacrumb"
+    .category
+      .products__main
+        .products__main--title
+          = @brand_category_name + "の商品一覧"
+        .products__main--list
+          = render partial: "products/list", collection: @products_in_brand_category, as: :product
+        = render "pagination", pagy: @pagy
+        = render "page-description", page_name: @brand_category_name, products: @products_in_brand_category
+        
+    = render "products/cameraicon"
+    = render "products/footer"
