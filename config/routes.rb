@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   get 'products/done'
   get 'products/search'
+  get 'products/detail_search'
   resources :products
   root to: "products#index"
   get 'users/logout'
