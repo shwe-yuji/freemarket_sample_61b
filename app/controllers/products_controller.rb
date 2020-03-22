@@ -86,6 +86,23 @@ class ProductsController < ApplicationController
     # brand_ids = Brand.where(['name LIKE ?', "%#{input_brand_name}%"]).ids
     # products = Product.includes(:brand).where(brand_id: brand_ids)
 
+    # # 価格検索
+    # input_min_price = params[:min_price]
+    # input_max_price = params[:max_price]
+    # product = Product.where("price > ? AND price < ?", input_min_price, input_max_price)
+
+    # 商品の状態で検索
+    # checked_condition_ids = params[:condition_id]
+    # product = Product.where(condition_id: checked_condition_ids)
+
+    # #配送料の負担方法で検索
+    # checked_delivery_expence_ids = params[:delivery_expence_id]
+    # product = Product.where(delivery_expence_id: checked_delivery_expence_ids)
+   
+    # 販売状況で検索
+    # checked_status_ids = params[:status_id]
+    # product = Product.where(status_id: checked_status_ids)
+    
     # @search_result = 
    #検索ワードが空の場合、新着商品のデータを取得
     @products_new = Product.includes(:photos).order('created_at DESC')
@@ -106,7 +123,7 @@ class ProductsController < ApplicationController
                    "5000 ~ 10000",
                    "10000 ~ 30000",
                    "30000 ~ 50000",
-                   "50000 ~ "]
+                   "50000 ~ 100000"]
 
     @list_change = ["価格の安い順",
                     "価格の高い順",
