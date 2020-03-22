@@ -1,7 +1,16 @@
-// $(document).on('turbolinks:load', function(){ 
+$(document).on('turbolinks:load', function(){ 
 //   var check_condition = []
 //   var check_delivery_expence = []
 //   var check_status = []
+    
+  $('.detail-search__box').on('change', '#price', function(){
+    console.log("OK");
+    var price_range = $('#price').val().split(" ");
+    console.log(price_range);
+    $('#min_price').val(price_range[0]);
+    $('#max_price').val(price_range[2]);
+  })
+
 //   $('.detail-search__box').on('click', '#condition_all', function(){
 //     $('#condition_id_1').prop('checked', true);
 //       check_condition.push('1');
@@ -32,7 +41,7 @@
 //     $('#status_id_4').prop('checked', true);
 //   })
 
-//   $('.detail-search__box').on('click', '.detail-search__box__form__submit-area--reset', function(){
-//     return false;
-//   })
-// })
+  $('.detail-search__box').on('click', '.detail-search__box__form__submit-area--reset', function(){
+    return false;
+  })
+})

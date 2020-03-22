@@ -66,7 +66,6 @@ class ProductsController < ApplicationController
   end
 
   def search
-    # binding.pry
     #検索ワード入力時、スペースを半角スペースに変換して、splitメソッドで検索ワードを配列に格納
     @search_words = params[:search_word].gsub(/[[:blank:]]/, " ").split(" ")
     @search_words.each do |search_word|
@@ -82,11 +81,11 @@ class ProductsController < ApplicationController
     # category_ids = Category.find(input_category_id).subtree_ids
     # products = Product.includes(:category).where(category_id: category_ids)
 
-    #ブランド検索
-    input_brand_name = params[:brand_name]
-    brand_ids = Brand.where(['name LIKE ?', "%#{input_brand_name}%"])
-    products = Product.includes(:brand).where(brand_id: brand_ids)
-    binding.pry
+    # #ブランド検索
+    # input_brand_name = params[:brand_name]
+    # brand_ids = Brand.where(['name LIKE ?', "%#{input_brand_name}%"]).ids
+    # products = Product.includes(:brand).where(brand_id: brand_ids)
+
     # @search_result = 
    #検索ワードが空の場合、新着商品のデータを取得
     @products_new = Product.includes(:photos).order('created_at DESC')
