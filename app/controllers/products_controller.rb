@@ -29,8 +29,6 @@ class ProductsController < ApplicationController
     @sell_or_buy = TransactionRecord.judge_sale_or_soldout(@product)
   end
 
-
-
   def new
     @product = Product.new
     @product.photos.new
