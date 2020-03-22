@@ -1,0 +1,19 @@
+- if action_name == "group_show"
+  - breadcrumb :brand_all, @category_parent
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
+
+  -# ブランドが選択された場合
+- elsif action_name == "show"
+  - breadcrumb :select_brand, @current_brand
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
+
+  -# 選択したブランドのカテゴリーが選択された場合
+- elsif action_name == "category"
+  - breadcrumb :select_brand_category, [@current_brand, @current_category]
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
