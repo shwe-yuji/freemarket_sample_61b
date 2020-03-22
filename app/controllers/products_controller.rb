@@ -7,7 +7,6 @@ class ProductsController < ApplicationController
     # 取引先済みの商品中のカテゴリ・ブランド数上位４つのレコードをインスタンス変数に代入
     @popular_categories = Product.includes(:category).where(id: sold_product_ids).group(:category_id).order('count(category_id) DESC').limit(4)
     @popular_brands = Product.includes(:brand).where(id: sold_product_ids).group(:brand_id).order('count(brand_id) DESC').limit(4)
-    # @brand_judge = judge_products(judge_products)
     # 出品数が多いカテゴリとブランドのidを配列で取得(現在はcategory_idsと@popular_categories.pluck(:category_id)で別の値が出力されます。改善できないため一部仮仕様で実装します)
     # category_ids = @popular_categories.pluck(:category_id)
     brand_ids = @popular_brands.pluck(:brand_id)
