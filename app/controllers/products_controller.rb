@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show,:destroy,:done]
-  before_action :judge_sale_or_soldout, only: [:show]
   before_action :set_pulldown, only: [:search]
 
   def index
@@ -26,7 +25,7 @@ class ProductsController < ApplicationController
     # クリックされた商品名と同じものを取得
     @same_name_products = Product.includes(:photos).where('name like ?',"%#{@product.name}%").limit(6)
     # 販売中か購入済かを調べる
-    @sell_or_buy =judge_sale_or_soldout
+    @sell_or_buy = TransactionRecord.judge_sale_or_soldout(@product)
   end
 
   def new
@@ -75,8 +74,6 @@ class ProductsController < ApplicationController
     @products_new = Product.includes(:photos).order('created_at DESC')
   end
 
-  def done
-  end
   private
 
   def product_params
@@ -103,9 +100,4 @@ class ProductsController < ApplicationController
     @product = Product.includes(:photos).find(params[:id])
   end 
 
-
-  def judge_sale_or_soldout
-    #存在すればtrue：購入済
-    @sale_or_soldout = TransactionRecord.where(product_id:params[:id]).present?
-  end
 end
