@@ -4,11 +4,14 @@
 
   .detail-search__box
     .detail-search__box__title 詳細検索
-    = form_with(model: @products, url: products_search_path, method: :get, local: :true, class: 'detail-search__box__form') do |f|
+    = form_with(model: @products, url: products_detail_search_path, method: :get, local: :true, class: 'detail-search__box__form') do |f|
       .detail-search__box__form__icon-label
         = icon('fas', 'plus', class: 'detail-search__box__form__icon-label--icon')
         = f.label :'キーワードを追加する', class: 'detail-search__box__form__icon-label--label'
-      = f.text_field :name, value: params[:search_word], class: 'input-field'
+      - if action_name == 'search'
+        = f.text_field :detail_search_word, value: @search_word, class: 'input-field'
+      - elsif action_name == 'detail_search'
+        = f.text_field :detail_search_word, value: @detail_search_word, class: 'input-field'
 
       .detail-search__box__form__icon-label
         = icon('fas', 'list', class: 'detail-search__box__form__icon-label--icon')

@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show,:destroy]
-  before_action :set_pulldown, only: [:search]
+  before_action :set_pulldown, only: [:search, :detail_search]
+  before_action :set_search_word, only: [:search, :detail_search]
 
   def index
     sold_product_ids = TransactionRecord.pluck(:product_id)
@@ -61,6 +62,7 @@ class ProductsController < ApplicationController
   end
 
   def search
+    # binding.pry
     #検索ワード入力時、スペースを半角スペースに変換して、splitメソッドで検索ワードを配列に格納
     @search_words = params[:search_word].gsub(/[[:blank:]]/, " ").split(" ")
     @search_words.each do |search_word|
@@ -71,7 +73,13 @@ class ProductsController < ApplicationController
   end
 
   def detail_search
-
+    #検索ワード入力時、スペースを半角スペースに変換して、splitメソッドで検索ワードを配列に格納
+    @search_words = params[:detail_search_word].gsub(/[[:blank:]]/, " ").split(" ")
+    @search_words.each do |search_word|
+      @search_result = Product.search(search_word).limit(132)
+    end
+    #検索ワードが空の場合、新着商品のデータを取得
+    @products_new = Product.includes(:photos).order('created_at DESC')
   end
 
   private
@@ -99,4 +107,9 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.includes(:photos).find(params[:id])
   end 
+
+  def set_search_word
+    @search_word = params[:search_word]
+    @detail_search_word = params[:detail_search_word]
+  end
 end
