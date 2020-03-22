@@ -38,7 +38,7 @@
                 - if @product.category.present?
                   = link_to '/' do
                     .itembuy-table-sub
-                      = @product.category.parent.parent.value
+                      = @product.category.root.value
                   = link_to '/' do
                     .itembuy-table-sub
                       %i.fas.fa-chevron-right
