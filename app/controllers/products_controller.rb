@@ -70,6 +70,10 @@ class ProductsController < ApplicationController
     @products_new = Product.includes(:photos).order('created_at DESC')
   end
 
+  def detail_search
+
+  end
+
   private
 
   def product_params
