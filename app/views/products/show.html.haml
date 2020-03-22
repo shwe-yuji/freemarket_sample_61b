@@ -1,3 +1,4 @@
+=javascript_include_tag 'purches.js'
 .top
   = render "products/header"
 .shop_background
@@ -87,10 +88,10 @@
               着払い
         - if TransactionRecord.judge_sale_or_soldout(@product)
           .buy_button-soldout
-            = link_to "購入済" , root_path
+            = link_to "購入済" , root_path,id: "soldout_product"
         - else
           .buy_button
-            = link_to "購入画面に進む", buy_product_path(@product.id), method: :post
+            = link_to "購入画面に進む", buy_product_path(@product.id), method: :post,id: "buy_product"
       .item_discription
         %p.itembuy-detail__inner
           = @product.description
