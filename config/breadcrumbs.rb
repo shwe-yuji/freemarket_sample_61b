@@ -29,3 +29,22 @@ crumb :grand_child_categories do |category|
   link category.value, category_path(category.id)
   parent :category_all
 end
+
+#ブランド一覧へ遷移
+crumb :brand_all do
+  link "ブランド一覧", brand_group_path(1)
+  parent :root
+end
+
+# ブランドが選択された場合
+crumb :select_brand do |brand|
+  link brand.name
+  parent :brand_all
+end
+
+# 選択したブランドのカテゴリーが選択された場合
+crumb :select_brand_category do |brand, category|
+  link brand.name, brand_path(brand.id)
+  link category.value
+  parent :brand_all
+end
