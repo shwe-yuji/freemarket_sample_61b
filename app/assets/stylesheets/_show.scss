@@ -27,6 +27,16 @@ display: none !important;
           img{
             margin:20px 0 0 140px;
           }
+          .soldout{
+            color:white;
+            background-color: red;
+            padding:10px;
+            height: 50px;
+            position: absolute;
+            left:10vw;
+            top: 10vh;
+            font-size: 30px;
+          }
           .other_photo{
             display:block;
             width:500px;
@@ -117,7 +127,21 @@ display: none !important;
               width:680px;
               margin-left: 85px;
               margin-top:10px;
-
+              &-soldout{
+                background-color: gray;
+                height:70px;
+                width:680px;
+                margin-left: 85px;
+                margin-top:10px;
+                a{
+                  display: block;
+                  font-size: 30px;
+                  color:white;
+                  text-decoration:none;
+                  line-height:68px;
+                  font-weight: bold;
+                }
+              }
               a{
                 display: block;
                 font-size: 30px;
@@ -234,6 +258,10 @@ display: none !important;
           height:3em;
           margin-top: 1em;
           font-size: 18px;
+        }
+        .text{
+          width:750px;
+          height:200px;
         }
       }
     }
