@@ -4,5 +4,10 @@
   %figcaption.products__text
     = product.name
   .products__price
-    .products__price--tag
-      = number_to_currency(product.price, format: "%u%n", unit: "¥") 
+    - if TransactionRecord.judge_sale_or_soldout(product)
+      .products__price--tag-soldout
+        売り切れ
+    - else 
+      .products__price--tag
+        = number_to_currency(product.price, format: "%u%n", unit: "¥")
+      
