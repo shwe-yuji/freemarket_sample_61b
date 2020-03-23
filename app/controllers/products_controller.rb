@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show,:destroy]
   before_action :set_pulldown, only: [:search, :detail_search]
   before_action :set_search_word, only: [:search, :detail_search]
+  before_action :authenticate_user!, only: [:new]
 
   def index
     sold_product_ids = TransactionRecord.pluck(:product_id)
@@ -25,9 +26,9 @@ class ProductsController < ApplicationController
     @user_products = Product.includes(:photos).where(user_id: @product.user_id).order('created_at DESC').limit(6)
     # クリックされた商品名と同じものを取得
     @same_name_products = Product.includes(:photos).where('name like ?',"%#{@product.name}%").limit(6)
+    # 販売中か購入済かを調べる
+    @sell_or_buy = TransactionRecord.judge_sale_or_soldout(@product)
   end
-
-
 
   def new
     @product = Product.new
@@ -139,8 +140,11 @@ class ProductsController < ApplicationController
     @product = Product.includes(:photos).find(params[:id])
   end 
 
+<<<<<<< HEAD
   def set_search_word
     @search_word = params[:search_word]
     @detail_search_word = params[:detail_search_word]
   end
+=======
+>>>>>>> 652ba689ac34b4283d1fb95a5219563136abe8dc
 end
