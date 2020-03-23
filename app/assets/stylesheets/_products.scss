@@ -139,7 +139,7 @@
     }
   // 商品の詳細
     &__details {
-      height: 491px;
+      height: 523px;
       padding: 40px;
       border-bottom: 1px solid rgb(245, 245, 245);
 
@@ -184,6 +184,7 @@
 
       &__size {
         @include list;
+        margin: 32px 0px 0px;
 
         &__default {
           @include default;

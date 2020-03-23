@@ -43,6 +43,7 @@ class ProductsController < ApplicationController
       flash.now[:alert] = "商品の出品に失敗しました"
       render :new
     end
+    binding.pry
   end
 
   def edit
@@ -70,6 +71,35 @@ class ProductsController < ApplicationController
     @products_new = Product.includes(:photos).order('created_at DESC')
   end
 
+  # 親カテゴリーが選択された後に動くアクション
+  def get_category_children
+    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
+  end
+
+  # 子カテゴリーが選択された後に動くアクション
+  def get_category_grandchildren
+    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
+  def get_size
+    @sizes = Size.where(group: params[:group])
+    # @sizes =  if params[:size_id] == (20 <= 82)
+    #             Size.all
+    #           else
+    #             DeliveryMethod2.all
+    #           end
+  end
+  
+  # 配送料の負担が選択された後に動くアクション
+  def get_delivery_method
+    @delivery_method =  if params[:delivery_expense_id] == "1"
+                          DeliveryMethod.all
+                        else
+                          DeliveryMethod2.all
+                        end
+  end
   private
 
   def product_params
