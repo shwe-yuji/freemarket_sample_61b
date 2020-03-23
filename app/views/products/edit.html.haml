@@ -1,7 +1,7 @@
 - content_for(:title, '商品の情報を入力 - メルカリ スマホでかんたん フリマアプリ')
 .wrapper
   = render "products/logo-header"
-= form_with model: @product, local: true, class: "sell-area__container" do |f|
+= form_with model: @product, url: "/products/1", method: :patch,local: true, class: "sell-area__container" do |f|
   .sell-area
     .sell-area__title 
       商品の情報を入力
@@ -12,8 +12,16 @@
       %p.sell-area__text
         最大10枚までアップロードできます
       .sell-area__dropbox
-        %label.sell-area__dropbox__img
-          = icon('fas', 'camera', class: 'camera-icon-1')
+        .sell-area__dropbox-now
+          = image_tag "test.png", size: "90x100"
+          .sell-area__dxropbox-function
+            .sell-area__dropbox-edit-function
+              =link_to "#", class: "form-edit" do
+                編集
+            .sell-area__dropbox-delete-function
+              =link_to "#", class: "form-delete" do
+                削除
+        %label.sell-area__dropbox__img-change
           %p.sell-area__dropbox__img--text ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
           = f.fields_for :photos do |i|
             = i.file_field :photo ,class: 'photo-input'
@@ -35,19 +43,18 @@
         %span.form-require 必須
         .sell-area__details__main-category__select
           = f.collection_select :category_id, Category.all.limit(13), :id, :value, {prompt: "---"}, class: "sell-area__details__main-category__default"
-      .category__append
       -# 後々JSにて実装
-      -# .sell-area__details__sub-category
-      -#   .sell-area__details__sub-category__select
-      -#     %select.sell-area__details__sub-category__default
-      -# .sell-area__details__subsub-category
-      -#   .sell-area__details__subsub-category__select
-      -#     %select.sell-area__details__subsub-category__default
-      -# .sell-area__details__size
-      -#   サイズ
-      -#   %span.form-require 必須
-      -#   .sell-area__details__size__select
-      -#     = f.collection_select :size_id, Size.all, :id, :value, {prompt: "---"}, class: "sell-area__details__status__default"
+      .sell-area__details__sub-category
+        .sell-area__details__sub-category__select
+          %select.sell-area__details__sub-category__default
+      .sell-area__details__subsub-category
+        .sell-area__details__subsub-category__select
+          %select.sell-area__details__subsub-category__default
+      .sell-area__details__size
+        サイズ
+        %span.form-require 必須
+        .sell-area__details__size__select
+          = f.collection_select :size_id, Size.all, :id, :value, {prompt: "---"}, class: "sell-area__details__status__default"
       .sell-area__details__brand
         ブランド  
         %span.form-any 任意
@@ -69,13 +76,20 @@
         %span.form-require 必須
         .sell-area__delivery__burden__select
           = f.collection_select :delivery_expense_id, DeliveryExpense.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__burden__default"
-      -# 配送の方法出現場所
-      .delivery__way__append
+      -# 後々JSにて実装
+      .sell-area__delivery__way
+        配送の方法
+        %span.form-require 必須
+        .sell-area__delivery__way__select
+          = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__way__default"
       .sell-area__delivery__origin
         発送元の地域
         %span.form-require 必須
         .sell-area__delivery__origin__select
           = f.collection_select :area_id, Area.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default"
+          -# 書き方変える場合あるためコメントアウトで残しておきます
+          -# = form_with model: @area, local: true do |f|
+            -# = f.collection_select :area, Area.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default"
       .sell-area__delivery__days
         発送までの日数
         %span.form-require 必須
@@ -104,25 +118,8 @@
           .sell-area__selling__profit--right
             .code -
     .sell-area__box
-      %p
-        = link_to '#' do
-          禁止されている出品
-        、
-        = link_to '#' do
-          行為
-        を必ずご確認ください。
-      %p
-        またブランド品でシリアルナンバー等がある場合はご記載ください。
-        = link_to '#' do
-          偽ブランド
-        の販売は犯罪であり処罰される可能性があります。
-      %p
-        また、出品をもちまして
-        = link_to '#' do
-          加盟店規約
-        = f.submit "出品する",class:"sell-area__box__button--red"
-        = link_to product_path(1), class: "product-show" do
-          %button.sell-area__box__button--gray{type: "button"}
-            もどる
-
+      = f.submit "変更する",class:"sell-area__box__button--red-change"
+      = link_to user_listing_path(current_user), class: "product-show" do
+        %button.sell-area__box__button--gray-change{type: "button"}
+          キャンセル
     = render "products/logo-footer"

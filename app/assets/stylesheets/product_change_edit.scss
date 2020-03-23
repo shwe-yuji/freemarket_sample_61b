@@ -54,48 +54,17 @@
               display: none;
             }
           }
-          display: flex;
-          margin-top:10px;
-          img{
-            vertical-align: bottom;
-          }
-          .sell-area__dropbox-now{
-            .sell-area__dxropbox-function{
-              display: flex;
-              margin:0;
-              .sell-area__dropbox-edit-function{
-                border-style: ridge;
-                border-width: 1px;
-                border-width: 0;
-                background-color: #f5f5f5;
-                line-height: 44px;
-                text-align: center;
-                width:50%;
-                height:40px;
-              }
-              .sell-area__dropbox-delete-function{
-                border-style: ridge;
-                border-width: 1px;
-                display: inline-block;
-                background-color: #f5f5f5;
-                line-height: 44px;
-                text-align: center;
-                width:50%;
-                height:38px;
-              }
-            }
-          }
-          &__img-change {
-            margin-left:20px;
+
+          &__img {
             display: block;
             text-align: center;
             border: 1px dashed lightgray;
-            min-width: 45px;
-            height: 120px;
+            min-width: 115px;
+            height: 160px;
             background: #f5f5f5;
             padding-top: 16px;
             cursor: pointer;
-            width:87px;
+
             i {
               font-size: 25px;
               margin-top: 55px;
@@ -169,7 +138,7 @@
     }
   // 商品の詳細
     &__details {
-      height: 523px;
+      height: 491px;
       padding: 40px;
       border-bottom: 1px solid rgb(245, 245, 245);
 
@@ -214,7 +183,6 @@
 
       &__size {
         @include list;
-        margin: 32px 0px 0px;
 
         &__default {
           @include default;
@@ -397,13 +365,12 @@
       }
   // 規約、出品するボタン及びもどるボタン
     &__box {
-      height: 150px;
-      padding: 0 40px;
+      height: 248px;
+      padding: 40px;
       text-align: left;
       font-size: 14px;
-      border-bottom: 1px solid rgb(245, 245, 245);
 
-      &__button--red  {
+      .sell-area__box__button--red-change  {
         display: block;
         width: 100%;
         line-height: 48px;
@@ -415,11 +382,13 @@
         text-align: center;
       }
 
-      &__button--gray {
+      .sell-area__box__button--gray-change {
+        font-size: 14px;
+        text-align: center;
         display: inherit;
         line-height: 48px;
-        width: 45%;
-        margin: 24px auto 0px;
+        width: 55%;
+        margin: 24px 0 0 140px;
         color: white;
         background-color:#AAAAAA;
       }

@@ -1,3 +1,4 @@
+=javascript_include_tag 'purches.js'
 .top
   = render "products/header"
 .shop_background
@@ -7,8 +8,11 @@
         = @product.name
       .item_contents
         .item_photo
+          - if TransactionRecord.judge_sale_or_soldout(@product)
+            %span.soldout
+              売り切れ
           = image_tag( @product.photos[0].photo.url, class: "products" , size: '320x320')
-          .other_photo 
+          .other_photo
             - @product.photos.each_with_index do |photo,i|
               = image_tag( photo.photo.url, class: "products", size: '100x100' )
         .seller_table
@@ -35,16 +39,15 @@
                 - if @product.category.present?
                   = link_to '/' do
                     .itembuy-table-sub
-                      %i.fas.fa-chevron-right
-                      = @product.category.parent.parent.name
+                      = @product.category.root.value
                   = link_to '/' do
                     .itembuy-table-sub
                       %i.fas.fa-chevron-right
-                      = @product.category.parent.name
+                      = @product.category.parent.value
                   = link_to '/' do
                     .itembuy-table-sub
                       %i.fas.fa-chevron-right
-                      = @product.category.name
+                      = @product.category.value
             %tr
               %th  ブランド
               %td
@@ -83,9 +86,12 @@
               送料込み
             - else
               着払い
-        .buy_button
-          = link_to '#' do
-            購入画面に進む
+        - if TransactionRecord.judge_sale_or_soldout(@product)
+          .buy_button-soldout
+            = link_to "購入済" , root_path,id: "soldout_product"
+        - else
+          .buy_button
+            = link_to "購入画面に進む", buy_product_path(@product.id), method: :post,id: "buy_product"
       .item_discription
         %p.itembuy-detail__inner
           = @product.description
@@ -105,7 +111,7 @@
         相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
       .comment_field
         = form_tag do
-          %input.text
+          %textarea.text
           %button コメントする
     .pre_next_contents
       .pre
@@ -137,13 +143,13 @@
     .other_item_species
       %h2.items_species__head
         = link_to '/' do
-          = @product.name 
+          = @product.name
           に関するその他の出品
       .itembuy-spieces__box
         = render partial: "list", collection: @same_name_products , as: :product
     .under_top_line
       .under_item_title
-        fmarket >  
+        fmarket >
         = @product.name
 .footer
   = render "products/footer"
