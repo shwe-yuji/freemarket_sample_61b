@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show,:destroy,:done]
   before_action :set_pulldown, only: [:search]
+  before_action :authenticate_user!, only: [:new]
 
   def index
     sold_product_ids = TransactionRecord.pluck(:product_id)

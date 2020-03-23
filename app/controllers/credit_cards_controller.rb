@@ -1,5 +1,6 @@
 class CreditCardsController < ApplicationController
   require 'payjp'
+  before_action :authenticate_user!, only: [:buy]
   before_action :set_card
 
   def buy
