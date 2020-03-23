@@ -77,6 +77,12 @@ class ProductsController < ApplicationController
   end
 
   def detail_search
+    # #キーワード検索
+    @search_words = params[:detail_search_word].gsub(/[[:blank:]]/, " ").split(" ")
+    @search_words.each do |search_word|
+      @search_result = Product.search(search_word).limit(132)
+    end
+
     # # カテゴリー検索
     # input_category_id = params[:category_id].to_i
     # category_ids = Category.find(input_category_id).subtree_ids

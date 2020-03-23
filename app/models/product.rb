@@ -4,6 +4,10 @@ class Product < ApplicationRecord
   def self.search(search_word)
     Product.where(['name LIKE ? OR description LIKE ?', "%#{search_word}%", "%#{search_word}%"])
   end
+
+  def self.detail_search(search_word)
+    Product.where()
+  end
   
   belongs_to :user
   belongs_to :category
