@@ -37,7 +37,6 @@ $(document).on('turbolinks:load', function(){
         .value; //選択された親カテゴリーの名前を取得
       if (parentCategory != "") {
         //親カテゴリーが初期値でないことを確認
-        console.log("OK子")
         $.ajax({
           url: '/products/get_category_children',
           type: 'GET',
@@ -69,7 +68,6 @@ $(document).on('turbolinks:load', function(){
       var childId = $("#child_category").val(); //選択された子カテゴリーのidを取得
       if (childId != "") {
         //子カテゴリーが初期値でないことを確認
-        console.log("OK孫")
         $.ajax({
           url: '/products/get_category_grandchildren',
           type: 'GET',
@@ -123,7 +121,6 @@ $(document).on('turbolinks:load', function(){
   $(document).on("change", "#grandchild_category", function() {
     var sizeId = $("#grandchild_category").val(); //選択された孫カテゴリーのidを取得
     if (sizeId != "") {
-      console.log("OKサイズ")
       $.ajax({
         url: '/products/get_size',
         type: 'GET',
@@ -173,7 +170,6 @@ $(document).on('turbolinks:load', function(){
   $(document).on("change", "#delivery_expense_id", function() {
     var deliveryExpenseId = $("#delivery_expense_id").val();
     if (deliveryExpenseId != "") {
-      console.log("OK")
       $.ajax({
         url: '/products/get_delivery_method',
         type: 'GET',
