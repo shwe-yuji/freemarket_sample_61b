@@ -17,7 +17,6 @@
           %p.sell-area__dropbox__img--text ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
           = f.fields_for :photos do |i|
             = i.file_field :photo ,class: 'photo-input'
-
     .sell-area__content
       %h3.sell-area__name
         商品名
@@ -35,19 +34,8 @@
         %span.form-require 必須
         .sell-area__details__main-category__select
           = f.collection_select :category_id, Category.all.limit(13), :id, :value, {prompt: "---"}, class: "sell-area__details__main-category__default"
+      -# カテゴリの出現場所
       .category__append
-      -# 後々JSにて実装
-      -# .sell-area__details__sub-category
-      -#   .sell-area__details__sub-category__select
-      -#     %select.sell-area__details__sub-category__default
-      -# .sell-area__details__subsub-category
-      -#   .sell-area__details__subsub-category__select
-      -#     %select.sell-area__details__subsub-category__default
-      -# .sell-area__details__size
-      -#   サイズ
-      -#   %span.form-require 必須
-      -#   .sell-area__details__size__select
-      -#     = f.collection_select :size_id, Size.all, :id, :value, {prompt: "---"}, class: "sell-area__details__status__default"
       .sell-area__details__brand
         ブランド  
         %span.form-any 任意

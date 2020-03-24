@@ -30,15 +30,11 @@ Rails.application.routes.draw do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
-      get 'get_delivery_method', defaults: { format: 'json' }
       get 'get_size', defaults: { format: 'json' }
+      get 'get_delivery_method', defaults: { format: 'json' }
     end
   end
 
-  # namespace :api do
-  #   resources :products, only: :new, defaults: { format: 'json' }
-  #   get '/products/delivery_method', to: 'products#delivery_method', defaults: { format: 'json' }
-  # end
   root to: "products#index"
   get 'users/logout'
 
