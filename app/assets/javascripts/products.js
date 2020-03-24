@@ -6,37 +6,38 @@ $(document).on('turbolinks:load', function(){
       return html;
     }
     // 子カテゴリーの表示作成
-    function appendChidrenBox(insertHTML){
+    function appendChildrenBox(insertHTML){
       var childSelectHtml = '';
       childSelectHtml = `<div class="sell-area__details__sub-category">
                           <div class="sell-area__details__sub-category__select">
-                            <select class="sell-area__details__sub-category__default" name="product[category_id]" id="product_category_id">
-                                <option value="">---</option>
-                                ${insertHTML}
+                            <select class="sell-area__details__sub-category__default" name="product[category_id]" id="child_category">
+                              <option value="">---</option>
+                              ${insertHTML}
                             <select>
                           </div>
                         </div>`;
-      $('.sell-area__details__main-category').append(childSelectHtml);
+      $('.category__append').append(childSelectHtml);
     }
     // 孫カテゴリーの表示作成
-    function appendGrandChildrenBox(insertHTML){
-      var grandChildSelecthtml = '';
-      grandChildSelecthtml = `<div class="sell-area__details__subsub-category">
+    function appendGrandchildrenBox(insertHTML){
+      var grandchildSelectHtml = '';
+      grandchildSelectHtml = `<div class="sell-area__details__subsub-category">
                                 <div class="sell-area__details__subsub-category__select">
-                                  <select class="sell-area__details__subsub-category__default"></select>
+                                  <select class="sell-area__details__subsub-category__default" name="product[category_id]" id="grandchild_category">
                                     <option value="">---</option>
                                     ${insertHTML}
                                   <select>
                                 </div>
                               </div>`;
-      $('.sell-area__details__sub-category').append(grandChildSelectHtml);
+      $('.category__append').append(grandchildSelectHtml);
     }
-
+    // 親カテゴリー選択後のイベント
     $("#product_category_id").on("change", function() {
-      var parentCategory = document.getElementById("product_category_id").value; //選択された親カテゴリーの名前を取得
+      var parentCategory = document.getElementById("product_category_id")
+        .value; //選択された親カテゴリーの名前を取得
       if (parentCategory != "") {
         //親カテゴリーが初期値でないことを確認
-        console.log("OK")
+        console.log("OK子")
         $.ajax({
           url: '/products/get_category_children',
           type: 'GET',
@@ -44,15 +45,14 @@ $(document).on('turbolinks:load', function(){
           dataType: "json"
         })
           .done(function(children) {
-            $("#sell-area__details__sub-category").remove(); //親が変更された時、子以下を削除するする
-            $("#sell-area__details__subsub-category").remove();
-            // $("#size_wrapper").remove();
-            // $(".brand_wrapper").remove();
+            $(".sell-area__details__sub-category").remove(); //親が変更された時、子以下を削除するする
+            $(".sell-area__details__subsub-category").remove();
+            $(".sell-area__details__size").remove();
             var insertHTML = "";
             children.forEach(function(child) {
               insertHTML += appendOption(child);
             });
-            appendChidrenBox(insertHTML);
+            appendChildrenBox(insertHTML);
           })
           .fail(function() {
             alert("カテゴリー取得に失敗しました");
@@ -60,15 +60,16 @@ $(document).on('turbolinks:load', function(){
       } else {
         $(".sell-area__details__sub-category").remove(); //親カテゴリーが初期値になった時、子以下を削除するする
         $(".sell-area__details__subsub-category").remove();
-        // $("#size_wrapper").remove();
-        // $(".brand_wrapper").remove();
+        $(".sell-area__details__size").remove();
       }
     });
+
     // 子カテゴリー選択後のイベント
-    $(document).on("change", "#sell-area__details__sub-category", function() {
-      var childId = $("#sell-area__details__sub-category").val(); //選択された子カテゴリーのidを取得
+    $(document).on("change", "#child_category", function() {
+      var childId = $("#child_category").val(); //選択された子カテゴリーのidを取得
       if (childId != "") {
         //子カテゴリーが初期値でないことを確認
+        console.log("OK孫")
         $.ajax({
           url: '/products/get_category_grandchildren',
           type: 'GET',
@@ -78,13 +79,12 @@ $(document).on('turbolinks:load', function(){
           .done(function(grandchildren) {
             if (grandchildren.length != 0) {
               $(".sell-area__details__subsub-category").remove(); //子が変更された時、孫以下を削除する
-              // $("#size_wrapper").remove();
-              // $(".brand_wrapper").remove();
+              $(".sell-area__details__size").remove();
               var insertHTML = "";
               grandchildren.forEach(function(grandchild) {
                 insertHTML += appendOption(grandchild);
               });
-              appendGrandchidrenBox(insertHTML);
+              appendGrandchildrenBox(insertHTML);
             }
           })
           .fail(function() {
@@ -92,31 +92,63 @@ $(document).on('turbolinks:load', function(){
           });
       } else {
         $(".sell-area__details__subsub-category").remove(); //子カテゴリーが初期値になった時、孫以下を削除する
-        // $("#size_wrapper").remove();
-        // $(".brand_wrapper").remove();
+        $(".sell-area__details__size").remove();
       }
     });
   });
-  
 
+   // サイズ選択欄追加
 
+   function appendSizeOption(size){
+    var html = `<option value="${size.id}">${size.value}</option>`;
+    return html;
+  }
+  // サイズ選択フォーム作成
+  function appendSizeBox(insertHTML) {
+    var sizeHtml = "";
+    sizeHtml = `<div class="sell-area__details__size">
+                 サイズ
+                  <span class="form-require">必須</span>
+                    <div class="sell-area__details__size__select">
+                      <select class="sell-area__details__status__default" name="product[size_id]" id="product_size_id">
+                        <option value="">---</option>
+                        ${insertHTML}
+                      <select>
+                    </div>
+                </div>`;
+    $('.category__append').append(sizeHtml);
+  }
 
+  // 孫カテゴリー選択後のイベント
+  $(document).on("change", "#grandchild_category", function() {
+    var sizeId = $("#grandchild_category").val(); //選択された孫カテゴリーのidを取得
+    if (sizeId != "") {
+      console.log("OKサイズ")
+      $.ajax({
+        url: '/products/get_size',
+        type: 'GET',
+        data: { size_id: sizeId },
+        dataType: "json"
+      })
+        .done(function(sizes) {
+          if (sizes.length != 0) {
+            $(".sell-area__details__size").remove(); //サイズが変更された時、孫以下を削除する
+            var insertHTML = "";
+            sizes.forEach(function(size) {
+              insertHTML += appendSizeOption(size);
+            });
+            appendSizeBox(insertHTML);
+          }
+        })
+        .fail(function() {
+          alert("サイズ取得に失敗しました");
+        });
+    } else {
+      $(".sell-area__details__size").remove();
+    }
+  });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+  // 配送方法セレクトボックスのオプションを作成
   function appendDeliveryMethodOption(deliverymethod){
     var html = `<option value="${deliverymethod.id}">${deliverymethod.value}</option>`;
     return html;
@@ -166,4 +198,3 @@ $(document).on('turbolinks:load', function(){
     }
   });
 });
-
