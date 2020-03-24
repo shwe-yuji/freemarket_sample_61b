@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show,:destroy,:done]
+  before_action :set_product, only: [:show,:destroy]
   before_action :set_pulldown, only: [:search]
-  before_action :authenticate_user!, only: [:new]
 
   def index
     sold_product_ids = TransactionRecord.pluck(:product_id)
@@ -14,6 +13,7 @@ class ProductsController < ApplicationController
     # 人気のカテゴリとブランドの商品を新着順にインスタンス変数に代入(予定。※取引済みの商品も含む)
     # @popular_categories_products = Product.includes(:photos).where(category_id: category_ids).order('created_at DESC')
     @popular_brands_products = Product.includes(:photos).where(brand_id: brand_ids).order('created_at DESC')
+
     # 新着順に商品をインスタンス変数に代入
     @popular_categories_products = Product.includes(:photos).order('created_at DESC')
   end
@@ -25,9 +25,9 @@ class ProductsController < ApplicationController
     @user_products = Product.includes(:photos).where(user_id: @product.user_id).order('created_at DESC').limit(6)
     # クリックされた商品名と同じものを取得
     @same_name_products = Product.includes(:photos).where('name like ?',"%#{@product.name}%").limit(6)
-    # 販売中か購入済かを調べる
-    @sell_or_buy = TransactionRecord.judge_sale_or_soldout(@product)
   end
+
+
 
   def new
     @product = Product.new
@@ -43,18 +43,17 @@ class ProductsController < ApplicationController
       flash.now[:alert] = "商品の出品に失敗しました"
       render :new
     end
-    binding.pry
   end
 
   def edit
-    # 出品済みの商品を選んだら、その商品の情報を全て取得する
-    # @products = Product.includes.find(params[:id])
+    @delivery_method =  if params[:delivery_expense_id] == "1"
+      DeliveryMethod.all
+    else
+      DeliveryMethod2.all
+    end
   end
 
   def update
-    # 更新した内容をsaveさせる
-    # editアクションで全て上書きされるように
-    # redirect to listing
   end
 
   def destroy
@@ -89,12 +88,7 @@ class ProductsController < ApplicationController
   end
 
   def get_size
-    @sizes = Size.where(group: params[:group])
-    # @sizes =  if params[:size_id] == (20 <= 82)
-    #             Size.all
-    #           else
-    #             DeliveryMethod2.all
-    #           end
+    @sizes =  Size.all
   end
   
   # 配送料の負担が選択された後に動くアクション
@@ -130,5 +124,4 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.includes(:photos).find(params[:id])
   end 
-
 end
