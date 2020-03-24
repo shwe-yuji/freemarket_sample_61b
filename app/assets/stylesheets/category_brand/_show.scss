@@ -66,45 +66,4 @@
         }
       }  
     }
-
-      figure {
-        margin: 0;
-        display: flex;
-        flex-wrap: wrap;
-        flex-flow: column;
-
-        .products {
-          width: 184px;
-          height: 188px;
-          margin: 20px 10px 0px 10px;
-
-        &__text {
-          box-shadow: 0 2px 4px rgba(0,0,0,.18);
-          font-size: 14px;
-          height: 64px;
-          line-height: 1.4em;
-          padding: 0 12px;
-          margin: 0px 10px 0px;
-        }
-
-        &__price {
-          position: relative;
-          padding-left: 10px;
-        }
-
-          &__price--tag {
-            align-items: center;
-            background: rgba(0,0,0,.4);
-            border-radius: 0 14px 14px 0;
-            bottom: 70px;
-            color: #fff;
-            display: inline-flex;
-            font-size: 15px;
-            height: 28px;
-            letter-spacing: .02em;
-            padding: 0 12px;
-            position: absolute;
-          }
-        }
-      }
-    }
+  }
