@@ -1,5 +1,6 @@
 .header
-  = image_tag 'svg/fmarket_logo_red.svg', size: '150x100', class: 'header__logo'
+  = link_to root_path do
+    = image_tag 'svg/fmarket_logo_red.svg', size: '150x100', class: 'header__logo'
   %nav.progress
     %ol.progress-bar
       - if p_bar == 1
