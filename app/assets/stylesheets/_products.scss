@@ -386,12 +386,14 @@
       }
 
       &__button--gray {
+        font-size: 14px;
+        text-align: center;
         display: inherit;
         line-height: 48px;
-        width: 45%;
-        margin: 24px auto 0px;
+        width: 55%;
+        margin: 24px 0 0 140px;
         color: white;
-        background-color:#AAAAAA;
+        background-color: #AAAAAA;
       }
     }
   }
