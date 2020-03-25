@@ -199,13 +199,10 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.includes(:photos).find(params[:id])
   end 
-<<<<<<< HEAD
 
   def set_search_word
     @search_word = params[:search_word]
     @detail_search_word = params[:detail_search_word]
   
   end
-=======
->>>>>>> 5a99c4d26a21ae6b178486e5cb646517b98bffdd
 end
