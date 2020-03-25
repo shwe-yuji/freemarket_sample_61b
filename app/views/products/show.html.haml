@@ -88,7 +88,7 @@
               着払い
         - if TransactionRecord.judge_sale_or_soldout(@product)
           .buy_button-soldout
-            = link_to "購入済" , root_path,id: "soldout_product"
+            = link_to "購入済" , "#", id: "soldout_product"
         - else
           .buy_button
             = link_to "購入画面に進む", buy_product_path(@product.id), method: :post,id: "buy_product"

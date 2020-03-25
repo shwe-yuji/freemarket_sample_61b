@@ -1,8 +1,14 @@
 - if @search_result.present?
   .search-result
     .search-result__title
+    - if action_name == 'search'
       %p.search-result__title__topic
         = "#{params[:search_word]}の検索結果"
+      %p.search-result__title__num
+        = "1-#{@search_result.length}件表示"
+    - elsif action_name == 'detail_search'
+      %p.search-result__title__topic
+        = "#{params[:detail_search_word]}の検索結果"
       %p.search-result__title__num
         = "1-#{@search_result.length}件表示"
     .search-result__products
@@ -10,6 +16,7 @@
 - else
   .search-result
     .search-result__title
+      = "該当する商品が見つかりません。検索条件を変えて、再度お試しください。"
       %p.search-result__title__topic
         = '新着商品'
     .search-result__products

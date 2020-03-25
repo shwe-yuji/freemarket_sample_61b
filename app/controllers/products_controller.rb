@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
   def index
+
     sold_product_ids = TransactionRecord.pluck(:product_id)
     # 取引先済みの商品中のカテゴリ・ブランド数上位４つのレコードをインスタンス変数に代入
     @popular_categories = Product.includes(:category).where(id: sold_product_ids).group(:category_id).order('count(category_id) DESC').limit(4)
@@ -70,53 +71,81 @@ class ProductsController < ApplicationController
     #検索ワード入力時、スペースを半角スペースに変換して、splitメソッドで検索ワードを配列に格納
     @search_words = params[:search_word].gsub(/[[:blank:]]/, " ").split(" ")
     @search_words.each do |search_word|
-      @search_result = Product.search(search_word).limit(132)
+      @search_result = Product.all.includes(:photos, :brand, :category, :transactionrecord).search(search_word).limit(132)
     end
     #検索ワードが空の場合、新着商品のデータを取得
-    @products_new = Product.includes(:photos).order('created_at DESC')
+    @products_new = Product.all.includes(:photos, :brand, :category, :transactionrecord).order('created_at DESC')
   end
 
   def detail_search
-    # #キーワード検索
-    @search_words = params[:detail_search_word].gsub(/[[:blank:]]/, " ").split(" ")
-    @search_words.each do |search_word|
-      @search_result = Product.search(search_word).limit(132)
+    # # カテゴリー検索
+    selected_category_id = params[:category_id].to_i
+    if selected_category_id == 0
+      category_ids = Category.all.ids
+    else
+      category_ids = Category.find(selected_category_id).subtree_ids
     end
 
-    # # カテゴリー検索
-    # input_category_id = params[:category_id].to_i
-    # category_ids = Category.find(input_category_id).subtree_ids
-    # products = Product.includes(:category).where(category_id: category_ids)
-
     # #ブランド検索
-    # input_brand_name = params[:brand_name]
-    # brand_ids = Brand.where(['name LIKE ?', "%#{input_brand_name}%"]).ids
-    # products = Product.includes(:brand).where(brand_id: brand_ids)
-
-    # サイズで検索
-    # selected_size_id = params[:size_id]
-    # product = Product.where(size_id: selected_size_id)
+    input_brand_name = params[:brand_name]
+    brand_ids = Brand.where(['name LIKE ?', "%#{input_brand_name}%"]).ids
     
-    # # 価格検索
-    # input_min_price = params[:min_price]
-    # input_max_price = params[:max_price]
-    # product = Product.where("price > ? AND price < ?", input_min_price, input_max_price)
+    # サイズで検索
+    selected_size_id = params[:size_id]
+    if selected_size_id == ""
+      size_ids = (1..Size.all.length).to_a
+    else
+      size_ids = selected_size_id
+    end
+    
+    #価格検索
+    input_min_price = params[:min_price]
+    if input_min_price.blank?
+      input_min_price = "300"
+    end
+    input_max_price = params[:max_price]
+    if input_max_price.blank?
+      input_max_price = "9999999"
+    end
 
     # 商品の状態で検索
-    # checked_condition_ids = params[:condition_id]
-    # product = Product.where(condition_id: checked_condition_ids)
-
-    # #配送料の負担方法で検索
-    # checked_delivery_expence_ids = params[:delivery_expence_id]
-    # product = Product.where(delivery_expence_id: checked_delivery_expence_ids)
+    checked_condition_ids = params[:condition_id]
+    if checked_condition_ids == [""]
+      condition_ids = (1..Condition.all.length).to_a
+    else
+      condition_ids = checked_condition_ids
+    end
    
-    # 販売状況で検索
-    # checked_status_ids = params[:status_id]
-    # product = Product.where(status_id: checked_status_ids)
+    # #配送料の負担方法で検索
+    checked_delivery_expense_ids = params[:delivery_expense_id]
+    if checked_delivery_expense_ids == [""]
+      delivery_expense_ids = (1..DeliveryExpense.all.length).to_a
+    else
+      delivery_expense_ids = checked_delivery_expense_ids
+    end
 
-    # @search_result = 
-   #検索ワードが空の場合、新着商品のデータを取得
-    @products_new = Product.includes(:photos).order('created_at DESC')
+    # 販売状況で検索
+    checked_status_ids = params[:status_id]
+    if checked_status_ids == [""]
+      status_ids = (1..Status.all.length).to_a
+    else
+      status_ids = checked_status_ids
+    end
+
+    @search_words = params[:detail_search_word].gsub(/[[:blank:]]/, " ").split(" ")
+    @search_words.each do |search_word|
+      @search_result = Product.all.includes(:photos, :brand, :category, :transaction_record).search(search_word).where(
+                                                                        category_id: category_ids, 
+                                                                        brand_id: brand_ids, 
+                                                                        size_id: size_ids,
+                                                                        price: input_min_price..input_max_price,
+                                                                        condition_id: condition_ids,
+                                                                        delivery_expense_id: delivery_expense_ids,
+                                                                        status_id: status_ids
+                                                               )
+    end
+    
+   @products_new = Product.includes(:photos, :brand, :category).order('created_at DESC')
   end
 
   private
@@ -149,5 +178,6 @@ class ProductsController < ApplicationController
   def set_search_word
     @search_word = params[:search_word]
     @detail_search_word = params[:detail_search_word]
+  
   end
 end

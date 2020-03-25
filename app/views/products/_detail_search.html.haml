@@ -53,9 +53,9 @@
         = icon('fas', 'truck', class: 'detail-search__box__form__icon-label--icon')
         = f.label :'配送料の負担', class: 'detail-search__box__form__icon-label--label'
       .detail-search__box__form__checkbox-label
-        = check_box_tag :delivery_expence_all
+        = check_box_tag :delivery_expense_all
         = label_tag :'すべて'
-        = f.collection_check_boxes :delivery_expence_id, DeliveryExpense.all, :id, :value do |b|
+        = f.collection_check_boxes :delivery_expense_id, DeliveryExpense.all, :id, :value do |b|
           .select_boxes
           = b.check_box
           = b.label
