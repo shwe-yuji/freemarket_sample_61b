@@ -5,12 +5,13 @@ class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   private
-    def check_captcha
-      unless verify_recaptcha
-        self.resource = resource_class.new sign_in_params
-        respond_with_navigational(resource) { render :new }
-      end 
+
+  def check_captcha
+    unless verify_recaptcha
+      self.resource = resource_class.new sign_in_params
+      respond_with_navigational(resource) { render :new }
     end
+  end
 
   # GET /resource/sign_in
   # def new
