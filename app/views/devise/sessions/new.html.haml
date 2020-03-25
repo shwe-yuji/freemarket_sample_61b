@@ -19,7 +19,8 @@
     = form_with(scope: :user, url: session_path(resource_name), local: true, class: 'signin-area__input') do |f|
       = f.email_field :email, placeholder: 'メールアドレス', class: 'signin-area__input--email', required: true
       = f.password_field :password, placeholder: 'パスワード', class: 'signin-area__input--pw', required: true
-      .g-recaptcha{ 'data-callback': 'clearcall' ,'data-sitekey': '6LeEetkUAAAAAFzCTSZlSRClftFxVZ5c1BkZLVHX'}
+      = flash[:recaptcha_error]
+      = recaptcha_tags
       = f.submit 'ログイン', class: 'submit'
       .signin-area__input--info
         = link_to 'パスワードをお忘れの方', '#'
