@@ -7,28 +7,26 @@ $(document).on('turbolinks:load', function(){
     }
     // 子カテゴリーの表示作成
     function appendChildrenBox(insertHTML){
-      var childSelectHtml = '';
-      childSelectHtml = `<div class="sell-area__details__sub-category">
-                          <div class="sell-area__details__sub-category__select">
-                            <select class="sell-area__details__sub-category__default" name="product[category_id]" id="child_category">
-                              <option value="">---</option>
-                              ${insertHTML}
-                            <select>
-                          </div>
-                        </div>`;
+      var childSelectHtml = `<div class="sell-area__details__sub-category">
+                              <div class="sell-area__details__sub-category__select">
+                                <select class="sell-area__details__sub-category__default" name="product[category_id]" id="child_category">
+                                  <option value="">---</option>
+                                  ${insertHTML}
+                                <select>
+                              </div>
+                            </div>`;
       $('.category__append').append(childSelectHtml);
     }
     // 孫カテゴリーの表示作成
     function appendGrandchildrenBox(insertHTML){
-      var grandchildSelectHtml = '';
-      grandchildSelectHtml = `<div class="sell-area__details__subsub-category">
-                                <div class="sell-area__details__subsub-category__select">
-                                  <select class="sell-area__details__subsub-category__default" name="product[category_id]" id="grandchild_category">
-                                    <option value="">---</option>
-                                    ${insertHTML}
-                                  <select>
-                                </div>
-                              </div>`;
+      var grandchildSelectHtml = `<div class="sell-area__details__subsub-category">
+                                    <div class="sell-area__details__subsub-category__select">
+                                      <select class="sell-area__details__subsub-category__default" name="product[category_id]" id="grandchild_category">
+                                        <option value="">---</option>
+                                        ${insertHTML}
+                                      <select>
+                                    </div>
+                                  </div>`;
       $('.category__append').append(grandchildSelectHtml);
     }
     // 親カテゴリー選択後のイベント
@@ -103,17 +101,16 @@ $(document).on('turbolinks:load', function(){
   }
   // サイズ選択フォーム作成
   function appendSizeBox(insertHTML) {
-    var sizeHtml = "";
-    sizeHtml = `<div class="sell-area__details__size">
-                 サイズ
-                  <span class="form-require">必須</span>
-                    <div class="sell-area__details__size__select">
-                      <select class="sell-area__details__status__default" name="product[size_id]" id="product_size_id">
-                        <option value="">---</option>
-                        ${insertHTML}
-                      <select>
-                    </div>
-                </div>`;
+    var sizeHtml = `<div class="sell-area__details__size">
+                      サイズ
+                      <span class="form-require">必須</span>
+                        <div class="sell-area__details__size__select">
+                          <select class="sell-area__details__status__default" name="product[size_id]" id="product_size_id">
+                            <option value="">---</option>
+                            ${insertHTML}
+                          <select>
+                        </div>
+                    </div>`;
     $('.category__append').append(sizeHtml);
   }
 
@@ -152,17 +149,16 @@ $(document).on('turbolinks:load', function(){
   }
   // 配送方法選択フォーム作成
   function appendDeliveryMethodBox(insertHTML) {
-    var deliveryMethodHtml = "";
-    deliveryMethodHtml = `<div class="sell-area__delivery__way" id="delivery__method">
-                           配送の方法
-                            <span class="form-require">必須</span>
-                              <div class="sell-area__delivery__way__select">
-                                <select class="sell-area__delivery__way__default" name="product[delivery_method_id]" id="product_delivery_method_id">
-                                  <option value="">---</option>
-                                  ${insertHTML}
-                                </select>
-                              </div>
-                          <div>`;
+    var deliveryMethodHtml = `<div class="sell-area__delivery__way" id="delivery__method">
+                                配送の方法
+                                <span class="form-require">必須</span>
+                                  <div class="sell-area__delivery__way__select">
+                                    <select class="sell-area__delivery__way__default" name="product[delivery_method_id]" id="product_delivery_method_id">
+                                      <option value="">---</option>
+                                      ${insertHTML}
+                                    </select>
+                                  </div>
+                              <div>`;
     $(".delivery__way__append").append(deliveryMethodHtml);
   }
 
