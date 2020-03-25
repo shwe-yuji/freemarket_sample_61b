@@ -26,8 +26,20 @@ Rails.application.routes.draw do
 
   get 'products/done'
   get 'products/search'
+<<<<<<< HEAD
   get 'products/detail_search'
   resources :products
+=======
+  resources :products do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'get_size', defaults: { format: 'json' }
+      get 'get_delivery_method', defaults: { format: 'json' }
+    end
+  end
+
+>>>>>>> 5a99c4d26a21ae6b178486e5cb646517b98bffdd
   root to: "products#index"
   get 'users/logout'
 

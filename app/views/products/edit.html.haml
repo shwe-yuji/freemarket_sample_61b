@@ -43,18 +43,8 @@
         %span.form-require 必須
         .sell-area__details__main-category__select
           = f.collection_select :category_id, Category.all.limit(13), :id, :value, {prompt: "---"}, class: "sell-area__details__main-category__default"
-      -# 後々JSにて実装
-      .sell-area__details__sub-category
-        .sell-area__details__sub-category__select
-          %select.sell-area__details__sub-category__default
-      .sell-area__details__subsub-category
-        .sell-area__details__subsub-category__select
-          %select.sell-area__details__subsub-category__default
-      .sell-area__details__size
-        サイズ
-        %span.form-require 必須
-        .sell-area__details__size__select
-          = f.collection_select :size_id, Size.all, :id, :value, {prompt: "---"}, class: "sell-area__details__status__default"
+      -# カテゴリの出現場所
+      .category__append
       .sell-area__details__brand
         ブランド  
         %span.form-any 任意
@@ -76,20 +66,12 @@
         %span.form-require 必須
         .sell-area__delivery__burden__select
           = f.collection_select :delivery_expense_id, DeliveryExpense.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__burden__default"
-      -# 後々JSにて実装
-      .sell-area__delivery__way
-        配送の方法
-        %span.form-require 必須
-        .sell-area__delivery__way__select
-          = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__way__default"
+      .delivery__way__append
       .sell-area__delivery__origin
         発送元の地域
         %span.form-require 必須
         .sell-area__delivery__origin__select
           = f.collection_select :area_id, Area.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default"
-          -# 書き方変える場合あるためコメントアウトで残しておきます
-          -# = form_with model: @area, local: true do |f|
-            -# = f.collection_select :area, Area.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default"
       .sell-area__delivery__days
         発送までの日数
         %span.form-require 必須
