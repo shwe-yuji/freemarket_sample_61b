@@ -26,10 +26,8 @@ Rails.application.routes.draw do
 
   get 'products/done'
   get 'products/search'
-<<<<<<< HEAD
   get 'products/detail_search'
   resources :products
-=======
   resources :products do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
@@ -39,7 +37,6 @@ Rails.application.routes.draw do
     end
   end
 
->>>>>>> 5a99c4d26a21ae6b178486e5cb646517b98bffdd
   root to: "products#index"
   get 'users/logout'
 
@@ -48,8 +45,7 @@ Rails.application.routes.draw do
     resources :products,only: [:edit, :update]
     get'listing', to: 'users#listing'
   end
-
-  get 'products/search'
+  
   resources :products do
     member do
       post 'buy', to: 'credit_cards#buy'

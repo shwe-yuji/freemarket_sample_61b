@@ -5,6 +5,10 @@ class Product < ApplicationRecord
     Product.where(['name LIKE ? OR description LIKE ?', "%#{search_word}%", "%#{search_word}%"])
   end
 
+  def aaa
+
+  end
+
   belongs_to :user
   belongs_to :category
   belongs_to :brand, optional: true
