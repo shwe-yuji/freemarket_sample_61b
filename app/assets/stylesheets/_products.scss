@@ -96,12 +96,15 @@
             padding-top: 16px;
             cursor: pointer;
             width:87px;
+
             i {
               font-size: 25px;
               margin-top: 55px;
+
             }
 
             p {
+
               font-size: 13px;
             }
 
@@ -418,9 +421,10 @@
         display: inherit;
         line-height: 48px;
         width: 45%;
-        margin: 24px auto 0px;
+        margin: 24px 0 0 165px;
         color: white;
         background-color:#AAAAAA;
+        font-size: 14px;
       }
     }
   }
