@@ -27,6 +27,16 @@ display: none !important;
           img{
             margin:20px 0 0 140px;
           }
+          .soldout{
+            color:white;
+            background-color: red;
+            padding:10px;
+            height: 50px;
+            position: absolute;
+            left:10vw;
+            top: 10vh;
+            font-size: 30px;
+          }
           .other_photo{
             display:block;
             width:500px;
@@ -117,7 +127,21 @@ display: none !important;
               width:680px;
               margin-left: 85px;
               margin-top:10px;
-
+              &-soldout{
+                background-color: gray;
+                height:70px;
+                width:680px;
+                margin-left: 85px;
+                margin-top:10px;
+                a{
+                  display: block;
+                  font-size: 30px;
+                  color:white;
+                  text-decoration:none;
+                  line-height:68px;
+                  font-weight: bold;
+                }
+              }
               a{
                 display: block;
                 font-size: 30px;
@@ -235,6 +259,10 @@ display: none !important;
           margin-top: 1em;
           font-size: 18px;
         }
+        .text{
+          width:750px;
+          height:200px;
+        }
       }
     }
     .pre_next_contents{
@@ -285,10 +313,10 @@ display: none !important;
         }
       }
     }
-    .other_user_item{
+    .other_user_item,.other_item_species{
       width: 80%;
       margin:2% 0 0 16%;
-      .itembuy-user-profile__head{
+      .itembuy-user-profile__head,.items_species__head{
         a {
           color:#00BFFF;
           text-decoration:none;
@@ -296,7 +324,7 @@ display: none !important;
           font-weight: bold
           }
       }
-      .itembuy-user-profile__box{
+      .itembuy-user-profile__box ,.itembuy-spieces__box{
         width: 100%;
         flex-wrap: wrap;
         display: flex;
@@ -304,37 +332,60 @@ display: none !important;
         font-weight: 600px;
         border-radius: 15px;
 
-        
-        figure{
+        figure {
+          margin: 0;
+          display: flex;
+          flex-wrap: wrap;
+          flex-flow: column;
           margin-right: 43px;
           margin-top: 20px;
-        }
-      }
-    }
-
-    .other_item_species{
-      width: 80%;
-      margin:2% 0 0 16%;
-      .items_species__head{
-        a {
-          color:#00BFFF;
-          text-decoration:none;
-          font-size:20px;
-          font-weight: bold;
+          .products {
+            width: 250px;
+            height: 250px;
+            margin: 20px 10px 0px 10px;
+  
+  
+          &__text {
+            box-shadow: 0 2px 4px rgba(0,0,0,.18);
+            font-size: 14px;
+            height: 64px;
+            line-height: 1.4em;
+            padding: 0 12px;
+            margin: 0px 10px 0px;
           }
-      }
-      .itembuy-spieces__box{
-        width: 100%;
-        flex-wrap: wrap;
-        display: flex;
-        font-size: 14px;
-        font-weight: 600px;
-        border-radius: 15px;
-
-        
-        figure{
-          margin-right: 43px;
-          margin-top: 20px;
+  
+          &__price {
+            position: relative;
+            padding-left: 10px;
+          }
+  
+            &__price--tag {
+              align-items: center;
+              background: rgba(0,0,0,.4);
+              border-radius: 0 14px 14px 0;
+              bottom: 77px;
+              color: #fff;
+              display: inline-flex;
+              font-size: 15px;
+              height: 28px;
+              letter-spacing: .02em;
+              padding: 0 12px;
+              position: absolute;
+            }
+            &__price--tag-soldout {
+              align-items: center;
+              background: red;
+              border-radius: 0 14px 14px 0;
+              bottom: 77px;
+              color: #fff;
+              display: inline-flex;
+              font-size: 15px;
+              height: 28px;
+              letter-spacing: .02em;
+              padding: 0 12px;
+              position: absolute;
+            }
+          }
         }
       }
     }
@@ -700,3 +751,4 @@ display: none !important;
     }
   }
 }
+

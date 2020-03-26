@@ -1,0 +1,97 @@
+.width-container {
+  width: 700px;
+  margin: 40px auto;
+  .page-title {
+    padding: 8px 0;
+    h2 {
+      font: {
+        size: 22px;
+        weight: bold;
+      }
+    }
+  }
+  .category-list {
+    // floatしているボタンの高さを認識させるためにoverflowを使用しています
+    overflow: hidden;
+    &__button {
+      background-color: #fff;
+      min-width: 80px;
+      text-align: center;
+      border-radius: 4px;
+      height: 40px;
+      box-shadow: 1px 1px 1px 1px rgba(14,14,14,0.0580392);
+      padding: 0 30px;
+      margin: 5px;
+      font-size: 16px;
+      line-height: 40px;
+      float: left;
+      color: black;
+      p {
+        font-size: 16px;
+      }
+      &:hover {
+        @include active_btn;
+      }
+    }
+    .active {
+      @include active_btn;
+    }
+  }
+  .brand-initial {
+    margin: 33px 0;
+    width: 100%;
+    overflow: hidden;
+    &--list {
+      position: relative;
+      float: left;
+      width: 29px;
+      &__link {
+        font-size: 14px;
+      }
+      &__line {
+        position: absolute;
+        top: 6px;
+        height: 14px;
+        width: 22px;
+        border-right: solid 1px;
+      }
+    }
+  }
+  .details {
+    .category-box {
+      border-radius: 4px 4px 0 0;
+      padding: 5px 30px;
+      height: 30px;
+      line-height: 30px;
+      color: $color_white;
+      background-color: red;
+      font: {
+        size: 22px;
+        weight: bold;
+      }
+    }
+    .brand-box {  
+      &__brand-initial {
+        padding: 5px 0 5px 25px;
+        background-color: #EEEEEE;
+        font-weight: bold;
+      }
+
+      &__name-list {
+        padding: 15px 40px;
+        background-color: #fff;  
+        p {
+          display: inline-block;
+          width: 295px;
+        }
+        &__inner {
+          display: inline-block;
+          width: 49%;
+          a:hover {
+            color: #00CCFF;
+          }
+        }
+      }
+    }
+  }
+}
