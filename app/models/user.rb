@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :firstname, :lastname, :firstname_kana, :lastname_kana, length:{maximum:70}
 
     has_one :address, dependent: :delete
-    has_one :destination, dependent: :destroy
+    has_one :destination, dependent: :delete
     accepts_nested_attributes_for :destination, allow_destroy: true, update_only: true
     has_many :transaction_records, dependent: :nullify
     has_many :products, dependent: :destroy
