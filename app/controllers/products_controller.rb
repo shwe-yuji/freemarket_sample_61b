@@ -79,6 +79,7 @@ class ProductsController < ApplicationController
   end
 
   def detail_search
+    # binding.pry
     # # カテゴリー検索 get_categoryはcategory.rbに定義
     selected_category_id = params[:category_id].to_i
     category_ids = Category.get_category(selected_category_id)

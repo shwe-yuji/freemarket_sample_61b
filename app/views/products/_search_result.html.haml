@@ -6,7 +6,12 @@
         = "#{params[:search_word]}の検索結果"
       %p.search-result__title__num
         = "1-#{@search_result.length}件表示"
-    - elsif action_name == 'detail_search'
+    - elsif action_name == 'detail_search' && params[:detail_search_word].blank?
+      %p.search-result__title__topic
+        = "検索結果"
+      %p.search-result__title__num
+        = "1-#{@search_result.length}件表示"
+    - elsif action_name == 'detail_search' && params[:detail_search_word].present?
       %p.search-result__title__topic
         = "#{params[:detail_search_word]}の検索結果"
       %p.search-result__title__num
