@@ -54,20 +54,7 @@
       width: 100%;
       display: flex;
       flex-flow: row wrap;
-
-      &__product {
-        height: 240px;
-        margin: 0 16px 16px 0;
-        background-color: $color;
       
-        &__name {
-          width: 150px;
-          font-size: 16px;
-          color: black;
-          line-height: 20px;
-          
-        }
-      }
     } 
   }
 }
