@@ -79,73 +79,52 @@ class ProductsController < ApplicationController
   end
 
   def detail_search
-    # # カテゴリー検索
+    # # カテゴリー検索 get_categoryはcategory.rbに定義
     selected_category_id = params[:category_id].to_i
-    if selected_category_id == 0
-      category_ids = Category.all.ids
-    else
-      category_ids = Category.find(selected_category_id).subtree_ids
-    end
+    category_ids = Category.get_category(selected_category_id)
 
-    # #ブランド検索
+    # #ブランド検索 get_brandはbrand.rbに定義
     input_brand_name = params[:brand_name]
-    brand_ids = Brand.where(['name LIKE ?', "%#{input_brand_name}%"]).ids
+    brand_ids = Brand.get_brand(input_brand_name)
     
-    # サイズで検索
+    # サイズで検索 get_sizeはsize.rbに定義
     selected_size_id = params[:size_id]
-    if selected_size_id == ""
-      size_ids = (1..Size.all.length).to_a
-    else
-      size_ids = selected_size_id
-    end
-    
-    #価格検索
+    size_ids = Size.get_size(selected_size_id)
+
+    #価格検索 set_min_price、set_max_priceはapplication.rbに定義
     input_min_price = params[:min_price]
-    if input_min_price.blank?
-      input_min_price = "300"
-    end
+    min_price = ApplicationRecord.set_min_price(input_min_price)
     input_max_price = params[:max_price]
-    if input_max_price.blank?
-      input_max_price = "9999999"
-    end
+    max_price = ApplicationRecord.set_max_price(input_max_price)
 
-    # 商品の状態で検索
+    # 商品の状態で検索 get_conditionはcondition.rbに定義
     checked_condition_ids = params[:condition_id]
-    if checked_condition_ids == [""]
-      condition_ids = (1..Condition.all.length).to_a
-    else
-      condition_ids = checked_condition_ids
-    end
+    condition_ids = Condition.get_condition(checked_condition_ids)
    
-    # #配送料の負担方法で検索
+    # #配送料の負担方法で検索 get_delivery_expenseはdelivery_expense.rbに定義
     checked_delivery_expense_ids = params[:delivery_expense_id]
-    if checked_delivery_expense_ids == [""]
-      delivery_expense_ids = (1..DeliveryExpense.all.length).to_a
-    else
-      delivery_expense_ids = checked_delivery_expense_ids
-    end
+    delivery_expense_ids = DeliveryExpense.get_delivery_expense(checked_delivery_expense_ids)
 
-    # 販売状況で検索
+    # 販売状況で検索 get_statusはstatus.rbに定義
     checked_status_ids = params[:status_id]
-    if checked_status_ids == [""]
-      status_ids = (1..Status.all.length).to_a
-    else
-      status_ids = checked_status_ids
-    end
+    status_ids = Status.get_status(checked_status_ids)
 
     @search_words = params[:detail_search_word].gsub(/[[:blank:]]/, " ").split(" ")
+    if @search_words.blank?
+      @search_words = [""]
+    end
     @search_words.each do |search_word|
       @search_result = Product.all.includes(:photos, :brand, :category, :transaction_record).search(search_word).where(
                                                                         category_id: category_ids, 
                                                                         brand_id: brand_ids, 
                                                                         size_id: size_ids,
-                                                                        price: input_min_price..input_max_price,
+                                                                        price: min_price..max_price,
                                                                         condition_id: condition_ids,
                                                                         delivery_expense_id: delivery_expense_ids,
                                                                         status_id: status_ids
                                                                )
     end
-    
+  binding.pry
    @products_new = Product.includes(:photos, :brand, :category).order('created_at DESC')
   end
 
