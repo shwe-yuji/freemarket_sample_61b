@@ -107,9 +107,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def update
     if current_user.update!(update_user_params)
-      redirect_to root_path, notice: '変更しました'
+      flash[:notice] = '変更しました'
+      render template: "/users/edit"
     else
-      render :edit
+      render template: "/users/edit"
     end
   end
   

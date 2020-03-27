@@ -22,7 +22,7 @@
     .main-area__form__user-info
       .main-area__form__user-info--title 生年月日
       .main-area__form__user-info--value 
-        = current_user.birthdate
+        = current_user.birthdate.strftime("%Y/%m/%d")
 
     
     = form_with model:current_user,url:"/users",local: true do |f|
@@ -36,9 +36,8 @@
           .main-area__form__input-info--title 都道府県
           .main-area__form__input-info--icon 任意
         -# = f.collection_select :area_id, Area.all, :id, :name,{prompt: true}, class: "area", required: true, value: "#{current_user.destination.area_id}"
-        = f.collection_select :area_id, Area.all, :id, :name, selected: "#{current_user.destination.area_id}"
+        = f.collection_select :area_id, Area.all,:id, :name, selected: "#{current_user.destination.area_id}", class: 'main-area__form__input-area'
 
-        =icon("fas", "chevron-right", class: 'select-icon')
         .main-area__form__input-info
           .main-area__form__input-info--title 市区町村
           .main-area__form__input-info--icon 任意

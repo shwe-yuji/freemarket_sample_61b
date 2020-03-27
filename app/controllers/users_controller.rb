@@ -3,8 +3,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # @user = User.find(params[:id])
-    # # @destination = @user.destination
   end
 
 
