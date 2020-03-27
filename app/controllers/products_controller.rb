@@ -124,7 +124,6 @@ class ProductsController < ApplicationController
                                                                         status_id: status_ids
                                                                )
     end
-  binding.pry
    @products_new = Product.includes(:photos, :brand, :category).order('created_at DESC')
   end
 

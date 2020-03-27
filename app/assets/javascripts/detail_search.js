@@ -11,8 +11,11 @@ $(document).on('turbolinks:load', function(){
   })
 
 // クリアボタンを押すとsubmitする機能を停止させる
-// クリア機能は未実装です
   $('.detail-search__box').on('click', '.detail-search__box__form__submit-area--reset', function(){
+    $('input[type="text"]').val("");
+    $('input[type="number"]').val("");
+    $('input[type="checkbox"]').prop("checked", false);
+    $('select').val(0);
     return false;
   })
 })

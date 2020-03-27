@@ -1,6 +1,6 @@
 .detail-search
   = form_with(model: @products, url: products_search_path, class: 'detail-search__list-change') do |f|
-    = f.select :condition_id, @list_change, {include_blank: '並び替え'}, class: 'pull-down'
+    = f.select :list_change, @list_change, {include_blank: '並び替え'}, class: 'pull-down'
 
   .detail-search__box
     .detail-search__box__title 詳細検索
