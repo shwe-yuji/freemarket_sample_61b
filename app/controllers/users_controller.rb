@@ -3,12 +3,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
+    #商品編集はここでも良いのか？
   end
 
   def listing_sale
     @products_sale = Product.where( user_id: current_user.id, status_id: 1)
-    binding.pry
     # ログインユーザーが出品している商品を全て取得する
   end
   

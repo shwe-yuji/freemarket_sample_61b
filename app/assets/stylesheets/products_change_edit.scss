@@ -40,6 +40,9 @@
         }
 
         &__dropbox {
+          &-now{
+            display: flex;
+          }
           .preview {
             float: left;
             width: 20%;

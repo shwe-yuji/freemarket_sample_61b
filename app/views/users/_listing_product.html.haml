@@ -1,5 +1,5 @@
 %ul.main-area__products__detail
-  = link_to edit_product_path(product.id) do
+  = link_to edit_user_product_path(current_user.id,product) do
     %li.main-area__mypage__products__content
       .main-area__mypage__products__content--icon
         = image_tag "#{product.photos[0].photo.url}", size: "40x40"

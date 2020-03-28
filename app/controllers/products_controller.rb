@@ -48,11 +48,10 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @delivery_method =  if params[:delivery_expense_id] == "1"
-      DeliveryMethod.all
-    else
-      DeliveryMethod2.all
-    end
+    @delivery_method =  get_delivery_method
+    @product = Product.includes(:photos).find(params[:id])
+    binding.pry
+
   end
 
   def update
@@ -95,11 +94,11 @@ class ProductsController < ApplicationController
   
   # 配送料の負担が選択された後に動くアクション
   def get_delivery_method
-    @delivery_method =  if params[:delivery_expense_id] == "1"
-                          DeliveryMethod.all
-                        else
-                          DeliveryMethod2.all
-                        end
+      if params[:delivery_expense_id] == "1"
+        DeliveryMethod.all
+      else
+        DeliveryMethod2.all
+      end
   end
   private
 
