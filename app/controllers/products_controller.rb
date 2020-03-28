@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
   before_action :set_pulldown, only: [:search, :detail_search]
   before_action :set_search_word, only: [:search, :detail_search]
   before_action :authenticate_user!, only: [:new]
-  
+
+
   def index
 
     sold_product_ids = TransactionRecord.pluck(:product_id)
@@ -69,8 +70,9 @@ class ProductsController < ApplicationController
   end
 
   def search
+    binding.pry
     #検索ワード入力時、スペースを半角スペースに変換して、splitメソッドで検索ワードを配列に格納
-    @search_words = params[:search_word].gsub(/[[:blank:]]/, " ").split(" ")
+    @search_words = @search_word.gsub(/[[:blank:]]/, " ").split(" ")
     @search_words.each do |search_word|
       @search_result = Product.all.includes(:photos, :brand, :category, :transaction_record).search(search_word).limit(132)
     end
@@ -180,8 +182,11 @@ class ProductsController < ApplicationController
   end 
 
   def set_search_word
-    @search_word = params[:search_word]
+    if params[:product].present?
+      @search_word = params[:product][:search_word]
+    else 
+      @search_word = params[:search_word]
+    end
     @detail_search_word = params[:detail_search_word]
-  
   end
 end

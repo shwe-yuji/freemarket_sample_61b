@@ -1,9 +1,14 @@
 - if @search_result.present?
   .search-result
     .search-result__title
-    - if action_name == 'search'
+    - if action_name == 'search' && params[:product].nil?
       %p.search-result__title__topic
         = "#{params[:search_word]}の検索結果"
+      %p.search-result__title__num
+        = "1-#{@search_result.length}件表示"
+    - elsif action_name == 'search' && params[:product].present?
+      %p.search-result__title__topic
+        = "#{params[:product][:search_word]}の検索結果"
       %p.search-result__title__num
         = "1-#{@search_result.length}件表示"
     - elsif action_name == 'detail_search' && params[:detail_search_word].blank?
