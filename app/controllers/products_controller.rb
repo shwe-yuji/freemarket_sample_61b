@@ -70,7 +70,6 @@ class ProductsController < ApplicationController
   end
 
   def search
-    binding.pry
     #検索ワード入力時、スペースを半角スペースに変換して、splitメソッドで検索ワードを配列に格納
     @search_words = @search_word.gsub(/[[:blank:]]/, " ").split(" ")
     @search_words.each do |search_word|
@@ -81,7 +80,6 @@ class ProductsController < ApplicationController
   end
 
   def detail_search
-    # binding.pry
     # # カテゴリー検索 get_categoryはcategory.rbに定義
     selected_category_id = params[:category_id].to_i
     category_ids = Category.get_category(selected_category_id)
