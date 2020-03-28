@@ -1,0 +1,18 @@
+%ul.main-area__products__detail
+  = link_to edit_product_path(product.id) do
+    %li.main-area__mypage__products__content
+      .main-area__mypage__products__content--icon
+        = image_tag "#{product.photos[0].photo.url}", size: "40x40"
+      .main-area__mypage__contents__product__name 
+        = product.name
+
+      .main-area__mypage__products__icon
+        .main-area__mypage__contents__content--heart
+          %span.listing-item-count
+            = icon 'far', 'heart'
+            %span 0
+        .main-area__mypage__contents__product-comment
+          = icon 'far', 'comment-alt'
+          %span 0
+      .main-area__mypage__contents__products--chevron-right
+        =icon("fas", "chevron-right")

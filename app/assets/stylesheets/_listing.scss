@@ -33,21 +33,17 @@
     text-align: center;
     cursor: pointer;
 
-    &__active {
+    &__selecting {
       width: 33.3%;
       background-color: #fff;
       border-top: solid 2px red;
     }
 
-    &__trade {
+    &__not-selected {
       background: #eee;
       width: 33.33%;
     }
 
-    &__sell{
-      background: #eee;
-      width: 33.33%;
-    }
   }
 
   .main-area__products__detail{

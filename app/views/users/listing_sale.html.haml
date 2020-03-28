@@ -1,0 +1,29 @@
+.header 
+  = render 'products/header'
+
+.mypage-wrapper
+  = render 'users/mypage_links'
+
+  .mypage-content-edit
+    .main-area__products
+      .main-area__products__title 出品した商品
+      %ul.main-area__products__tabs
+        %li.main-area__products__tabs__selecting  出品中
+        %li.main-area__products__tabs__not-selected 取引中
+        %li.main-area__products__tabs__not-selected 売却済み
+
+      = render partial: "listing_product", collection: @products_sale.limit(10)  , as: :product
+
+      .mypage-history
+        = link_to '#', class: 'pager-prev&pager-cell' do
+          .icon_arrow
+            .icon-arrow-left
+              =icon("fas", "chevron-left")
+            .icon-arrow-right
+              =icon("fas", "chevron-right")
+.footer
+  = render 'products/cameraicon'
+  =render "products/footer"
+
+
+
