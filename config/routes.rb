@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
 
   devise_scope :user do
@@ -25,7 +26,15 @@ Rails.application.routes.draw do
   end
 
   get 'products/search'
-  resources :products
+  resources :products do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'get_size', defaults: { format: 'json' }
+      get 'get_delivery_method', defaults: { format: 'json' }
+    end
+  end
+
   root to: "products#index"
   get 'users/logout'
 

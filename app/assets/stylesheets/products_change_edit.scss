@@ -138,9 +138,10 @@
     }
   // 商品の詳細
     &__details {
-      height: 491px;
+      height: 100%;
       padding: 40px;
       border-bottom: 1px solid rgb(245, 245, 245);
+      overflow: scroll;
 
       &__name {
         @include sub-head;
@@ -229,9 +230,10 @@
       }
   // 配送について
     &__delivery {
-      height: 383px;
+      height: 100%;
       padding: 40px;
       border-bottom: 1px solid rgb(245, 245, 245);
+      overflow: scroll;
 
       &__method {
         @include sub-head;

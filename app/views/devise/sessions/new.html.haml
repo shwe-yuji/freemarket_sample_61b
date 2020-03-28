@@ -1,7 +1,7 @@
 - content_for(:title, '会員情報入力 - メルカリ スマホでかんたん フリマアプリ')
 .wrapper
   .logo-title 
-    = link_to '#' do
+    = link_to root_path do
       = image_tag "svg/fmarket_logo_red.svg", size: "150x100", class: 'logo-title__svg-image'
   .signin-area
     .signin-area__new
@@ -19,7 +19,8 @@
     = form_with(scope: :user, url: session_path(resource_name), local: true, class: 'signin-area__input') do |f|
       = f.email_field :email, placeholder: 'メールアドレス', class: 'signin-area__input--email', required: true
       = f.password_field :password, placeholder: 'パスワード', class: 'signin-area__input--pw', required: true
-      .g-recaptcha{ 'data-callback': 'clearcall' ,'data-sitekey': '6LeEetkUAAAAAFzCTSZlSRClftFxVZ5c1BkZLVHX'}
+      = recaptcha_tags
+      = flash[:recaptcha_error]
       = f.submit 'ログイン', class: 'submit'
       .signin-area__input--info
         = link_to 'パスワードをお忘れの方', '#'
