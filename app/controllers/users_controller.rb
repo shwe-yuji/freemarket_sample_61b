@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
   end
+
 
   def listing
     @products = Product.where( user_id: current_user.id, status_id: [1, 2, 3])
