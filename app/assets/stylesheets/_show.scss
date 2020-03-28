@@ -122,11 +122,7 @@ display: none !important;
             }
           }
             .buy_button{
-              background-color:#DD0000;
-              height:70px;
-              width:680px;
-              margin-left: 85px;
-              margin-top:10px;
+              @include buy_delete_button;
               &-soldout{
                 background-color: gray;
                 height:70px;
@@ -134,21 +130,17 @@ display: none !important;
                 margin-left: 85px;
                 margin-top:10px;
                 a{
-                  display: block;
-                  font-size: 30px;
-                  color:white;
-                  text-decoration:none;
-                  line-height:68px;
-                  font-weight: bold;
+                  @include button-a;
                 }
               }
               a{
-                display: block;
-                font-size: 30px;
-                color:white;
-                text-decoration:none;
-                line-height:68px;
-                font-weight: bold;
+                @include button-a;
+              }
+            }
+            .delete_button{
+              @include buy_delete_button;
+              a{
+                @include button-a;
               }
             }
           }

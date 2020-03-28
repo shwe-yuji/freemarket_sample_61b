@@ -89,9 +89,13 @@
         - if TransactionRecord.judge_sale_or_soldout(@product)
           .buy_button-soldout
             = link_to "購入済" , root_path,id: "soldout_product"
-        - else
+        - elsif user_signed_in? && current_user.id == @product.user_id
+        - else 
           .buy_button
             = link_to "購入画面に進む", buy_product_path(@product.id), method: :post,id: "buy_product"
+        - if user_signed_in? && current_user.id == @product.user_id
+          .delete_button
+            = link_to '商品を削除する', product_path(@product.id), method: :delete, id: "delete_product"
       .item_discription
         %p.itembuy-detail__inner
           = @product.description
