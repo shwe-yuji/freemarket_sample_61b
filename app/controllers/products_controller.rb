@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
   def edit
     @delivery_method =  get_delivery_method
     @product = Product.includes(:photos).find(params[:id])
-    binding.pry
+    
 
   end
 
