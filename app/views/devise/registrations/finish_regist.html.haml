@@ -11,10 +11,23 @@
           %br
             会員登録が完了しました
         .submit
-          .submit__btn
-            = link_to root_path "marpacriをはじめる", "/"
-  .banner
-    -# 仮置のバナーです。現在トップページにあるバナーと置き換え予定
-    %p
-      = image_tag 'logo_white.svg', width: '340px', class: 'img'
+          = button_to "marpacriをはじめる", root_path, {method: :get, class: 'btn test'}
+.footer-wrap
+  .main-footer
+    .main-footer_contents
+      .text
+        .text1
+          = "＼ スマホで簡単フリマアプリ ／"
+        .text2  
+          = "今すぐ無料ダウンロード！"
+          .footer_logo
+            .apple
+              = link_to products_path do
+                = image_tag("apple.png")
+            .google
+              = link_to products_path do
+                = image_tag("Gplay.png")
+      .smapho
+        = image_tag("smapho.png")
+.logo-footer
   = render 'devise/shared/footer'

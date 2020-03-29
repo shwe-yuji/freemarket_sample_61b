@@ -101,7 +101,7 @@
             .code -
     .sell-area__box
       = f.submit "変更する",class:"sell-area__box__button--red-change"
-      = link_to user_listing_path(current_user), class: "product-show" do
+      = link_to user_listing_sale_path(current_user.id), class: "product-show" do
         %button.sell-area__box__button--gray-change{type: "button"}
           キャンセル
     = render "products/logo-footer"

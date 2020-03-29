@@ -25,7 +25,6 @@ Rails.application.routes.draw do
     get ':id', to: 'brands#category'
   end
 
-  get 'products/done'
   get 'products/search'
   get 'products/detail_search'
   resources :products
@@ -44,7 +43,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit] do
     resources :credit_cards, only: [:show]
     resources :products,only: [:edit, :update]
-    get'listing', to: 'users#listing'
+    get'listing_sale', to: 'users#listing_sale'
+    get'listing_trade', to: 'users#listing_trade'
+    get'listing_soldout', to: 'users#listing_soldout'
   end
   
   resources :products do

@@ -13,7 +13,10 @@
         .products__main--title
           = @category.value + 'の商品一覧'
         .products__main--list
-          = render partial: "products/list", collection: @products, as: :product
+          = render partial: "products/list", collection: @category_products , as: :product
+        = render "module/pagination", pagy: @pagy
+        = render "module/page-description", page_name: @category.value, products: @category_products 
     = render "products/cameraicon"
     = render "products/footer"
+
 
