@@ -196,13 +196,24 @@
       }
     }
   }
-  .banner {
-    max-width: 55%;
-    height: 400px;
-    background-color: #FFAD90;
+}
+
+.footer-wrap {
+  background-color: rgb(245, 245, 245);
+  .main-footer {
+    width: 650px;
     margin: 0 auto;
-    p {
-      text-align: center;
+    .main-footer_contents {
+      padding: 0 150px;
+      .text {
+        left: 0;
+        .text2 {
+          left: -45px;
+          .footer_logo {
+            padding: 0 80px;
+          }
+        }
+      }
     }
   }
 }
