@@ -164,6 +164,15 @@
               color: $color_white;
             }
           }
+          .button_to {
+            input {
+              @include buttonStyle;
+              color: $color_white;
+            }
+          }
+        }
+        a .test {
+          @include buttonStyle;
         }
         .link {
           font-size: 14px;
