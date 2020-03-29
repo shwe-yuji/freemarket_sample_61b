@@ -1,5 +1,19 @@
 - if action_name == "show"
+  - breadcrumb :mypage
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
+
   -# 本人情報の登録
 - elsif action_name == "edit"
+  - breadcrumb :user_edit
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
+
   -# 出品した商品の一覧画面
 - elsif action_name.include?("listing_")
+  - breadcrumb :mypage_listing, @title
+  .breadcrumb
+    .breadcrumb__list
+      = breadcrumbs separator: "&rsaquo;"
