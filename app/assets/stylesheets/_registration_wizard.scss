@@ -164,6 +164,15 @@
               color: $color_white;
             }
           }
+          .button_to {
+            input {
+              @include buttonStyle;
+              color: $color_white;
+            }
+          }
+        }
+        a .test {
+          @include buttonStyle;
         }
         .link {
           font-size: 14px;
@@ -187,14 +196,34 @@
       }
     }
   }
-  .banner {
-    max-width: 55%;
-    height: 400px;
-    background-color: #FFAD90;
+}
+
+// 登録完了画面用。トップページのフッターと中身が異なります
+.footer-wrap {
+  background-color: rgb(245, 245, 245);
+  .main-footer {
+    width: 650px;
     margin: 0 auto;
-    p {
-      text-align: center;
+    .main-footer_contents {
+      padding: 0 150px;
+      .text {
+        left: 0;
+        .text2 {
+          left: -45px;
+          .footer_logo {
+            padding: 0 80px;
+          }
+        }
+      }
     }
+  }
+}
+
+// 登録完了画面用。完了画面のみ間にトップページのフッターを挟んでいるため表示が若干異なっていました
+.logo-footer {
+  .mercari {
+    font-size: 13px;
+    color: #333;
   }
 }
 
