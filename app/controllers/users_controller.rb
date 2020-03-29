@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
+  before_action :page_title
+
   def show
+    @title = "マイページ" + @title_end
   end
 
   def edit
-
+    @title = "本人情報の登録" + @title_end
   end
 
   def listing_sale
