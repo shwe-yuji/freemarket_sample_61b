@@ -109,7 +109,7 @@
           .side-area__config__list__link--name メール/パスワード
           .side-area__config__list__link--icon 
             =icon("fas", "chevron-right")      
-      = link_to '#' do
+      = link_to edit_user_path(current_user) do
         %li.side-area__config__list__link
           .side-area__config__list__link--name 本人情報
           .side-area__config__list__link--icon 

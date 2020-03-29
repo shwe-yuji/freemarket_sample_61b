@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   require "payjp"
   before_action :set_card, only: [:step4_regist]
-  before_action :configure_account_update_params, only: [:update]
+  # before_action :configure_account_update_params, only: [:update]
   before_action :delete_sms_num, only: [:step3]
 
   def step1
@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def step1_regist
     params[:user][:birthdate] = join_birthdate
-    @user = User.new(user_params)
+    @user = User.new(create_user_params)
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
       render :step1 and return
@@ -102,6 +102,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def edit
+    super
+    @user = User.find(params[:id])
+    @destination = @user.destination
+  end
+
+  def update
+    if current_user.update!(update_user_params)
+      flash[:notice] = '変更しました'
+      render template: "/users/edit"
+    else
+      render template: "/users/edit"
+    end
+  end
+  
   private
 
   def configure_sign_up_params
@@ -112,17 +127,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
   end
 
-  def user_params
-    params.require(:user).permit(:nickname,
-                                 :password,
-                                 :email,
-                                 :firstname,
-                                 :lastname,
-                                 :firstname_kana,
-                                 :lastname_kana,
-                                 :birthdate
-    )
-  end
+
 
   def join_birthdate
     return Date.new params[:user]["birthdate(1i)"].to_i, params[:user]["birthdate(2i)"].to_i, params[:user]["birthdate(3i)"].to_i
@@ -146,14 +151,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session.delete(:sms_num)
   end
 
-  # def edit
-  #   super
-  # end
+  def update_user_params
+    params.require(:user).permit(destination_attributes: [:postal_code, :area_id, :city, :street_address, :building_name])
+  end
+
+  def create_user_params
+    params.require(:user).permit(:nickname,
+                                 :password,
+                                 :email,
+                                 :firstname,
+                                 :lastname,
+                                 :firstname_kana,
+                                 :lastname_kana,
+                                 :birthdate)
+  end
+
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+
 
   # DELETE /resource
   # def destroy

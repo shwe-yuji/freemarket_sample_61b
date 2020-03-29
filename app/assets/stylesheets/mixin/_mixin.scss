@@ -104,3 +104,21 @@
   background-color: red;
   color: white;
 }
+
+// 商品の購入及び削除のボタン
+@mixin buy_delete_button {
+  background-color:#DD0000;
+  height:70px;
+  width:680px;
+  margin-left: 85px;
+  margin-top:10px;
+}
+
+@mixin button-a {
+  display: block;
+  font-size: 30px;
+  color:white;
+  text-decoration:none;
+  line-height:68px;
+  font-weight: bold;
+}
