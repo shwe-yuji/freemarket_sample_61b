@@ -1,7 +1,7 @@
 - content_for(:title, '商品の情報を入力 - メルカリ スマホでかんたん フリマアプリ')
 .wrapper
   = render "products/logo-header"
-= form_with model: @product, url: user_product_path(@product.id), method: :patch, local: true, class: "sell-area__container" do |f|
+= form_with model: @product, url: "/products/1", method: :patch,local: true, class: "sell-area__container" do |f|
   .sell-area
     .sell-area__title 
       商品の情報を入力
@@ -12,16 +12,15 @@
       %p.sell-area__text
         最大10枚までアップロードできます
       .sell-area__dropbox
-        - @product.photos.each do |photo_no|
         .sell-area__dropbox-now
-            = image_tag photo_no.photo.url, size: "90x100" ,class: 'area__dropbox__img'
-            .sell-area__dxropbox-function
-              .sell-area__dropbox-edit-function
-                =link_to "#", class: "form-edit" do
-                  編集
-              .sell-area__dropbox-delete-function
-                =link_to "#", class: "form-delete" do
-                  削除
+          = image_tag "test.png", size: "90x100"
+          .sell-area__dxropbox-function
+            .sell-area__dropbox-edit-function
+              =link_to "#", class: "form-edit" do
+                編集
+            .sell-area__dropbox-delete-function
+              =link_to "#", class: "form-delete" do
+                削除
         %label.sell-area__dropbox__img-change
           %p.sell-area__dropbox__img--text ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
           = f.fields_for :photos do |i|
