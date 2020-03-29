@@ -11,10 +11,9 @@
           %br
             会員登録が完了しました
         .submit
-          .submit__btn
-            = link_to root_path "marpacriをはじめる", "/"
   .banner
     -# 仮置のバナーです。現在トップページにあるバナーと置き換え予定
     %p
       = image_tag 'logo_white.svg', width: '340px', class: 'img'
+          = button_to "marpacriをはじめる", root_path, {method: :get, class: 'btn test'}
   = render 'devise/shared/footer'
