@@ -104,7 +104,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def edit
     super
-    @user = User.find(params[:id])
+    #ユーザプロフィール？エラー解消のためparams[:format]に修正
+    @user = User.find(params[:format])
     @destination = @user.destination
   end
 
