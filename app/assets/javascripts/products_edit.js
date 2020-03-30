@@ -195,4 +195,17 @@ $(document).on('turbolinks:load', function(){
       $(".sell-area__delivery__way").remove();
     }
   });
+  $(document).on("keyup", "#price", function() { // 数値入力する度にイベント発火
+    var data = $('#price').val();  // val()でフォームのvalueを取得(数値)
+    var profit = Math.round(data * 0.9);  // 手数料計算を行う dataにかけているのが0.9なのは単に引きたい手数料が10%のため
+    var fee = (data - profit);    // 入力した数値から計算結果(profit)を引く それが手数料となる
+    $(".sell-area__selling__commission--right").html(fee.toLocaleString()); //  手数料の表示 html()は追加ではなく､上書き｡入力値が変わる度に表示も変わるようにする
+    $('.sell-area__selling__commission--right').prepend('¥');
+    $(".code").html(profit.toLocaleString());
+    $('.code').prepend('¥');
+    if(profit == '') {   // もし､計算結果が''なら表示も元に戻す
+    $('.sell-area__selling__commission--right').html('-');
+    $('.code').html('-');
+    }
+  });
 });
