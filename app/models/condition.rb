@@ -7,4 +7,12 @@ class Condition < ActiveHash::Base
       { id: 5, value: '傷や汚れあり' },
       { id: 6, value: '全体的に状態が悪い' }
   ]
+
+  def self.get_condition(condition_id)
+    if condition_id == [""]
+      (1..Condition.all.length).to_a
+    else
+      condition_id
+    end
+  end
 end

@@ -1,4 +1,10 @@
 $(document).on('turbolinks:load', function(){
+  // 詳細検索時にカテゴリーを選択するとajaxが動く為、検索時のみajaxを停止させる
+  var path = location.pathname
+  if (path == '/products/detail_search' || path == '/products/search') {
+    return false;
+  }
+  
   $(function(){
     // カテゴリーセレクトボックスのオプションを作成
     function appendOption(category){

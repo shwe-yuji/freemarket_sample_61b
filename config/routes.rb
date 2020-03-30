@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   end
 
   get 'products/search'
+  get 'products/detail_search'
+  resources :products
   resources :products do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
@@ -45,8 +47,7 @@ Rails.application.routes.draw do
     get'listing_trade', to: 'users#listing_trade'
     get'listing_soldout', to: 'users#listing_soldout'
   end
-
-  get 'products/search'
+  
   resources :products do
     member do
       post 'buy', to: 'credit_cards#buy'
