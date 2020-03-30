@@ -4,7 +4,6 @@ $(document).on('turbolinks:load', function(){
 //   価格のプルダウンを選択時に、最小値と最大値を入力
   $('.detail-search__box').on('change', '#price', function(){
     var price_range = $('#price').val().split(" ");
-    console.log(price_range);
     $('#min_price').val(price_range[0]);
     $('#max_price').val(price_range[2]);
   })
