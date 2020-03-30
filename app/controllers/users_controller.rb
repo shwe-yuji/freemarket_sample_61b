@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :page_title
-
+  before_action :title_word
+  
   def show
     @title = "マイページ" + @title_end
   end
