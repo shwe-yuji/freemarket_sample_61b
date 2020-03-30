@@ -4,7 +4,8 @@
       .main-area__mypage__user-icon__detail
         = link_to "#" do
           = image_tag "test.png", size: "100x100", class: "main-area__mypage__user-icon__detail--picture"
-          .main-area__mypage__user-icon__detail--name ユーザー名
+          .main-area__mypage__user-icon__detail--name
+            = current_user.nickname
           .main-area__mypage__user-icon__detail--numbers 評価 9 出品数 10
     %ul.main-area__mypage__tabs
       %li.main-area__mypage__tabs__active-tab  お知らせ

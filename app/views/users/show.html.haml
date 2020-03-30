@@ -1,5 +1,7 @@
+- content_for(:title){@title}
 .header 
   = render 'products/header'
+  = render "breadcrumb"
 .mypage-wrapper
   = render 'users/mypage_links'
   = render 'users/mypage'

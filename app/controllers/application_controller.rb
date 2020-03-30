@@ -19,4 +19,10 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
+
+  # 全ページのページタイトルの後ろに以下の文言をつける
+  def page_title
+    @title_end = " - Fmarket"
+  end
+
 end
