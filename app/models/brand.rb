@@ -1,7 +1,6 @@
 class Brand < ApplicationRecord
   has_many :products
 
-  def self.get_brand(brand_name) 
-    Brand.where(['name LIKE ?', "%#{brand_name}%"]).ids  
-  end
+  scope :get_brand, -> (brand_name){where(['name LIKE ?', "%#{brand_name}%"]).ids  }
+
 end
