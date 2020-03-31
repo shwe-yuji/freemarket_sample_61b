@@ -4,7 +4,7 @@ class BrandsController < ApplicationController
   before_action :title_word
 
   def group_show
-    @title = @current_category.value + @title_end + " " + @title_introduction
+    @title = @current_category.value + @title_end + @title_introduction
     @category_root = Category.where(ancestry: nil)
     current_brand_ids = Product.where(id: @current_category.subtree.ids).pluck(:brand_id)
     @current_brands = Brand.group('name').order('name').where(id: current_brand_ids)

@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :title_word
 
   def index
-    @title = "カテゴリー一覧" + @title_end + " " + @title_introduction
+    @title = "カテゴリー一覧" + @title_end + @title_introduction
     @category_parent = Category.where(ancestry: nil)
   end
 

@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   def title_word
     @title_end = " - Fmarket"
     @title_first = "Fmarket "
-    @title_introduction = "スマホでかんたん フリマアプリ"
+    @title_introduction = " スマホでかんたん フリマアプリ"
     @title_introduction_other = "の中古/新品通販【Fmarket】No.2フリマアプリ"
   end
 
