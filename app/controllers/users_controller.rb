@@ -26,4 +26,8 @@ class UsersController < ApplicationController
     @products_soldout = Product.where( user_id: current_user.id, status_id: 4 )
     # ログインユーザーが売薬済の商品を全て取得する
   end
+
+  def logout
+    @title = "ログアウト" + @title_end + @title_introduction
+  end
 end
