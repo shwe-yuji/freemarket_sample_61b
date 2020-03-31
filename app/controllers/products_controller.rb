@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
 
   def show
     # 商品数カウント
-    @product_count=Product.count()
+    @product_count=Product.includes(:photos).count()
     # 出品者の商品から最新6件取得
     @user_products = Product.includes(:photos).where(user_id: @product.user_id).order('created_at DESC').limit(6)
     # クリックされた商品名と同じものを取得

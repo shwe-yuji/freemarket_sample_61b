@@ -121,11 +121,11 @@
           %button コメントする
     .pre_next_contents
       .pre
-        - if ((@product.id-1) > 0)
+        - if @product.previous.present?
           = link_to product_path(@product.previous) do
             前へ
       .next
-        - if (@product.id != @product_count)
+        - if @product.next.present?
           = link_to product_path(@product.next) do
             次へ
     .sns_contents
