@@ -3,8 +3,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :set_card, only: [:step4_regist]
   # before_action :configure_account_update_params, only: [:update]
   before_action :delete_sms_num, only: [:step3]
+  before_action :title_word
+
+  def new
+    @title = "会員情報入力" + @title_end + @title_introduction
+  end
 
   def step1
+    @title = "会員情報入力" + @title_end + @title_introduction
     @user = User.new
   end
 
@@ -22,6 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def step2
+    @title = "電話番号の確認" + @title_end + @title_introduction
   end
 
   def step2_regist
@@ -41,6 +48,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def phone_confirm
+    @title = "電話番号の確認" + @title_end + @title_introduction
   end
 
   def phone_confirm_input
@@ -54,6 +62,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def step3
+    @title = "住所入力" + @title_end + @title_introduction
     @destination = Destination.new
   end
 
@@ -73,6 +82,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def step4
+    @title = "支払い方法" + @title_end + @title_introduction
     card = Card.where(user_id: current_user.id).first
     redirect_to :root if card.present?
   end
@@ -102,7 +112,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def finish_regist
+    @title = "会員登録完了" + @title_end + @title_introduction
+  end
+
   def edit
+    @title = "プロフィール" + @title_end + @title_introduction
     super
     #ユーザプロフィール？エラー解消のためparams[:format]に修正
     @user = User.find(params[:format])
