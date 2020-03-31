@@ -145,11 +145,11 @@ class ProductsController < ApplicationController
   
   # 配送料の負担が選択された後に動くアクション
   def get_delivery_method
-      if params[:delivery_expense_id] == "1"
-        DeliveryMethod.all
-      else
-        DeliveryMethod2.all
-      end
+    @delivery_method = if params[:delivery_expense_id] == "1"
+                         DeliveryMethod.all
+                       else
+                         DeliveryMethod2.all
+                       end
   end
   private
 
