@@ -5,11 +5,11 @@ class Users::SessionsController < Devise::SessionsController
   before_action :title_word
   # before_action :configure_sign_in_params, only: [:create]
 
-  private
-
   def new
     @title = "ログイン" + @title_end + @title_introduction
   end
+
+  private
 
   def check_captcha
     unless verify_recaptcha
