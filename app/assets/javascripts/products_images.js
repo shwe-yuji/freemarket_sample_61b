@@ -49,7 +49,6 @@ $(document).on('turbolinks:load', function(){
                          <img src="${src}" width="100" height="100">
                        </div>
                        <div class="preview__button">
-                         <div class="preview__edit">編集する</div>
                          <div class="preview__delete">削除する</div>
                        </div>
                        <input type="file" name="product[photos_attributes][${image_ctn}][photo]" 

@@ -27,7 +27,6 @@ Rails.application.routes.draw do
 
   get 'products/search'
   get 'products/detail_search'
-  resources :products
   resources :products do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
