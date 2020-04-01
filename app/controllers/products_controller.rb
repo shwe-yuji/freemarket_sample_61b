@@ -3,10 +3,10 @@ class ProductsController < ApplicationController
   before_action :set_pulldown, only: [:search, :detail_search]
   before_action :set_search_word, only: [:search, :detail_search]
   before_action :authenticate_user!, only: [:new]
-
+  before_action :title_word
 
   def index
-
+    @title = @title_first + @title_introduction
     sold_product_ids = TransactionRecord.pluck(:product_id)
     # 取引先済みの商品中のカテゴリ・ブランド数上位４つのレコードをインスタンス変数に代入
     @popular_categories = Product.includes(:category).where(id: sold_product_ids).group(:category_id).order('count(category_id) DESC').limit(4)
@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @title = @title_first + Product.find(params[:id]).name
     # 商品数カウント
     @product_count=Product.includes(:photos).count()
     # 出品者の商品から最新6件取得
@@ -34,6 +35,7 @@ class ProductsController < ApplicationController
 
 
   def new
+    @title = "出品" + @title_end + " " + @title_introduction
     @product = Product.new
     @product.photos.new
     @product.build_brand
@@ -50,6 +52,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @title = "商品の編集" + @title_end + " " + @title_introduction
     @delivery_method =  get_delivery_method
     @product = Product.includes(:photos).find(params[:id])
     
@@ -69,6 +72,7 @@ class ProductsController < ApplicationController
   end
 
   def search
+    @title = @search_word + @title_introduction_other
     #検索ワード入力時、スペースを半角スペースに変換して、splitメソッドで検索ワードを配列に格納
     @search_words = @search_word.gsub(/[[:blank:]]/, " ").split(" ")
     @search_words.each do |search_word|
@@ -79,6 +83,7 @@ class ProductsController < ApplicationController
   end
 
   def detail_search
+    @title = "商品検索結果【Fmarket】No.2フリマアプリ"
     # # カテゴリー検索 get_categoryはcategory.rbに定義
     selected_category_id = params[:category_id].to_i
     category_ids = Category.get_category(selected_category_id)
