@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show,:destroy]
+  before_action :set_product, only: [:show, :destroy, :edit, :update]
   before_action :set_pulldown, only: [:search, :detail_search]
   before_action :set_search_word, only: [:search, :detail_search]
   before_action :authenticate_user!, only: [:new]
@@ -51,12 +51,30 @@ class ProductsController < ApplicationController
 
   def edit
     @delivery_method =  get_delivery_method
-    @product = Product.includes(:photos).find(params[:id])
-    
-
+    @photos = Photo.where(product_id: @product.id)
   end
 
   def update
+    product = Product.new(product_params)
+    @photos = Photo.where(product_id: @product.id)
+    binding.pry
+    if @product.user_id == current_user.id
+      @product.update(name: product.name, 
+                      description: product.description,
+                      size_id: product.size_id,
+                      category_id: product.category_id,
+                      condition_id: product.condition_id,
+                      delivery_expense_id: product.delivery_expense_id,
+                      delivery_method_id: product.delivery_method_id,
+                      area_id: product.area_id,
+                      shipdate_id: product.shipdate_id,
+                      price: product.price
+                      )
+      redirect_to product_path, notice: "商品情報を更新しました"
+    else
+      flash.now[:alert] = "商品情報の更新に失敗しました"
+      render :edit
+    end
   end
 
   def destroy

@@ -19,7 +19,7 @@
     = form_with(scope: :user, url: session_path(resource_name), local: true, class: 'signin-area__input') do |f|
       = f.email_field :email, placeholder: 'メールアドレス', class: 'signin-area__input--email', required: true
       = f.password_field :password, placeholder: 'パスワード', class: 'signin-area__input--pw', required: true
-      = recaptcha_tags
+      -# = recaptcha_tags
       = flash[:recaptcha_error]
       = f.submit 'ログイン', class: 'submit'
       .signin-area__input--info
