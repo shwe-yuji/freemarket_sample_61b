@@ -51,27 +51,19 @@ class ProductsController < ApplicationController
 
   def edit
     @delivery_method =  get_delivery_method
-    @photos = Photo.where(product_id: @product.id)
+    @photos = Photo.where(product_id: @product.id).order("id ASC")
+    @upper_photos = @photos.limit(5)
+    @down_photos = Photo.where(product_id: @product.id).order("id DESC").limit(@photos.length - 5)
   end
 
   def update
     product = Product.new(product_params)
-    @photos = Photo.where(product_id: @product.id)
     binding.pry
     if @product.user_id == current_user.id
-      @product.update(name: product.name, 
-                      description: product.description,
-                      size_id: product.size_id,
-                      category_id: product.category_id,
-                      condition_id: product.condition_id,
-                      delivery_expense_id: product.delivery_expense_id,
-                      delivery_method_id: product.delivery_method_id,
-                      area_id: product.area_id,
-                      shipdate_id: product.shipdate_id,
-                      price: product.price
-                      )
+      @product.update(product_update_params)
       redirect_to product_path, notice: "商品情報を更新しました"
     else
+      @photos = Photo.where(product_id: @product.id)
       flash.now[:alert] = "商品情報の更新に失敗しました"
       render :edit
     end
@@ -176,6 +168,20 @@ class ProductsController < ApplicationController
                                     :delivery_expense_id, :delivery_method_id, :area_id,
                                     :shipdate_id, :price, :status_id, photos_attributes: [:photo],
                                     brand_attributes: [:name]).merge(user_id: current_user.id)
+  end
+
+  def product_update_params
+    params.require(:product).permit(:name, 
+                                    :description,
+                                    :size_id,
+                                    :category_id,
+                                    :condition_id,
+                                    :delivery_expense_id,
+                                    :delivery_method_id,
+                                    :area_id,
+                                    :shipdate_id,
+                                    :price,
+                                    photos_attributes: [:photo, :_destroy, :id])
   end
 
   def set_pulldown
