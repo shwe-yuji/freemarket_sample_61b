@@ -1,5 +1,4 @@
-- content_for(:title, '商品の情報を入力 - メルカリ スマホでかんたん フリマアプリ')
--# - binding.pry
+- content_for(:title, @title)
 .wrapper
   = render "products/logo-header"
 = form_with model: @product, url: user_product_path, local: true, class: "sell-area__container" do |f|

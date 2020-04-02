@@ -2,7 +2,12 @@
 
 class Users::SessionsController < Devise::SessionsController
   prepend_before_action :check_captcha, only: [:create]
+  before_action :title_word
   # before_action :configure_sign_in_params, only: [:create]
+
+  def new
+    @title = "ログイン" + @title_end + @title_introduction
+  end
 
   private
 
