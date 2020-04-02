@@ -61,7 +61,6 @@ class ProductsController < ApplicationController
 
   def update
     product = Product.new(product_params)
-    binding.pry
     if @product.user_id == current_user.id
       @product.update(product_update_params)
       redirect_to product_path, notice: "商品情報を更新しました"
