@@ -5,7 +5,7 @@
 }
 
 // pc
-@media screen and (min-width: 1068px) {
+@media screen and (min-width: 1240px) {
   .main-header  {
     height: 150px;
     background-color: rgb(255, 255, 255);
@@ -15,7 +15,8 @@
     display: grid;
     .main-header__contents {
       display: flex;
-      
+      margin:auto;
+      padding-right:200px;
       .logo {
         height: auto;
         margin-left: 13%;
@@ -57,7 +58,10 @@
       }
     }
     .menu {
+      margin:auto;
+      padding-right:300px;
       bottom: 0;
+      white-space: nowrap;
       display: flex;
       flex-wrap: wrap;
       .fas.fa-mouse-pointer{
