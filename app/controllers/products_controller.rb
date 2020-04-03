@@ -207,6 +207,7 @@ class ProductsController < ApplicationController
   end
 
   private
+
   def sold_products_record
     # 取引された商品のIDを配列で取得
     @sold_product_ids = TransactionRecord.pluck(:product_id)
@@ -217,12 +218,12 @@ class ProductsController < ApplicationController
     # 取引された商品のカテゴリIDを取得
     sold_category_ids = @sold_products_record.pluck(:category_id)
     # sold_category_idsをルートIDに変換(メソッドはcategoryモデルに記載)
-    category_root_ids = Category.conversion_root_ids(sold_category_ids)
+    Category.conversion_root_ids(sold_category_ids)
   end
 
   def top4(duplicate_ids)
     # 配列の重複数を計算。多い順にハッシュに格納
-    duplicate_id_ranks = duplicate_ids.group_by(&:itself).map{ |id, i| [id, i.count] }.sort_by{ |id, total| total }.reverse.to_h
-    top4_ids = duplicate_id_ranks.keys[0..3]
+    duplicate_id_ranks = duplicate_ids.group_by(&:itself).map { |id, i| [id, i.count] }.sort_by { |_id, total| total }.reverse.to_h
+    duplicate_id_ranks.keys[0..3]
   end
 end
