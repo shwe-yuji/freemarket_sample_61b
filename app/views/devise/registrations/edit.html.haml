@@ -1,6 +1,7 @@
 - content_for(:title){@title}
 .header 
   = render 'products/header'
+  = render 'breadcrumb'
 .mypage-wrapper
   = render 'users/mypage_links'
   .edit-area
@@ -13,7 +14,7 @@
             %input.edit-area__mypage__user-icon__detail--name{placeholder: '例）AYA#セール中'} 
     
       .edit-area__mypage__tabs
-        %textarea.edit-area__mypage__tabsclass{placeholder: '例）こんにちは⭐︎ご覧いただきありがとうございますご覧いただきありがとうございます！可愛いものや綺麗めオフィスカジュアル中心に出品しています。気持ちよく取引できるよう心がけていますので、出品や配送方法など質問がございましたらお気軽にどうぞ♪'}
+        %textarea.edit-area__mypage__tabsclass{placeholder: '例）こんにちは⭐︎ご覧いただきありがとうございます！可愛いものや綺麗めオフィスカジュアル中心に出品しています。気持ちよく取引できるよう心がけていますので、出品や配送方法など質問がございましたらお気軽にどうぞ♪'}
         .edit-area__mypage__tabs__tab 
           = link_to '#' do
             変更する

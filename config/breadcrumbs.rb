@@ -66,3 +66,8 @@ crumb :mypage_listing do |pagename|
   link pagename
   parent :mypage
 end
+
+crumb :profile do
+  link "プロフィール"
+  parent :root
+end
