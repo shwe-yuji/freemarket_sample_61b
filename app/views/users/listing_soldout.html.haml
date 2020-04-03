@@ -1,0 +1,34 @@
+- content_for(:title){@title + @title_end}
+.header
+  = render 'products/header'
+  = render "breadcrumb"
+
+.mypage-wrapper
+  = render 'users/mypage_links'
+
+  .mypage-content-edit
+    .main-area__products
+      .main-area__products__title 売却した商品
+      %ul.main-area__products__tabs
+        %li.main-area__products__tabs__not-selected
+          = link_to "出品中", user_listing_sale_path(current_user.id), class: :tabs
+        %li.main-area__products__tabs__not-selected
+          = link_to "取引中", user_listing_trade_path(current_user.id), class: :tabs
+        %li.main-area__products__tabs__selecting
+          = link_to "売却済", user_listing_soldout_path(current_user.id), class: :tabs
+
+      = render partial: "listing_product", collection: @products_soldout.limit(10) , as: :product
+
+      .mypage-history
+        = link_to '#', class: 'pager-prev&pager-cell' do
+          .icon_arrow
+            .icon-arrow-left
+              =icon("fas", "chevron-left")
+            .icon-arrow-right
+              =icon("fas", "chevron-right")
+.footer
+  = render 'products/cameraicon'
+  = render "products/footer"
+
+
+

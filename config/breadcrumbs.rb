@@ -48,3 +48,21 @@ crumb :select_brand_category do |brand, category|
   link category.value
   parent :brand_all
 end
+
+# マイページへ遷移
+crumb :mypage do
+  link "マイページ", user_path(current_user)
+  parent :root
+end
+
+# 本人情報の登録画面
+crumb :user_edit do
+  link "本人情報の登録"
+  parent :mypage
+end
+
+# 出品した商品の一覧画面(出品中・取引中・売却済み)
+crumb :mypage_listing do |pagename|
+  link pagename
+  parent :mypage
+end

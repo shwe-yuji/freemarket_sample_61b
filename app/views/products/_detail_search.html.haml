@@ -1,42 +1,76 @@
 .detail-search
   = form_with(model: @products, url: products_search_path, class: 'detail-search__list-change') do |f|
-    = f.select :condition_id, @list_change, {include_blank: '並び替え'}
+    = f.select :list_change, @list_change, {include_blank: '並び替え'}, class: 'pull-down'
 
   .detail-search__box
     .detail-search__box__title 詳細検索
-    = form_with(model: @products, url: products_search_path, method: :get, local: :true, class: 'detail-search__box__form') do |f|
+    = form_with(model: @products, url: products_detail_search_path, method: :get, local: :true, class: 'detail-search__box__form') do |f|
+      .detail-search__box__form__icon-label
+        = icon('fas', 'plus', class: 'detail-search__box__form__icon-label--icon')
+        = f.label :'キーワードを追加する', class: 'detail-search__box__form__icon-label--label'
+      - if action_name == 'search'
+        = f.text_field :detail_search_word, value: @search_word, class: 'input-field'
+      - elsif action_name == 'detail_search'
+        = f.text_field :detail_search_word, value: @detail_search_word, class: 'input-field'
 
-      = f.label :'キーワードを追加する'
-      = f.text_field :name, placeholder: params[:search_word]
+      .detail-search__box__form__icon-label
+        = icon('fas', 'list', class: 'detail-search__box__form__icon-label--icon')
+        = f.label :'カテゴリーを選択する', class: 'detail-search__box__form__icon-label--label'
+      = f.collection_select :category_id, Category.all, :id, :value, {prompt: "すべて"}, class: 'pull-down'
+      
+      .detail-search__box__form__icon-label
+        = icon('fas', 'tag', class: 'detail-search__box__form__icon-label--icon')
+        = f.label :'ブランド名から探す', class: 'detail-search__box__form__icon-label--label'
+      = f.text_field :brand_name, placeholder: '例）シャネル', class: 'input-field'
 
-      = f.label :'カテゴリーを選択する'
-      = f.collection_select :category_id, Category.all, :id, :value, {prompt: "すべて"}
+      .detail-search__box__form__icon-label
+        = icon('far', 'square', class: 'detail-search__box__form__icon-label--icon')
+        = f.label :'サイズを指定する', class: 'detail-search__box__form__icon-label--label'
+      = f.collection_select :size_id, Size.all, :id, :value, {prompt: "すべて"}, class: 'pull-down'
 
-      = f.label :'ブランド名から探す'
-      = f.text_field :nickname, placeholder: '例）シャネル'
+      .detail-search__box__form__icon-label
+        = icon('fas', 'coins', class: 'detail-search__box__form__icon-label--icon')
+        = f.label :'価格', class: 'detail-search__box__form__icon-label--label'
+      = f.select :price , @price_list, {include_blank: '選択してください'}, class: 'pull-down'
+      .detail-search__box__form__price-area
+        = f.number_field :min_price, placeholder: '¥Min', class: 'price-input'
+        = '~'
+        = f.number_field :max_price, placeholder: '¥Max', class: 'price-input'
+  
+      .detail-search__box__form__icon-label
+        = icon('fas', 'star', class: 'detail-search__box__form__icon-label--icon')
+        = f.label :'商品の状態', class: 'detail-search__box__form__icon-label--label'
 
-      = f.label :'サイズを指定する'
-      = f.collection_select :size_id, Size.all, :id, :value, {prompt: "すべて"} 
+      .detail-search__box__form__checkbox-label
+        = check_box_tag :condition_all
+        = label_tag :'すべて'
+        = f.collection_check_boxes :condition_id, Condition.all, :id, :value do |b|
+          .select_boxes
+          = b.check_box
+          = b.label
 
-      = f.label :'価格'
-      = f.select :price , @price_list, {include_blank: '選択してください'} 
-      = f.number_field :min_price, placeholder: '¥Min'
-      = f.number_field :max_price, placeholder: '¥Max'
+      .detail-search__box__form__icon-label
+        = icon('fas', 'truck', class: 'detail-search__box__form__icon-label--icon')
+        = f.label :'配送料の負担', class: 'detail-search__box__form__icon-label--label'
+      .detail-search__box__form__checkbox-label
+        = check_box_tag :delivery_expense_all
+        = label_tag :'すべて'
+        = f.collection_check_boxes :delivery_expense_id, DeliveryExpense.all, :id, :value do |b|
+          .select_boxes
+          = b.check_box
+          = b.label
 
-      = f.label :'商品の状態'
-      = f.collection_check_boxes :condition_id, Condition.all, :id, :value
-      = check_box_tag :condition_all
-      = label_tag :'すべて'
+      .detail-search__box__form__icon-label
+        = icon('fas', 'shopping-cart', class: 'detail-search__box__form__icon-label--icon')
+        = f.label :'販売状況', class: 'detail-search__box__form__icon-label--label'
+      .detail-search__box__form__checkbox-label
+        = check_box_tag :status_all
+        = label_tag :'すべて'
+        = f.collection_check_boxes :status_id, Status.all, :id, :value do |b|
+          .select_boxes
+          = b.check_box
+          = b.label
 
-      = f.label :'配送料の負担'
-      = f.collection_check_boxes :delivery_expence_id, DeliveryExpense.all, :id, :value, {prompt: "すべて"}
-      = check_box_tag :delivery_expence_all
-      = label_tag :'すべて'
-
-      = f.label :'販売状況'
-      = f.collection_check_boxes :status_id, Status.all, :id, :value
-      = check_box_tag :status_all
-      = label_tag :'すべて'
-
-      = button_tag  :'クリア'
-      = f.submit value: '完了'
+      .detail-search__box__form__submit-area
+        = button_tag  :'クリア', class: 'detail-search__box__form__submit-area--reset'
+        = f.submit value: '完了', class: 'detail-search__box__form__submit-area--submit'

@@ -5,4 +5,12 @@ class Size < ActiveHash::Base
       {id: 7, value: '2XL(3L)'}, {id: 8, value: '3XL(4L)'}, {id: 9, value: '4XL(5L)以上'},
       {id: 10, value: 'FREE SIZE'}, {id: 11, value: 'サイズなし'}
   ]
+  
+  def self.get_size(size_id)
+    if size_id == ""
+      (1..Size.all.length).to_a
+    else
+      size_id
+    end
+  end 
 end

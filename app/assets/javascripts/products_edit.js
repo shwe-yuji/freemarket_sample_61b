@@ -1,4 +1,10 @@
 $(document).on('turbolinks:load', function(){
+  // 詳細検索時にカテゴリーを選択するとajaxが動く為、検索時のみajaxを停止させる
+  var path = location.pathname
+  if (path == '/products/detail_search' || path == '/products/search') {
+    return false;
+  }
+  
   $(function(){
     // カテゴリーセレクトボックスのオプションを作成
     function appendOption(category){
@@ -187,6 +193,19 @@ $(document).on('turbolinks:load', function(){
       });
     } else {
       $(".sell-area__delivery__way").remove();
+    }
+  });
+  $(document).on("keyup", "#price", function() { // 数値入力する度にイベント発火
+    var data = $('#price').val();  // val()でフォームのvalueを取得(数値)
+    var profit = Math.round(data * 0.9);  // 手数料計算を行う dataにかけているのが0.9なのは単に引きたい手数料が10%のため
+    var fee = (data - profit);    // 入力した数値から計算結果(profit)を引く それが手数料となる
+    $(".sell-area__selling__commission--right").html(fee.toLocaleString()); //  手数料の表示 html()は追加ではなく､上書き｡入力値が変わる度に表示も変わるようにする
+    $('.sell-area__selling__commission--right').prepend('¥');
+    $(".code").html(profit.toLocaleString());
+    $('.code').prepend('¥');
+    if(profit == '') {   // もし､計算結果が''なら表示も元に戻す
+    $('.sell-area__selling__commission--right').html('-');
+    $('.code').html('-');
     }
   });
 });

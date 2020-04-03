@@ -13,18 +13,77 @@
 
     &__list-change {
       height: 80px;
+      
+      .pull-down {
+        @include pull-down-list-change;
+      }
     }
 
     &__box {
       background-color: #ffffff;
 
       &__title {
-      font-weight: bold;
+        font-weight: bold;
+        padding: 10px 0 0 10px; 
       }
 
       &__form {
-      display: flex;
-      flex-direction: column;
+        display: flex;
+        flex-direction: column;
+
+        &__icon-label {
+          padding: 30px 0 0 20px;
+
+          &--icon {
+            color: $gray_text;
+          }
+          &--label {
+            @include search-form-label
+          }
+        }
+        
+        &__checkbox-label {
+          padding: 5px 0 0 20px;
+
+        }
+
+        .input-field {
+          @include input-field;
+        }
+        .pull-down {
+          @include pull-down;
+        }
+        
+        &__price-area {
+          display: flex;
+          margin-top: 5px;
+
+          .price-input {
+            width: 30%;
+            height: 40px;
+            margin: 0 auto;
+            border-radius: 2px;
+            border: 1px  solid $gray_text;
+            font-size: 15px;
+            padding-left: 8px;
+          }
+        }
+
+        &__submit-area {
+          display: flex;
+          justify-content: space-evenly;
+          padding: 20px 0 10px 0;
+
+          &--reset {
+            @include search-btn;
+            background-color: $gray_text;
+          }
+
+          &--submit {
+            @include search-btn;
+            background-color: $btn-color;
+          }
+        }
       }
     }
   }

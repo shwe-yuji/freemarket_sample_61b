@@ -22,6 +22,7 @@ class CreditCardsController < ApplicationController
      @transaction = TransactionRecord.new(product_id: params[:id], user_id: current_user.id) 
 
       if !judge_sale_or_soldout && @transaction.save
+        @product.update(status_id: '4')
         flash[:notice] = '購入しました。'
         redirect_to done_product_path(@product), method: :get
       else

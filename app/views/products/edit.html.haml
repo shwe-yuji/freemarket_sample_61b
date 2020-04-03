@@ -1,4 +1,4 @@
-- content_for(:title, '商品の情報を入力 - メルカリ スマホでかんたん フリマアプリ')
+- content_for(:title, @title)
 .wrapper
   = render "products/logo-header"
 = form_with model: @product, url: "/products/1", method: :patch,local: true, class: "sell-area__container" do |f|
@@ -101,7 +101,7 @@
             .code -
     .sell-area__box
       = f.submit "変更する",class:"sell-area__box__button--red-change"
-      = link_to user_listing_path(current_user), class: "product-show" do
+      = link_to user_listing_sale_path(current_user.id), class: "product-show" do
         %button.sell-area__box__button--gray-change{type: "button"}
           キャンセル
     = render "products/logo-footer"
