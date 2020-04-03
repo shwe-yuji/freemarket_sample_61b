@@ -1,5 +1,5 @@
 # 取引済みの商品100レコード
-100.times do |n|
+100.times do |_n|
   Product.create(
     user_id: Faker::Number.within(range: 1..2),
     name: Faker::Name.product_name,
@@ -11,14 +11,14 @@
     delivery_method_id: Faker::Number.within(range: 1..9),
     area_id: Faker::Number.within(range: 1..47),
     shipdate_id: Faker::Number.within(range: 1..3),
-    price: Faker::Number.within(range: 300..60000),
+    price: Faker::Number.within(range: 300..60_000),
     brand_id: Faker::Number.within(range: 1..30),
     category_id: Faker::Number.within(range: 72..300)
   )
 end
 
 # 未取引の商品100レコード
-100.times do |n|
+100.times do |_n|
   Product.create(
     user_id: Faker::Number.within(range: 1..2),
     name: Faker::Name.product_name,
@@ -30,7 +30,7 @@ end
     delivery_method_id: Faker::Number.within(range: 1..9),
     area_id: Faker::Number.within(range: 1..47),
     shipdate_id: Faker::Number.within(range: 1..3),
-    price: Faker::Number.within(range: 300..60000),
+    price: Faker::Number.within(range: 300..60_000),
     brand_id: Faker::Number.within(range: 1..30),
     category_id: Faker::Number.within(range: 72..300)
   )
