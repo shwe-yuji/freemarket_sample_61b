@@ -1,5 +1,7 @@
 $(document).on('turbolinks:load', function(){ 
-  var image_ctn = 0;
+  var previews = $('.preview');
+  var image_ctn = (0 + previews.length);
+
   var camera_icon = $('i.fas.fa-camera.camera-icon-1');
   const buildInputArea = function(){
     var html = `<label class="sell-area__dropbox__another__img">

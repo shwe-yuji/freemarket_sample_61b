@@ -1,9 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show,:destroy]
+  before_action :set_product, only: [:show, :destroy, :edit, :update]
   before_action :set_pulldown, only: [:search, :detail_search]
   before_action :set_search_word, only: [:search, :detail_search]
   before_action :authenticate_user!, only: [:new]
   before_action :sold_products_record, only: [:index]
+  before_action :title_word
 
   def index
     # トップページに表示する未取引の商品のレコードを取得(商品数が少ないためロジックはコメントアウト)
@@ -15,6 +16,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @title = @title_first + Product.find(params[:id]).name
     # 商品数カウント
     @product_count=Product.includes(:photos).count()
     # 出品者の商品から最新6件取得
@@ -24,6 +26,7 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @title = "出品" + @title_end + " " + @title_introduction
     @product = Product.new
     @product.photos.new
     @product.build_brand
@@ -40,11 +43,23 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @title = "商品の編集" + @title_end + " " + @title_introduction
     @delivery_method =  get_delivery_method
-    @product = Product.includes(:photos).find(params[:id])
+    @photos = Photo.where(product_id: @product.id).order("id ASC")
+    @upper_photos = @photos.limit(5)
+    @down_photos = Photo.where(product_id: @product.id).order("id DESC").limit(@photos.length - 5)
   end
 
   def update
+    product = Product.new(product_params)
+    if @product.user_id == current_user.id
+      @product.update(product_update_params)
+      redirect_to product_path, notice: "商品情報を更新しました"
+    else
+      @photos = Photo.where(product_id: @product.id)
+      flash.now[:alert] = "商品情報の更新に失敗しました"
+      render :edit
+    end
   end
 
   def destroy
@@ -57,6 +72,7 @@ class ProductsController < ApplicationController
   end
 
   def search
+    @title = @search_word + @title_introduction_other
     #検索ワード入力時、スペースを半角スペースに変換して、splitメソッドで検索ワードを配列に格納
     @search_words = @search_word.gsub(/[[:blank:]]/, " ").split(" ")
     @search_words.each do |search_word|
@@ -67,6 +83,7 @@ class ProductsController < ApplicationController
   end
 
   def detail_search
+    @title = "商品検索結果【Fmarket】No.2フリマアプリ"
     # # カテゴリー検索 get_categoryはcategory.rbに定義
     selected_category_id = params[:category_id].to_i
     category_ids = Category.get_category(selected_category_id)
@@ -146,6 +163,20 @@ class ProductsController < ApplicationController
                                     :delivery_expense_id, :delivery_method_id, :area_id,
                                     :shipdate_id, :price, :status_id, photos_attributes: [:photo],
                                     brand_attributes: [:name]).merge(user_id: current_user.id)
+  end
+
+  def product_update_params
+    params.require(:product).permit(:name, 
+                                    :description,
+                                    :size_id,
+                                    :category_id,
+                                    :condition_id,
+                                    :delivery_expense_id,
+                                    :delivery_method_id,
+                                    :area_id,
+                                    :shipdate_id,
+                                    :price,
+                                    photos_attributes: [:photo, :_destroy, :id])
   end
 
   def set_pulldown

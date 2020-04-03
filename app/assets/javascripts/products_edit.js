@@ -4,6 +4,17 @@ $(document).on('turbolinks:load', function(){
   if (path == '/products/detail_search' || path == '/products/search') {
     return false;
   }
+  // 未入力項目あると、アラートが出る
+  $(document).on("click", '.sell-area__box__button--red-change', function(){
+    var select_forms = $('select');
+    var check_size = $('#product_size_id').val();
+    var check_delivery_method = $('#product_delivery_method_id').val();
+    if (select_forms.length != 9 || check_size == "" || check_delivery_method == "") {
+      alert("未入力の項目があります");
+      return false;
+    }
+  })
+ 
   
   $(function(){
     // カテゴリーセレクトボックスのオプションを作成

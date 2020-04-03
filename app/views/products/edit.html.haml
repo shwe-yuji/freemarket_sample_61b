@@ -1,7 +1,7 @@
-- content_for(:title, '商品の情報を入力 - メルカリ スマホでかんたん フリマアプリ')
+- content_for(:title, @title)
 .wrapper
   = render "products/logo-header"
-= form_with model: @product, url: "/products/1", method: :patch,local: true, class: "sell-area__container" do |f|
+= form_with model: @product, url: user_product_path, local: true, class: "sell-area__container" do |f|
   .sell-area
     .sell-area__title 
       商品の情報を入力
@@ -12,20 +12,27 @@
       %p.sell-area__text
         最大10枚までアップロードできます
       .sell-area__dropbox
-        .sell-area__dropbox-now
-          = image_tag "test.png", size: "90x100"
-          .sell-area__dxropbox-function
-            .sell-area__dropbox-edit-function
-              =link_to "#", class: "form-edit" do
-                編集
-            .sell-area__dropbox-delete-function
-              =link_to "#", class: "form-delete" do
-                削除
-        %label.sell-area__dropbox__img-change
-          %p.sell-area__dropbox__img--text ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+        %label.sell-area__dropbox__img
+          - @upper_photos.each_with_index do |photo, i|
+            .preview
+              .preview__img
+                = image_tag photo.photo.url, size: '100x100'
+              .preview__button
+                .preview__delete 削除する
+              = f.file_field :photo ,class: 'photo-input', name: "product[photos_attributes][#{i}][photo]", id: "product_photos_attributes_#{i}_photo"
           = f.fields_for :photos do |i|
             = i.file_field :photo ,class: 'photo-input'
-
+        - if @photos.length >= 6  
+          %label.sell-area__dropbox__another__img
+            - @down_photos.each_with_index do |photo, i|
+              .preview
+                .preview__img
+                  = image_tag photo.photo.url, size: '100x100'
+                .preview__button
+                  .preview__delete 削除する
+                = f.file_field :photo ,class: 'photo-input-another', name: "product[photos_attributes][#{i + 5}][photo]", id: "product_photos_attributes_#{i + 5}_photo"
+            = f.fields_for :photos do |i|
+              = i.file_field :photo ,class: 'photo-input-another'
     .sell-area__content
       %h3.sell-area__name
         商品名
@@ -45,12 +52,6 @@
           = f.collection_select :category_id, Category.all.limit(13), :id, :value, {prompt: "---"}, class: "sell-area__details__main-category__default"
       -# カテゴリの出現場所
       .category__append
-      .sell-area__details__brand
-        ブランド  
-        %span.form-any 任意
-        .sell-area__details__status__select
-        = f.fields_for :brand do |i|
-          = i.text_field :name , class: "sell-area__details__brand__default"
       .sell-area__details__status
         商品の状態
         %span.form-require 必須
