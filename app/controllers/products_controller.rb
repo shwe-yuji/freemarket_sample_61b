@@ -3,23 +3,15 @@ class ProductsController < ApplicationController
   before_action :set_pulldown, only: [:search, :detail_search]
   before_action :set_search_word, only: [:search, :detail_search]
   before_action :authenticate_user!, only: [:new]
-
+  before_action :sold_products_record, only: [:index]
 
   def index
-
-    sold_product_ids = TransactionRecord.pluck(:product_id)
-    # 取引先済みの商品中のカテゴリ・ブランド数上位４つのレコードをインスタンス変数に代入
-    @popular_categories = Product.includes(:category).where(id: sold_product_ids).group(:category_id).order('count(category_id) DESC').limit(4)
-    @popular_brands = Product.includes(:brand).where(id: sold_product_ids).group(:brand_id).order('count(brand_id) DESC').limit(4)
-    # 出品数が多いカテゴリとブランドのidを配列で取得(現在はcategory_idsと@popular_categories.pluck(:category_id)で別の値が出力されます。改善できないため一部仮仕様で実装します)
-    # category_ids = @popular_categories.pluck(:category_id)
-    brand_ids = @popular_brands.pluck(:brand_id)
-    # 人気のカテゴリとブランドの商品を新着順にインスタンス変数に代入(予定。※取引済みの商品も含む)
-    # @popular_categories_products = Product.includes(:photos).where(category_id: category_ids).order('created_at DESC')
-    @popular_brands_products = Product.includes(:photos).where(brand_id: brand_ids).order('created_at DESC')
-
-    # 新着順に商品をインスタンス変数に代入
-    @popular_categories_products = Product.includes(:photos).order('created_at DESC')
+    # トップページに表示する未取引の商品のレコードを取得(商品数が少ないためロジックはコメントアウト)
+    # @not_sold_products = Product.includes(:photos).where.not(id: @sold_product_ids)
+    @products = Product.includes(:photos)
+    # 人気の４カテゴリとブランドのレコードを取得(※レコードの順番は人気順ではないことに注意)
+    @popular_categories = Category.where(id: top4(category_root_ids))
+    @popular_brands = Brand.where(id: top4(@sold_products_record.pluck(:brand_id)))
   end
 
   def show
@@ -30,8 +22,6 @@ class ProductsController < ApplicationController
     # クリックされた商品名と同じものを取得
     @same_name_products = Product.includes(:photos).where('name like ?',"%#{@product.name}%").limit(6)
   end
-
-
 
   def new
     @product = Product.new
@@ -52,8 +42,6 @@ class ProductsController < ApplicationController
   def edit
     @delivery_method =  get_delivery_method
     @product = Product.includes(:photos).find(params[:id])
-    
-
   end
 
   def update
@@ -185,5 +173,26 @@ class ProductsController < ApplicationController
       @search_word = params[:search_word]
     end
     @detail_search_word = params[:detail_search_word]
+  end
+
+  private
+
+  def sold_products_record
+    # 取引された商品のIDを配列で取得
+    @sold_product_ids = TransactionRecord.pluck(:product_id)
+    @sold_products_record = Product.where(id: @sold_product_ids)
+  end
+  
+  def category_root_ids
+    # 取引された商品のカテゴリIDを取得
+    sold_category_ids = @sold_products_record.pluck(:category_id)
+    # sold_category_idsをルートIDに変換(メソッドはcategoryモデルに記載)
+    category_root_ids = Category.conversion_root_ids(sold_category_ids)
+  end
+
+  def top4(duplicate_ids)
+    # 配列の重複数を計算。多い順にハッシュに格納
+    duplicate_id_ranks = duplicate_ids.group_by(&:itself).map{ |id, i| [id, i.count] }.sort_by{ |id, total| total }.reverse.to_h
+    top4_ids = duplicate_id_ranks.keys[0..3]
   end
 end
