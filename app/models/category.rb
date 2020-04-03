@@ -17,6 +17,6 @@ class Category < ApplicationRecord
     refine_categories.each do |category|
       root_ids << category.root_id
     end
-    return root_ids
+    root_ids
   end
 end
