@@ -36,7 +36,7 @@
             = category.value
             新着アイテム
           .products__main--more
-            = link_to "もっと見る >", "#"
+            = link_to "もっと見る >", category_path(category.id)
           .products__main--list
             -# 該当カテゴリ(以下)の未取引の新着アイテムを表示(商品の数が少ないため、現在はコメントアウト)
             -# = render partial: "list", collection: @not_sold_products.where(category_id: category.subtree_ids).order('id DESC').limit(10), as: :product
@@ -58,7 +58,7 @@
             = brand.name
             新着アイテム
           .products__main--more
-            = link_to "もっと見る >", "#"
+            = link_to "もっと見る >", brand_path(brand.id)
           .products__main--list
             -# 該当ブランドの未取引の新着アイテムを表示(商品の数が少ないため、現在はコメントアウト)
             -# = render partial: "list", collection: @not_sold_products.where(brand_id: brand.id).order('id DESC').limit(10), as: :product
