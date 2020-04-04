@@ -1,5 +1,5 @@
 
-@media screen and (min-width: 1068px) {
+@media screen and (min-width: 1260px) {
 display: none !important;
 .shop_background{
   width:100%;
@@ -22,10 +22,12 @@ display: none !important;
 
       .item_contents{
         display: flex;
-        flex-wrap: wrap;
+        flex:wrap;
+        justify-content:center;
+
         .item_photo{
           img{
-            margin:20px 0 0 140px;
+            margin:20px 0 0 3%;
           }
           .soldout{
             color:white;
@@ -39,7 +41,8 @@ display: none !important;
           }
           .other_photo{
             display:block;
-            width:500px;
+            width:300px;
+
             img{
               height:80px;
               width:80px;
@@ -51,7 +54,7 @@ display: none !important;
         .seller_table{
           border-collapse: collapse;
           border: 1px solid #f5f5f5;
-          margin:20px 0 0 60px;
+          margin:20px 0 0 90px;
           float: right;
           .itembuy-user-ratings{
             display: inline-block;
@@ -103,7 +106,8 @@ display: none !important;
 
         .item_price{
           text-align: center;
-          margin:50px 0 0 60px;
+          margin:auto;
+          width:60%;
           .price{
             display: flex;
             flex-wrap: wrap;
@@ -127,7 +131,7 @@ display: none !important;
                 background-color: gray;
                 height:70px;
                 width:680px;
-                margin-left: 85px;
+                margin: auto;
                 margin-top:10px;
                 a{
                   @include button-a;
@@ -171,11 +175,11 @@ display: none !important;
         .itembuy-review{
           padding-bottom:5%;
           margin-top: 16px;
-          margin-left: 10%;
+          margin:auto;
           display: flex;
           flex-wrap: wrap;
           border-radius: 40px;
-          width: 100%;
+          width: 80%;
           &__left{
             float: left;
           }
@@ -252,7 +256,7 @@ display: none !important;
           font-size: 18px;
         }
         .text{
-          width:750px;
+          width:100%;
           height:200px;
         }
       }
@@ -278,12 +282,14 @@ display: none !important;
       background-color: white;
       width: 70%;
       height:100px;
-      margin:2% 0 0 16%;
+      margin:auto;
       padding: 5% 0;
+
       .sns{
+        display: inline-block;
         display: flex;
         flex-wrap: wrap;
-        margin-left:37%; 
+        margin-left:42%; 
         .facebook{
           padding-left: 10ox;
           img {
@@ -415,18 +421,22 @@ display: none !important;
 
       .item_name{
         text-align: center;
+        margin:auto;
         font-size:27px;
       }
 
       .item_contents{
         display: flex;
         flex: wrap;
+        margin-left:150;
         .item_photo{
           img{
-            margin:20px 0 0 140px;
+            flex-direction: row;
+            margin:20px 0 0 120px;
           }
           .item_otherphoto{
             img{
+              flex-direction: row;
               margin:10px 0 0 140px;
             }
           }
@@ -484,8 +494,8 @@ display: none !important;
         padding: 32px 0;
         line-height: 1.5;
         font-size: 18px;
-        width:680px;
-        margin-left: 15.5%;
+        width:60%;
+        margin: auto;
         &__inner{
           white-space: pre-wrap;
         }
@@ -493,7 +503,8 @@ display: none !important;
 
         .item_price{
           text-align: center;
-          margin:50px 0 0 60px;
+          margin:auto;
+          width:65%;
           .price{
             display: flex;
             margin-left: 28%;
@@ -514,7 +525,7 @@ display: none !important;
               background-color:#DD0000;
               height:70px;
               width:680px;
-              margin-left: 85px;
+              margin: auto;
               margin-top:10px;
 
               a{
@@ -554,11 +565,11 @@ display: none !important;
         .itembuy-review{
           padding-bottom:5%;
           margin-top: 16px;
-          margin-left: 11%;
+          margin:auto;
           display: flex;
           flex:wrap;
           border-radius: 40px;
-          width: 100%;
+          width: 60%;
           &__left{
             float: left;
           }
@@ -598,7 +609,6 @@ display: none !important;
           }
 
           .fas.fa-shopping-bag{
-            margin-left: 140px;
             padding-top: 8px;
             color:#00BFFF;
             text-decoration:none;

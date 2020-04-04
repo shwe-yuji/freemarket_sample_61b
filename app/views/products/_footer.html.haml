@@ -2,21 +2,22 @@
   .main-footer_contents
     .text
       .text1
-        = 'スマホで簡単フリマアプリ'
-      .text2  
-        = '今すぐ無料ダウンロード！'
-        .footer_logo
-          .fmarket_logo
-            = link_to products_path do
-              = image_tag("logo_red.png")
-          .apple
-            = link_to products_path do
-              = image_tag("apple.png")
-          .google
-            = link_to products_path do
-              = image_tag("Gplay.png")
-    .smapho
-      = image_tag("smapho.png")
+        %span
+          スマホで簡単フリマアプリ
+          %p
+            今すぐ無料ダウンロード！
+          .footer_logo
+            .fmarket_logo
+              = link_to products_path do
+                = image_tag("logo_red.png")
+            .apple
+              = link_to products_path do
+                = image_tag("apple.png")
+            .google
+              = link_to products_path do
+                = image_tag("Gplay.png")
+      .smapho
+        = image_tag("smapho.png")
 
   .under-footer_contents
     .under_contents
