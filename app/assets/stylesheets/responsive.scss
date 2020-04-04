@@ -1,6 +1,6 @@
 
 // header 1068px以下 
-@media screen and (max-width: 1240px) {
+@media screen and (min-width:830px) and (max-width: 1240px) {
   .main-header  {
     position: fixed;
     background-color: rgb(255, 255, 255);
@@ -10,7 +10,7 @@
     display: grid;
     .main-header__contents {
       display: flex;
-      padding-right:200px;
+
     .logo {
       height: auto;
       margin-left: 40px;
@@ -38,6 +38,115 @@
       position: absolute;
       top: 35px;
       right: 95px;
+
+      &__submit {
+        background-color: #eeeeee;
+        border: 1px solid #eeeeee;
+        font-size: 16px;
+        outline: none;
+      }
+    }
+    // label{
+    //   position: absolute;
+    //   top:106px;
+    //   left:440px;
+    //   i{
+    //     font-size: inherit;
+    //     display: inline-block;
+    //   }
+    // }
+    .menu{
+      display: flex;
+      flex-wrap: wrap;
+      .fas.fa-mouse-pointer{
+        margin:10px 10px 15px 40px;
+      }
+      .category {
+        margin:10px 25px 0 0;
+
+      }
+
+      .fas.fa-tag {
+        margin: 10px 10px 0 0;
+      }
+      .brand {
+        margin: 10px 20px 0 0;
+      }
+
+      .fas.fa-heart {
+        margin: 10px 0 0 150px;
+      }
+      .nice {
+        margin: 10px 0 0 5px;
+      }
+
+      .fas.fa-bell {
+        margin: 10px 5px 0 45px;
+      }
+      .information {
+        margin: 10px 0 0 0;
+      }
+
+      .fas.fa-check {
+        margin: 10px 0 0 45px;
+      }
+
+      .todo {
+        margin: 10px 0 0 0;
+      }
+
+      .fas.fa-user {
+        margin: 10px 0 0 45px;
+      }
+      .mypage {
+        margin: 10px 0 0 0;
+      }
+
+      .login{
+        width:340px;
+        margin:7px 15px 0 40px;
+      }
+    }
+  }
+}
+}
+  }
+}
+
+
+// header 1068px以下 
+@media screen and (max-width: 800px) {
+  .main-header  {
+    position: fixed;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    position: relative;
+    z-index: 3;
+    display: grid;
+    .main-header__contents {
+    .logo {
+      height: auto;
+    }
+    .search{
+      .box{
+        width:550px;
+        position: relative;
+    .header-search-form {
+      background-color: #eeeeee;
+      height:25px;
+      line-height: 1.4em;
+      width:300px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(204, 204, 204);
+      padding-right:50px; 
+      border-radius: 4px;
+      outline: none;
+    }
+    .search-form-button {
+      position: absolute;
+      top: 1px;
+      right: 215px;
 
       &__submit {
         background-color: #eeeeee;
@@ -1336,6 +1445,9 @@
   @media screen and (max-width: 1068px) {
   .width-container {
     width: 700px;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
     .page-title {
       padding: 8px 0;
       h2 {
@@ -1437,6 +1549,7 @@
 @media screen and (max-width: 1260px) {
   .category-index {
     width: 700px;
+    margin: 40px auto;
   }
   
     .category__title {
@@ -1515,3 +1628,31 @@
         }
     }
   }
+
+  @media screen and (max-width: 1260px) {
+  .breadcrumb {
+    z-index: 3;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    background-color: white;
+    border-top: 1px solid #eee;
+    height: 49px;
+
+  
+    &__list {
+      display: inline-block;
+      display: flex;
+      font-size: 14px;
+      text-align: center;
+      margin: 0px 210px;
+      padding: 16px 0px;
+        a {
+            color: black;
+            margin-right: 14px;
+        }
+    }
+  }
+  
+  .current {
+    font-weight: bold;
+  }
+}
