@@ -26,3 +26,11 @@ Metrics/LineLength:
 #'frozen_string_literal: true'を無効
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+# https://github.com/rubocop-hq/rubocop/blob/v0.80.1/manual/cops_style.md#styleasciicomments を無効
+Style/AsciiComments:
+  Enabled: false
+
+# https://github.com/rubocop-hq/rubocop/blob/v0.80.1/manual/cops_lint.md#lintuselessaccessmodifier を無効
+Lint/UselessAccessModifier:
+  Enabled: false

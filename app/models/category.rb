@@ -9,4 +9,8 @@ class Category < ApplicationRecord
       Category.find(category_id).subtree_ids
     end
   end
+
+  def self.conversion_root_ids(category_ids)
+    Category.where(id: category_ids).map(&:root_id)
+  end
 end
