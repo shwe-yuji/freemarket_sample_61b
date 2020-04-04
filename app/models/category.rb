@@ -11,12 +11,6 @@ class Category < ApplicationRecord
   end
 
   def self.conversion_root_ids(category_ids)
-    refine_categories = Category.where(id: category_ids)
-    # category_idsをルートIDに変換
-    root_ids = []
-    refine_categories.each do |category|
-      root_ids << category.root_id
-    end
-    root_ids
+    Category.where(id: category_ids).map(&:root_id)
   end
 end
