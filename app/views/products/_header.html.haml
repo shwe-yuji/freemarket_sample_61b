@@ -13,30 +13,32 @@
           -# = f.submit class: 'search-form-submit'
 
   .menu
-    .fas.fa-mouse-pointer
-      = link_to categories_path do
-        カテゴリーから探す
-    .fas.fa-tag
-      = link_to brand_group_path(1) do
-        ブランドから探す
+    .left-menu
+      .fas.fa-mouse-pointer
+        = link_to categories_path do
+          カテゴリーから探す
+      .fas.fa-tag
+        = link_to brand_group_path(1) do
+          ブランドから探す
 
     - if user_signed_in?
-      .sign_box
-      .fas.fa-heart
-        = link_to '#' do
-          いいね！一覧
+      .right-menu
+        .sign_box
+        .fas.fa-heart
+          = link_to '#' do
+            いいね！一覧
 
-      .fas.fa-bell
-        = link_to '#' do
-          お知らせ
-          
-      .fas.fa-check
-        = link_to '#' do
-          やることリスト
+        .fas.fa-bell
+          = link_to '#' do
+            お知らせ
+            
+        .fas.fa-check
+          = link_to '#' do
+            やることリスト
 
-      .fas.fa-user
-        = link_to  user_path(current_user), method: :get do
-          マイページ
+        .fas.fa-user
+          = link_to  user_path(current_user), method: :get do
+            マイページ
     - else
       .login
         = link_to "新規登録", new_user_registration_path

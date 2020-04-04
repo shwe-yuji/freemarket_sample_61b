@@ -16,10 +16,10 @@
     .main-header__contents {
       display: flex;
       margin:auto;
-      padding-right:200px;
+      // padding-right:200px;
       .logo {
         height: auto;
-        margin-left: 13%;
+        // margin-left: 13%;
       }
   
       .search{
@@ -59,53 +59,56 @@
     }
     .menu {
       margin:auto;
-      padding-right:400px;
+      // padding-right:400px;
       bottom: 0;
       white-space: nowrap;
       display: flex;
       flex-wrap: wrap;
-      .fas.fa-mouse-pointer{
-        margin:10px 10px 15px 180px;
+      justify-content:space-between;
+      width:60%;
+      .left-menu{
+        display: flex;
+        justify-content: space-evenly;
+        // .fas.fa-mouse-pointer{
+        //   margin-right:10px;
+        // }
       }
+      // }
 
-      .fas.fa-tag {
-        margin: 10px 10px 0 0;
-      }
-
-      .fas.fa-heart {
-        margin-top:10px;
-        position: relative;
-        left:150px;
-      }
+      // .fas.fa-heart {
+      //   margin-top:10px;
+      //   position: relative;
+      //   left:150px;
+      // }
   
-      .fas.fa-bell {
-        margin-top:10px;
-        position: relative;
-        left:170px;
-      }
+      // .fas.fa-bell {
+      //   margin-top:10px;
+      //   position: relative;
+      //   left:170px;
+      // }
   
-      .fas.fa-check {
-        margin-top:10px;
-        position: relative;
-        left:190px;
-      }
+      // .fas.fa-check {
+      //   margin-top:10px;
+      //   position: relative;
+      //   left:190px;
+      // }
   
-      .fas.fa-user {
-        margin-top:10px;
-        position: relative;
-        left:215px;
-      }
+      // .fas.fa-user {
+      //   margin-top:10px;
+      //   position: relative;
+      //   left:215px;
+      // }
   
-      .logout{
-        position: absolute;
-        left:1250px;
-        top:107px;
-      }
-      .login{
-        position: absolute;
-        right:0px;
-        margin: 10px 30px 0 0px;
-      }
+      // .logout{
+      //   position: absolute;
+      //   left:1250px;
+      //   top:107px;
+      // }
+      // .login{
+      //   position: absolute;
+      //   right:0px;
+      //   margin: 10px 30px 0 0px;
+      // }
     }
   }
 }
