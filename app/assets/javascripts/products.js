@@ -105,7 +105,7 @@ $(document).on('turbolinks:load', function(){
                       サイズ
                       <span class="form-require">必須</span>
                         <div class="sell-area__details__size__select">
-                          <select class="sell-area__details__status__default" name="product[size_id]" id="product_size_id">
+                          <select class="sell-area__details__size__default" name="product[size_id]" id="product_size_id">
                             <option value="">---</option>
                             ${insertHTML}
                           <select>
