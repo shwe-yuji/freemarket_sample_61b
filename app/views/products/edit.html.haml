@@ -68,6 +68,11 @@
         .sell-area__delivery__burden__select
           = f.collection_select :delivery_expense_id, DeliveryExpense.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__burden__default"
       .delivery__way__append
+        .sell-area__delivery__way#delivery__method
+          配送の方法
+          %span.form-require 必須
+          .sell-area__delivery__way__select
+            = f.collection_select :delivery_method_id, DeliveryExpense.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__way__default"
       .sell-area__delivery__origin
         発送元の地域
         %span.form-require 必須
