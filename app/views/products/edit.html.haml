@@ -57,6 +57,17 @@
         .sell-area__details__subsub-category
           .sell-area__details__subsub-category__select
             = f.collection_select :category_id, @grandchild_categories, :id, :value, {prompt: "---"}, class: "sell-area__details__subsub-category__default", id: "grandchild_category"
+        .sell-area__details__size
+          サイズ
+          %span.form-require 必須
+          .sell-area__details__size__select
+            = f.collection_select :size_id, Size.all, :id, :value, {prompt: "---"}, class: "sell-area__details__size__default"
+      .sell-area__details__brand
+        ブランド  
+        %span.form-any 任意
+        .sell-area__details__status__select
+        = f.fields_for :brand do |i|
+          = i.text_field :name , class: "sell-area__details__brand__default"
       .sell-area__details__status
         商品の状態
         %span.form-require 必須
