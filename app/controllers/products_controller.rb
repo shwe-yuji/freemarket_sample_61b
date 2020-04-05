@@ -48,6 +48,12 @@ class ProductsController < ApplicationController
     @photos = Photo.where(product_id: @product.id).order("id ASC")
     @upper_photos = @photos.limit(5)
     @down_photos = Photo.where(product_id: @product.id).order("id DESC").limit(@photos.length - 5)
+
+    # カテゴリプルダウンリストの中身
+    @current_category = Category.find(@product.category_id)
+    @root_categories = Category.where(ancestry: nil)
+    @child_categories = @current_category.root.children
+    @grandchild_categories = @current_category.parent.children
   end
 
   def update
