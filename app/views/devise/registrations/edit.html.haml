@@ -4,20 +4,18 @@
   = render 'breadcrumb'
 .mypage-wrapper
   = render 'users/mypage_links'
-  .edit-area
+  =form_with model:@user, url: "#", local: true, class:"edit-area" do |f|
     .edit-area__mypage
       プロフィール
       .edit-area__mypage__user-icon
         .edit-area__mypage__user-icon__detail
-          = link_to "#" do
-            = image_tag "test.png", size: "70x70", class: "main-area__mypage__user-icon__detail--picture"
-            %input.edit-area__mypage__user-icon__detail--name{placeholder: '例）AYA#セール中'} 
-    
+          = image_tag "test.png", size: "70x70", class: "main-area__mypage__user-icon__detail--picture"
+          = f.text_field :nickname, class: "edit-area__mypage__user-icon__detail--name", placeholder: "例）AYA#セール中"
       .edit-area__mypage__tabs
-        %textarea.edit-area__mypage__tabsclass{placeholder: '例）こんにちは⭐︎ご覧いただきありがとうございます！可愛いものや綺麗めオフィスカジュアル中心に出品しています。気持ちよく取引できるよう心がけていますので、出品や配送方法など質問がございましたらお気軽にどうぞ♪'}
+        = f.text_area :profile, class: "edit-area__mypage__tabs__profile", placeholder: "例）こんにちは⭐︎ご覧いただきありがとうございます！可愛いものや綺麗めオフィスカジュアル中心に出品しています。気持ちよく取引できるよう心がけていますので、出品や配送方法など質問がございましたらお気軽にどうぞ♪"
         .edit-area__mypage__tabs__tab 
-          = link_to '#' do
-            変更する
+          -# マークアップの段階ではボタン無効
+          = f.submit "変更する", disabled: true
 .footer
   = render 'products/cameraicon'
   = render 'products/footer'
