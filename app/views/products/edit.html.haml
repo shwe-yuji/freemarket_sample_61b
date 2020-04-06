@@ -37,11 +37,11 @@
       %h3.sell-area__name
         商品名
         %span.form-require  必須
-        = f.text_field :name, placeholder: "商品名（必須 40文字まで)", class: "sell-area__name__form"
+        = f.text_field :name, placeholder: "商品名（必須 40文字まで)", class: "sell-area__name__form", required: true
       %h3.sell-area__description
         商品の説明
         %span.form-require  必須
-        = f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "sell-area__description__textarea"
+        = f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "sell-area__description__textarea", required: true
     .sell-area__details
       %h3.sell-area__details__name
         商品の詳細
@@ -49,19 +49,19 @@
         カテゴリー
         %span.form-require 必須
         .sell-area__details__main-category__select
-          = f.collection_select :category_id, @root_categories, :id, :value, {selected: @current_category.root_id}, class: "sell-area__details__main-category__default"
+          = f.collection_select :category_id, @root_categories, :id, :value, {selected: @current_category.root_id}, class: "sell-area__details__main-category__default", required: true
       .category__append
         .sell-area__details__sub-category
           .sell-area__details__sub-category__select
-            = f.collection_select :category_id, @child_categories, :id, :value, {selected: @current_category.parent_id}, class: "sell-area__details__sub-category__default", id: "child_category"
+            = f.collection_select :category_id, @child_categories, :id, :value, {selected: @current_category.parent_id}, class: "sell-area__details__sub-category__default", id: "child_category", required: true
         .sell-area__details__subsub-category
           .sell-area__details__subsub-category__select
-            = f.collection_select :category_id, @grandchild_categories, :id, :value, {prompt: "---"}, class: "sell-area__details__subsub-category__default", id: "grandchild_category"
+            = f.collection_select :category_id, @grandchild_categories, :id, :value, {prompt: "---"}, class: "sell-area__details__subsub-category__default", id: "grandchild_category", required: true
         .sell-area__details__size
           サイズ
           %span.form-require 必須
           .sell-area__details__size__select
-            = f.collection_select :size_id, Size.all, :id, :value, {prompt: "---"}, class: "sell-area__details__size__default"
+            = f.collection_select :size_id, Size.all, :id, :value, {prompt: "---"}, class: "sell-area__details__size__default", required: true
       .sell-area__details__brand
         ブランド  
         %span.form-any 任意
@@ -72,7 +72,7 @@
         商品の状態
         %span.form-require 必須
         .sell-area__details__status__select
-          = f.collection_select :condition_id, Condition.all, :id, :value, {prompt: "---"}, class: "sell-area__details__status__default"
+          = f.collection_select :condition_id, Condition.all, :id, :value, {prompt: "---"}, class: "sell-area__details__status__default", required: true
     .sell-area__delivery
       %h3.sell-area__delivery__method
         配送について
@@ -82,23 +82,23 @@
         配送料の負担
         %span.form-require 必須
         .sell-area__delivery__burden__select
-          = f.collection_select :delivery_expense_id, DeliveryExpense.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__burden__default"
+          = f.collection_select :delivery_expense_id, DeliveryExpense.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__burden__default", required: true
       .delivery__way__append
         .sell-area__delivery__way#delivery__method
           配送の方法
           %span.form-require 必須
           .sell-area__delivery__way__select
-            = f.collection_select :delivery_method_id, @delivery_method, :id, :value, {prompt: "---"}, class: "sell-area__delivery__way__default"
+            = f.collection_select :delivery_method_id, @delivery_method, :id, :value, {prompt: "---"}, class: "sell-area__delivery__way__default", required: true
       .sell-area__delivery__origin
         発送元の地域
         %span.form-require 必須
         .sell-area__delivery__origin__select
-          = f.collection_select :area_id, Area.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default"
+          = f.collection_select :area_id, Area.all, :id, :name, {prompt: "---"}, class: "sell-area__delivery__origin__default", required: true
       .sell-area__delivery__days
         発送までの日数
         %span.form-require 必須
         .sell-area__delivery__days__select
-          = f.collection_select :shipdate_id, Shipdate.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__days__default"
+          = f.collection_select :shipdate_id, Shipdate.all, :id, :value, {prompt: "---"}, class: "sell-area__delivery__days__default", required: true
     .sell-area__selling
       %h3.sell-area__selling__price
         販売価格(300〜9,999,999)
@@ -110,7 +110,7 @@
           %span.form-require 必須
         .sell-area__selling--right
           ¥
-          = f.number_field :price, placeholder: "例) 300円", class: "sell-area__selling__box"
+          = f.number_field :price, placeholder: "例) 300円", class: "sell-area__selling__box", required: true
       .sell-area__selling__form-group--center
         .sell-area__selling__commission--left
           販売手数料 (10%)

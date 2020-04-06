@@ -182,6 +182,7 @@ class ProductsController < ApplicationController
                                     :area_id,
                                     :shipdate_id,
                                     :price,
+                                    brand_attributes: [:name],
                                     photos_attributes: [:photo, :_destroy, :id])
   end
 
