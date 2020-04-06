@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function(){
     return false;
   }
   // 未入力項目あると、アラートが出る
-  $(document).on("click", '.sell-area__box__button--red-change', function(){
+  $('.sell-area__box').on("click", '.sell-area__box__button--red-change', function(){
     var select_forms = $('select');
     var check_size = $('#product_size_id').val();
     var check_delivery_method = $('#product_delivery_method_id').val();
