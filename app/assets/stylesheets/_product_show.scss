@@ -141,6 +141,12 @@ display: none !important;
                 @include button-a;
               }
             }
+            .edit_button{
+              @include buy_delete_button;
+              a{
+                @include button-a;
+              }
+            }
             .delete_button{
               @include buy_delete_button;
               a{
