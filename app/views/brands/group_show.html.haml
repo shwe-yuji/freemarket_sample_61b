@@ -40,7 +40,7 @@
               = brand
             .brand-box__name-list
               -# 今現在の頭文字から始まるブランドをeachで回す
-              - if @current_brands.present?
+              - if brand.present?
                 - @current_brands.where("name like ?","%#{brand.chr}%").each do |brand_inner|
                   .brand-box__name-list__inner
                     = link_to brand_path(brand_inner.id) do
