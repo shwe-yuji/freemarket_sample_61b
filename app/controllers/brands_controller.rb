@@ -8,7 +8,6 @@ class BrandsController < ApplicationController
     @category_root = Category.where(ancestry: nil)
     current_brand_ids = Product.where(category_id: @current_category.subtree.ids).pluck(:brand_id)
     @current_brands = Brand.group('name').order('name').where(id: current_brand_ids)
-    # binding.pry
   end
 
   def show
